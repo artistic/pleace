@@ -1,0 +1,78 @@
+.page-title {
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	color: #fff;
+}
+
+.page-title h2 {
+	color: #fff;
+}
+
+.profile-user-img {
+  border: 2px solid #22450A;
+  margin: 0 auto;
+  padding: 3px;
+  width: 150px;
+
+}
+
+.profile-flag-img-small {
+  border: 1px solid #22450A;
+  margin: 0 auto;
+  padding: 2px;
+  width: 25px;
+}
+
+.profile-user-small-img {
+  border: 1px solid #fff;
+  margin: 0 auto;
+  padding: 2px;
+  width: 30px;
+}
+
+.propic {
+	margin-bottom: 20px;
+}
+
+.course-detailed-list li {
+  list-style-type: none;
+  padding: 0px;
+}
+
+.boxedin{
+  border : 1px solid #eee;
+  padding-top: 10px;
+}
+
+.danger {
+  color : #B20000;
+
+}
+
+.dashed {
+  border: 1px dashed #eee;
+  height: 200px;
+  padding: 20px;
+  margin: 20px;
+  width: 90%;
+  font-size: 22px;
+  color: #eee;
+}
+
+.success-created {
+  border: 1px solid #ccc; 
+  width: 90%;
+  margin : 20px;
+  padding: 30px;
+}
+
+.success-icon {
+  color: #2E4612;
+  font-size: 42px;
+}
+
+.quick-details {
+  border-bottom: 1px solid #ccc;
+}
+
