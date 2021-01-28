@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -24,6 +26,7 @@ import { CoursesComponent } from './components/courses/courses.component';
 import { AddCourseComponent } from './components/add-course/add-course.component';
 import { RankingsComponent } from './components/rankings/rankings.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
 
 
 @NgModule({
@@ -42,14 +45,17 @@ import { SettingsComponent } from './components/settings/settings.component';
     CoursesComponent,
     AddCourseComponent,
     RankingsComponent,
-    SettingsComponent
+    SettingsComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFirestoreModule,    
+    AngularFirestoreModule,
+    FormsModule,
+    ReactiveFormsModule    
   ],
   providers: [
   Title,

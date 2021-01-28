@@ -5,115 +5,153 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { Router } from "@angular/router";
 
 export interface User {
-    uid: string;
-    email: string;
-    displayName: string;
-    photoURL: string;
-    emailVerified: boolean;
- }
+  uid: string;
+  email: string;
+  displayName: string;
+  photoURL: string;
+  emailVerified: boolean;
+  firstname: string;
+  surname: string;
+  gender: string;
+  nationality: string;
+  accountType: string;
+  homeClub: string;
+  handicap: string;
+  residence: string;
+  firstrun: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class NgAuthService {
-    userState: any;
 
-    constructor(
-      public afs: AngularFirestore,
-      public afAuth: AngularFireAuth,
-      public router: Router,
-      public ngZone: NgZone
+  photoURL : any;
+  myArray : any;
+  rand : any;
+  placeHolder : any;
+  userState: any;
+  crrntUsr: any;
+
+  constructor(
+    public afs: AngularFirestore,
+    public afAuth: AngularFireAuth,
+    public router: Router,
+    public ngZone: NgZone
     ) {
-      this.afAuth.authState.subscribe(user => {
-        if (user) {
-          this.userState = user;
-          localStorage.setItem('user', JSON.stringify(this.userState));
-          JSON.parse(localStorage.getItem('user'));
-        } else {
-          localStorage.setItem('user', null);
-          JSON.parse(localStorage.getItem('user'));
-        }
-      })
-    }
-  
-    SignIn(email, password) {
-      return this.afAuth.signInWithEmailAndPassword(email, password)
-        .then((result) => {
-          this.ngZone.run(() => {
-            this.router.navigate(['dashboard']);
-          });
-          this.SetUserData(result.user);
-        }).catch((error) => {
-          window.alert(error.message)
-        })
-    }
-  
-    SignUp(email, password) {
-      return this.afAuth.createUserWithEmailAndPassword(email, password)
-        .then((result) => {
-          this.SendVerificationMail();
-          this.SetUserData(result.user);
-        }).catch((error) => {
-          window.alert(error.message)
-        })
-    }
-
-    SendVerificationMail() {
-        return this.afAuth.currentUser.then(u => u.sendEmailVerification())
-        .then(() => {
-          this.router.navigate(['email-verification']);
-        })
-    }    
-  
-    ForgotPassword(passwordResetEmail) {
-      return this.afAuth.sendPasswordResetEmail(passwordResetEmail)
-      .then(() => {
-        window.alert('Password reset email sent, check your inbox.');
-      }).catch((error) => {
-        window.alert(error)
-      })
-    }
-  
-    get isLoggedIn(): boolean {
-      const user = JSON.parse(localStorage.getItem('user'));
-      return (user !== null && user.emailVerified !== false) ? true : false;
-    }
-  
-    GoogleAuth() {
-      return this.AuthLogin(new auth.GoogleAuthProvider());
-    }
-  
-    AuthLogin(provider) {
-      return this.afAuth.signInWithPopup(provider)
-      .then((result) => {
-         this.ngZone.run(() => {
-            this.router.navigate(['dashboard']);
-          })
-        this.SetUserData(result.user);
-      }).catch((error) => {
-        window.alert(error)
-      })
-    }
-  
-    SetUserData(user) {
-      const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-      const userState: User = {
-        uid: user.uid,
-        email: user.email,
-        displayName: user.displayName,
-        photoURL: user.photoURL,
-        emailVerified: user.emailVerified
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        this.userState = user;
+        localStorage.setItem('user', JSON.stringify(this.userState));
+        JSON.parse(localStorage.getItem('user'));
+        this.crrntUsr = JSON.parse(window.localStorage.getItem("user"));
+      } else {
+        localStorage.setItem('user', null);
+        JSON.parse(localStorage.getItem('user'));
       }
-      return userRef.set(userState, {
-        merge: true
+    });
+
+    this.myArray = [
+    'assets/img/user_blue.png', 
+    'assets/img/user_yellow.png', 
+    'assets/img/user_red.png', 
+    'assets/img/user_black.png', 
+    'assets/img/user_purple.png'
+    ];    
+    this.rand = Math.floor(Math.random() * this.myArray.length);
+    this.photoURL = this.myArray[this.rand];
+
+    this.placeHolder = 'Placeholder';
+  }
+  
+  SignIn(email, password) {
+    return this.afAuth.signInWithEmailAndPassword(email, password)
+    .then((result) => {
+      this.ngZone.run(() => {
+        this.router.navigate(['dashboard']);
+      });
+      this.SetUserData(result.user);
+    }).catch((error) => {
+      window.alert(error.message)
+    })
+  }
+  
+  SignUp(email, password) {
+    return this.afAuth.createUserWithEmailAndPassword(email, password)
+    .then((result) => {
+      this.SetUserData(result.user);
+      this.SendVerificationMail();
+    }).catch((error) => {
+      window.alert(error.message)
+    })
+  }
+
+  SendVerificationMail() {
+    return this.afAuth.currentUser.then(u => u.sendEmailVerification())
+    .then(() => {
+      this.router.navigate(['email-verification']);
+    })
+  }    
+  
+  ForgotPassword(passwordResetEmail) {
+    return this.afAuth.sendPasswordResetEmail(passwordResetEmail)
+    .then(() => {
+      window.alert('Password reset email sent, check your inbox.');
+    }).catch((error) => {
+      window.alert(error)
+    })
+  }
+  
+  get isLoggedIn(): boolean {
+    const user = JSON.parse(localStorage.getItem('user'));
+    return (user !== null && user.emailVerified !== false) ? true : false;
+  }
+  
+  GoogleAuth() {
+    return this.AuthLogin(new auth.GoogleAuthProvider());
+  }
+  
+  AuthLogin(provider) {
+    return this.afAuth.signInWithPopup(provider)
+    .then((result) => {
+      this.ngZone.run(() => {
+        this.router.navigate(['dashboard']);
       })
+      this.SetUserData(result.user);
+    }).catch((error) => {
+      window.alert(error)
+    })
+  }
+  
+  SetUserData(user) {
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+    const userState: User = {
+      uid: user.uid,
+      email: user.email,
+      displayName: this.placeHolder,
+      photoURL: this.photoURL,
+      emailVerified: user.emailVerified,
+      firstname: this.placeHolder,
+      surname: this.placeHolder,
+      gender: this.placeHolder,
+      nationality: this.placeHolder,
+      accountType: this.placeHolder,
+      homeClub: this.placeHolder,
+      handicap: this.placeHolder,
+      residence: this.placeHolder,
+      firstrun: '0',
+
     }
-   
-    SignOut() {
-      return this.afAuth.signOut().then(() => {
-        localStorage.removeItem('user');
-        this.router.navigate(['sign-in']);
-      })
-    }  
+    return userRef.set(userState, {
+      merge: true
+    })
+  }
+
+  SignOut() {
+    return this.afAuth.signOut().then(() => {
+      localStorage.removeItem('user');
+      this.router.navigate(['sign-in']);
+    })
+  }  
 }

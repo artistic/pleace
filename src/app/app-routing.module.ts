@@ -40,7 +40,7 @@ const routes: Routes = [
   { path: 'add-course', component: AddCourseComponent, data: {title: 'Add New Course'} },
 
   { path: 'rankings', component: RankingsComponent, data: {title: 'Rankings'} },
-  { path: 'settings', component: SettingsComponent, data: {title: 'Rankings'} },
+  { path: 'settings', component: SettingsComponent, data: {title: 'Settings'} },
 
 
   { path: '**', component: NoPageFoundComponent, data: {title: 'Page Error'} },
