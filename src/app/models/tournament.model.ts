@@ -4,5 +4,6 @@ export default class Tournament {
   description?: string;
   country?: string;
   category?: number;
+  course?: number;
   published?: boolean;
 }

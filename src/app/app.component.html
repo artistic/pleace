@@ -23,6 +23,7 @@
             <li><a routerLink="courses" class="nav-link"><i class="g-color--primary g-margin-r-10--xs ti-flag-alt-2"></i> Golf Courses</a></li>
             <li><a routerLink="tournaments" class="nav-link"><i class="g-color--primary g-margin-r-10--xs ti-cup"></i> Tournaments</a></li>
             <li><a routerLink="rankings" class="nav-link"><i class="g-color--primary g-margin-r-10--xs ti-receipt"></i> Rankings</a></li>
+            <li><a routerLink="calculate" class="nav-link"><i class="g-color--primary g-margin-r-10--xs ti-menu-alt"></i> Handicap Calculator</a></li>
           </ul>
         </li>
       </ul>
@@ -30,10 +31,9 @@
       <ul class="nav navbar-nav navbar-right" *ngIf="ngAuthService.userState as user">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              <img class="profile-user-small-img img-fluid img-circle"
-              src="assets/img/user.png"
-              alt="User profile picture">
-            {{(user.displayName) ? user.displayName : 'User'}}
+              <img class="profile-user-small-img img-fluid img-circle" src="{{(userRef.photoURL) ? userRef.photoURL : './assets/img/user_red.png'}}"
+                alt="{{userRef.displayName}}">
+            {{(userRef.displayName) ? userRef.displayName : 'User'}}
             <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a routerLink="play"><i class="g-color--primary g-margin-r-10--xs ti-panel"></i> Play</a></li>
@@ -42,7 +42,7 @@
             <li><a routerLink="help"><i class="g-color--primary g-margin-r-10--xs ti-help-alt"></i> Help</a></li>
             <li role="separator" class="divider"></li>
             <li><a routerLink="dashboard"><i class="g-color--primary g-margin-r-10--xs ti-panel"></i> Dashboard</a></li>
-            <li><a routerLink="settings"><i class="g-color--primary g-margin-r-10--xs ti-panel"></i> Settings</a></li>
+            <li *ngIf="userRef.accountType ==='4'"><a routerLink="settings"><i class="g-color--primary g-margin-r-10--xs ti-panel"></i> Settings</a></li>
             <li><a (click)="ngAuthService.SignOut()"><i class="g-color--primary g-margin-r-10--xs ti-close"></i> Logout</a></li>
           </ul>
         </li>

@@ -9,24 +9,24 @@
 	<ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
 		<li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-email"></i>{{user.email}}</li>
 
-		<li *ngIf="user.accountType ==='1'"><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-star"></i>
-			Champions Golfers <i class="ti-crown"></i>
+		<li *ngIf="user.accountType ==='1'"><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-crown"></i>
+			Champions Golfers 
 		</li>
 
 		<li *ngIf="user.accountType ==='2'"><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-star"></i>
-			CelebrityGolfers <i class="ti-star"></i>
+			Celebrity Golfers 
 		</li>
 
-		<li *ngIf="user.accountType ==='3'"><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-star"></i>
-			Professional Golfers <i class="ti-cup"></i>
+		<li *ngIf="user.accountType ==='3'"><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-cup"></i>
+			Professional Golfers 
 		</li>
 
 		<li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-home"></i> {{user.homeClub}}</li>
 
-		<li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-home"></i> 
+		<li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check-box"></i> 
 				Account Verified
-				<span class="pull-right">Yes</span>
-				<span class="pull-right">No</span>
+				<span class="pull-right" *ngIf="currentUser.emailVerified">Yes</span>
+				<span class="pull-right" *ngIf="!currentUser.emailVerified">No</span>
 	    </li>
 
 		<li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-medall"></i><strong>Index : </strong> {{user.handicap}}</li>

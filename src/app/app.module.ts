@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
+
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -27,6 +28,11 @@ import { AddCourseComponent } from './components/add-course/add-course.component
 import { RankingsComponent } from './components/rankings/rankings.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { TermsComponent } from './components/terms/terms.component';
+import { PrivacyComponent } from './components/privacy/privacy.component';
+import { PlayComponent } from './components/play/play.component';
+import { CalculateComponent } from './components/calculate/calculate.component';
 
 
 @NgModule({
@@ -46,7 +52,12 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
     AddCourseComponent,
     RankingsComponent,
     SettingsComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    EditUserComponent,
+    TermsComponent,
+    PrivacyComponent,
+    PlayComponent,
+    CalculateComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,172 @@
+<div *ngIf="firstrun=='1'">
+  <!-- Plan -->
 <div class="g-bg-color--sky-light">
+  <div class="container g-padding-y-80--xs g-padding-y-125--xsm">
+    <div class="row g-row-col--5">
+      <!-- Plan -->
+      <div class="col-md-4  col-sm-12 col-xs-12 g-margin-b-10--xs g-margin-b-0--lg">
+        <div class="wow fadeInUp" data-wow-duration=".3" data-wow-delay=".1s">
+          <div class="s-plan-v1 g-bg-color--white g-padding-x-20--xs g-padding-y-30--xs">
+            <div class="text-center propic">
+              <img class="profile-user-img img-fluid img-circle"
+              src="{{userRef.photoURL}}"
+              alt="User profile picture">
+            </div>
+            <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs g-text-center--xs">{{userRef.displayName}}</h3>
+            <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
+              <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-email"></i>{{userRef.email}}</li>
+              <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-home"></i> {{userRef.homeClub}}</li>
+
+              <li *ngIf="userRef.accountType ==='1'"><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-crown"></i> Champions Golfers </li>
+              <li *ngIf="userRef.accountType ==='2'"><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-star"></i> Celebrity Golfers </li>
+              <li *ngIf="userRef.accountType ==='3'"><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-cup"></i> Professional Golfers </li>
+
+              <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-medall"></i><strong>Index : </strong> {{userRef.handicap}}</li>
+
+              <li>
+                <i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-world"></i> 
+                {{userRef.nationality}}
+                <span class="pull-right">
+                  <img src="assets/img/flags/{{userRef.nationality}}.png" class="profile-flag-img-small" >
+                </span>
+              </li>
+
+              <li>
+                <span class="pull-right">
+                  <small>
+                    <a routerLink="/edit-user" routerLinkActive="active" class="nav-link">
+                      <i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-pencil-alt"></i> Edit
+                    </a>
+                  </small>
+                </span>
+              </li>
+            </ul>
+
+
+            <div class="row g-hor-divider__dashed--sky-light g-text-center--xs g-padding-y-30--xs">
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <i class="g-font-size-18--xs g-color--primary g-margin-r-10--xs ti-bolt"></i><br>
+                <p class="g-font-size-12--xs g-color--primary text-uppercase">Regional Ranking</p>
+                <p class="g-font-size-18--xs g-color--primary text-uppercase">13</p>
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <i class="g-font-size-18--xs g-color--primary g-margin-r-10--xs ti-world"></i><br>
+                <p class="g-font-size-12--xs g-color--primary text-uppercase">Regional Ranking</p>
+                <p class="g-font-size-18--xs g-color--primary text-uppercase">13</p>
+              </div>
+            </div>
+
+            <div class="row g-hor-divider__dashed--sky-light g-text-center--xs g-padding-y-30--xs">
+              <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <button routerLink="/play" routerLinkActive="active" type="button" class="text-uppercase s-btn s-btn--sm btn-block s-btn--primary-bg g-radius--3 g-padding-x-50--xs">Play</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="g-hor-divider__dashed--sky-light g-padding-y-10--xs g-padding-y-20--xsm"></div>
+
+            <!-- Create An Invite Page-->
+            <div class="g-padding-y-30--xs" *ngIf="userRef.accountType ==='2'">
+              <h2 class="g-font-size-14--xs g-font-size-16--md">Invite A Celebrity<span class="pull-right"><i class="ti-share"></i></span></h2>
+              <p class="g-font-size-10--xs g-color--primary">
+                As a celebrity player you can invite other celebrity players to join please press the button below 
+              </p>
+
+              <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6"></div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                  <button class="text-uppercase s-btn s-btn--xs s-btn--green-brd g-radius--50">Invite</button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- End Plan -->
+
+      <!-- Plan -->
+      <div class="col-md-8 col-sm-12 col-xs-12">
+        <div class="wow fadeInUp" data-wow-duration=".3" data-wow-delay=".3s">
+          <div class="s-plan-v1 g-bg-color--white g-padding-x-20--xs g-padding-y-30--xs">
+
+
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <p class="text-uppercase g-font-size-10--xs g-color--primary">The Best Place To Get Golf News </p>
+                <h2 class="g-font-size-22--xs g-font-size-24--md">Score Board Summary <span class="pull-right"><i class="ti-clipboard"></i></span></h2>
+
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Total Points</th>
+                      <th scope="col"></th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Lawrence Gumbo</td>
+                      <td>18</td>
+                      <td><img src="assets/img/flags/Rwanda.png" class="profile-flag-img-small" ></td>
+                    </tr>
+
+                  </tbody>
+                </table>
+
+                
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <p class="text-uppercase g-font-size-10--xs g-color--primary">The Best Place To Get Golf News </p>
+                <h2 class="g-font-size-22--xs g-font-size-24--md">News And Updates <span class="pull-right"><i class="ti-book"></i></span></h2>
+                <!-- Swiper -->
+                <div class="s-swiper js__swiper-news">
+                  <!-- Wrapper -->
+                  <div class="swiper-wrapper g-margin-b-60--xs">
+                    <article class="s-promo-block-v6 g-bg-position--center swiper-slide" style="background: url('assets/img/400x500/07.jpg');">
+                      <div class="g-text-center--xs g-padding-x-15--xs g-padding-x-30--lg g-padding-y-50--xs g-margin-t-120--xs">
+                        <div class="g-margin-b-25--xs">
+                          <h3 class="g-font-size-16--xs g-color--white g-margin-b-5--xs">Golf Headline here</h3>
+                          <p class="g-color--white">Headline here.</p>
+                        </div>
+                        <a href="#" class="text-uppercase s-btn s-btn--xs s-btn--white-brd g-radius--50">Read More</a>
+                      </div>
+                    </article>
+                  </div>
+                  <!-- End Wrapper -->
+
+                  <!-- Pagination -->
+                  <div class="s-swiper__pagination-v1 s-swiper__pagination-v1--dark g-text-center--xs js__swiper-pagination"></div>
+                </div>
+                <!-- End Swiper -->
+              </div>
+            </div>
+
+            
+
+
+
+          </div>
+        </div>
+      </div>
+      <!-- End Plan -->
+    </div>
+  </div>
+</div>
+        <!-- End Plan -->
+</div>
+
+<div *ngIf="firstrun=='0'">
+  <div class="g-bg-color--sky-light">
   <div class="container g-padding-y-80--xs g-padding-y-125--xsm">
     <div class="row g-row-col--5">
       <!-- Plan -->
@@ -10,9 +178,14 @@
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <p class="text-uppercase g-font-size-10--xs g-color--primary">What are people are asking</p>
-                <h2 class="g-font-size-22--xs g-font-size-24--md">FAQ <span class="pull-right"><i class="ti-help"></i></span></h2>
+                <h2 class="g-font-size-22--xs g-font-size-24--md">One Last Step <span class="pull-right"><i class="ti-help"></i></span></h2>
 
+                  <p>Hie there <strong>{{userEmail}}</strong></p>
+                  <p>For better use of the Pleace GOLF platform please finish creating your profile
 
+                    <a routerLink="/terms" routerLinkActive="active" class="nav-link">terms and conditions</a>
+                    <a routerLink="/privacy" routerLinkActive="active" class="nav-link">Privacy Policy</a>
+                  </p>
                 
               </div>
             </div>
@@ -193,4 +366,5 @@
       <!-- End Plan -->
     </div>
   </div>
+</div>
 </div>

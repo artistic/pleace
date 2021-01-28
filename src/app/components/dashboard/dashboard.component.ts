@@ -17,7 +17,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 
 export class DashboardComponent implements OnInit {
 
-  
+
 
   @Input() user?: User;
   @Output() refreshUser: EventEmitter<any> = new EventEmitter();
@@ -31,6 +31,7 @@ export class DashboardComponent implements OnInit {
   userState: any;
   userRef: any;
   crrntUsr: any;
+  userEmail: any;
 
   firstrun : any;
 
@@ -51,7 +52,7 @@ export class DashboardComponent implements OnInit {
         localStorage.setItem('user', JSON.stringify(this.userState));
         JSON.parse(localStorage.getItem('user'));
         this.crrntUsr = JSON.parse(window.localStorage.getItem("user"));
-  
+
       } else {
         localStorage.setItem('user', null);
         JSON.parse(localStorage.getItem('user'));
@@ -59,7 +60,6 @@ export class DashboardComponent implements OnInit {
     });
 
     this.editForm = this.formBuilder.group({
-
       firstname: [''],
       surname: [''],
       gender: [''],
@@ -69,20 +69,27 @@ export class DashboardComponent implements OnInit {
       handicap: [''],
       residence: [''],
     })
-
-
   }
 
   ngOnInit(): void {
-      this.crrntUsr = JSON.parse(window.localStorage.getItem("user"));
-      const id = this.crrntUsr.uid;
-      console.log(id);
+    this.crrntUsr = JSON.parse(window.localStorage.getItem("user"));
+    const id = this.crrntUsr.uid;
+    this.userEmail = this.crrntUsr.email;
+    console.log(id);
     this.usersService.getUserDoc(id).subscribe(res => {
       this.userRef = res;
+
+      this.firstrun = this.userRef.firstrun;
+      console.log(this.firstrun);
       this.editForm = this.formBuilder.group({
         firstname: [this.userRef.firstname],
         surname: [this.userRef.surname],
-        gender: [this.userRef.gender]
+        gender: [this.userRef.gender],
+        nationality: [this.userRef.nationality],
+        accountType: [this.userRef.accountType],
+        homeClub: [this.userRef.homeClub],
+        handicap: [this.userRef.handicap],
+        residence: [this.userRef.residence],
       })      
     })
   }
@@ -90,8 +97,8 @@ export class DashboardComponent implements OnInit {
 
   onSubmit() {
     this.crrntUsr = JSON.parse(window.localStorage.getItem("user"));
-      const id = this.crrntUsr.uid;
-      console.log(id);
+    const id = this.crrntUsr.uid;
+    console.log(id);
     this.usersService.updateUser(this.editForm.value, id);
     this.router.navigate(['settings']);
   };

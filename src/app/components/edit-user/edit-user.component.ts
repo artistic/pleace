@@ -1,6 +1,4 @@
-import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
-import Tournament from 'src/app/models/tournament.model';
-import { TournamentsService } from 'src/app/services/tournaments.service';
+import { Component, OnInit, NgZone, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { NgAuthService } from "../../ng-auth.service";
 import User from 'src/app/models/user.model';
 import { UsersService } from 'src/app/services/users.service';
@@ -11,45 +9,38 @@ import { Router } from "@angular/router";
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-tournament',
-  templateUrl: './tournament.component.html',
-  styleUrls: ['./tournament.component.css']
+  selector: 'app-edit-user',
+  templateUrl: './edit-user.component.html',
+  styleUrls: ['./edit-user.component.css']
 })
-export class TournamentComponent implements OnInit, OnChanges {
+export class EditUserComponent implements OnInit {
 
-	@Input() tournament?: Tournament;
-  @Output() refreshList: EventEmitter<any> = new EventEmitter();
-  currentTournament: Tournament = {
-    title: '',
-    description: '',
-    published: false
-  };
-  message = '';
+  
+  @Input() user?: User;
+  @Output() refreshUser: EventEmitter<any> = new EventEmitter();
+  
 
   uid: any;
+  message = '';
   submitted = false;
 
   public editForm: FormGroup;
   userState: any;
   userRef: any;
-  courseRef: any;
-  courseId: any;
-  courseAddress: any;
   crrntUsr: any;
-  userEmail: any;
 
   firstrun : any;
 
+
+
   constructor(
-    private tournamentsService: TournamentsService,
-    private firestore: AngularFirestore,
     public ngAuthService: NgAuthService,
     private usersService: UsersService,
     public formBuilder: FormBuilder,
     public afs: AngularFirestore,
     public afAuth: AngularFireAuth,
     public router: Router,
-
+    public ngZone: NgZone
     ) { 
     this.afAuth.authState.subscribe(user => {
       if (user) {
@@ -77,13 +68,10 @@ export class TournamentComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.message = '';
     this.crrntUsr = JSON.parse(window.localStorage.getItem("user"));
     const id = this.crrntUsr.uid;
-    this.userEmail = this.crrntUsr.email;
     console.log(id);
-
-
+    
     this.usersService.getUserDoc(id).subscribe(res => {
       this.userRef = res;
 
@@ -99,56 +87,17 @@ export class TournamentComponent implements OnInit, OnChanges {
         handicap: [this.userRef.handicap],
         residence: [this.userRef.residence],
       })      
-    });
-
-    const courseid = this.currentTournament.course;
-    this.tournamentsService.getCourseDoc(courseid).subscribe(res => {
-      this.courseRef = res;
-      console.log(this.courseRef);
-
     })
   }
 
-  ngOnChanges(): void {
-    this.message = '';
-    this.currentTournament = { ...this.tournament };
-  }
 
+  onSubmit() {
+    this.crrntUsr = JSON.parse(window.localStorage.getItem("user"));
+    const id = this.crrntUsr.uid;
+    console.log(id);
+    this.usersService.updateUser(this.editForm.value, id);
+    this.router.navigate(['dashboard']);
+  };
 
-  
-  updatePublished(status: boolean): void {
-    if (this.currentTournament.id) {
-      this.tournamentsService.update(this.currentTournament.id, { published: status })
-      .then(() => {
-        this.currentTournament.published = status;
-        this.message = 'The status was updated successfully!';
-      })
-      .catch(err => console.log(err));
-    }
-  }
-
-  updateTutorial(): void {
-    const data = {
-      title: this.currentTournament.title,
-      description: this.currentTournament.description
-    };
-
-    if (this.currentTournament.id) {
-      this.tournamentsService.update(this.currentTournament.id, data)
-      .then(() => this.message = 'The tutorial was updated successfully!')
-      .catch(err => console.log(err));
-    }
-  }
-
-  deleteTutorial(): void {
-    if (this.currentTournament.id) {
-      this.tournamentsService.delete(this.currentTournament.id)
-      .then(() => {
-        this.refreshList.emit();
-        this.message = 'The tutorial was updated successfully!';
-      })
-      .catch(err => console.log(err));
-    }
-  }
 
 }

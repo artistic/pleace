@@ -10,6 +10,7 @@ export class TournamentsService {
   private dbPath = '/tournaments';
 
 
+
   tournamentsRef: AngularFirestoreCollection<Tournament>;
 
   constructor(private db: AngularFirestore) {
@@ -30,6 +31,13 @@ export class TournamentsService {
 
   delete(id: string): Promise<void> {
     return this.tournamentsRef.doc(id).delete();
+  }
+
+  getCourseDoc(courseid) {
+    return this.db
+    .collection('courses')
+    .doc(courseid)
+    .valueChanges()
   }
   
 }

@@ -7,20 +7,17 @@
         Scoreboard
 
         <span *ngIf="currentTournament.category ==='1'" class="pull-right">
-          Champ
+         <small> Champions Golfer <i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-crown"></i></small>
         </span>
 
         <span *ngIf="currentTournament.category ==='2'" class="pull-right">
-          Celebrity
+          <small>Celebrity <i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-star"></i></small>
         </span>
 
         <span *ngIf="currentTournament.category ==='3'" class="pull-right">
-          Professional Golfer
+          <small>Professional Golfer <i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-cup"></i></small>
         </span>
 
-        <span class="pull-right">
-          <small>Professional Golfer</small>
-        </span>
       </h2>
 
 
@@ -47,16 +44,54 @@
         </tbody>
       </table>
     </div>
+
+
+
     <div class="col-md-4 col-sm-12 col-xs-12">
       <h2 class="g-font-size-16--xs g-font-size-18--md">Course Details</h2>
 
-      <img src="assets/img/courses/{{currentTournament.image}}" class="img-responsive">
+      <img src="assets/img/courses/{{courseRef.club_image}}" class="img-responsive">
 
       <p>
         <span class="text-uppercase g-font-size-10--xs g-color--primary">Course Name</span><br>
-        <span class="g-font-size-14--xs">Course Name </span>
+        <span class="g-font-size-14--xs">{{courseRef.club_name}}</span>
       </p>
+
+      <p>
+        <span class="text-uppercase g-font-size-10--xs g-color--primary">Club Membership</span><br>
+        <span class="g-font-size-14--xs">{{courseRef.club_membership}}</span>
+      </p>
+
+      <p>
+        <span class="text-uppercase g-font-size-10--xs g-color--primary">Club Membership</span><br>
+        <span class="g-font-size-14--xs">{{courseRef.club_membership}}</span>
+      </p>
+
+      <p>
+        <span class="text-uppercase g-font-size-10--xs g-color--primary">Club City</span><br>
+        <span class="g-font-size-14--xs">{{courseRef.city}}</span>
+      </p>
+
+      <p>
+        <span class="text-uppercase g-font-size-10--xs g-color--primary">Country</span><br>
+        <span class="g-font-size-14--xs">
+        {{courseRef.country}}
+
+        <span class="pull-right">
+          <img src="assets/img/flags/{{courseRef.country}}.png" class="profile-flag-img-small" >
+        </span>
+      </span>
+      </p>
+
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <a href="#" class="text-uppercase s-btn s-btn--xs s-btn--green-brd g-radius--50 btn-block">View Course Details</a>
+        </div>
+      </div>
+
     </div>
+
+
   </div>
 
 
@@ -68,7 +103,7 @@
 
   <div class="g-hor-divider__dashed--sky-light"></div>
 
-  <div class="row g-padding-y-30--xs g-padding-y-30--xsm">
+  <div class="row g-padding-y-30--xs g-padding-y-30--xsm" *ngIf="userRef.accountType ==='4'">
     <div class="col-md-12 col-sm-12 col-xs-12">
       <h6>Admin Control Panel <span class="pull-right"><i class="ti-panel"></i></span></h6>
 

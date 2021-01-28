@@ -76,3 +76,23 @@
   border-bottom: 1px solid #ccc;
 }
 
+.calculator {
+  border: 1px solid #ccc; 
+}
+
+.calculator_input {
+  border-bottom: 1px solid #ccc;
+  height: 40px;
+  width: 100%
+}
+
+.calculator_error {
+  font-size: 8px;
+  color: #B20000;
+}
+
+.calculator_label {
+  font-weight: 600;
+  line-height: 40px;
+}
+
