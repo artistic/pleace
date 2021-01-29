@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-firebase-authentication": {
+    "pleace": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -134,7 +134,7 @@
       }
     }
   },
-  "defaultProject": "angular-firebase-authentication",
+  "defaultProject": "pleace-golf",
   "cli": {
     "analytics": false
   }
