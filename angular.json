@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "pleace": {
+    "angular-firebase-authentication": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -24,22 +24,23 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "src/styles.css"
             ],
             "scripts": [],
             "allowedCommonJsDependencies": [
-                  "lodash",
-                  "firebase",
-                  "@angular/common/locales/fr",
-                  "lodash/dropRight",
-                  "@firebase/app",
-                  "firebase/app",
-                  "@firebase/database",
-                  "@firebase/firestore",
-                  "@firebase/functions",
-                  "@firebase/performance",
-                  "@firebase/remote-config"
-              ]            
+              "lodash",
+              "firebase",
+              "@angular/common/locales/fr",
+              "lodash/dropRight",
+              "@firebase/app",
+              "firebase/app",
+              "@firebase/database",
+              "@firebase/firestore",
+              "@firebase/functions",
+              "@firebase/performance",
+              "@firebase/remote-config"
+            ]
           },
           "configurations": {
             "production": {
@@ -101,6 +102,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -134,7 +136,7 @@
       }
     }
   },
-  "defaultProject": "pleace-golf",
+  "defaultProject": "angular-firebase-authentication",
   "cli": {
     "analytics": false
   }

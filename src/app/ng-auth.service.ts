@@ -71,7 +71,7 @@ export class NgAuthService {
       this.ngZone.run(() => {
         this.router.navigate(['dashboard']);
       });
-      // this.SetUserData(result.user);
+      this.SetUserData(result.user);
     }).catch((error) => {
       window.alert(error.message)
     })

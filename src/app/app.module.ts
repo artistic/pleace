@@ -33,6 +33,7 @@ import { TermsComponent } from './components/terms/terms.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { PlayComponent } from './components/play/play.component';
 import { CalculateComponent } from './components/calculate/calculate.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { CalculateComponent } from './components/calculate/calculate.component';
     AngularFireAuthModule,
     AngularFirestoreModule,
     FormsModule,
-    ReactiveFormsModule    
+    ReactiveFormsModule,
+    BrowserAnimationsModule    
   ],
   providers: [
   Title,

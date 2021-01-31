@@ -8,8 +8,6 @@ import { UsersService } from 'src/app/services/users.service';
 import { auth } from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-//import { ApiService } from './services/api.service';
 
 @Component({
 	selector: 'app-root',
@@ -18,8 +16,6 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent {
 	title = 'Pleace Golf';
-
-  where : any;
 
   uid: any;
   message = '';
@@ -41,7 +37,6 @@ export class AppComponent {
     private usersService: UsersService,
     public afs: AngularFirestore,
     public afAuth: AngularFireAuth,
-    // private apiService: ApiService,
 
     ) { 
 
@@ -77,7 +72,7 @@ export class AppComponent {
         const rt = this.getChild(this.activatedRoute);  
         rt.data.subscribe(data => {  
           console.log(data);  
-          this.titleService.setTitle(data.title)}); 
+          this.titleService.setTitle(data.title)});  
       });  
     }  
 

@@ -135,65 +135,20 @@
 							<div class="col-md-12 col-sm-12 col-xs-12">
 								
 
-								<div *ngIf="currentCourse">
-									<app-course
-									(refreshList)="refreshList()"
-									[course]="currentCourse"
-									></app-course>
-
-									<button type="button" class="text-uppercase s-btn s-btn--sm btn-block s-btn--primary-bg g-radius--3 g-padding-x-50--xs" data-toggle="modal" data-target="#courseTeas33">
-						Teas
-					</button>
-					<div class="modal fade" id="courseTeas33" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-						<div class="modal-dialog modal-lg" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLabel">Book Your Diner Experience </h5>
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-
-								<input name="meal" id="meal" type="hidden" value="<?php echo $meal;?>">
-								<div class="modal-body">
-									
-								</div>
-								<div class="modal-footer">
-
-									<div class="row">
-										<div class="col-md-6 col-sm-6 col-xs-6">
-											<button type="button" class="text-uppercase s-btn s-btn--sm s-btn--danger-bg g-radius--50 g-padding-x-50--xs" data-dismiss="modal">Cancel</button>
-										</div>
-										<div class="col-md-6 col-sm-6 col-xs-6">
-											<input class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs" name="doInsert" type="submit" id="doInsert3" value="Book">
-										</div>
-									</div>
-
-								</div>
-							</div>
-						</div>
-					</div>
-								</div>
-
-								<div *ngIf="!currentCourse">
-
-									<div class="row">
-										<p class="text-uppercase g-font-size-10--xs g-color--primary">What are people are asking</p>
-										<h2 class="g-font-size-22--xs g-font-size-24--md">Course Quick View <span class="pull-right"><i class="ti-help"></i></span></h2>
-										<div class="col-md-4 col-sm-12 col-xs-12 g-margin-b-10--xs g-margin-b-0--lg" *ngFor="let course of courses; let i = index" (click)="setActiveCourse(course, i)">
-											<div class="s-plan-v1 g-text-center--xs g-bg-color--green">
-												<img class="img-responsive" src="assets/img/courses/{{course.club_image}}" alt="{{course.club_name}}">
-												<div class="row g-padding-y-20--xs">
-													<div class="col-md-12 col-sm-12 col-xs-12 g-text-center--xs">
-														<h4 class="g-font-size-12--xs g-font-size-14--md g-color--white" >{{course.club_name}}</h4>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-
-								</div>
-
+								<ul class="nav nav-tabs justify-content-end">
+									<li class="nav-item">
+										<a class="nav-link active" href="#">Active</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="#">Link</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="#">Link</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link disabled" href="#">Disabled</a>
+									</li>
+								</ul>
 								
 
 								
@@ -207,6 +162,3 @@
 		</div>
 	</div>
 </div>
-
-<!-- Modal -->
-
