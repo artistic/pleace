@@ -135,21 +135,63 @@
 							<div class="col-md-12 col-sm-12 col-xs-12">
 								
 
-								<ul class="nav nav-tabs justify-content-end">
-									<li class="nav-item">
-										<a class="nav-link active" href="#">Active</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="#">Link</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="#">Link</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link disabled" href="#">Disabled</a>
-									</li>
-								</ul>
-								
+								<div *ngIf="currentCourse">
+									<app-course
+									(refreshList)="refreshList()"
+									[course]="currentCourse"
+									></app-course>
+								</div>
+
+								<div *ngIf="!currentCourse">
+
+									<div class="row">
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<ul class="nav nav-tabs">
+												<li class="active"><a data-toggle="tab" href="#africa">Africa</a></li>
+												<li><a data-toggle="tab" href="#asia">Asia</a></li>
+												<li><a data-toggle="tab" href="#europe">Europe</a></li>
+												<li><a data-toggle="tab" href="#northAmerica">North America</a></li>
+												<li><a data-toggle="tab" href="#southAmerica">South America</a></li>
+												<li><a data-toggle="tab" href="#oceania">Oceania</a></li>
+											</ul>
+
+											<div class="tab-content g-padding-y-30--xs">
+												<div id="africa" class="tab-pane fade in active">
+													<h3 class="g-font-size-22--xs g-font-size-24--md">Africa</h3>
+													<p class="pull-right"><small>Courses</small></p>
+
+													<div class="row g-margin-t-80--xs">
+														<div class="col-md-6 col-sm-6 col-xs-6">
+															<h3 class="g-font-size-16--xs g-font-size-18--md">Zimbabwe</h3>
+														</div>
+													</div>
+
+												</div>
+												<div id="asia" class="tab-pane fade">
+													<h3>Asia</h3>
+													<p class="pull-right"><small>Courses</small></p>
+												</div>
+												<div id="europe" class="tab-pane fade">
+													<h3>Europe</h3>
+													<p class="pull-right"><small>Courses</small></p>
+												</div>
+												<div id="northAmerica" class="tab-pane fade">
+													<h3>North America</h3>
+													<p class="pull-right"><small>Courses</small></p>
+												</div>
+												<div id="southAmerica" class="tab-pane fade">
+													<h3>South America</h3>
+													<p class="pull-right"><small>Courses</small></p>
+												</div>
+												<div id="oceania" class="tab-pane fade">
+													<h3>Oceania</h3>
+													<p class="pull-right"><small>Courses</small></p>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
 
 								
 							</div>

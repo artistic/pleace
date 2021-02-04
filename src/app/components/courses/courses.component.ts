@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CoursesService } from 'src/app/services/courses.service';
-import { map } from 'rxjs/operators';
 import Course from 'src/app/models/course.model';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators'
+
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+
+
 
 @Component({
   selector: 'app-courses',
@@ -15,15 +20,48 @@ export class CoursesComponent implements OnInit {
   currentIndex = -1;
   title = '';
 
+  coursecollection: AngularFirestoreCollection<Course>;  
+  course: Observable<Course[]>;  
+  courseDoc: AngularFirestoreDocument<Course>;
+  dbCourses$: Observable<{}[]>;
+
+
+  coursed : any;
+
   search = false;
+  closeResult: string;
 
   constructor(
-  	private coursesService: CoursesService
-  	) { }
+  	private coursesService: CoursesService,
+    private db: AngularFirestore
+  	) { 
+
+    
+
+  }
 
   ngOnInit(): void {
     this.retrieveCourses();
+    this.db.collection('courses').valueChanges()
+     .subscribe(val => console.log(val));
+
+     this.coursecollection = this.db.collection<{}>('courses');
+    this.dbCourses$ = this.dbCourses$ = this.coursecollection.snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data(); // DB Questions
+        const id = a.payload.doc.id;
+        return { id, ...data };
+
+        console.log(this.dbCourses$);
+      }))
+    )
+
   }
+
+
+  
+
+
 
   refreshList(): void {
     this.currentCourse = undefined;
@@ -47,5 +85,8 @@ export class CoursesComponent implements OnInit {
     this.currentCourse = course;
     this.currentIndex = index;
   }
+
+
+
 
 }

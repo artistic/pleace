@@ -4,83 +4,88 @@
 
       <!-- Plan -->
       <div class="col-md-8 col-sm-12 col-xs-12">
-        <img src="assets/img/slide1.jpg" class="img-responsive">
+        <div class="s-plan-v1 g-bg-color--white">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <img src="assets/img/sign-in.jpg" class="img-responsive">                
+            </div>
+          </div>
+
+        </div>
       </div>
       <!-- End Plan -->
 
       <!-- Plan -->
       <div class="col-md-4  col-sm-12 col-xs-12 g-margin-b-10--xs g-margin-b-0--lg">
-        <div class="wow fadeInUp" data-wow-duration=".3" data-wow-delay=".1s">
-          <div class="s-plan-v1 g-bg-color--white g-padding-x-20--xs g-padding-y-30--xs">
+        <div class="s-plan-v1 g-bg-color--white g-padding-x-20--xs g-padding-y-30--xs">
 
-            <!-- search -->
-            <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <p class="text-uppercase g-font-size-10--xs g-color--primary">For better experience login into you account</p>
-                <h2 class="g-font-size-22--xs g-font-size-24--md">Sign In <span class="pull-right"><i class="ti-shift-right"></i></span></h2>
+          <!-- search -->
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <p class="text-uppercase g-font-size-10--xs g-color--primary">For better experience login into you account</p>
+              <h2 class="g-font-size-22--xs g-font-size-24--md">Sign In <span class="pull-right"><i class="ti-shift-right"></i></span></h2>
 
-                <form>
+              <form>
 
-                  <div class="row g-margin-b-10--xs g-margin-b-20--md">
-                    <div class="col-sm-12">
-                      <div class="input-group g-margin-b-10--xs">
-                        <span class="input-group-btn">
-                          <i class="s-form-v4__icon ti-email"></i>
-                        </span>
-                        <input type="text" class="form-control s-form-v4__input" #userName placeholder="Email Address" required>
-                      </div>
+                <div class="row g-margin-b-10--xs g-margin-b-20--md">
+                  <div class="col-sm-12">
+                    <div class="input-group g-margin-b-10--xs">
+                      <span class="input-group-btn">
+                        <i class="s-form-v4__icon ti-email"></i>
+                      </span>
+                      <input type="text" class="form-control s-form-v4__input" #userName placeholder="Email Address" required>
                     </div>
                   </div>
+                </div>
 
-                  <div class="row g-margin-b-10--xs g-margin-b-20--md">
-                    <div class="col-sm-12">
-                      <div class="input-group g-margin-b-10--xs">
-                        <span class="input-group-btn">
-                          <i class="s-form-v4__icon ti-lock"></i>
-                        </span>
-                        <input type="password" class="form-control s-form-v4__input" #userPassword placeholder="Password" required>
-                      </div>
+                <div class="row g-margin-b-10--xs g-margin-b-20--md">
+                  <div class="col-sm-12">
+                    <div class="input-group g-margin-b-10--xs">
+                      <span class="input-group-btn">
+                        <i class="s-form-v4__icon ti-lock"></i>
+                      </span>
+                      <input type="password" class="form-control s-form-v4__input" #userPassword placeholder="Password" required>
                     </div>
                   </div>
+                </div>
 
-                  <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                      <p>
-                        <small>
-                          By clicking "Sign in", you agree to our 
-                          <a routerLink="terms" class="nav-link">Terms of Service</a>
-                          and have read and acknowledge our 
-                          
-                        </small>
-                      </p>
+                <div class="row">
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <p>
+                      <small>
+                        By clicking "Sign in", you agree to our 
+                        <a routerLink="terms" class="nav-link">Terms of Service</a>
+                        and have read and acknowledge our 
+                        
+                      </small>
+                    </p>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="formGroup">
+                      <input type="button" class="text-uppercase s-btn btn-block s-btn--xs s-btn--primary-bg g-radius--3 g-padding-x-40--xs g-margin-b-20--xs" value="Sign in"
+                      (click)="ngAuthService.SignIn(userName.value, userPassword.value)">
                     </div>
                   </div>
+                </div>
 
-                  <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                      <div class="formGroup">
-                        <input type="button" class="text-uppercase s-btn btn-block s-btn--xs s-btn--primary-bg g-radius--3 g-padding-x-40--xs g-margin-b-20--xs" value="Sign in"
-                        (click)="ngAuthService.SignIn(userName.value, userPassword.value)">
-                      </div>
-                    </div>
+
+                <div class="row">
+                  <div class="col-md-6 col-sm-6 col-xs-6">
+                    <a routerLink="/forgot-password" routerLinkActive="active" class="nav-link">Forgot Password</a>.
                   </div>
-
-
-                  <div class="row">
-                    <div class="col-md-6 col-sm-6 col-xs-6">
-                      <a routerLink="/forgot-password" routerLinkActive="active" class="nav-link">Forgot Password</a>.
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-xs-6">
-                      <a routerLink="/sign-up" routerLinkActive="active" class="nav-link">Create Account</a>.
-                    </div>
+                  <div class="col-md-6 col-sm-6 col-xs-6">
+                    <a routerLink="/sign-up" routerLinkActive="active" class="nav-link">Create Account</a>.
                   </div>
+                </div>
 
-                </form>
+              </form>
 
-              </div>
             </div>
-
           </div>
+
         </div>
       </div>
       <!-- End Plan -->

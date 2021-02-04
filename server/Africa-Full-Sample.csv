@@ -1,0 +1,12 @@
+﻿Course ID,Facility ID,Course Name,Holes,Par,Course Type,Course Architect,Open Date,Guest Policy,Weekday Price,Weekend Price,Twilight Price,Fairway,Green,Currency
+BFA-KA-0001-01,BFA-KA-0001,Ouagadougou,18,72,Desert,N/D,1975,Open,10000,10000,10000,N/D,N/D,XOF
+EGY-AL-0001-01,EGY-AL-0001,Alexandria,18,70,Parkland,N/D,1890,Open,50,50,10,N/D,N/D,EGP
+MAR-MA-0001-01,MAR-MA-0001,Nord,18,72,Tropical,Gary PLAYER,2009,Open,N/D,N/D,N/D,N/D,N/D,MAD
+MAR-MA-0001-02,MAR-MA-0001,Sud,18,72,Tropical,Gary PLAYER,2011,Open,N/D,N/D,N/D,N/D,N/D,MAD
+NGA-AI-0002-01,NGA-AI-0002,Le Meridien Ibom,18,72,Desert,N/D,2007,Open,N/D,N/D,N/D,N/D,N/D,NGN
+SDN-KA-0001-01,SDN-KA-0001,Fenti,9,36,Parkland,Peter Harradine,2010,Closed,~,~,~,N/D,N/D,SDG
+SEN-BC-0001-01,SEN-BC-0001,Cape Skirring,9,37,Parkland,Robert Berthet,1986,Open,N/D,N/D,N/D,N/D,N/D,EUR
+ZAF-EC-0001-01,ZAF-EC-0001,Bushman Sands,18,72,Links,Gary Player,2004,Open,355,355,355,N/D,N/D,ZAR
+ZAF-EC-0002-01,ZAF-EC-0002,Barkly East,9,36,Parkland,N/D,1895,Open,30,30,30,N/D,N/D,ZAR
+ZAM-LU-0001-01,ZAM-LU-0001,Lusaka,18,73,Parkland,N/D,N/D,Closed,~,~,~,N/D,N/D,ZMW
+ZIM-HA-0001-01,ZIM-HA-0001,Royal Harare,18,72,Parkland,R- Nick Price/Steve Smyers,1901,Closed,~,~,~,N/D,N/D,USD

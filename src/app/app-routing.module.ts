@@ -16,6 +16,8 @@ import { CoursesComponent } from './components/courses/courses.component';
 import { CourseComponent } from './components/course/course.component';
 import { AddCourseComponent } from './components/add-course/add-course.component';
 
+import { ClubsComponent } from './components/clubs/clubs.component';
+
 
 import { PlayComponent } from './components/play/play.component';
 import { CalculateComponent } from './components/calculate/calculate.component';
@@ -30,6 +32,7 @@ import { PrivacyComponent } from './components/privacy/privacy.component';
 import { NoPageFoundComponent } from './components/no-page-found/no-page-found.component';
 import { AuthGuard } from "./auth.guard";
 
+
 const routes: Routes = [
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
   { path: 'sign-in', component: SignInComponent, data: {title: 'Sign In'} },
@@ -42,6 +45,8 @@ const routes: Routes = [
   { path: 'tournaments', component: TournamentsComponent, data: {title: 'Tournaments'} },
   { path: 'tournament', component: TournamentComponent, data: {title: 'Tournament'} },
   { path: 'add-tournament', component: AddTournamentComponent, data: {title: 'Add New Tournament'} },
+
+  { path: 'clubs', component: ClubsComponent, data: {title: 'Clubs'} },
 
   { path: 'courses', component: CoursesComponent, data: {title: 'Courses'} },
   { path: 'course', component: CourseComponent, data: {title: 'Course'} },

@@ -1,13 +1,15 @@
-import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import Course from 'src/app/models/course.model';
 import { CoursesService } from 'src/app/services/courses.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 
+
 @Component({
 	selector: 'app-course',
 	templateUrl: './course.component.html',
-	styleUrls: ['./course.component.css']
+  styleUrls: ['./course.component.css']
 })
+
 export class CourseComponent implements OnInit, OnChanges {
 
 
@@ -22,8 +24,8 @@ export class CourseComponent implements OnInit, OnChanges {
 
 	constructor(
 		private coursesService: CoursesService,
-		private firestore: AngularFirestore
-		) { }
+		private firestore: AngularFirestore,
+    ) { }
 
 	ngOnInit(): void {
 		this.message = '';
@@ -53,20 +55,21 @@ export class CourseComponent implements OnInit, OnChanges {
 
     if (this.currentCourse.club_id) {
       this.coursesService.update(this.currentCourse.club_id, data)
-        .then(() => this.message = 'The tutorial was updated successfully!')
-        .catch(err => console.log(err));
+      .then(() => this.message = 'The tutorial was updated successfully!')
+      .catch(err => console.log(err));
     }
   }
 
   deleteCourse(): void {
     if (this.currentCourse.club_id) {
       this.coursesService.delete(this.currentCourse.club_id)
-        .then(() => {
-          this.refreshList.emit();
-          this.message = 'The tutorial was updated successfully!';
-        })
-        .catch(err => console.log(err));
+      .then(() => {
+        this.refreshList.emit();
+        this.message = 'The tutorial was updated successfully!';
+      })
+      .catch(err => console.log(err));
     }
   }
 
+  
 }

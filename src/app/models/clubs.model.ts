@@ -1,18 +1,15 @@
-export default class Course {
+export default class Clubs {
 	facilityID?: string;
-	id?: string;
-	club_id?: string;
-	club_published?: boolean;
-	club_description?: string;
 	club_name?: string;
 	club_membership?: string;
 	club_image?: string;
-	club_continent?: string;
+	published?: string;
 	holes?: number;
 	address?: string;
 	city?: string;
 	state?: string;
 	country?: string;
+	continent?: string;
 	postal_code?: string;
 	phone?: string;
 	fax?: string;
@@ -26,9 +23,9 @@ export default class Course {
 	putting_green?: boolean;
 	chipping_green?: boolean;
 	practice_bunker?: boolean;
-	motor_chart?: boolean;
-	pull_chart?: boolean;
-	golf_club_rental?: boolean;
+	motor_cart?: boolean;
+	pull_cart?: boolean;
+	golf_club_rentals?: boolean;
 	club_fitting?: boolean;
 	pro_shop?: boolean;
 	golf_lessons?: boolean;
@@ -40,5 +37,3 @@ export default class Course {
 	lodging_on_site?: boolean;
 
 }
-
-

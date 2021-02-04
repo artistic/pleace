@@ -9,6 +9,8 @@ import { auth } from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 
+
+
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
@@ -29,6 +31,7 @@ export class AppComponent {
 
   firstrun : any;
 
+
   constructor(
     public ngAuthService: NgAuthService,
     private router: Router,  
@@ -37,6 +40,7 @@ export class AppComponent {
     private usersService: UsersService,
     public afs: AngularFirestore,
     public afAuth: AngularFireAuth,
+
 
     ) { 
 
@@ -84,4 +88,5 @@ export class AppComponent {
       }  
 
     } 
+
   }

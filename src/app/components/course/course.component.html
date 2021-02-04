@@ -42,18 +42,20 @@
 	</div> -->
 
 	<div class="row g-hor-divider__dashed--sky-light g-padding-y-30--xs">
-		<div class="col-md-8 col-sm-12 col-xs-12">
-			<img class="img-responsive img-thumb" src="assets/img/courses/{{currentCourse.club_image}}" alt="{{currentCourse.club_name}}">
+		<div class="col-md-7 col-sm-12 col-xs-12">
+			<img class="img-responsive img-thumb" src="{{currentCourse.club_image}}" alt="{{currentCourse.club_image}}">
 		</div>
 
-		<div class="col-md-4 col-sm-12 col-xs-12">
-			<h2 class="g-font-size-14--xs g-font-size-16--md"><span>Course Quick Look</span></h2>
-			<h2 class="g-font-size-14--xs g-font-size-16--md"></h2>
-
-			<p class="quick-details g-font-size-14--xs"><i class="ti-flag-alt-2"></i> Name <span class="pull-right">{{currentCourse.club_name}}</span></p>
-			<p class="quick-details g-font-size-14--xs"><i class="ti-mobile"></i> Phone <span class="pull-right">{{currentCourse.phone}}</span></p>
-			<p class="quick-details g-font-size-14--xs"><i class="ti-email"></i> Email <span class="pull-right">{{currentCourse.email_address}}</span></p>
-			<p class="quick-details g-font-size-14--xs"><i class="ti-world"></i> Web <span class="pull-right">{{currentCourse.website}}</span></p>
+		<div class="col-md-5 col-sm-12 col-xs-12">
+			<p class="quick-details g-font-size-12--xs"><i class="ti-flag-alt-2"></i> Name <span class="pull-right">{{currentCourse.club_name}}</span></p>
+			<p class="quick-details g-font-size-12--xs"><i class="ti-mobile"></i> Phone <span class="pull-right">{{currentCourse.Phone}}</span></p>
+			<p class="quick-details g-font-size-12--xs"><i class="ti-email"></i> Email <span class="pull-right">{{currentCourse.email}}</span></p>
+			<p class="quick-details g-font-size-12--xs"><i class="ti-world"></i> Web <span class="pull-right">{{currentCourse.Website}}</span></p>
+			<p class="quick-details g-font-size-12--xs"><i class="ti-world"></i> City <span class="pull-right">{{currentCourse.City}}</span></p>
+			<p class="quick-details g-font-size-12--xs"><i class="ti-world"></i> Country <span class="pull-right">{{currentCourse.Country}}</span></p>
+			<p class="quick-details g-font-size-12--xs"><i class="ti-user"></i> Contact Name <span class="pull-right">{{currentCourse.contact_name}}</span></p>
+			<p class="quick-details g-font-size-12--xs"><i class="ti-user"></i> Contact Title <span class="pull-right">{{currentCourse.contact_title}}</span></p>
+			<p class="quick-details g-font-size-12--xs"><i class="ti-user"></i> Holes <span class="pull-right">{{currentCourse.holes}}</span></p>
 
 		</div>
 	</div>
@@ -90,6 +92,8 @@
 			</div>
 
 			<div class="row">
+
+
 				<div class="col-md-4 col-sm-4 col-xs-4">
 					<button type="button" class="text-uppercase s-btn s-btn--sm btn-block s-btn--primary-bg g-radius--3 g-padding-x-50--xs">Play</button>
 				</div>
@@ -107,3 +111,5 @@
 
 
 </div>
+
+

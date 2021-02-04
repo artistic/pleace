@@ -34,6 +34,8 @@ import { PrivacyComponent } from './components/privacy/privacy.component';
 import { PlayComponent } from './components/play/play.component';
 import { CalculateComponent } from './components/calculate/calculate.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ClubsComponent } from './components/clubs/clubs.component';
+
 
 
 @NgModule({
@@ -58,7 +60,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TermsComponent,
     PrivacyComponent,
     PlayComponent,
-    CalculateComponent
+    CalculateComponent,
+    ClubsComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +71,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AngularFirestoreModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule    
+    BrowserAnimationsModule,
+  
   ],
   providers: [
   Title,
