@@ -81,16 +81,8 @@ export class DashboardComponent implements OnInit {
 
       this.firstrun = this.userRef.firstrun;
       console.log(this.firstrun);
-      this.editForm = this.formBuilder.group({
-        firstname: [this.userRef.firstname],
-        surname: [this.userRef.surname],
-        gender: [this.userRef.gender],
-        nationality: [this.userRef.nationality],
-        accountType: [this.userRef.accountType],
-        homeClub: [this.userRef.homeClub],
-        handicap: [this.userRef.handicap],
-        residence: [this.userRef.residence],
-      })      
+
+     
     })
   }
 
