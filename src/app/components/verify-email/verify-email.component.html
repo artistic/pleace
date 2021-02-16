@@ -28,19 +28,17 @@
               </div>
 
 
-              <div class="row">
+              <div class="row g-padding-y-30--xs">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <button type="button" (click)="ngAuthService.SendVerificationMail()" class="text-uppercase s-btn s-btn--sm btn-block s-btn--primary-bg g-radius--3 g-padding-x-50--xs">Resend Verification Email</button>
                 </div>
               </div>  
 
-              <div class="row">
-                <div class="col-md-6">
+              <div class="row text-center">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <a routerLink="/sign-in" routerLinkActive="active" class="nav-link">I have Verified. Sign In</a>.
                 </div>
-                  <div class="col-md-6 col-sm-12 col-xs-12">
-                    <a routerLink="/sign-in" routerLinkActive="active" class="nav-link">I have Verified. Sign In</a>.
-                  </div>
-                </div> 
+              </div> 
             </div>
           </div>
         </div>

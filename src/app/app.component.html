@@ -43,7 +43,7 @@
             <li><a routerLink="help"><i class="g-color--primary g-margin-r-10--xs ti-help-alt"></i> Help</a></li>
             <li role="separator" class="divider"></li>
             <li><a routerLink="dashboard"><i class="g-color--primary g-margin-r-10--xs ti-panel"></i> Dashboard</a></li>
-            <li *ngIf="userRef.accountType ==='4'"><a routerLink="settings"><i class="g-color--primary g-margin-r-10--xs ti-panel"></i> Settings</a></li>
+            <li *ngIf="userRef.accountType ==='2'"><a routerLink="settings"><i class="g-color--primary g-margin-r-10--xs ti-panel"></i> Settings</a></li>
             <li><a (click)="ngAuthService.SignOut()"><i class="g-color--primary g-margin-r-10--xs ti-close"></i> Logout</a></li>
           </ul>
         </li>

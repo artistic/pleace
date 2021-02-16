@@ -1,3 +1,11 @@
+.nav-link:hover {
+  border-bottom : 1px dashed #2E4612;
+  color : #2E4612;
+}
+.nav-link {
+  color : #2E4612;
+}
+
 .page-title {
 	text-align: center;
 	padding-top: 20px;
@@ -95,4 +103,5 @@
   font-weight: 600;
   line-height: 40px;
 }
+
 

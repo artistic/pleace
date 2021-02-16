@@ -17,11 +17,12 @@
               <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-email"></i>{{userRef.email}}</li>
               <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-home"></i> {{userRef.homeClub}}</li>
 
-              <li *ngIf="userRef.accountType ==='1'"><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-crown"></i> Champions Golfers </li>
-              <li *ngIf="userRef.accountType ==='2'"><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-star"></i> Celebrity Golfers </li>
-              <li *ngIf="userRef.accountType ==='3'"><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-cup"></i> Professional Golfers </li>
+              <li *ngIf="userRef.accountType ==='1'"><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-crown"></i> Champs </li>
+              <li *ngIf="userRef.accountType ==='2'"><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-star"></i> Celebrity </li>
+              <li *ngIf="userRef.accountType ==='3'"><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-cup"></i> Tour Player </li>
+              <li *ngIf="userRef.accountType ==='4'"><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-cup"></i> PGA Professional </li>
 
-              <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-medall"></i><strong>Index : </strong> {{userRef.handicap}}</li>
+              <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-medall"></i><strong>Handicap : </strong> {{userRef.handicap}}</li>
 
               <li>
                 <i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-world"></i> 
@@ -119,37 +120,7 @@
 
                 
               </div>
-            </div>
-
-
-            <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <p class="text-uppercase g-font-size-10--xs g-color--primary">The Best Place To Get Golf News </p>
-                <h2 class="g-font-size-22--xs g-font-size-24--md">News And Updates <span class="pull-right"><i class="ti-book"></i></span></h2>
-                <!-- Swiper -->
-                <div class="s-swiper js__swiper-news">
-                  <!-- Wrapper -->
-                  <div class="swiper-wrapper g-margin-b-60--xs">
-                    <article class="s-promo-block-v6 g-bg-position--center swiper-slide" style="background: url('assets/img/400x500/07.jpg');">
-                      <div class="g-text-center--xs g-padding-x-15--xs g-padding-x-30--lg g-padding-y-50--xs g-margin-t-120--xs">
-                        <div class="g-margin-b-25--xs">
-                          <h3 class="g-font-size-16--xs g-color--white g-margin-b-5--xs">Golf Headline here</h3>
-                          <p class="g-color--white">Headline here.</p>
-                        </div>
-                        <a href="#" class="text-uppercase s-btn s-btn--xs s-btn--white-brd g-radius--50">Read More</a>
-                      </div>
-                    </article>
-                  </div>
-                  <!-- End Wrapper -->
-
-                  <!-- Pagination -->
-                  <div class="s-swiper__pagination-v1 s-swiper__pagination-v1--dark g-text-center--xs js__swiper-pagination"></div>
-                </div>
-                <!-- End Swiper -->
-              </div>
-            </div>
-
-            
+            </div>      
 
 
 
@@ -180,14 +151,15 @@
                   <p>For better use of the Pleace GOLF platform please finish creating your profile.
                   </p>
 
+                  <hr>
+
                   <div class="row">
                     <div class="col-md-6 col-sm-6 col-xs-6">
-                      <a routerLink="/terms" routerLinkActive="active" class="nav-link">Terms And Conditions</a> 
+                      <a routerLink="/terms" routerLinkActive="active" class="nav-link"><small>Terms And Conditions</small></a> 
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-6">
-                      <a routerLink="/privacy" routerLinkActive="active" class="nav-link">Privacy Policy</a>
+                      <a routerLink="/privacy" routerLinkActive="active" class="nav-link"><small>Privacy Policy</small></a>
                     </div>
-
                     
                   </div>
                 
@@ -254,9 +226,10 @@
                               required
                               >
                                 <option value="">Account Type</option>
-                                <option value="1">Champion</option>
+                                <option value="1">Champs</option>
                                 <option value="2">Celebrity</option>
-                                <option value="3">Pro Golfer</option>
+                                <option value="3">Tour Player</option>
+                                <option value="4">PGA Professional</option>
                               </select>
                             </div>
                       </div>
@@ -264,7 +237,7 @@
                       <div class="col-sm-3">
                         <div class="input-group g-margin-b-10--xs">
                               <span class="input-group-btn">
-                                <i class="s-form-v4__icon ti-smile"></i>
+                                <i class="s-form-v4__icon ti-face-smile"></i>
                               </span>
                               <select 
                               class="form-control s-form-v4__input" 
@@ -282,7 +255,7 @@
                       <div class="col-sm-3">
                         <div class="input-group g-margin-b-10--xs">
                           <span class="input-group-btn">
-                            <i class="s-form-v4__icon ti-user"></i>
+                            <i class="s-form-v4__icon ti-medall"></i>
                           </span>
                           <input 
                           type="text" 

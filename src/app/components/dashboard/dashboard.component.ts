@@ -82,7 +82,6 @@ export class DashboardComponent implements OnInit {
       this.firstrun = this.userRef.firstrun;
       console.log(this.firstrun);
 
-     
     })
   }
 
@@ -92,7 +91,7 @@ export class DashboardComponent implements OnInit {
     const id = this.crrntUsr.uid;
     console.log(id);
     this.usersService.updateUser(this.editForm.value, id);
-    this.router.navigate(['settings']);
+    this.router.navigate(['dashboard']);
   };
 
 
