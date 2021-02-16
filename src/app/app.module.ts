@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
@@ -33,7 +36,7 @@ import { TermsComponent } from './components/terms/terms.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { PlayComponent } from './components/play/play.component';
 import { CalculateComponent } from './components/calculate/calculate.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { ClubsComponent } from './components/clubs/clubs.component';
 
 
@@ -72,7 +75,7 @@ import { ClubsComponent } from './components/clubs/clubs.component';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-  
+    ToastrModule.forRoot(),
   ],
   providers: [
   Title,

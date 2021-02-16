@@ -9,6 +9,8 @@ import { auth } from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 
+import { ToastrService } from 'ngx-toastr';
+
 
 
 @Component({
@@ -40,6 +42,7 @@ export class AppComponent {
     private usersService: UsersService,
     public afs: AngularFirestore,
     public afAuth: AngularFireAuth,
+    private toastr: ToastrService
 
 
     ) { 
@@ -67,7 +70,9 @@ export class AppComponent {
     this.usersService.getUserDoc(id).subscribe(res => {
       this.userRef = res;
       this.firstrun = this.userRef.firstrun;
-      console.log(this.firstrun);     
+      console.log(this.firstrun);  
+
+      this.toastr.success('Hello world!', 'Toastr fun!');   
     });
 
     this.router.events.pipe(  
