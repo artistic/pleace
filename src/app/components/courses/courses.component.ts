@@ -23,7 +23,10 @@ export class CoursesComponent implements OnInit {
   coursecollection: AngularFirestoreCollection<Course>;  
   course: Observable<Course[]>;  
   courseDoc: AngularFirestoreDocument<Course>;
-  dbCourses$: Observable<{}[]>;
+  africaClubs$: Observable<{}[]>;
+  asiaClubs: Observable<{}[]>;
+  europeClubs: Observable<{}[]>;
+  greatBritainClubs: Observable<{}[]>;
 
 
   coursed : any;
@@ -34,7 +37,7 @@ export class CoursesComponent implements OnInit {
   constructor(
   	private coursesService: CoursesService,
     private db: AngularFirestore
-  	) { 
+    ) { 
 
     
 
@@ -43,18 +46,18 @@ export class CoursesComponent implements OnInit {
   ngOnInit(): void {
     this.retrieveCourses();
     this.db.collection('courses').valueChanges()
-     .subscribe(val => console.log(val));
+    .subscribe(val => console.log(val));
 
-     this.coursecollection = this.db.collection<{}>('courses');
-    this.dbCourses$ = this.dbCourses$ = this.coursecollection.snapshotChanges().pipe(
+    this.coursecollection = this.db.collection<{}>('clubs', ref => ref.where('continent', '==', 'Africa'));
+    this.africaClubs$ = this.africaClubs$ = this.coursecollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data(); // DB Questions
         const id = a.payload.doc.id;
         return { id, ...data };
 
-        console.log(this.dbCourses$);
+        console.log(this.africaClubs$);
       }))
-    )
+      )
 
   }
 
@@ -74,19 +77,19 @@ export class CoursesComponent implements OnInit {
       map(changes =>
         changes.map(c =>
           ({ id: c.payload.doc.id, ...c.payload.doc.data() })
+          )
         )
-      )
-    ).subscribe(data => {
-      this.courses = data;
-    });
+      ).subscribe(data => {
+        this.courses = data;
+      });
+    }
+
+    setActiveCourse(course: Course, index: number): void {
+      this.currentCourse = course;
+      this.currentIndex = index;
+    }
+
+
+
+
   }
-
-  setActiveCourse(course: Course, index: number): void {
-    this.currentCourse = course;
-    this.currentIndex = index;
-  }
-
-
-
-
-}

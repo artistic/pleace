@@ -4,7 +4,7 @@ import { TournamentsService } from 'src/app/services/tournaments.service';
 import { NgAuthService } from "../../ng-auth.service";
 import User from 'src/app/models/user.model';
 import { UsersService } from 'src/app/services/users.service';
-import { auth } from 'firebase/app';
+import auth  from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from "@angular/router";

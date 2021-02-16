@@ -105,3 +105,17 @@
 }
 
 
+.clubs {
+  border: 1px solid #ccc;
+  padding: 10px;
+  height: 150px;
+}
+.club-top {
+  border-top: 1 solid #ccc;
+  height : 100px;
+}
+.club-bottom {
+  border-top: 1 solid #ccc;
+  height : 30px;
+}
+

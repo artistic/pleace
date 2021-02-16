@@ -150,19 +150,42 @@
 												<li class="active"><a data-toggle="tab" href="#africa">Africa</a></li>
 												<li><a data-toggle="tab" href="#asia">Asia</a></li>
 												<li><a data-toggle="tab" href="#europe">Europe</a></li>
-												<li><a data-toggle="tab" href="#northAmerica">North America</a></li>
-												<li><a data-toggle="tab" href="#southAmerica">South America</a></li>
+												<li><a data-toggle="tab" href="#america">America</a></li>
+												<li><a data-toggle="tab" href="#greatBritain">Great Britain</a></li>
 												<li><a data-toggle="tab" href="#oceania">Oceania</a></li>
 											</ul>
 
 											<div class="tab-content g-padding-y-30--xs">
 												<div id="africa" class="tab-pane fade in active">
 													<h3 class="g-font-size-22--xs g-font-size-24--md">Africa</h3>
-													<p class="pull-right"><small>Courses</small></p>
+													<p class="pull-right"><small>Clubs</small></p>
 
-													<div class="row g-margin-t-80--xs">
-														<div class="col-md-6 col-sm-6 col-xs-6">
-															<h3 class="g-font-size-16--xs g-font-size-18--md">Zimbabwe</h3>
+													<br>
+													<br>
+
+													<div class="row" ng-if="i % 3 === 0">
+														<div class="col-md-3 col-sm-6 col-xs-6 text-center" *ngFor="let clubs of africaClubs$ | async; index as i">
+															<div class="clubs g-margin-b-10--xs">
+																<div class="row club-top">
+																	<div class="col-md-12 col-sm-12 col-xs-12">
+																		<strong>{{ clubs.club_name}}</strong>
+																	</div>
+																</div>
+
+																<div class="row club-bottom">
+																	<div class="col-md-6 col-sm-6 col-xs-6">
+																		<a [routerLink]="['/course', clubs.id]">
+																			<i class="g-color--primary g-margin-r-10--xs ti-eye"></i> <small>View</small>
+																		</a>
+																	</div>
+																	<div class="col-md-6 col-sm-6 col-xs-6">
+																		<span class="pull-right">
+																			<img src="assets/img/flags/{{clubs.country}}.png" class="profile-flag-img-small" >
+																		</span>
+																	</div>
+																</div>
+
+															</div>
 														</div>
 													</div>
 
@@ -175,12 +198,12 @@
 													<h3>Europe</h3>
 													<p class="pull-right"><small>Courses</small></p>
 												</div>
-												<div id="northAmerica" class="tab-pane fade">
-													<h3>North America</h3>
+												<div id="america" class="tab-pane fade">
+													<h3>America</h3>
 													<p class="pull-right"><small>Courses</small></p>
 												</div>
-												<div id="southAmerica" class="tab-pane fade">
-													<h3>South America</h3>
+												<div id="greatBritain" class="tab-pane fade">
+													<h3>Great Britain</h3>
 													<p class="pull-right"><small>Courses</small></p>
 												</div>
 												<div id="oceania" class="tab-pane fade">

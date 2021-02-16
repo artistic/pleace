@@ -2,11 +2,13 @@ import { Component, OnInit, NgZone, Input, OnChanges, Output, EventEmitter } fro
 import { NgAuthService } from "../../ng-auth.service";
 import User from 'src/app/models/user.model';
 import { UsersService } from 'src/app/services/users.service';
-import { auth } from 'firebase/app';
+import auth  from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
 import { FormBuilder, FormGroup } from '@angular/forms';
+
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -44,8 +46,10 @@ export class DashboardComponent implements OnInit {
     public afs: AngularFirestore,
     public afAuth: AngularFireAuth,
     public router: Router,
-    public ngZone: NgZone
+    public ngZone: NgZone,
+    private toastr: ToastrService
     ) { 
+
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.userState = user;
@@ -73,16 +77,21 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.crrntUsr = JSON.parse(window.localStorage.getItem("user"));
+
     const id = this.crrntUsr.uid;
     this.userEmail = this.crrntUsr.email;
-    console.log(id);
+
+
     this.usersService.getUserDoc(id).subscribe(res => {
-      this.userRef = res;
+    this.userRef = res;
 
       this.firstrun = this.userRef.firstrun;
       console.log(this.firstrun);
 
     })
+
+    
+
   }
 
 
@@ -91,7 +100,8 @@ export class DashboardComponent implements OnInit {
     const id = this.crrntUsr.uid;
     console.log(id);
     this.usersService.updateUser(this.editForm.value, id);
-    this.router.navigate(['dashboard']);
+
+   this.toastr.success('Your profile has been updated', 'Profile Updated'); 
   };
 
 

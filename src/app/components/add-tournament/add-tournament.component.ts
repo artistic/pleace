@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import Tournament from 'src/app/models/tournament.model';
 import { TournamentsService } from 'src/app/services/tournaments.service';
 
+import { ToastrService } from 'ngx-toastr';
+
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -19,7 +21,10 @@ export class AddTournamentComponent implements OnInit {
     end: new FormControl()
   });
 
-  constructor(private tournamentService: TournamentsService) { }
+  constructor(
+    private tournamentService: TournamentsService,
+    private toastr: ToastrService
+    ) { }
 
   ngOnInit(): void {
   }
@@ -28,6 +33,7 @@ export class AddTournamentComponent implements OnInit {
     this.tournamentService.create(this.tournaments).then(() => {
       console.log('Created new item successfully!');
       this.submitted = true;
+      this.toastr.success('You have successfully created a new tournament', 'Tournament Created'); 
     });
   }
 
