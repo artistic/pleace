@@ -8,21 +8,15 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 
-import { TournamentsComponent } from './components/tournaments/tournaments.component';
-import { TournamentComponent } from './components/tournament/tournament.component';
-import { AddTournamentComponent } from './components/add-tournament/add-tournament.component';
 
-import { CoursesComponent } from './components/courses/courses.component';
-import { CourseComponent } from './components/course/course.component';
-import { AddCourseComponent } from './components/add-course/add-course.component';
-
-import { ClubsComponent } from './components/clubs/clubs.component';
 
 
 import { PlayComponent } from './components/play/play.component';
+
 import { CalculateComponent } from './components/calculate/calculate.component';
 
 import { RankingsComponent } from './components/rankings/rankings.component';
+
 import { SettingsComponent } from './components/settings/settings.component';
 
 import { TermsComponent } from './components/terms/terms.component';
@@ -42,15 +36,6 @@ const routes: Routes = [
   { path: 'email-verification', component: VerifyEmailComponent, data: {title: 'Email Verification'} },
   { path: 'edit-user', component: EditUserComponent, data: {title: 'Edit User'} },
 
-  { path: 'tournaments', component: TournamentsComponent, data: {title: 'Tournaments'} },
-  { path: 'tournament', component: TournamentComponent, data: {title: 'Tournament'} },
-  { path: 'add-tournament', component: AddTournamentComponent, data: {title: 'Add New Tournament'} },
-
-  { path: 'clubs', component: ClubsComponent, data: {title: 'Clubs'} },
-
-  { path: 'courses', component: CoursesComponent, data: {title: 'Courses'} },
-  { path: 'course', component: CourseComponent, data: {title: 'Course'} },
-  { path: 'add-course', component: AddCourseComponent, data: {title: 'Add New Course'} },
 
   { path: 'play', component: PlayComponent, data: {title: 'Play Match'} },
   { path: 'calculate', component: CalculateComponent, data: {title: 'Golf Handicap Calculator'} },
