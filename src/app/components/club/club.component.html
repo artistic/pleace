@@ -1,0 +1,107 @@
+<div class="g-bg-color--sky-light">
+	<div class="container g-padding-y-80--xs g-padding-y-125--xsm">
+
+		<div class="row g-row-col--5">
+			<!-- Plan -->
+			<div class="col-md-4  col-sm-12 col-xs-12 g-margin-b-10--xs g-margin-b-0--lg">
+				<div class="s-plan-v1 g-bg-color--white g-padding-x-20--xs g-padding-y-30--xs">
+
+					<!-- search -->
+					<div class="row" ng-if="i % 3 === 0">
+						<div class="col-md-12 col-sm-12 col-xs-12" *ngFor="let club of club$ | async; index as i">
+							<p class="text-uppercase g-font-size-10--xs g-color--primary">What are people are asking</p>
+							<h2 class="g-font-size-22--xs g-font-size-24--md">{{ club.club_name}}</h2>
+
+							<div class="row">
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<img src="assets/img/courses/default.jpg" class="img-responsive">
+								</div>
+							</div>
+
+
+							<div class="row">
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<ul class="list-group list-group-flush">
+										<li class="list-group-item">
+											<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-user"></i>
+											Contact Name <span class="pull-right g-color--primary">{{ club.contact_name}}</span>
+										</li>
+										<li class="list-group-item">
+											<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-id-badge"></i>
+											Contact Title <span class="pull-right g-color--primary">{{ club.contact_title}}</span>
+										</li>
+										<li class="list-group-item">
+											<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-star"></i>
+											Club Membership <span class="pull-right g-color--primary">{{ club.club_membership}}</span>
+										</li>
+										<li class="list-group-item">
+											<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-flag-alt-2"></i>
+											Holes <span class="pull-right g-color--primary">{{ club.holes}}</span>
+										</li>
+										<li class="list-group-item">
+											<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-mobile"></i>
+											Phone <span class="pull-right g-color--primary">{{ club.phone}}</span>
+										</li>
+										<li class="list-group-item">
+											<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-email"></i>
+											Email <span class="pull-right g-color--primary">{{ club.email}}</span>
+										</li>
+										<li class="list-group-item">
+											<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-home"></i>
+											Address <span class="pull-right g-color--primary">{{ club.address}}</span>
+										</li>
+										<li class="list-group-item">
+											<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-location-pin"></i>
+											City <span class="pull-right g-color--primary">{{ club.city}}</span>
+										</li>
+										<li class="list-group-item">
+											<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-location-pin"></i>
+											State <span class="pull-right g-color--primary">{{ club.state}}</span>
+										</li>
+										<li class="list-group-item">
+											<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-map-alt"></i>
+											Country <span class="pull-right g-color--primary">{{ club.country}}</span>
+										</li>
+										<li class="list-group-item">
+											<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-world"></i>
+											Website <span class="pull-right g-color--primary">
+											<a href="{{ club.website}}" target="_blank">{{ club.website}}</a>
+											</span>
+										</li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-12 col-sm-12 col-xs-12 mapped"></div>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- End Plan -->
+
+			<!-- Plan -->
+			<div class="col-md-8 col-sm-12 col-xs-12">
+
+				<div class="s-plan-v1 g-bg-color--white g-padding-x-20--xs g-padding-y-30--xs">
+
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<p class="text-uppercase g-font-size-10--xs g-color--primary">What are people are asking</p>
+							<h2 class="g-font-size-22--xs g-font-size-24--md">FAQ <span class="pull-right"><i class="ti-help"></i></span></h2>
+
+							
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- End Plan -->
+		</div>
+
+
+	</div>
+</div>

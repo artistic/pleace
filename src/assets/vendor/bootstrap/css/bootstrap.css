@@ -5456,6 +5456,7 @@ a.thumbnail.active {
 }
 .list-group-flush > .list-group-item {
   border-width: 0 0 1px;
+  font-size: 14px;
 }
 .list-group-flush > .list-group-item:last-child {
   border-bottom-width: 0;

@@ -1,20 +1,33 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators'
-
-import Course from '../models/course.model';
-import Clubs from '../models/clubs.model';
-
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import Clubs from '../models/firestore.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirestoreService {
 
-
 	private dbClubs = '/clubs';
-	private dbCourses = '/courses';
 
-  constructor() { }
+	clubsRef: AngularFirestoreCollection<Clubs>;
+
+  constructor(private db: AngularFirestore) {
+    this.clubsRef = db.collection(this.dbClubs);
+  }
+
+  getAll(): AngularFirestoreCollection<Clubs> {
+    return this.clubsRef;
+  }
+
+  create(clubs: Clubs): any {
+    return this.clubsRef.add({ ...clubs });
+  }
+
+  update(id: string, data: any): Promise<void> {
+    return this.clubsRef.doc(id).update(data);
+  }
+
+  delete(id: string): Promise<void> {
+    return this.clubsRef.doc(id).delete();
+  }
 }

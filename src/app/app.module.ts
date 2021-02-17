@@ -21,24 +21,21 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 
 import { NgAuthService } from "./ng-auth.service";
-import { TournamentsComponent } from './components/tournaments/tournaments.component';
-import { AddTournamentComponent } from './components/add-tournament/add-tournament.component';
-import { TournamentComponent } from './components/tournament/tournament.component';
+
 import { NoPageFoundComponent } from './components/no-page-found/no-page-found.component';
-import { CourseComponent } from './components/course/course.component';
-import { CoursesComponent } from './components/courses/courses.component';
-import { AddCourseComponent } from './components/add-course/add-course.component';
+
+
+
 import { RankingsComponent } from './components/rankings/rankings.component';
 import { SettingsComponent } from './components/settings/settings.component';
-import { UserDetailsComponent } from './components/user-details/user-details.component';
+
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { TermsComponent } from './components/terms/terms.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { PlayComponent } from './components/play/play.component';
 import { CalculateComponent } from './components/calculate/calculate.component';
-
 import { ClubsComponent } from './components/clubs/clubs.component';
-
+import { ClubComponent } from './components/club/club.component';
 
 
 @NgModule({
@@ -49,22 +46,17 @@ import { ClubsComponent } from './components/clubs/clubs.component';
     SignUpComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
-    TournamentsComponent,
-    AddTournamentComponent,
-    TournamentComponent,
     NoPageFoundComponent,
-    CourseComponent,
-    CoursesComponent,
-    AddCourseComponent,
     RankingsComponent,
     SettingsComponent,
-    UserDetailsComponent,
     EditUserComponent,
     TermsComponent,
     PrivacyComponent,
     PlayComponent,
     CalculateComponent,
-    ClubsComponent
+    ClubsComponent,
+    ClubComponent,
+
   ],
   imports: [
     BrowserModule,
