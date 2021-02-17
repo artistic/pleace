@@ -27,6 +27,10 @@ import { ClubComponent } from './components/club/club.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { CourseComponent } from './components/course/course.component';
 
+//tournament info here
+import { TournamentsComponent } from './components/tournaments/tournaments.component';
+import { TournamentComponent } from './components/tournament/tournament.component';
+
 import { TermsComponent } from './components/terms/terms.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 
@@ -58,6 +62,9 @@ const routes: Routes = [
 
   { path: 'courses', component: CoursesComponent, data: {title: 'Courses'} },
   { path: 'course/:courseID', component: CourseComponent, data: {title: 'Course'} },
+
+  { path: 'tournaments', component: TournamentsComponent, data: {title: 'Tournaments'} },
+  { path: 'tournament:tournamentID', component: TournamentComponent, data: {title: 'Tournament Details'} },
 
   { path: 'terms', component: TermsComponent, data: {title: 'Terms And Conditions'} },
   { path: 'privacy', component: PrivacyComponent, data: {title: 'Privacy Policy'} },

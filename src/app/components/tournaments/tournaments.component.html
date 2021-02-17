@@ -1,0 +1,108 @@
+<div class="g-bg-color--sky-light">
+	<div class="container g-padding-y-80--xs g-padding-y-125--xsm">
+		<div class="row g-row-col--5">
+			<!-- Plan -->
+			<div class="col-md-4  col-sm-12 col-xs-12 g-margin-b-10--xs g-margin-b-0--lg">
+				<div class="s-plan-v1 g-bg-color--white g-padding-x-20--xs g-padding-y-30--xs">
+
+					<!-- search -->
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<p class="text-uppercase g-font-size-10--xs g-color--primary">What are people are asking</p>
+							<h2 class="g-font-size-22--xs g-font-size-24--md">Select Your Category <span class="pull-right"><i class="ti-help"></i></span></h2>
+
+							<div class="list-group">
+								<a  class="list-group-item list-group-item-action active">
+									All Tournaments
+								</a>
+								<a  class="list-group-item list-group-item-action">
+									Champs <span class="pull-right"><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-crown"></i></span>
+								</a>
+
+								<a href="#" class="list-group-item list-group-item-action">
+									Celebrity <span class="pull-right"><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-star"></i></span>
+								</a>
+
+								<a href="#" class="list-group-item list-group-item-action">
+									Tour Player <span class="pull-right"><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-cup"></i></span>
+								</a>
+
+								<a href="#" class="list-group-item list-group-item-action">
+									PGA Professional <span class="pull-right"><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-cup"></i></span>
+								</a>
+
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- End Plan -->
+
+			<!-- Plan -->
+			<div class="col-md-8 col-sm-12 col-xs-12">
+
+				<div class="s-plan-v1 g-bg-color--white g-padding-x-20--xs g-padding-y-30--xs">
+
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<p class="text-uppercase g-font-size-10--xs g-color--primary">What are people are asking</p>
+							<h2 class="g-font-size-22--xs g-font-size-24--md">Featured Tournaments <span class="pull-right"><i class="ti-tr"></i></span></h2>
+
+
+
+							<div class="row">
+								<div class="col-md-12 col-sm-12 col-xs-12">
+
+
+									<div class="row" ng-if="i % 3 === 0">
+										<div class="col-md-4 col-sm-6 col-xs-6 text-center" *ngFor="let tournaments of tournaments$ | async; index as i">
+											<div class="tournaments g-margin-b-10--xs">
+												<div class="row tournament-image text-center">
+													<div class="row">
+														<div class="col-md-12 col-sm-12 col-xs-12">
+															<img src="{{tournaments.tournament_image}}" class="img-responsive" alt="{{tournaments.tournament_image}}">
+														</div>
+													</div>
+												</div>
+
+												<div class="row tournament-top">
+													<div class="col-md-12 col-sm-12 col-xs-12">
+														<a [routerLink]="['/tournament', tournaments.id]">
+															<strong>{{ tournaments.tournament_name}}</strong>
+														</a>
+													</div>
+												</div>
+
+												<div class="row tournament-bottom text-center">
+													<div class="col-md-4 col-sm-4 col-xs-4">
+														<a [routerLink]="['/tournament', tournaments.id]">
+															<i class="g-color--primary g-margin-r-10--xs ti-eye"></i> <small>View</small>
+														</a>
+													</div>
+													<div class="col-md-4 col-sm-4 col-xs-4">
+														<i class="g-color--primary g-margin-r-10--xs ti-user"></i> 3
+													</div>
+													<div class="col-md-4 col-sm-4 col-xs-4">
+														
+													</div>
+												</div>
+
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- End Plan -->
+		</div>
+	</div>
+</div>

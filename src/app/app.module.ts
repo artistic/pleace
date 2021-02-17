@@ -39,6 +39,8 @@ import { ClubsComponent } from './components/clubs/clubs.component';
 import { ClubComponent } from './components/club/club.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { CourseComponent } from './components/course/course.component';
+import { TournamentsComponent } from './components/tournaments/tournaments.component';
+import { TournamentComponent } from './components/tournament/tournament.component';
 
 
 @NgModule({
@@ -61,6 +63,8 @@ import { CourseComponent } from './components/course/course.component';
     ClubComponent,
     CoursesComponent,
     CourseComponent,
+    TournamentsComponent,
+    TournamentComponent,
 
   ],
   imports: [

@@ -125,6 +125,24 @@
   line-height: 30px;
 }
 
+.tournaments {
+  border: 1px solid #ccc;
+  padding: 0px 15px 0px 15px;
+}
+.tournament-image {
+  height: 100px;
+}
+.tournament-top {
+  border-top: 1 solid #ccc;
+  height : 100px;
+}
+.tournament-bottom {
+  border-top: 1px solid #ccc;
+  height : 30px;
+  font-size: 14px;
+  line-height: 30px;
+}
+
 .mapped {
   border: 1px solid #ccc;
   padding: 10px;
@@ -146,3 +164,7 @@
   border: 1px solid #2E4612;
 }
 
+.tournament {
+  border: 1px solid #ccc;
+  height: 200px;
+}

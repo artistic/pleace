@@ -119,3 +119,15 @@ export class Tees {
 	hole17_handicap?: number;
 	hole18_handicap?: number;
 }
+
+export class Tournaments {
+	tournamentID?: string;	
+	faciltyID?: string;	
+	courseID?: string;	
+	teeID?: string;	
+	tournament_name?: string;	
+	tournament_image?: string;	
+	tournament_descripition?: string;	
+	tournament_category?: string;	
+	tournament_players?: string;	
+}
