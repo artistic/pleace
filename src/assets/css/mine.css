@@ -131,3 +131,18 @@
   height: 200px;
 }
 
+.golf-course {
+  border: 1px solid #ccc;
+}
+
+.parLabel {
+  height: 60px;
+  background-color: #2E4612;
+  color: #fff;
+}
+
+.holesLabel {
+  color : #2E4612;
+  border: 1px solid #2E4612;
+}
+

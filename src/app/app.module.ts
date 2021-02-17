@@ -8,6 +8,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { AgmCoreModule } from '@agm/core';
 
 
 import { AngularFireModule } from "@angular/fire";
@@ -36,6 +37,8 @@ import { PlayComponent } from './components/play/play.component';
 import { CalculateComponent } from './components/calculate/calculate.component';
 import { ClubsComponent } from './components/clubs/clubs.component';
 import { ClubComponent } from './components/club/club.component';
+import { CoursesComponent } from './components/courses/courses.component';
+import { CourseComponent } from './components/course/course.component';
 
 
 @NgModule({
@@ -56,6 +59,8 @@ import { ClubComponent } from './components/club/club.component';
     CalculateComponent,
     ClubsComponent,
     ClubComponent,
+    CoursesComponent,
+    CourseComponent,
 
   ],
   imports: [
@@ -68,6 +73,9 @@ import { ClubComponent } from './components/club/club.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAthlI_rqLxmFhgg0bIJ_kRXqKomJEj_vA'
+    })
   ],
   providers: [
   Title,

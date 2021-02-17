@@ -23,6 +23,9 @@ import { SettingsComponent } from './components/settings/settings.component';
 //clubs info here
 import { ClubsComponent } from './components/clubs/clubs.component';
 import { ClubComponent } from './components/club/club.component';
+//courses info here
+import { CoursesComponent } from './components/courses/courses.component';
+import { CourseComponent } from './components/course/course.component';
 
 import { TermsComponent } from './components/terms/terms.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
@@ -52,6 +55,9 @@ const routes: Routes = [
 
   { path: 'clubs', component: ClubsComponent, data: {title: 'Clubs'} },
   { path: 'club/:facilityID', component: ClubComponent, data: {title: 'Clubs'} },
+
+  { path: 'courses', component: CoursesComponent, data: {title: 'Courses'} },
+  { path: 'course/:courseID', component: CourseComponent, data: {title: 'Course'} },
 
   { path: 'terms', component: TermsComponent, data: {title: 'Terms And Conditions'} },
   { path: 'privacy', component: PrivacyComponent, data: {title: 'Privacy Policy'} },

@@ -1,0 +1,68 @@
+<div class="g-bg-color--sky-light">
+	<div class="container g-padding-y-80--xs g-padding-y-125--xsm">
+		<div class="row g-row-col--5">
+			<!-- Plan -->
+			<div class="col-md-4  col-sm-12 col-xs-12 g-margin-b-10--xs g-margin-b-0--lg">
+				<div class="s-plan-v1 g-bg-color--white g-padding-x-20--xs g-padding-y-30--xs">
+
+					<!-- search -->
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<p class="text-uppercase g-font-size-10--xs g-color--primary">What are people are asking</p>
+							<h2 class="g-font-size-22--xs g-font-size-24--md">FAQ <span class="pull-right"><i class="ti-help"></i></span></h2>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- End Plan -->
+
+			<!-- Plan -->
+			<div class="col-md-8 col-sm-12 col-xs-12">
+
+				<div class="s-plan-v1 g-bg-color--white g-padding-x-20--xs g-padding-y-30--xs">
+
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<p class="text-uppercase g-font-size-10--xs g-color--primary">What are people are asking</p>
+							<h2 class="g-font-size-22--xs g-font-size-24--md">Courses <span class="pull-right"><i class="ti-flag-alt"></i></span></h2>
+
+							<div class="row">
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<table class="table">
+										<thead>
+											<tr>
+												<th style="width:60%;">Name</th>
+												<th style="width:10%;">Par</th>
+												<th style="width:10%;">Holes</th>
+												<th style="width:10%;">Cntry</th>
+												<th style="width:10%;"></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr *ngFor="let course of course$ | async; index as i">
+												<td>{{course.course_name}}</td>
+												<td>{{course.par}}</td>
+												<td>{{course.holes}}</td>
+												<td></td>
+												<td>
+													<a [routerLink]="['/course', course.id]">
+														<i class="ti-eye"></i>
+													</a>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- End Plan -->
+		</div>
+	</div>
+</div>

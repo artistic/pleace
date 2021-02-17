@@ -65,7 +65,7 @@
 										<li class="list-group-item">
 											<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-world"></i>
 											Website <span class="pull-right g-color--primary">
-											<a href="{{ club.website}}" target="_blank">{{ club.website}}</a>
+												<a href="{{ club.website}}" target="_blank">{{ club.website}}</a>
 											</span>
 										</li>
 									</ul>
@@ -73,7 +73,10 @@
 							</div>
 
 							<div class="row">
-								<div class="col-md-12 col-sm-12 col-xs-12 mapped"></div>
+								<div class="col-md-12 col-sm-12 col-xs-12 mapped">
+									<agm-map [latitude]='lat' [longitude]='long' [mapTypeId]='googleMapType'>
+									</agm-map>
+								</div>
 							</div>
 
 						</div>
@@ -91,9 +94,65 @@
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<p class="text-uppercase g-font-size-10--xs g-color--primary">What are people are asking</p>
-							<h2 class="g-font-size-22--xs g-font-size-24--md">FAQ <span class="pull-right"><i class="ti-help"></i></span></h2>
+							<h2 class="g-font-size-22--xs g-font-size-24--md">Golf Courses <span class="pull-right"><i class="ti-flag-alt"></i></span></h2>
 
-							
+							<div class="row golf-course g-padding-x-10--xs g-padding-y-10--xs g-margin-b-30--xs" *ngFor="let course of course$ | async; index as i">
+								<div class="col-md-3 col-sm-12 col-xs-12">
+									<img src="assets/img/courses/course_default.jpg" class="img-responsive">
+
+									<div class="row g-margin-t-20--xs">
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<a [routerLink]="['/course', course.courseID]">
+												<button class="text-uppercase s-btn btn-block s-btn--xs s-btn--green-brd g-radius--3">View Course</button>
+											</a>
+										</div>
+									</div>
+
+								</div>
+								<div class="col-md-9 col-sm-12 col-xs-12">
+									<h3 class="g-font-size-16--xs g-font-size-18--md g-margin-t-10--xs">
+										{{ course.course_name}}
+										<span class="g-font-size-12--xs g-font-size-14--md pull-right">
+											<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-star"></i>
+											<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-star"></i>
+											<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-star"></i>
+											<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-star"></i>
+											<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-star"></i>
+										</span>
+									</h3>
+
+									<div class="row">
+										<div class="col-md-9 col-sm-9 col-xs-9">
+											<p class="g-font-size-10--xs g-font-size-12--md">
+												Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+												tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+												quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+												consequat. Duis aute irure dolor in 
+											</p>
+											<hr>
+										</div>
+										<div class="col-md-3 col-sm-3 col-xs-3">
+
+											<div class="row">
+												<div class="col-md-12 col-sm-12 col-xs-12 parLabel text-center">
+													<span class="par_small_text"><small>Par</small></span><br>
+													<span class="par_big_text"><strong>{{ course.par}}</strong></span>
+												</div>
+											</div>
+
+											<div class="row">
+												<div class="col-md-12 col-sm-12 col-xs-12 holesLabel text-center">
+													<span class="par_small_text"><small>Holes</small></span><br>
+													<span class="par_big_text"><strong>{{ course.holes}}</strong></span>
+												</div>
+											</div>
+
+										</div>
+									</div>
+
+								</div>
+							</div>
+
 						</div>
 					</div>
 
