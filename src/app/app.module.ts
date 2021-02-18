@@ -41,6 +41,9 @@ import { CoursesComponent } from './components/courses/courses.component';
 import { CourseComponent } from './components/course/course.component';
 import { TournamentsComponent } from './components/tournaments/tournaments.component';
 import { TournamentComponent } from './components/tournament/tournament.component';
+import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
+import { HelpComponent } from './components/help/help.component';
+import { InviteComponent } from './components/invite/invite.component';
 
 
 @NgModule({
@@ -65,6 +68,9 @@ import { TournamentComponent } from './components/tournament/tournament.componen
     CourseComponent,
     TournamentsComponent,
     TournamentComponent,
+    ScoreboardComponent,
+    HelpComponent,
+    InviteComponent,
 
   ],
   imports: [

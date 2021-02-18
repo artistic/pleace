@@ -26,11 +26,15 @@ import { ClubComponent } from './components/club/club.component';
 //courses info here
 import { CoursesComponent } from './components/courses/courses.component';
 import { CourseComponent } from './components/course/course.component';
+//scoreboard info here
+import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
 
 //tournament info here
 import { TournamentsComponent } from './components/tournaments/tournaments.component';
 import { TournamentComponent } from './components/tournament/tournament.component';
 
+import { HelpComponent } from './components/help/help.component';
+import { InviteComponent } from './components/invite/invite.component';
 import { TermsComponent } from './components/terms/terms.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 
@@ -62,10 +66,13 @@ const routes: Routes = [
 
   { path: 'courses', component: CoursesComponent, data: {title: 'Courses'} },
   { path: 'course/:courseID', component: CourseComponent, data: {title: 'Course'} },
+  { path: 'scoreboard/:courseID', component: ScoreboardComponent, data: {title: 'Scoreboard'} },
 
   { path: 'tournaments', component: TournamentsComponent, data: {title: 'Tournaments'} },
   { path: 'tournament/:tournamentID', component: TournamentComponent, data: {title: 'Tournament Details'} },
 
+  { path: 'help', component: HelpComponent, data: {title: 'Help'} },
+  { path: 'invite', component: InviteComponent, data: {title: 'Invite A friend'} },
   { path: 'terms', component: TermsComponent, data: {title: 'Terms And Conditions'} },
   { path: 'privacy', component: PrivacyComponent, data: {title: 'Privacy Policy'} },
 

@@ -1,3 +1,18 @@
+<div *ngFor="let crse of crses$ | async; index as i">
+<div class="container g-margin-t-20--xs">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/dashboard"><i class="g-color--primary g-margin-r-10--xs ti-panel"></i> Dashboard</a></li>
+          <li class="breadcrumb-item"><a routerLink="/courses"><i class="g-color--primary g-margin-r-10--xs ti-flag-alt-2"></i> Courses</a></li>
+          <li class="breadcrumb-item active" aria-current="page"><i class="g-color--primary g-margin-r-10--xs ti-flag"></i> {{crse.course_name}}</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</div>
+
 <div class="g-bg-color--sky-light">
 	<div class="container g-padding-y-80--xs g-padding-y-125--xsm">
 		<div class="row">
@@ -6,7 +21,7 @@
 
 				<div class="s-plan-v1 g-bg-color--white g-padding-x-20--xs g-padding-y-30--xs">
 
-					<div class="row" *ngFor="let crse of crses$ | async; index as i">
+					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<p class="text-uppercase g-font-size-10--xs g-color--primary">What are people are asking</p>
 							<h2 class="g-font-size-22--xs g-font-size-24--md">{{crse.course_name}} <span class="pull-right"><i class="ti-flag-alt-2"></i></span></h2>
@@ -67,7 +82,9 @@
 											<button routerLink="/play" routerLinkActive="active" type="button" class="text-uppercase s-btn s-btn--sm btn-block s-btn--primary-bg g-radius--3 g-padding-x-50--xs">Tee</button>
 										</div>
 										<div class="col-md-4 col-sm-12 col-xs-12">
-											<button routerLink="/play" routerLinkActive="active" type="button" class="text-uppercase s-btn s-btn--sm btn-block s-btn--primary-bg g-radius--3 g-padding-x-50--xs">Full Scoreboard</button>
+											<a  [routerLink]="['/scoreboard', crse.courseID]">
+												<button type="button" class="text-uppercase s-btn s-btn--sm btn-block s-btn--primary-bg g-radius--3 g-padding-x-50--xs">Full Scoreboard</button>
+											</a>
 										</div>
 									</div>
 
@@ -127,4 +144,5 @@
 			<!-- End Plan -->
 		</div>
 	</div>
+</div>
 </div>

@@ -10,15 +10,12 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { ToastrService } from 'ngx-toastr';
 
-
 @Component({
-	selector: 'app-play',
-	templateUrl: './play.component.html',
-	styleUrls: ['./play.component.css']
+  selector: 'app-invite',
+  templateUrl: './invite.component.html',
+  styleUrls: ['./invite.component.css']
 })
-export class PlayComponent implements OnInit {
-
-
+export class InviteComponent implements OnInit {
 
   @Input() user?: User;
   @Output() refreshUser: EventEmitter<any> = new EventEmitter();

@@ -38,6 +38,13 @@
   width: 30px;
 }
 
+.tee-small-img {
+  border: 1px solid #2E4612;
+  margin: 0 auto;
+  padding: 4px;
+  width: 20px;
+}
+
 .propic {
 	margin-bottom: 20px;
 }
@@ -167,4 +174,14 @@
 .tournament {
   border: 1px solid #ccc;
   height: 200px;
+}
+
+.scoreboard {
+  border: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+.tee_info {
+  background-color: #2E4612;
+  color: #fff; 
 }

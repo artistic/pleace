@@ -1,81 +1,96 @@
-<div class="g-bg-color--sky-light">
-	<div class="container g-padding-y-80--xs g-padding-y-125--xsm">
-
-		<div class="row" *ngFor="let trment of trment$ | async; index as i">
-
-
-			<!-- Plan -->
-			<div class="col-md-4 col-sm-12 col-xs-12">
-
-				<div class="s-plan-v1 g-bg-color--white g-padding-x-20--xs g-padding-y-30--xs">
-
-					<div class="row">
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							<p class="text-uppercase g-font-size-10--xs g-color--primary">Tournament Details</p>
-							<h2 class="g-font-size-22--xs g-font-size-24--md">{{trment.tournament_name}} <span class="pull-right"><i class="ti-clipboard"></i></span></h2>
-
-							<div class="row">
-								<div class="col-md-12 col-sm-12 col-xs-12">
-									<img src="{{trment.tournament_image}}" class="img-responsive" alt="{{trment.tournament_image}}">
-								</div>
-							</div>
-
-							<div class="row">
-								<div class="col-md-12 col-sm-12 col-xs-12">
-									<p class="g-font-size-14--md g-font-size-12--xs">
-										{{trment.tournament_descripition}}
-									</p>
-								</div>
-							</div>
-
-							
-
-							<div class="row">
-								<div class="col-md-4 col-sm-4 col-xs-4">
-									<p class="g-font-size-14--md g-font-size-12--xs"><strong>Tournament Category <i class="g-color--primary g-margin-r-10--xs ti-crown"></i></strong><br></p>
-								</div>
-								<div class="col-md-4 col-sm-4 col-xs-4">
-									<p class="g-font-size-14--md g-font-size-12--xs"><strong>Tournament Players <i class="g-color--primary g-margin-r-10--xs ti-user"></i></strong><br></p>
-								</div>
-								<div class="col-md-4 col-sm-4 col-xs-4">
-									<p class="g-font-size-14--md g-font-size-12--xs"><strong>Tournament Dates <i class="g-color--primary g-margin-r-10--xs ti-user"></i></strong><br></p>
-								</div>
-							</div>
-
-						</div>
-					</div>
-
-				</div>
+<div *ngFor="let trment of trment$ | async; index as i">
+	<div class="container g-margin-t-20--xs">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a routerLink="/dashboard"><i class="g-color--primary g-margin-r-10--xs ti-panel"></i> Dashboard</a></li>
+						<li class="breadcrumb-item"><a routerLink="/courses"><i class="g-color--primary g-margin-r-10--xs ti-cup"></i> Tournaments</a></li>
+						<li class="breadcrumb-item active" aria-current="page"><i class="g-color--primary g-margin-r-10--xs ti-cup"></i> {{trment.tournament_name}}</li>
+					</ol>
+				</nav>
 			</div>
-			<!-- End Plan -->
-
-			<!-- Plan -->
-			<div class="col-md-8  col-sm-12 col-xs-12 g-margin-b-10--xs g-margin-b-0--lg">
-				<div class="s-plan-v1 g-bg-color--white g-padding-x-20--xs g-padding-y-30--xs">
-
-					<!-- search -->
-					<div class="row">
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							<p class="text-uppercase g-font-size-10--xs g-color--primary">The Leader Table</p>
-							<h2 class="g-font-size-22--xs g-font-size-24--md">Scoreboard<span class="pull-right"><i class="ti-clipboard"></i></span></h2>
-
-							<div class="row">
-								<div class="col-md-12 col-sm-12 col-xs-12">
-									<p>
-										This scoreboard is only available to players who have joined the tournament
-									</p>
-									<button  type="button" class="text-uppercase s-btn s-btn--sm btn-block s-btn--primary-bg g-radius--3 g-padding-x-50--xs">Join Tournament</button>
-								</div>
-							</div>
-
-						</div>
-					</div>
-
-				</div>
-			</div>
-			<!-- End Plan -->
 		</div>
+	</div>
+	<div class="g-bg-color--sky-light">
+		<div class="container g-padding-y-80--xs g-padding-y-125--xsm">
+
+			<div class="row">
 
 
+				<!-- Plan -->
+				<div class="col-md-4 col-sm-12 col-xs-12">
+
+					<div class="s-plan-v1 g-bg-color--white g-padding-x-20--xs g-padding-y-30--xs">
+
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<p class="text-uppercase g-font-size-10--xs g-color--primary">Tournament Details</p>
+								<h2 class="g-font-size-22--xs g-font-size-24--md">{{trment.tournament_name}} <span class="pull-right"><i class="ti-clipboard"></i></span></h2>
+
+								<div class="row">
+									<div class="col-md-12 col-sm-12 col-xs-12">
+										<img src="{{trment.tournament_image}}" class="img-responsive" alt="{{trment.tournament_image}}">
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-12 col-sm-12 col-xs-12">
+										<p class="g-font-size-14--md g-font-size-12--xs">
+											{{trment.tournament_descripition}}
+										</p>
+									</div>
+								</div>
+
+
+
+								<div class="row">
+									<div class="col-md-4 col-sm-4 col-xs-4">
+										<p class="g-font-size-14--md g-font-size-12--xs"><strong>Tournament Category <i class="g-color--primary g-margin-r-10--xs ti-crown"></i></strong><br></p>
+									</div>
+									<div class="col-md-4 col-sm-4 col-xs-4">
+										<p class="g-font-size-14--md g-font-size-12--xs"><strong>Tournament Players <i class="g-color--primary g-margin-r-10--xs ti-user"></i></strong><br></p>
+									</div>
+									<div class="col-md-4 col-sm-4 col-xs-4">
+										<p class="g-font-size-14--md g-font-size-12--xs"><strong>Tournament Dates <i class="g-color--primary g-margin-r-10--xs ti-user"></i></strong><br></p>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<!-- End Plan -->
+
+				<!-- Plan -->
+				<div class="col-md-8  col-sm-12 col-xs-12 g-margin-b-10--xs g-margin-b-0--lg">
+					<div class="s-plan-v1 g-bg-color--white g-padding-x-20--xs g-padding-y-30--xs">
+
+						<!-- search -->
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<p class="text-uppercase g-font-size-10--xs g-color--primary">The Leader Table</p>
+								<h2 class="g-font-size-22--xs g-font-size-24--md">Scoreboard<span class="pull-right"><i class="ti-clipboard"></i></span></h2>
+
+								<div class="row">
+									<div class="col-md-12 col-sm-12 col-xs-12">
+										<p>
+											This scoreboard is only available to players who have joined the tournament
+										</p>
+										<button  type="button" class="text-uppercase s-btn s-btn--sm btn-block s-btn--primary-bg g-radius--3 g-padding-x-50--xs">Join Tournament</button>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<!-- End Plan -->
+			</div>
+
+
+		</div>
 	</div>
 </div>

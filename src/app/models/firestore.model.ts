@@ -131,3 +131,6 @@ export class Tournaments {
 	tournament_category?: string;	
 	tournament_players?: string;	
 }
+
+
+

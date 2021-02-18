@@ -23,8 +23,12 @@ export class RankingsComponent implements OnInit {
     this.category = '2';
   }
 
-  setProf(): void {
+  setTour(): void {
     this.category = '3';
+  }
+
+  setProf(): void {
+    this.category = '4';
   }
 
 }
