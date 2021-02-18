@@ -64,7 +64,7 @@ const routes: Routes = [
   { path: 'course/:courseID', component: CourseComponent, data: {title: 'Course'} },
 
   { path: 'tournaments', component: TournamentsComponent, data: {title: 'Tournaments'} },
-  { path: 'tournament:tournamentID', component: TournamentComponent, data: {title: 'Tournament Details'} },
+  { path: 'tournament/:tournamentID', component: TournamentComponent, data: {title: 'Tournament Details'} },
 
   { path: 'terms', component: TermsComponent, data: {title: 'Terms And Conditions'} },
   { path: 'privacy', component: PrivacyComponent, data: {title: 'Privacy Policy'} },

@@ -17,6 +17,9 @@ export class TournamentComponent implements OnInit {
 	tournamentID: string;
 	public parameterTournament: string;
 
+	joinTournament : boolean;
+
+
 	//get course
 	trmentcollection: AngularFirestoreCollection<Tournaments>;  
 	trments: Observable<Tournaments[]>;  
@@ -33,17 +36,16 @@ export class TournamentComponent implements OnInit {
 	ngOnInit(): void {
 
 		this.activatedRoute.params.subscribe(parameter => {
-			this.parameterTournament = parameter.courseID
+			this.parameterTournament = parameter.tournamentID
 			console.log(this.parameterTournament);
 		});
 
-		this.trmentcollection = this.db.collection<{}>('tournaments', ref => ref.where('id', '==', this.parameterTournament));
+		this.trmentcollection = this.db.collection<{}>('tournaments', ref => ref.where('tournamentID', '==', this.parameterTournament));
 		this.trment$ = this.trmentcollection.snapshotChanges().pipe(
 			map(actions => actions.map(a => {
 				const data = a.payload.doc.data(); // DB Questions
 				const id = a.payload.doc.id;
 				return { id, ...data };
-
 				console.log(this.trment$);
 			}))
 			);
