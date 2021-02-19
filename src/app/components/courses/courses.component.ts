@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import Courses from 'src/app/models/firestore.model';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators'
+import { map } from 'rxjs/operators';
 
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 

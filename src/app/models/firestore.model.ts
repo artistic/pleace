@@ -132,5 +132,11 @@ export class Tournaments {
 	tournament_players?: string;	
 }
 
+export class Rankings {
+	score?: string;
+	uid?: string;
+	tournaments	?: string;
+}
+
 
 

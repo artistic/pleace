@@ -1,7 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { FirestoreService } from 'src/app/services/firestore.service';
 import { UsersService } from 'src/app/services/users.service';
-import { map } from 'rxjs/operators';
 import User from 'src/app/models/user.model';
+import Clubs from 'src/app/models/firestore.model';
+import Courses from 'src/app/models/firestore.model';
+import Tournaments from 'src/app/models/firestore.model';
+import Tees from 'src/app/models/firestore.model';
+import Rankings from 'src/app/models/firestore.model';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-settings',
@@ -10,44 +19,54 @@ import User from 'src/app/models/user.model';
 })
 export class SettingsComponent implements OnInit {
 
-	//users
-	users?: User[];
-	currentUser?: User;
-	currentIndex = -1;
-	title = '';
+  setting = "1";
 
- setting = "2";
+
+  //get Users
+  userscollection: AngularFirestoreCollection<User>;  
+  users: Observable<User[]>;  
+  usersDoc: AngularFirestoreDocument<User>;
+  users$: Observable<{}[]>;
+
+  //get course
+  coursescollection: AngularFirestoreCollection<Courses>;  
+  courses: Observable<Courses[]>;  
+  coursesDoc: AngularFirestoreDocument<Courses>;
+  course$: Observable<{}[]>;
+
+  //get clubs
+  clubcollection: AngularFirestoreCollection<Clubs>;  
+  club: Observable<Clubs[]>;  
+  clubDoc: AngularFirestoreDocument<Clubs>;
+  club$: Observable<{}[]>;
+
+  //get tee
+  teescollection: AngularFirestoreCollection<Tees>;  
+  tees: Observable<Tees[]>;  
+  teesDoc: AngularFirestoreDocument<Tees>;
+  tees$: Observable<{}[]>;
+
+
 
   constructor(
-  	private usersService: UsersService
-
-  	) { }
+  	private usersService: UsersService,
+    private fireService: FirestoreService,
+    private db: AngularFirestore
+    ) { }
 
   ngOnInit(): void {
   	this.retrieveUsers();
   }
 
-  refreshUsers(): void {
-    this.currentUser = undefined;
-    this.currentIndex = -1;
-    this.retrieveUsers();
-  }
-
-  retrieveUsers(): void {
-    this.usersService.getAll().snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c =>
-          ({ id: c.payload.doc.id, ...c.payload.doc.data() })
-        )
-      )
-    ).subscribe(data => {
-      this.users = data;
-    });
-  }
-
-  setActiveUser(user: User, index: number): void {
-    this.currentUser = user;
-    this.currentIndex = index;
+  retrieveUsers() {
+    this.userscollection = this.db.collection<{}>('users');
+    this.users$ = this.userscollection.snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data(); // DB Questions
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+      );
   }
 
 
@@ -55,16 +74,20 @@ export class SettingsComponent implements OnInit {
     this.setting = '1';
   }
 
-  setRankings(): void {
+  setClubs(): void {
     this.setting = '2';
+  }
+
+  setCourses(): void {
+    this.setting = '3';
   }
 
   setTournaments(): void {
     this.setting = '3';
   }
 
-  setMessages(): void {
-    this.setting = '4';
+  setRankings(): void {
+    this.setting = '5';
   }
 
 }
