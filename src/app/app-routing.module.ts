@@ -17,7 +17,10 @@ import { CalculateComponent } from './components/calculate/calculate.component';
 
 import { RankingsComponent } from './components/rankings/rankings.component';
 
+
+//settings pages here 
 import { SettingsComponent } from './components/settings/settings.component';
+import { UserComponent } from './components/user/user.component';
 
 
 //clubs info here
@@ -59,7 +62,11 @@ const routes: Routes = [
   { path: 'calculate', component: CalculateComponent, data: {title: 'Golf Handicap Calculator'} },
 
   { path: 'rankings', component: RankingsComponent, data: {title: 'Rankings'} },
+
+
+
   { path: 'settings', component: SettingsComponent, data: {title: 'Settings'} },
+  { path: 'user/:UID', component: UserComponent, data: {title: 'User Details'} },
 
   { path: 'clubs', component: ClubsComponent, data: {title: 'Clubs'} },
   { path: 'club/:facilityID', component: ClubComponent, data: {title: 'Clubs'} },

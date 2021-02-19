@@ -35,9 +35,9 @@ export class SettingsComponent implements OnInit {
   course$: Observable<{}[]>;
 
   //get clubs
-  clubcollection: AngularFirestoreCollection<Clubs>;  
-  club: Observable<Clubs[]>;  
-  clubDoc: AngularFirestoreDocument<Clubs>;
+  clubscollection: AngularFirestoreCollection<Clubs>;  
+  clubs: Observable<Clubs[]>;  
+  clubsDoc: AngularFirestoreDocument<Clubs>;
   club$: Observable<{}[]>;
 
   //get tee
@@ -56,11 +56,23 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit(): void {
   	this.retrieveUsers();
+    this.retrieveClubs();
   }
 
   retrieveUsers() {
     this.userscollection = this.db.collection<{}>('users');
     this.users$ = this.userscollection.snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data(); // DB Questions
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+      );
+  }
+
+   retrieveClubs() {
+    this.clubscollection = this.db.collection<{}>('clubs');
+    this.club$ = this.clubscollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data(); // DB Questions
         const id = a.payload.doc.id;

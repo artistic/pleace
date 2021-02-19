@@ -44,6 +44,7 @@ import { TournamentComponent } from './components/tournament/tournament.componen
 import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
 import { HelpComponent } from './components/help/help.component';
 import { InviteComponent } from './components/invite/invite.component';
+import { UserComponent } from './components/user/user.component';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { InviteComponent } from './components/invite/invite.component';
     ScoreboardComponent,
     HelpComponent,
     InviteComponent,
+    UserComponent,
 
   ],
   imports: [
