@@ -35,6 +35,7 @@ import { ScoreboardComponent } from './components/scoreboard/scoreboard.componen
 //tournament info here
 import { TournamentsComponent } from './components/tournaments/tournaments.component';
 import { TournamentComponent } from './components/tournament/tournament.component';
+import { AddTournamentComponent } from './components/add-tournament/add-tournament.component';
 
 import { HelpComponent } from './components/help/help.component';
 import { InviteComponent } from './components/invite/invite.component';
@@ -77,6 +78,7 @@ const routes: Routes = [
 
   { path: 'tournaments', component: TournamentsComponent, data: {title: 'Tournaments'} },
   { path: 'tournament/:tournamentID', component: TournamentComponent, data: {title: 'Tournament Details'} },
+  { path: 'add-tournament', component: AddTournamentComponent, data: {title: 'Add Tournament'} },
 
   { path: 'help', component: HelpComponent, data: {title: 'Help'} },
   { path: 'invite', component: InviteComponent, data: {title: 'Invite A friend'} },

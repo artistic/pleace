@@ -138,5 +138,12 @@ export class Rankings {
 	tournaments	?: string;
 }
 
+export interface Country {
+  name: string;
+  nationality: string;
+  hasSubdivision: boolean;
+  code: string;
+}
+
 
 

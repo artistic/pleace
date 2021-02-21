@@ -3,6 +3,8 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import Clubs from '../models/firestore.model';
 import Courses from '../models/firestore.model';
 import Tees from '../models/firestore.model';
+import Tournaments from '../models/firestore.model';
+import Rankings from '../models/firestore.model';
 
 @Injectable({
   providedIn: 'root'

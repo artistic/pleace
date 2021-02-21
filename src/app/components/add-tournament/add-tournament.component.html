@@ -1,0 +1,94 @@
+<div class="container g-margin-t-20--xs">
+	<div class="row">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a routerLink="/dashboard"><i class="g-color--primary g-margin-r-10--xs ti-dashbord"></i> Settings</a></li>
+					<li class="breadcrumb-item active" aria-current="page"><i class="g-color--primary g-margin-r-10--xs ti-cup"></i> Create New Tournament</li>
+				</ol>
+			</nav>
+		</div>
+	</div>
+</div>
+
+<div class="g-bg-color--sky-light">
+	<div class="container g-padding-y-80--xs g-padding-y-125--xsm">
+		<div class="row g-row-col--5">
+			<!-- Plan -->
+			<div class="col-md-12 col-sm-12 col-xs-12">
+
+				<div class="s-plan-v1 g-bg-color--white g-padding-x-20--xs g-padding-y-30--xs">
+
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<p class="text-uppercase g-font-size-10--xs g-color--primary">Lets Create A New Tournament</p>
+							<h2 class="g-font-size-22--xs g-font-size-24--md">New Tournament <span class="pull-right"><i class="ti-cup"></i></span></h2>
+
+							<div class="row">
+								<div class="col-md-8 col-sm-12 col-xs-12">
+									<h2 class="g-font-size-14--xs g-font-size-16--md">Form<span class="pull-right"><i class="ti-note"></i></span></h2>
+
+									<form [formGroup]="tournamentForm" (ngSubmit)="submitTournamentData()" novalidate>
+										<div class="row">
+											<div class="col-lg-5 col-md-12 col-sm-12">
+												<div class="row">
+
+													<div class="col-md-12 mb-3">
+														<label>First name</label>
+														<input type="text" formControlName="firstName" class="form-control" required>
+														<!-- Showing errors using getter method -->
+														<p *ngIf="firstName.touched && firstName.invalid" class="error"><sup>*</sup>Please enter atleast first name</p>
+														<p *ngIf="firstName.errors?.minlength" class="error"><sup>*</sup>Name shouldn't be less than 2 words</p>
+													</div>
+
+													<div class="col-md-12 mb-3">
+														<label>Last name</label>
+														<input type="text" formControlName="lastName" class="form-control">
+													</div>
+
+												</div>
+
+												<div class="row">
+													<div class="col-md-12 mb-3">
+														<label>Email</label>
+														<input type="email" formControlName="email" class="form-control" required>
+														<!-- Showing errors using getter method -->
+														<p *ngIf="email.touched && email.invalid" class="error"><sup>*</sup>Please provide email</p>
+														<p *ngIf="email.errors?.pattern" class="error"><sup>*</sup>Please enter correct email</p>
+													</div>
+
+													<div class="col-md-12 mb-3">
+														<label>Mobile number</label>
+														<input type="text" formControlName="mobileNumber" class="form-control" required>
+														<!-- Showing errors using getter method -->
+														<p *ngIf="mobileNumber.touched && mobileNumber.invalid" class="error"><sup>*</sup>Please provide contact
+														number</p>
+														<p *ngIf="mobileNumber.errors?.pattern" class="error"><sup>*</sup>Use numbers only
+														number</p>
+													</div>
+
+												</div>
+
+												<div class="form-group text-right">
+													<button type="button" class="btn btn-secondary gap-right" (click)="ResetForm()">Reset</button>
+													<button type="submit" class="btn btn-success" [disabled]="!studentForm.valid">Add Student</button>
+												</div>
+
+											</div>
+										</div>
+									</form>
+								</div>
+
+								<div class="col-md-4 col-sm-12 col-xs-12">
+									<h2 class="g-font-size-14--xs g-font-size-16--md">Summary<span class="pull-right"><i class="ti-note"></i></span></h2>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- End Plan -->
+		</div>
+	</div>
+</div>
