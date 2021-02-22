@@ -8,6 +8,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { AgmCoreModule } from '@agm/core';
 
 
@@ -87,6 +88,7 @@ import { AddTournamentComponent } from './components/add-tournament/add-tourname
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    NgxPaginationModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAthlI_rqLxmFhgg0bIJ_kRXqKomJEj_vA'
     })

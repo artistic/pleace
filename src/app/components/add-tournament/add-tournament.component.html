@@ -3,8 +3,8 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<nav aria-label="breadcrumb">
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a routerLink="/dashboard"><i class="g-color--primary g-margin-r-10--xs ti-dashbord"></i> Settings</a></li>
-					<li class="breadcrumb-item active" aria-current="page"><i class="g-color--primary g-margin-r-10--xs ti-cup"></i> Create New Tournament</li>
+					<li class="breadcrumb-item"><a routerLink="/settings"><i class="g-color--primary g-margin-r-10--xs ti-dashboard"></i> Settings</a></li>
+					<li class="breadcrumb-item active" aria-current="page"><i class="g-color--primary g-margin-r-10--xs ti-user"></i> Create Tournament</li>
 				</ol>
 			</nav>
 		</div>
@@ -21,74 +21,288 @@
 
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
-							<p class="text-uppercase g-font-size-10--xs g-color--primary">Lets Create A New Tournament</p>
-							<h2 class="g-font-size-22--xs g-font-size-24--md">New Tournament <span class="pull-right"><i class="ti-cup"></i></span></h2>
+							<h2 class="g-font-size-22--xs g-font-size-24--md">Create Tournament <span class="pull-right"><i class="ti-cup"></i></span></h2>
 
 							<div class="row">
 								<div class="col-md-8 col-sm-12 col-xs-12">
-									<h2 class="g-font-size-14--xs g-font-size-16--md">Form<span class="pull-right"><i class="ti-note"></i></span></h2>
+									<h2 class="g-font-size-14--xs g-font-size-16--md">Enter Tournament</h2>
 
-									<form [formGroup]="tournamentForm" (ngSubmit)="submitTournamentData()" novalidate>
-										<div class="row">
-											<div class="col-lg-5 col-md-12 col-sm-12">
-												<div class="row">
-
-													<div class="col-md-12 mb-3">
-														<label>First name</label>
-														<input type="text" formControlName="firstName" class="form-control" required>
-														<!-- Showing errors using getter method -->
-														<p *ngIf="firstName.touched && firstName.invalid" class="error"><sup>*</sup>Please enter atleast first name</p>
-														<p *ngIf="firstName.errors?.minlength" class="error"><sup>*</sup>Name shouldn't be less than 2 words</p>
-													</div>
-
-													<div class="col-md-12 mb-3">
-														<label>Last name</label>
-														<input type="text" formControlName="lastName" class="form-control">
-													</div>
-
-												</div>
+									<div class="row">
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<form (ngSubmit)="onSubmit()" #createTournamentForm="ngForm" novalidate>
 
 												<div class="row">
-													<div class="col-md-12 mb-3">
-														<label>Email</label>
-														<input type="email" formControlName="email" class="form-control" required>
-														<!-- Showing errors using getter method -->
-														<p *ngIf="email.touched && email.invalid" class="error"><sup>*</sup>Please provide email</p>
-														<p *ngIf="email.errors?.pattern" class="error"><sup>*</sup>Please enter correct email</p>
+													<div class="col-md-12 col-sm-12 col-xs-12">
+														<div class="input-group g-margin-b-10--xs">
+															<span class="input-group-btn">
+																<i class="s-form-v4__icon ti-user"></i>
+															</span>
+															<input 
+															type="text" 
+															class="form-control s-form-v4__input" 
+															[(ngModel)]="newTournament.name"
+															placeholder="Tournament Title"  
+															name = "name"
+															id = "name" 
+															required
+															/>
+														</div>
 													</div>
-
-													<div class="col-md-12 mb-3">
-														<label>Mobile number</label>
-														<input type="text" formControlName="mobileNumber" class="form-control" required>
-														<!-- Showing errors using getter method -->
-														<p *ngIf="mobileNumber.touched && mobileNumber.invalid" class="error"><sup>*</sup>Please provide contact
-														number</p>
-														<p *ngIf="mobileNumber.errors?.pattern" class="error"><sup>*</sup>Use numbers only
-														number</p>
-													</div>
-
 												</div>
 
-												<div class="form-group text-right">
-													<button type="button" class="btn btn-secondary gap-right" (click)="ResetForm()">Reset</button>
-													<button type="submit" class="btn btn-success" [disabled]="!studentForm.valid">Add Student</button>
+												<div class="row">
+													<div class="col-md-6 col-sm-12 col-xs-12">
+														<div class="input-group g-margin-b-10--xs">
+															<span class="input-group-btn">
+																<i class="s-form-v4__icon ti-calendar"></i>
+															</span>
+															<input 
+															type="date" 
+															class="form-control s-form-v4__input" 
+															[(ngModel)]="newTournament.startDate"
+															placeholder="Start Date"  
+															name = "startDate"
+															id = "startDate"  
+															required
+															/>
+
+														</div>
+													</div>
+													<div class="col-md-6 col-sm-12 col-xs-12">
+														<div class="input-group g-margin-b-10--xs">
+															<span class="input-group-btn">
+																<i class="s-form-v4__icon ti-calendar"></i>
+															</span>
+															<input 
+															type="date" 
+															class="form-control s-form-v4__input" 
+															[(ngModel)]="newTournament.endDate"
+															placeholder="End Date" 
+															name = "endDate"
+															id = "endDate"    
+															required
+															/>
+														</div>
+													</div>
 												</div>
 
+												<div class="row">
+													<div class="col-md-6 col-sm-12 col-xs-12">
+														<div class="input-group g-margin-b-10--xs">
+															<span class="input-group-btn">
+																<i class="s-form-v4__icon ti-cup"></i>
+															</span>
+															<select 
+															class="form-control s-form-v4__input" 
+															[(ngModel)]="newTournament.divisions"
+															style="width: 100%;" 
+															name = "divisions"
+															id = "divisions"  
+															required
+															>
+															<option value="">Account Type</option>
+															<option value="1">Champion</option>
+															<option value="2">Celebrity</option>
+															<option value="3">Pro Golfer</option>
+														</select>
+													</div>
+												</div>
+												<div class="col-md-6 col-sm-12 col-xs-12">
+
+												</div>
+											</div>
+
+											<div class="row">
+												<div class="col-md-6 col-sm-12 col-xs-12">
+													<div class="input-group g-margin-b-10--xs">
+														<span class="input-group-btn">
+															<i class="s-form-v4__icon ti-calendar"></i>
+														</span>
+														<input 
+														type="date" 
+														class="form-control s-form-v4__input" 
+														[(ngModel)]="newTournament.regStartDate"
+														placeholder="Registration Start Date" 
+														name = "regStartDate"
+														id = "regStartDate"   
+														required
+														/>
+													</div>
+												</div>
+												<div class="col-md-6 col-sm-12 col-xs-12">
+													<div class="input-group g-margin-b-10--xs">
+														<span class="input-group-btn">
+															<i class="s-form-v4__icon ti-calendar"></i>
+														</span>
+														<input 
+														type="date" 
+														class="form-control s-form-v4__input" 
+														[(ngModel)]="newTournament.regEndDate"
+														placeholder="Registration End Date" 
+														name = "regEndDate"
+														id = "regEndDate"   
+														required
+														/>
+													</div>
+												</div>
+											</div>
+
+
+											<div class="row">
+												<div class="col-md-4 col-sm-12 col-xs-12">
+													<div class="input-group g-margin-b-10--xs">
+														<span class="input-group-btn">
+															<i class="s-form-v4__icon ti-cup"></i>
+														</span>
+														<select 
+														class="form-control s-form-v4__input" 
+														[(ngModel)]="newTournament.continent"
+														style="width: 100%;" 
+														name = "continent"
+														id = "continent"  
+														required
+														>
+														<option value="">Continent</option>
+														<option *ngFor="let continents of continents$ | async" [value]="continents.id">{{continents.name}}</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-4 col-sm-12 col-xs-12">
+												<div class="input-group g-margin-b-10--xs">
+													<span class="input-group-btn">
+														<i class="s-form-v4__icon ti-cup"></i>
+													</span>
+													<select 
+													class="form-control s-form-v4__input" 
+													[(ngModel)]="newTournament.club"
+													style="width: 100%;" 
+													name = "club"
+													id = "club"  
+													required
+													>
+													<option value="">Clubs</option>
+													<option *ngFor="let club of clubs$ | async" [value]="club.id">{{club.club_name}}</option>
+												</select>
 											</div>
 										</div>
-									</form>
+										<div class="col-md-4 col-sm-12 col-xs-12">
+											<div class="input-group g-margin-b-10--xs">
+												<span class="input-group-btn">
+													<i class="s-form-v4__icon ti-cup"></i>
+												</span>
+												<select 
+												class="form-control s-form-v4__input" 
+												[(ngModel)]="newTournament.course"
+												style="width: 100%;" 
+												name = "course"
+												id = "course"  
+												required
+												>
+												<option value="">Course</option>
+												<option *ngFor="let course of courses$ | async" [value]="course.id">{{course.course_name}}</option>
+											</select>
+										</div>
+									</div>
 								</div>
 
-								<div class="col-md-4 col-sm-12 col-xs-12">
-									<h2 class="g-font-size-14--xs g-font-size-16--md">Summary<span class="pull-right"><i class="ti-note"></i></span></h2>
+								<div class="row">
+									<div class="col-md-12 col-sm-12 col-xs-12">
+										<div class="input-group g-margin-b-10--xs">
+											<span class="input-group-btn">
+												<i class="s-form-v4__icon ti-cup"></i>
+											</span>
+											<select 
+											class="form-control s-form-v4__input" 
+											[(ngModel)]="newTournament.tee"
+											style="width: 100%;" 
+											name = "tee"
+											id = "tee"  
+											required
+											>
+											<option value="">Tee</option>
+											<option *ngFor="let tee of tees$ | async" [value]="tee.id">{{tee.tee_name}}</option>
+										</select>
+									</div>
 								</div>
 							</div>
-						</div>
-					</div>
 
+							<div class="row">
+								<div class="col-md-6 col-sm-6 col-xs-6">
+									<button type="submit" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--3 g-padding-x-50--xs">Submit</button>
+								</div>
+								<div class="col-md-6 col-sm-6 col-xs-6">
+									<button type="button" (click)="showForm = false" class="text-uppercase s-btn s-btn--xs s-btn--green-brd g-radius--50 btn-block">Cancel</button>
+								</div>
+							</div>
+
+
+
+						</form>
+					</div>
+				</div>
+
+			</div>
+			<div class="col-md-4 col-sm-6 col-xs-6">
+				<h2 class="g-font-size-14--xs g-font-size-16--md">Updates</h2>
+
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+
+						<ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
+							<li *ngIf="newTournament.name">
+								<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-cup"></i>Tournament Title
+								<span class="pull-right">{{newTournament.name}}</span>
+							</li>
+							<li *ngIf="newTournament.startDate">
+								<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-calendar"></i>Start Date
+								<span class="pull-right">{{newTournament.startDate}}</span>
+							</li>
+							<li *ngIf="newTournament.endDate">
+								<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-calendar"></i>End Date
+								<span class="pull-right">{{newTournament.endDate}}</span>
+							</li>
+							<li *ngIf="newTournament.regStartDate">
+								<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-calendar"></i>Registration Start Date
+								<span class="pull-right">{{newTournament.regStartDate}}</span>
+							</li>
+							<li *ngIf="newTournament.regEndDate">
+								<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-calendar"></i>Registration End Date
+								<span class="pull-right">{{newTournament.regEndDate}}</span>
+							</li>
+
+							<li *ngIf="newTournament.continent">
+								<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-world"></i>Continent
+								<span class="pull-right">{{newTournament.continent}}</span>
+							</li>
+
+							<li *ngIf="newTournament.club">
+								<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-world"></i>Club
+								<span class="pull-right">{{newTournament.club}}</span>
+							</li>
+
+							<li *ngIf="newTournament.course">
+								<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-world"></i>Course
+								<span class="pull-right">{{newTournament.course}}</span>
+							</li>
+							<li *ngIf="newTournament.tee">
+								<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-world"></i>Tee
+								<span class="pull-right">{{newTournament.tee}}</span>
+							</li>
+
+
+						</ul>
+
+					</div>
 				</div>
 			</div>
-			<!-- End Plan -->
 		</div>
+
 	</div>
+</div>
+
+</div>
+</div>
+<!-- End Plan -->
+</div>
+</div>
 </div>

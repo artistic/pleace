@@ -13,6 +13,9 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 })
 export class CoursesComponent implements OnInit {
 
+	p: number = 1;
+    collection: any[] ;  
+
 	coursescollection: AngularFirestoreCollection<Courses>;  
 	courses: Observable<Courses[]>;  
 	coursesDoc: AngularFirestoreDocument<Courses>;

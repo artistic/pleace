@@ -12,27 +12,12 @@
 </div>
 
 <div class="g-bg-color--sky-light">
-	<div class="container g-padding-y-80--xs g-padding-y-125--xsm">
+	<div class="container g-padding-y-20--xs g-padding-y-30--xsm">
 		<div class="row g-row-col--5">
-			<!-- Plan -->
-			<div class="col-md-4  col-sm-12 col-xs-12 g-margin-b-10--xs g-margin-b-0--lg">
-				<div class="s-plan-v1 g-bg-color--white g-padding-x-20--xs g-padding-y-30--xs">
 
-					<!-- search -->
-					<div class="row">
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							<p class="text-uppercase g-font-size-10--xs g-color--primary">Lets Find A Golf Courses</p>
-							<h2 class="g-font-size-22--xs g-font-size-24--md">Search Golf Courses <span class="pull-right"><i class="ti-search"></i></span></h2>
-
-						</div>
-					</div>
-
-				</div>
-			</div>
-			<!-- End Plan -->
 
 			<!-- Plan -->
-			<div class="col-md-8 col-sm-12 col-xs-12">
+			<div class="col-md-12 col-sm-12 col-xs-12">
 
 				<div class="s-plan-v1 g-bg-color--white g-padding-x-20--xs g-padding-y-30--xs">
 
@@ -54,7 +39,7 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr *ngFor="let course of course$ | async; index as i">
+											<tr *ngFor="let course of course$ | paginate: { itemsPerPage: 07, currentPage: p }">
 												<td>
 													<a [routerLink]="['/course', course.id]">
 														{{course.course_name}}
@@ -71,6 +56,12 @@
 											</tr>
 										</tbody>
 									</table>
+
+									<div class="row">
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<pagination-controls (pageChange)="p = $event"></pagination-controls>
+										</div>
+									</div>
 								</div>
 							</div>
 							

@@ -1,87 +1,159 @@
-<div *ngFor="let trment of trment$ | async; index as i">
+<div *ngFor="let trment of tournament$ | async; index as i">
 	<div class="container g-margin-t-20--xs">
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item"><a routerLink="/dashboard"><i class="g-color--primary g-margin-r-10--xs ti-panel"></i> Dashboard</a></li>
-						<li class="breadcrumb-item"><a routerLink="/courses"><i class="g-color--primary g-margin-r-10--xs ti-cup"></i> Tournaments</a></li>
-						<li class="breadcrumb-item active" aria-current="page"><i class="g-color--primary g-margin-r-10--xs ti-cup"></i> {{trment.tournament_name}}</li>
+						<li class="breadcrumb-item"><a routerLink="/tournaments"><i class="g-color--primary g-margin-r-10--xs ti-cup"></i> Tournaments</a></li>
+						<li class="breadcrumb-item active" aria-current="page"><i class="g-color--primary g-margin-r-10--xs ti-user"></i>  {{trment.name}}</li>
 					</ol>
 				</nav>
 			</div>
 		</div>
 	</div>
+
 	<div class="g-bg-color--sky-light">
-		<div class="container g-padding-y-80--xs g-padding-y-125--xsm">
-
-			<div class="row">
-
-
+		<div class="container g-padding-y-20--xs g-padding-y-30--xsm">
+			<div class="row g-row-col--5">
 				<!-- Plan -->
-				<div class="col-md-4 col-sm-12 col-xs-12">
+				<div class="col-md-12 col-sm-12 col-xs-12">
 
 					<div class="s-plan-v1 g-bg-color--white g-padding-x-20--xs g-padding-y-30--xs">
 
 						<div class="row">
 							<div class="col-md-12 col-sm-12 col-xs-12">
-								<p class="text-uppercase g-font-size-10--xs g-color--primary">Tournament Details</p>
-								<h2 class="g-font-size-22--xs g-font-size-24--md">{{trment.tournament_name}} <span class="pull-right"><i class="ti-clipboard"></i></span></h2>
+								<h2 class="g-font-size-22--xs g-font-size-24--md">{{trment.name}}<span class="pull-right"><i class="ti-Cup"></i></span></h2>
 
 								<div class="row">
-									<div class="col-md-12 col-sm-12 col-xs-12">
-										<img src="{{trment.tournament_image}}" class="img-responsive" alt="{{trment.tournament_image}}">
+									<div class="col-md-6 col-sm-12 col-xs-12">
+										<h2 class="g-font-size-14--xs g-font-size-16--md">Tournament Details<span class="pull-right"><i class="ti-clipboard"></i></span></h2>
+
+										<div class="row">
+											<div class="col-md-12 col-sm-12 col-xs-12">
+												<ul class="list-group list-group-flush">
+													<li class="list-group-item">
+														<i class="g-color--primary g-margin-r-10--xs ti-cup"></i>
+														Name <span class="pull-right">{{trment.name}}</span>
+													</li>
+
+													<li class="list-group-item">
+														<i class="g-color--primary g-margin-r-10--xs ti-calendar"></i>
+														Start Date <span class="pull-right">{{trment.startDate}}</span>
+													</li>
+
+													<li class="list-group-item">
+														<i class="g-color--primary g-margin-r-10--xs ti-calendar"></i>
+														End Date <span class="pull-right">{{trment.endDate}}</span>
+													</li>
+
+													<li class="list-group-item">
+														<i class="g-color--primary g-margin-r-10--xs ti-crown"></i>
+														Division 
+														<span class="pull-right" *ngIf="trment.divisions ==='1'"> Champs <i class="g-font-size-13--xs g-color--primary g-margin-l-10--xs ti-crown"></i> </span>
+														<span class="pull-right" *ngIf="trment.divisions ==='2'"> Celebrity <i class="g-font-size-13--xs g-color--primary g-margin-l-10--xs ti-star"></i> </span>
+														<span class="pull-right" *ngIf="trment.divisions ==='3'"> Tour Player <i class="g-font-size-13--xs g-color--primary g-margin-l-10--xs ti-cup"></i>  </span>
+														<span class="pull-right" *ngIf="trment.divisions ==='4'"> PGA Professional <i class="g-font-size-13--xs g-color--primary g-margin-l-10--xs ti-cup"></i> </span>
+													</li>
+
+													<li class="list-group-item">
+														<i class="g-color--primary g-margin-r-10--xs ti-user"></i>
+														Players <span class="pull-right">10</span>
+													</li>
+
+													<li class="list-group-item">
+														<i class="g-color--primary g-margin-r-10--xs ti-world"></i>
+														Continent <span class="pull-right">{{trment.continent}}</span>
+													</li>
+													<li class="list-group-item">
+														<i class="g-color--primary g-margin-r-10--xs ti-flag-alt-2"></i>
+														Club <span class="pull-right">{{trment.club}}</span>
+													</li>
+													<li class="list-group-item">
+														<i class="g-color--primary g-margin-r-10--xs ti-flag-alt"></i>
+														Course <span class="pull-right">{{trment.course}}</span>
+													</li>
+													<li class="list-group-item">
+														<i class="g-color--primary g-margin-r-10--xs ti-flag-alt"></i>
+														Tee <span class="pull-right">{{trment.tee}}</span>
+													</li>
+												</ul>
+											</div>
+										</div>
 									</div>
+
+
+									<div class="col-md-6 col-sm-12 col-xs-12">
+										<div class="row">
+											<div class="col-md-12 col-sm-12 col-xs-12">
+												<h2 class="g-font-size-14--xs g-font-size-16--md">Scoreboard<span class="pull-right"><i class="ti-clipboard"></i></span></h2>
+
+												<div class="row">
+													<div class="col-md-12 col-sm-12 col-xs-12">
+														<p>
+															This scoreboard is only available to players who have joined the tournament
+														</p>
+
+														<p>
+															This scoreboard is only available to players who have joined the tournament
+														</p>
+														<form (ngSubmit)="onSubmit()" #joinTournamentForm="ngForm" novalidate>
+															<div class="row">
+																<div class="col-md-4 col-sm-12 col-xs-12">
+																	<div class="input-group g-margin-b-10--xs">
+																		<span class="input-group-btn">
+																			<i class="s-form-v4__icon ti-medal"></i>
+																		</span>
+																		<input 
+																		type="text" 
+																		class="form-control s-form-v4__input" 
+																		[(ngModel)]="newPlayer.handicapIndex"
+																		placeholder="Enter Course Handicap"  
+																		name = "handicapIndex"
+																		id = "handicapIndex" 
+																		required
+																		/>
+																	</div>
+																</div>
+
+																<div class="col-md-8 col-sm-12 col-xs-12">
+																	<p class="g-font-size-10--xs">
+																		Please enter your course handicap index
+																	</p>
+																</div>
+															</div>
+
+															<div class="row text-center g-padding-x-20--xs g-padding-y-30--xs">
+																<div class="col-md-4 col-sm-4 col-xs-4">
+																	<strong>Rating</strong><br>
+																</div>
+																<div class="col-md-4 col-sm-4 col-xs-4">
+																	<strong>Slope</strong><br>
+																</div>
+																<div class="col-md-4 col-sm-4 col-xs-4">
+																	<strong>Par</strong><br>
+																</div>
+															</div>
+
+
+															<div class="row g-padding-x-20--xs g-padding-y-30--xs">
+																<div class="col-md-12 col-sm-12 col-xs-12">
+																	<button type="submit" class="text-uppercase s-btn s-btn--xs s-btn--dark-bg g-radius--3 btn-block">Submit</button>
+																</div>
+															</div>
+
+
+															
+														</form>
+													</div>
+												</div>
+
+											</div>
+										</div>
+									</div>
+
+
 								</div>
-
-								<div class="row">
-									<div class="col-md-12 col-sm-12 col-xs-12">
-										<p class="g-font-size-14--md g-font-size-12--xs">
-											{{trment.tournament_descripition}}
-										</p>
-									</div>
-								</div>
-
-
-
-								<div class="row">
-									<div class="col-md-4 col-sm-4 col-xs-4">
-										<p class="g-font-size-14--md g-font-size-12--xs"><strong>Tournament Category <i class="g-color--primary g-margin-r-10--xs ti-crown"></i></strong><br></p>
-									</div>
-									<div class="col-md-4 col-sm-4 col-xs-4">
-										<p class="g-font-size-14--md g-font-size-12--xs"><strong>Tournament Players <i class="g-color--primary g-margin-r-10--xs ti-user"></i></strong><br></p>
-									</div>
-									<div class="col-md-4 col-sm-4 col-xs-4">
-										<p class="g-font-size-14--md g-font-size-12--xs"><strong>Tournament Dates <i class="g-color--primary g-margin-r-10--xs ti-user"></i></strong><br></p>
-									</div>
-								</div>
-
-							</div>
-						</div>
-
-					</div>
-				</div>
-				<!-- End Plan -->
-
-				<!-- Plan -->
-				<div class="col-md-8  col-sm-12 col-xs-12 g-margin-b-10--xs g-margin-b-0--lg">
-					<div class="s-plan-v1 g-bg-color--white g-padding-x-20--xs g-padding-y-30--xs">
-
-						<!-- search -->
-						<div class="row">
-							<div class="col-md-12 col-sm-12 col-xs-12">
-								<p class="text-uppercase g-font-size-10--xs g-color--primary">The Leader Table</p>
-								<h2 class="g-font-size-22--xs g-font-size-24--md">Scoreboard<span class="pull-right"><i class="ti-clipboard"></i></span></h2>
-
-								<div class="row">
-									<div class="col-md-12 col-sm-12 col-xs-12">
-										<p>
-											This scoreboard is only available to players who have joined the tournament
-										</p>
-										<button  type="button" class="text-uppercase s-btn s-btn--sm btn-block s-btn--primary-bg g-radius--3 g-padding-x-50--xs">Join Tournament</button>
-									</div>
-								</div>
-
 							</div>
 						</div>
 
@@ -89,8 +161,7 @@
 				</div>
 				<!-- End Plan -->
 			</div>
-
-
 		</div>
 	</div>
 </div>
+

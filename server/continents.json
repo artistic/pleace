@@ -1,0 +1,55 @@
+{
+	"__collections__": {
+		"continents":
+		{
+			"AF": {
+			"id" : "1",
+			"name" : "Africa",
+			"code" : "AF"
+			},
+
+			"AN": {
+			"id" : "2",
+			"name" : "Antarctica",
+			"code" : "AN"
+			}
+			,
+
+			"AS": {
+			"id" : "3",
+			"name" : "Asia",
+			"code" : "AS"
+			}
+			,
+
+			"EU": {
+			"id" : "4",
+			"name" : "Europe",
+			"code" : "EU"
+			}
+			,
+
+			"NA": {
+			"id" : "5",
+			"name" : "North America",
+			"code" : "NA"
+			}
+			,
+
+			"OC": {
+			"id" : "5",
+			"name" : "Oceania",
+			"code" : "OC"
+			}
+			,
+
+			"SA": {
+			"id" : "5",
+			"name" : "South America",
+			"code" : "SA"
+			}
+
+
+		}
+	}
+}

@@ -283,10 +283,10 @@ fieldset[disabled] .s-btn {
 
 .s-btn--dark-bg {
   color: #fff;
-  background: #222324;
+  background: #2E4612;
   border-width: 0.0625rem;
   border-style: solid;
-  border-color: #222324;
+  border-color: #2E4612;
 }
 
 .s-btn--dark-bg:focus, .s-btn--dark-bg:hover {

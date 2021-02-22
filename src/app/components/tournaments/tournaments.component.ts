@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from 'src/app/services/firestore.service';
-import Tournaments from 'src/app/models/firestore.model';
+import Tournament from 'src/app/models/tournament.model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators'
 
@@ -13,27 +13,24 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 })
 export class TournamentsComponent implements OnInit {
 
-	tournamentscollection: AngularFirestoreCollection<Tournaments>;  
-	tournaments: Observable<Tournaments[]>;  
-	tournamentsDoc: AngularFirestoreDocument<Tournaments>;
-	tournaments$: Observable<{}[]>;
+	tournaments$: Observable<Tournament[]>;
 
 	constructor(
 		private fireService: FirestoreService,
 		private db: AngularFirestore
-		) { }
-
-	ngOnInit(): void {
-		this.tournamentscollection = this.db.collection<{}>('tournaments');
-		this.tournaments$ = this.tournamentscollection.snapshotChanges().pipe(
+		) {
+		this.tournaments$ = this.db.collection<Tournament>('tournaments')
+		.snapshotChanges().pipe(
 			map(actions => actions.map(a => {
-				const data = a.payload.doc.data(); // DB Questions
+				const data = a.payload.doc.data() as Tournament;
 				const id = a.payload.doc.id;
 				return { id, ...data };
-
-				console.log(this.tournaments$);
 			}))
 			);
+		 }
+
+	ngOnInit(): void {
+
 	}
 
 }

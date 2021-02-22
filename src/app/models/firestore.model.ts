@@ -139,10 +139,31 @@ export class Rankings {
 }
 
 export interface Country {
+	name?: string;
+	native?: string;
+	phone?: string;
+	continent?: string;
+	capital?: string;
+	currency?: string;
+	languages?: string;
+}
+
+export interface Continents {
+	id?: number;
+	name?: string;
+	code?: string;
+
+}
+
+export interface Tournament {
+  tournamentId: string;
   name: string;
-  nationality: string;
-  hasSubdivision: boolean;
-  code: string;
+  regStartDate: Date;
+  regEndDate: Date;
+  startDate: Date;
+  endDate: Date;
+  divisions: string;
+  courses: string;
 }
 
 
