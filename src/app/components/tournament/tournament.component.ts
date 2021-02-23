@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { Router, ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 import Tournament from 'src/app/models/tournament.model';
+import Tees from 'src/app/models/tees.model';
+import Courses from 'src/app/models/courses.model';
+import Clubs from 'src/app/models/clubs.model';
 import Play from 'src/app/models/play.model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -26,8 +29,12 @@ export class TournamentComponent implements OnInit {
 	tournamentID: string;
 	faciltyID: string;
 	public parameterTournament: string;
+	public t: string;
 
 	tournament$: Observable<Tournament[]>;
+	tee$: Observable<Tees[]>;
+	course$: Observable<Courses[]>;
+	club$: Observable<Clubs[]>;
 
 	
 
@@ -36,8 +43,12 @@ export class TournamentComponent implements OnInit {
 	crrntUsr: any;
 	userEmail: any;
 	userID : any;
-	teeId : any;
+	teeId : any = 'COL-AN-0004-02-01';
+	courseId : any = 'BFA-KA-0001-01';
+	clubId : any = 'AUS-NS-0200';
 	player : any;
+	tournamnentList : any;
+
 
 	
 
@@ -54,21 +65,48 @@ export class TournamentComponent implements OnInit {
 			console.log(this.parameterTournament);
 		});
 
-
-    	
-
 		this.tournament$ = this.db.collection<Tournament>('tournaments', ref => ref.where('tournamentID', '==', this.parameterTournament))
 		.snapshotChanges().pipe(
 			map(actions => actions.map(a => {
 				const data = a.payload.doc.data() as Tournament;
 				const id = a.payload.doc.id;
 				return { id, ...data };
-				console.log(this.tournament$);
+				
+			}))
+		);
+
+
+
+		this.tee$ = this.db.collection<Tees>('tees', ref => ref.where('teeId', '==', this.teeId))
+		.snapshotChanges().pipe(
+			map(actions => actions.map(a => {
+				const data = a.payload.doc.data() as Tees;
+				const id = a.payload.doc.id;
+				return { id, ...data };
+				console.log(this.tee$);
 			}))
 			);
 
 
+		this.course$ = this.db.collection<Courses>('courses', ref => ref.where('courseID', '==', this.courseId))
+		.snapshotChanges().pipe(
+			map(actions => actions.map(a => {
+				const data = a.payload.doc.data() as Courses;
+				const id = a.payload.doc.id;
+				return { id, ...data };
+				console.log(this.course$);
+			}))
+			);
 
+		this.club$ = this.db.collection<Club>('clubs', ref => ref.where('facilityID', '==', this.clubId))
+		.snapshotChanges().pipe(
+			map(actions => actions.map(a => {
+				const data = a.payload.doc.data() as Club;
+				const id = a.payload.doc.id;
+				return { id, ...data };
+				console.log(this.club$);
+			}))
+			);
 
 		this.afAuth.authState.subscribe(user => {
 			if (user) {
@@ -77,16 +115,13 @@ export class TournamentComponent implements OnInit {
 				JSON.parse(localStorage.getItem('user'));
 				this.crrntUsr = JSON.parse(window.localStorage.getItem("user"));
 				this.userID = this.crrntUsr.uid;
-				console.log(this.userID);
+				this.accountType = this.crrntUsr.accountType;
+				console.log(this.accountType);
 			} else {
 				localStorage.setItem('user', null);
 				JSON.parse(localStorage.getItem('user'));
 			}
 		});
-
-
-
-		
 	}
 
 
@@ -94,25 +129,18 @@ export class TournamentComponent implements OnInit {
 
 	}
 
-	getAllDocs() {
-           const ref = this.db.collection('tournaments');
-           return ref.valueChanges(
-           	{
-           		club: 'club',
-           	}
-           	);
-      }
+
 
 
 	newPlayer : Play = {
-		uid : "",
-		handicapIndex : "",
+		uid : "W0z02lUZWSOGHjpJmOa0NU9sGHF2",
+		handicapIndex : "3",
+		teeId : this.teeId,
 		posted : new Date(Date.now()),
 	}
 
 	onSubmit() {
 
-		console.log(this.newPlayer);
 		this.db.collection<Play>('play').add(this.newPlayer);
 		this.toastr.success('You have success joined the tournament', 'Tournament Joined'); 
 	}

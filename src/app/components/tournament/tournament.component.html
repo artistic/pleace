@@ -63,19 +63,48 @@
 
 													<li class="list-group-item">
 														<i class="g-color--primary g-margin-r-10--xs ti-world"></i>
-														Continent <span class="pull-right">{{trment.continent}}</span>
+														Continent <span class="pull-right">
+															<span *ngIf="trment.continent ==='1'">Africa</span>
+															<span *ngIf="trment.continent ==='2'">Antarctica</span>
+															<span *ngIf="trment.continent ==='3'">Asia</span>
+															<span *ngIf="trment.continent ==='4'">Europe</span>
+															<span *ngIf="trment.continent ==='5'">North America</span>
+															<span *ngIf="trment.continent ==='6'">Oceania</span>
+															<span *ngIf="trment.continent ==='7'">South America</span>
+														</span>
+													</li>
+													<li class="list-group-item">
+														<i class="g-color--primary g-margin-r-10--xs ti-world"></i>
+														Country <span class="pull-right">
+															<span *ngFor="let clb of club$ | async; index as i">
+																{{clb.country}}
+															</span>
+														</span>
 													</li>
 													<li class="list-group-item">
 														<i class="g-color--primary g-margin-r-10--xs ti-flag-alt-2"></i>
-														Club <span class="pull-right">{{trment.club}}</span>
+														Club <span class="pull-right">
+															<span *ngFor="let clb of club$ | async; index as i">
+																{{clb.club_name}}
+															</span>
+														</span>
 													</li>
 													<li class="list-group-item">
 														<i class="g-color--primary g-margin-r-10--xs ti-flag-alt"></i>
-														Course <span class="pull-right">{{trment.course}}</span>
+														Course <span class="pull-right">
+															<span *ngFor="let crse of course$ | async; index as i">
+																{{crse.course_name}}
+															</span>
+														</span>
 													</li>
 													<li class="list-group-item">
 														<i class="g-color--primary g-margin-r-10--xs ti-flag-alt"></i>
-														Tee <span class="pull-right">{{trment.tee}}</span>
+														Tee <span class="pull-right">
+															<span *ngFor="let te of tee$ | async; index as i">
+																{{te.tee_name}}
+																{{te.tee_color}}
+															</span>
+														</span>
 													</li>
 												</ul>
 											</div>
@@ -102,7 +131,7 @@
 																<div class="col-md-4 col-sm-12 col-xs-12">
 																	<div class="input-group g-margin-b-10--xs">
 																		<span class="input-group-btn">
-																			<i class="s-form-v4__icon ti-medal"></i>
+																			<i class="s-form-v4__icon ti-medall"></i>
 																		</span>
 																		<input 
 																		type="text" 
@@ -116,22 +145,40 @@
 																	</div>
 																</div>
 
-																<div class="col-md-8 col-sm-12 col-xs-12">
-																	<p class="g-font-size-10--xs">
+																<div class="col-md-8 col-sm-12 col-xs-12 text-center">
+																	<p class="g-font-size-12--xs g-color--primary">
 																		Please enter your course handicap index
 																	</p>
 																</div>
 															</div>
 
-															<div class="row text-center g-padding-x-20--xs g-padding-y-30--xs">
+															<div class="row text-center g-padding-x-20--xs g-padding-y-30--xs" *ngFor="let te of tee$ | async; index as i">
 																<div class="col-md-4 col-sm-4 col-xs-4">
 																	<strong>Rating</strong><br>
+																	{{te.rating}}
 																</div>
 																<div class="col-md-4 col-sm-4 col-xs-4">
 																	<strong>Slope</strong><br>
+																	{{te.slope}}
 																</div>
 																<div class="col-md-4 col-sm-4 col-xs-4">
 																	<strong>Par</strong><br>
+																	{{te.course_par_for_tee}}
+																</div>
+															</div>
+
+															<div class="row">
+																<div class="col-md-12 col-sm-12 col-xs-12 calculated">
+																	<div class="row">
+																		<div class="col-md-9 col-sm-9 col-xs-9 hndSmall">
+																			<p>
+																				Your course handicap is :
+																			</p>
+																		</div>
+																		<div class="col-md-3 col-sm-3 col-xs-3 text-center hndBig">
+																			72
+																		</div>
+																	</div>
 																</div>
 															</div>
 

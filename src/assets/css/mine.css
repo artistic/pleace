@@ -188,3 +188,18 @@
   background-color: #2E4612;
   color: #fff; 
 }
+
+.calculated {
+  background-color: #2E4612;
+  height: 50px;
+}
+
+.hndSmall {
+  color: #fff;
+  line-height: 40px;
+}
+
+.hndBig {
+  font-size: 32px;
+  color: #fff;
+}
