@@ -7,7 +7,7 @@
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item"><a routerLink="/dashboard"><i class="g-color--primary g-margin-r-10--xs ti-panel"></i> Dashboard</a></li>
 						<li class="breadcrumb-item"><a routerLink="/tournaments"><i class="g-color--primary g-margin-r-10--xs ti-cup"></i> Tournaments</a></li>
-						<li class="breadcrumb-item active" aria-current="page"><i class="g-color--primary g-margin-r-10--xs ti-user"></i>  {{trment.name}}</li>
+						<li class="breadcrumb-item active" aria-current="page"><i class="g-color--primary g-margin-r-10--xs ti-user"></i>  {{trment?.name}}</li>
 					</ol>
 				</nav>
 			</div>
@@ -24,7 +24,7 @@
 
 						<div class="row">
 							<div class="col-md-12 col-sm-12 col-xs-12">
-								<h2 class="g-font-size-22--xs g-font-size-24--md">{{trment.name}}<span class="pull-right"><i class="ti-Cup"></i></span></h2>
+								<h2 class="g-font-size-22--xs g-font-size-24--md">{{trment?.name}}<span class="pull-right"><i class="ti-Cup"></i></span></h2>
 
 								<div class="row">
 									<div class="col-md-6 col-sm-12 col-xs-12">
@@ -35,26 +35,26 @@
 												<ul class="list-group list-group-flush">
 													<li class="list-group-item">
 														<i class="g-color--primary g-margin-r-10--xs ti-cup"></i>
-														Name <span class="pull-right">{{trment.name}}</span>
+														Name <span class="pull-right">{{trment?.name}}</span>
 													</li>
 
 													<li class="list-group-item">
 														<i class="g-color--primary g-margin-r-10--xs ti-calendar"></i>
-														Start Date <span class="pull-right">{{trment.startDate}}</span>
+														Start Date <span class="pull-right">{{trment?.startDate}}</span>
 													</li>
 
 													<li class="list-group-item">
 														<i class="g-color--primary g-margin-r-10--xs ti-calendar"></i>
-														End Date <span class="pull-right">{{trment.endDate}}</span>
+														End Date <span class="pull-right">{{trment?.endDate}}</span>
 													</li>
 
 													<li class="list-group-item">
 														<i class="g-color--primary g-margin-r-10--xs ti-crown"></i>
 														Division
-														<span class="pull-right" *ngIf="trment.divisions ==='1'"> Champs <i class="g-font-size-13--xs g-color--primary g-margin-l-10--xs ti-crown"></i> </span>
-														<span class="pull-right" *ngIf="trment.divisions ==='2'"> Celebrity <i class="g-font-size-13--xs g-color--primary g-margin-l-10--xs ti-star"></i> </span>
-														<span class="pull-right" *ngIf="trment.divisions ==='3'"> Tour Player <i class="g-font-size-13--xs g-color--primary g-margin-l-10--xs ti-cup"></i>  </span>
-														<span class="pull-right" *ngIf="trment.divisions ==='4'"> PGA Professional <i class="g-font-size-13--xs g-color--primary g-margin-l-10--xs ti-cup"></i> </span>
+														<span class="pull-right" *ngIf="trment?.divisions ==='1'"> Champs <i class="g-font-size-13--xs g-color--primary g-margin-l-10--xs ti-crown"></i> </span>
+														<span class="pull-right" *ngIf="trment?.divisions ==='2'"> Celebrity <i class="g-font-size-13--xs g-color--primary g-margin-l-10--xs ti-star"></i> </span>
+														<span class="pull-right" *ngIf="trment?.divisions ==='3'"> Tour Player <i class="g-font-size-13--xs g-color--primary g-margin-l-10--xs ti-cup"></i>  </span>
+														<span class="pull-right" *ngIf="trment?.divisions ==='4'"> PGA Professional <i class="g-font-size-13--xs g-color--primary g-margin-l-10--xs ti-cup"></i> </span>
 													</li>
 
 													<li class="list-group-item">
@@ -65,20 +65,20 @@
 													<li class="list-group-item">
 														<i class="g-color--primary g-margin-r-10--xs ti-world"></i>
 														Continent <span class="pull-right">
-															<span *ngIf="trment.continent ==='1'">Africa</span>
-															<span *ngIf="trment.continent ==='2'">Antarctica</span>
-															<span *ngIf="trment.continent ==='3'">Asia</span>
-															<span *ngIf="trment.continent ==='4'">Europe</span>
-															<span *ngIf="trment.continent ==='5'">North America</span>
-															<span *ngIf="trment.continent ==='6'">Oceania</span>
-															<span *ngIf="trment.continent ==='7'">South America</span>
+															<span *ngIf="trment?.continent ==='1'">Africa</span>
+															<span *ngIf="trment?.continent ==='2'">Antarctica</span>
+															<span *ngIf="trment?.continent ==='3'">Asia</span>
+															<span *ngIf="trment?.continent ==='4'">Europe</span>
+															<span *ngIf="trment?.continent ==='5'">North America</span>
+															<span *ngIf="trment?.continent ==='6'">Oceania</span>
+															<span *ngIf="trment?.continent ==='7'">South America</span>
 														</span>
 													</li>
 													<li class="list-group-item">
 														<i class="g-color--primary g-margin-r-10--xs ti-world"></i>
 														Country <span class="pull-right">
 															<span >
-																{{clb.country}}
+																{{clb?.country}}
 															</span>
 														</span>
 													</li>
@@ -86,7 +86,7 @@
 														<i class="g-color--primary g-margin-r-10--xs ti-flag-alt-2"></i>
 														Club <span class="pull-right">
 															<span >
-																{{clb.club_name}}
+																{{clb?.club_name}}
 															</span>
 														</span>
 													</li>
@@ -94,7 +94,7 @@
 														<i class="g-color--primary g-margin-r-10--xs ti-flag-alt"></i>
 														Course <span class="pull-right">
 															<span >
-																{{crse.course_name}}
+																{{crse?.course_name}}
 															</span>
 														</span>
 													</li>
@@ -102,8 +102,8 @@
 														<i class="g-color--primary g-margin-r-10--xs ti-flag-alt"></i>
 														Tee <span class="pull-right">
 															<span>
-																{{te.tee_name}}
-																{{te.tee_color}}
+																{{te?.tee_name}}
+																{{te?.tee_color}}
 															</span>
 														</span>
 													</li>
@@ -127,7 +127,9 @@
 														<p>
 															This scoreboard is only available to players who have joined the tournament
 														</p>
-														<form (ngSubmit)="onSubmit()" #joinTournamentForm="ngForm" novalidate>
+														<form (ngSubmit)="onSubmit()"
+                            [formGroup]="joinTournamentForm"
+                             novalidate>
 															<div class="row">
 																<div class="col-md-4 col-sm-12 col-xs-12">
 																	<div class="input-group g-margin-b-10--xs">
@@ -137,7 +139,7 @@
 																		<input
 																		type="text"
 																		class="form-control s-form-v4__input"
-																		[(ngModel)]="newPlayer.handicapIndex"
+                                    formControlName="handicapIndex"
 																		placeholder="Enter Course Handicap"
 																		name = "handicapIndex"
 																		id = "handicapIndex"
@@ -153,18 +155,18 @@
 																</div>
 															</div>
 
-															<div class="row text-center g-padding-x-20--xs g-padding-y-30--xs" *ngFor="let te of tee$ | async; index as i">
+															<div class="row text-center g-padding-x-20--xs g-padding-y-30--xs" >
 																<div class="col-md-4 col-sm-4 col-xs-4">
 																	<strong>Rating</strong><br>
-																	{{te.rating}}
+																	{{te?.rating}}
 																</div>
 																<div class="col-md-4 col-sm-4 col-xs-4">
 																	<strong>Slope</strong><br>
-																	{{te.slope}}
+																	{{te?.slope}}
 																</div>
 																<div class="col-md-4 col-sm-4 col-xs-4">
 																	<strong>Par</strong><br>
-																	{{te.course_par_for_tee}}
+																	{{te?.course_par_for_tee}}
 																</div>
 															</div>
 
@@ -186,7 +188,9 @@
 
 															<div class="row g-padding-x-20--xs g-padding-y-30--xs">
 																<div class="col-md-12 col-sm-12 col-xs-12">
-																	<button type="submit" class="text-uppercase s-btn s-btn--xs s-btn--dark-bg g-radius--3 btn-block">Submit</button>
+																	<button type="submit"
+                                  [disabled]="handicapIndex.value == ''"
+                                  class="text-uppercase s-btn s-btn--xs s-btn--dark-bg g-radius--3 btn-block">Join</button>
 																</div>
 															</div>
 

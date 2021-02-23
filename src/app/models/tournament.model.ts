@@ -1,4 +1,6 @@
 export default class Tournament {
+  id?: string;
+  uid?: string;
   tournamentID: string;
   name: string;
   regStartDate: string;
