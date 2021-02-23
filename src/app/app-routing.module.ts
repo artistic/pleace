@@ -7,7 +7,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
-
+import {TournamentGuard} from './guards/tournament.guard'
 
 
 
@@ -18,7 +18,7 @@ import { CalculateComponent } from './components/calculate/calculate.component';
 import { RankingsComponent } from './components/rankings/rankings.component';
 
 
-//settings pages here 
+//settings pages here
 import { SettingsComponent } from './components/settings/settings.component';
 import { UserComponent } from './components/user/user.component';
 
@@ -47,6 +47,7 @@ import { PrivacyComponent } from './components/privacy/privacy.component';
 
 import { NoPageFoundComponent } from './components/no-page-found/no-page-found.component';
 import { AuthGuard } from "./auth.guard";
+import { ScoreCardComponent } from './components/score-card/score-card.component';
 
 
 const routes: Routes = [
@@ -79,7 +80,7 @@ const routes: Routes = [
   { path: 'tournaments', component: TournamentsComponent, data: {title: 'Tournaments'} },
   { path: 'tournament/:tournamentID', component: TournamentComponent, data: {title: 'Tournament Details'} },
   { path: 'add-tournament', component: AddTournamentComponent, data: {title: 'Add Tournament'} },
-
+  {path: 'score-card/:tournamentID', component: ScoreCardComponent, data: {title: 'Score Card'}, canActivate:[TournamentGuard]},
   { path: 'help', component: HelpComponent, data: {title: 'Help'} },
   { path: 'invite', component: InviteComponent, data: {title: 'Invite A friend'} },
   { path: 'terms', component: TermsComponent, data: {title: 'Terms And Conditions'} },

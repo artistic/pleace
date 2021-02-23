@@ -1,0 +1,158 @@
+<!-- <form [formGroup]="scorecard">
+  <div class="row">
+    <div class="col">
+      <input formControlName="hole1">
+    </div>
+
+
+    <div class="col">
+      <input formControlName="hole2">
+    </div>
+
+
+    <div class="col">
+      <input formControlName="hole3">
+    </div>
+
+    <div class="col">
+      <input formControlName="hole4">
+    </div>
+
+    <div class="col">
+      <input formControlName="hole5">
+    </div>
+
+    <div class="col">
+      <input formControlName="hole6">
+    </div>
+
+    <div class="col">
+      <input formControlName="hole7">
+    </div>
+
+    <div class="col">
+      <input formControlName="hole8">
+    </div>
+    <div class="col">
+      <input formControlName="hole9">
+    </div>
+
+    <div class="col">
+      <input formControlName="hole10">
+    </div>
+    </div>
+</form> -->
+<div class="g-bg-color--sky-light">
+  <div class="container g-padding-y-80--xs g-padding-y-125--xsm">
+    <div class="row g-row-col--5">
+
+      <!-- Plan -->
+
+      <!-- End Plan -->
+
+      <!-- Plan -->
+      <div class="col-md-12  col-sm-12 col-xs-12 g-margin-b-10--xs g-margin-b-0--lg">
+        <div class="s-plan-v1 g-bg-color--white g-padding-x-20--xs g-padding-y-30--xs">
+
+          <!-- search -->
+          <div *ngIf="formLoaded" class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <form [formGroup]="scorecard">
+
+                <div class="row g-margin-b-10--xs g-margin-b-20--md">
+                  <div class="col-sm-1">
+                    <div class="input-group g-margin-b-10--xs">
+                      <label>H1</label>
+                      <input type="text" class="form-control s-form-v4__input"
+                      formControlName="hole1"
+                      required>
+                    </div>
+                  </div>
+                  <div class="col-sm-1">
+                    <div class="input-group g-margin-b-10--xs">
+                      <label>H2</label>
+                      <input type="text" class="form-control s-form-v4__input" formControlName="hole2">
+                    </div>
+                  </div>
+                  <div class="col-sm-1">
+                    <div class="input-group g-margin-b-10--xs">
+                      <label>H3</label>
+                      <input type="text" class="form-control s-form-v4__input" formControlName="hole3">
+                    </div>
+                  </div>
+                  <div class="col-sm-1">
+                    <div class="input-group g-margin-b-10--xs">
+                      <label>H4</label>
+                      <input type="text" class="form-control s-form-v4__input" #userName formControlName="hole4">
+                    </div>
+                  </div>
+                  <div class="col-sm-1">
+                    <div class="input-group g-margin-b-10--xs">
+                      <label>H5</label>
+                      <input type="text" class="form-control s-form-v4__input" formControlName="hole5">
+                    </div>
+                  </div>
+                  <div class="col-sm-1">
+                    <div class="input-group g-margin-b-10--xs">
+                      <label>H6</label>
+                      <input type="text" class="form-control s-form-v4__input" formControlName="hole6">
+                    </div>
+                  </div>
+                  <div class="col-sm-1">
+                    <div class="input-group g-margin-b-10--xs">
+                      <label>H7</label>
+                      <input type="text" class="form-control s-form-v4__input" formControlName="hole7">
+                    </div>
+                  </div>
+                  <div class="col-sm-1">
+                    <div class="input-group g-margin-b-10--xs">
+                      <label>H8</label>
+                      <input type="text" class="form-control s-form-v4__input" formControlName="hole8">
+                    </div>
+                  </div>
+                  <div class="col-sm-1">
+                    <div class="input-group g-margin-b-10--xs">
+                      <label>H9</label>
+                      <input type="text" class="form-control s-form-v4__input" formControlName="hole9">
+                    </div>
+                  </div>
+                  <div class="col-sm-1">
+                    <div class="input-group g-margin-b-10--xs">
+                      <label>H10</label>
+                      <input type="text" class="form-control s-form-v4__input"  formControlName="hole10">
+                    </div>
+                  </div>
+
+                </div>
+                <div class="row">
+                  <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="formGroup">
+                      <button type="button" class="text-uppercase s-btn btn-block s-btn--xs s-btn--primary-bg g-radius--3 g-padding-x-40--xs g-margin-b-20--xs"
+                      (click)="onSave()">
+                      Save
+                      </button>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="formGroup">
+                      <button type="button" class="text-uppercase s-btn btn-block s-btn--xs s-btn--primary-bg g-radius--3 g-padding-x-40--xs g-margin-b-20--xs"
+                      (click)="onFinish()">
+                      Finish
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- End Plan -->
+
+
+    </div>
+  </div>
+</div>

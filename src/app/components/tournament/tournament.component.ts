@@ -32,6 +32,7 @@ export class TournamentComponent implements OnInit, OnDestroy {
 	public t: string;
   accountType;
   trment: Tournament;
+  leaderBoard: Play[];
   allSubscriptions: Subscription[] = [];
   te: Tees;
   crse: Courses;
@@ -72,10 +73,11 @@ export class TournamentComponent implements OnInit, OnDestroy {
   /**
    * Fire on init when class initializes
    */
-	ngOnInit(): void {
+	ngOnInit() {
     this.createForm()
     this.allSubscriptions.push(this.getParameterSubscription());
     this.allSubscriptions.push(this.getAuthState());
+
 
 	}
   /**
@@ -91,7 +93,7 @@ export class TournamentComponent implements OnInit, OnDestroy {
    * Retrieve user
    */
   getAuthState(){
-    return this.afAuth.authState.subscribe(user => {
+    return this.afAuth.authState.subscribe(async (user) => {
 			if (user) {
 				this.userState = user;
 				localStorage.setItem('user', JSON.stringify(this.userState));
@@ -99,6 +101,11 @@ export class TournamentComponent implements OnInit, OnDestroy {
 				this.crrntUsr = JSON.parse(window.localStorage.getItem("user"));
 				this.userID = this.crrntUsr.uid;
 				this.accountType = this.crrntUsr.accountType;
+        try {
+          this.allSubscriptions.push(await this.checkLeaderBoardAccess());
+          } catch (error) {
+            this.leaderBoard = null;
+          }
 				console.log(this.accountType);
 			} else {
 				localStorage.setItem('user', null);
@@ -164,7 +171,7 @@ export class TournamentComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Submit form
+   * Submit form.
    */
 async	onSubmit() {
     const newPlayer : Play = {
@@ -173,21 +180,28 @@ async	onSubmit() {
       teeId : this.teeId,
       posted : new Date(Date.now()),
     }
+    // Create batch for multiple writes
    let batch = this.db.firestore.batch();
 
-	const playRef =	this.db.collection<Play>('play')
+	const playRef =	this.db.collection<any>('play')
     .doc(this.userState.uid).ref
-  const subTornamentRef = this.db.collection<any>('play')
-  .doc(this.userState.uid)
-  .collection('tournaments')
+  const subTornamentRef = this.db.collection<any>('tournaments')
   .doc(this.parameterTournament)
+  .collection<Play>('players')
+  .doc(this.userState.uid)
+
+
   .ref
-    batch.set(playRef, newPlayer, {merge: true})
+    batch.set(playRef, {uid: this.userState.uid}, {merge: true})
     batch.set(subTornamentRef, {
-      score: 0
+      ...newPlayer,
+      score_in_hole: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+       total: 0,
+       displayName: this.userState.displayName ? this.userState.displayName : 'Placeholder'
     }, {merge: true});
     try {
       await batch.commit();
+      this.allSubscriptions.push(await this.checkLeaderBoardAccess());
       this.toastr.success('You have success joined the tournament', 'Tournament Joined');
     } catch (error) {
       this.toastr.error(error);
@@ -201,6 +215,37 @@ async	onSubmit() {
 
   get handicapIndex(){
     return this.joinTournamentForm.get('handicapIndex')
+  }
+
+  async checkLeaderBoardAccess(): Promise<Subscription>{
+    console.log("User id");
+    console.log(this.userState.uid);
+   const playerData = (await this.db
+    .collection<Play>('tournaments')
+    .doc(this.parameterTournament)
+    .collection('players')
+    .doc(this.userState.uid)
+    .get()
+    .toPromise())
+
+    if(playerData.exists){
+      return new Promise<Subscription>((res, rej) => {
+        res(this.db
+          .collection<any>('tournaments')
+          .doc(this.parameterTournament)
+          .collection<Play>('players')
+        .valueChanges({ idField: 'id'})
+        .subscribe((leaderBoard) => {
+          this.leaderBoard = leaderBoard;
+        })
+        )
+      })      //  this.db.collection<Play>('tournaments').valueChanges({ idField: 'id'});
+    } else{
+      return new Promise((res, rej) => {
+        rej(null)
+      })
+    }
+
   }
 
   /**

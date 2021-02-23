@@ -118,7 +118,9 @@
 											<div class="col-md-12 col-sm-12 col-xs-12">
 												<h2 class="g-font-size-14--xs g-font-size-16--md">Scoreboard<span class="pull-right"><i class="ti-clipboard"></i></span></h2>
 
-												<div class="row">
+												<div
+                        *ngIf="!leaderBoard;else leaderboard"
+                        class="row">
 													<div class="col-md-12 col-sm-12 col-xs-12">
 														<p>
 															This scoreboard is only available to players who have joined the tournament
@@ -199,6 +201,48 @@
 														</form>
 													</div>
 												</div>
+                        <ng-template #leaderboard>
+                          <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                              <table>
+                                <thead>
+                                  <th>Name</th>
+                                  <th>Hole 1</th>
+                                  <th>Hole 2</th>
+                                  <th>Hole 3</th>
+                                  <th>Hole 4</th>
+                                  <th>Hole 5</th>
+                                  <th>Hole 6</th>
+                                  <th>Hole 7</th>
+                                  <th>Hole 8</th>
+                                  <th>Hole 9</th>
+                                  <th>Hole 10</th>
+                                  <th>Total</th>
+                                </thead>
+
+                                <tbody>
+                                  <tr *ngFor="let leaders of leaderBoard">
+                                    <td>{{leaders.displayName}}</td>
+                                    <td *ngFor="let score of leaders.score_in_hole">{{score}}</td>
+                                    <td>{{leaders.total}}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+
+                          <div class="row g-padding-x-20--xs g-padding-y-30--xs">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                              <button
+                              role="link"
+                              [routerLink]="['/score-card', parameterTournament]"
+                              class="text-uppercase s-btn s-btn--xs s-btn--dark-bg g-radius--3 btn-block">
+                              Play
+                            </button>
+                            </div>
+                          </div>
+                        </ng-template>
+
 
 											</div>
 										</div>
