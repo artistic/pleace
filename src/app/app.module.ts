@@ -48,6 +48,7 @@ import { InviteComponent } from './components/invite/invite.component';
 import { UserComponent } from './components/user/user.component';
 import { AddTournamentComponent } from './components/add-tournament/add-tournament.component';
 import { ScoreCardComponent } from './components/score-card/score-card.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -97,7 +98,8 @@ import { ScoreCardComponent } from './components/score-card/score-card.component
   ],
   providers: [
   Title,
-  NgAuthService
+  NgAuthService,
+  {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })
