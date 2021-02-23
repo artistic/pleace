@@ -195,7 +195,7 @@ continentsArray = [
       this.teesList = tees;
     })
   }
-	onSubmit() {
+	async onSubmit() {
     this.newTournament = {
       tournamentID : "",
       name: this.nameTournament.value,
@@ -212,7 +212,13 @@ continentsArray = [
       tee : this.tee.value,
     }
 		console.log(this.newTournament);
-		this.db.collection<Tournament>('tournaments').add(this.newTournament);
+		try {
+      await this.db.collection<Tournament>('tournaments').add(this.newTournament);
+      alert('Added successfully');
+    } catch (error) {
+      alert(error)
+    }
+
 		this.showForm = false;
 	}
   ngOnDestroy(){
