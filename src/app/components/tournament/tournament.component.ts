@@ -30,13 +30,13 @@ export class TournamentComponent implements OnInit {
 	faciltyID: string;
 	public parameterTournament: string;
 	public t: string;
-
+  accountType;
 	tournament$: Observable<Tournament[]>;
 	tee$: Observable<Tees[]>;
 	course$: Observable<Courses[]>;
 	club$: Observable<Clubs[]>;
 
-	
+
 
 	userState: any;
 	userRef: any;
@@ -50,7 +50,7 @@ export class TournamentComponent implements OnInit {
 	tournamnentList : any;
 
 
-	
+
 
 	constructor(
 		private router: Router,
@@ -71,7 +71,7 @@ export class TournamentComponent implements OnInit {
 				const data = a.payload.doc.data() as Tournament;
 				const id = a.payload.doc.id;
 				return { id, ...data };
-				
+
 			}))
 		);
 
@@ -98,10 +98,10 @@ export class TournamentComponent implements OnInit {
 			}))
 			);
 
-		this.club$ = this.db.collection<Club>('clubs', ref => ref.where('facilityID', '==', this.clubId))
+		this.club$ = this.db.collection<Clubs>('clubs', ref => ref.where('facilityID', '==', this.clubId))
 		.snapshotChanges().pipe(
 			map(actions => actions.map(a => {
-				const data = a.payload.doc.data() as Club;
+				const data = a.payload.doc.data() as Clubs;
 				const id = a.payload.doc.id;
 				return { id, ...data };
 				console.log(this.club$);
@@ -142,7 +142,7 @@ export class TournamentComponent implements OnInit {
 	onSubmit() {
 
 		this.db.collection<Play>('play').add(this.newPlayer);
-		this.toastr.success('You have success joined the tournament', 'Tournament Joined'); 
+		this.toastr.success('You have success joined the tournament', 'Tournament Joined');
 	}
 
 
