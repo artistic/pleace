@@ -1,4 +1,5 @@
-<div *ngFor="let trment of tournament$ | async; index as i">
+<!-- <div *ngFor="let trment of tournament$ | async; index as i"> -->
+  <div>
 	<div class="container g-margin-t-20--xs">
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
@@ -49,7 +50,7 @@
 
 													<li class="list-group-item">
 														<i class="g-color--primary g-margin-r-10--xs ti-crown"></i>
-														Division 
+														Division
 														<span class="pull-right" *ngIf="trment.divisions ==='1'"> Champs <i class="g-font-size-13--xs g-color--primary g-margin-l-10--xs ti-crown"></i> </span>
 														<span class="pull-right" *ngIf="trment.divisions ==='2'"> Celebrity <i class="g-font-size-13--xs g-color--primary g-margin-l-10--xs ti-star"></i> </span>
 														<span class="pull-right" *ngIf="trment.divisions ==='3'"> Tour Player <i class="g-font-size-13--xs g-color--primary g-margin-l-10--xs ti-cup"></i>  </span>
@@ -76,7 +77,7 @@
 													<li class="list-group-item">
 														<i class="g-color--primary g-margin-r-10--xs ti-world"></i>
 														Country <span class="pull-right">
-															<span *ngFor="let clb of club$ | async; index as i">
+															<span >
 																{{clb.country}}
 															</span>
 														</span>
@@ -84,7 +85,7 @@
 													<li class="list-group-item">
 														<i class="g-color--primary g-margin-r-10--xs ti-flag-alt-2"></i>
 														Club <span class="pull-right">
-															<span *ngFor="let clb of club$ | async; index as i">
+															<span >
 																{{clb.club_name}}
 															</span>
 														</span>
@@ -92,7 +93,7 @@
 													<li class="list-group-item">
 														<i class="g-color--primary g-margin-r-10--xs ti-flag-alt"></i>
 														Course <span class="pull-right">
-															<span *ngFor="let crse of course$ | async; index as i">
+															<span >
 																{{crse.course_name}}
 															</span>
 														</span>
@@ -100,7 +101,7 @@
 													<li class="list-group-item">
 														<i class="g-color--primary g-margin-r-10--xs ti-flag-alt"></i>
 														Tee <span class="pull-right">
-															<span *ngFor="let te of tee$ | async; index as i">
+															<span>
 																{{te.tee_name}}
 																{{te.tee_color}}
 															</span>
@@ -133,13 +134,13 @@
 																		<span class="input-group-btn">
 																			<i class="s-form-v4__icon ti-medall"></i>
 																		</span>
-																		<input 
-																		type="text" 
-																		class="form-control s-form-v4__input" 
+																		<input
+																		type="text"
+																		class="form-control s-form-v4__input"
 																		[(ngModel)]="newPlayer.handicapIndex"
-																		placeholder="Enter Course Handicap"  
+																		placeholder="Enter Course Handicap"
 																		name = "handicapIndex"
-																		id = "handicapIndex" 
+																		id = "handicapIndex"
 																		required
 																		/>
 																	</div>
@@ -190,7 +191,7 @@
 															</div>
 
 
-															
+
 														</form>
 													</div>
 												</div>

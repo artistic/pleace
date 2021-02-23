@@ -31,6 +31,10 @@ export class TournamentComponent implements OnInit {
 	public parameterTournament: string;
 	public t: string;
   accountType;
+  trment: Tournament;
+  te: Tees;
+  crse: Courses;
+  clb: Clubs;
 	tournament$: Observable<Tournament[]>;
 	tee$: Observable<Tees[]>;
 	course$: Observable<Courses[]>;
@@ -60,53 +64,81 @@ export class TournamentComponent implements OnInit {
 		public afAuth: AngularFireAuth,
 		private toastr: ToastrService
 		) {
-		this.activatedRoute.params.subscribe(parameter => {
-			this.parameterTournament = parameter.tournamentID
-			console.log(this.parameterTournament);
+		this.activatedRoute.params.subscribe(async (parameter) => {
+			if(parameter.tournamentID){
+
+        this.parameterTournament = parameter.tournamentID
+
+        console.log(this.parameterTournament);
+       // Get Tournament
+        this.trment = (await this.db.collection<Tournament>('tournaments')
+        .doc(this.parameterTournament)
+        .get()
+        .toPromise()
+        ).data()
+        this.clb = (await this.db
+          .collection<Clubs>('clubs')
+          .doc(this.trment.club)
+          .get()
+        .toPromise())
+        .data();
+        this.crse = (await this.db
+          .collection<Courses>('courses')
+          .doc(this.trment.course)
+          .get()
+          .toPromise()
+          ).data();
+          this.te = (await this.db.collection('tees').doc(this.trment.tee)
+          .get()
+          .toPromise()
+          ).data()
+    // Start
+		// this.tournament$ = this.db.collection<Tournament>('tournaments', ref => ref.where('tournamentID', '==', this.parameterTournament))
+		// .snapshotChanges().pipe(
+		// 	map(actions => actions.map(a => {
+		// 		const data = a.payload.doc.data() as Tournament;
+		// 		const id = a.payload.doc.id;
+		// 		return { id, ...data };
+
+		// 	}))
+		// );
+
+
+
+		// this.tee$ = this.db.collection<Tees>('tees', ref => ref.where('teeId', '==', this.teeId))
+		// .snapshotChanges().pipe(
+		// 	map(actions => actions.map(a => {
+		// 		const data = a.payload.doc.data() as Tees;
+		// 		const id = a.payload.doc.id;
+		// 		return { id, ...data };
+		// 		console.log(this.tee$);
+		// 	}))
+		// 	);
+
+
+		// this.course$ = this.db.collection<Courses>('courses', ref => ref.where('courseID', '==', this.courseId))
+		// .snapshotChanges().pipe(
+		// 	map(actions => actions.map(a => {
+		// 		const data = a.payload.doc.data() as Courses;
+		// 		const id = a.payload.doc.id;
+		// 		return { id, ...data };
+		// 		console.log(this.course$);
+		// 	}))
+		// 	);
+
+		// this.club$ = this.db.collection<Clubs>('clubs', ref => ref.where('facilityID', '==', this.clubId))
+		// .snapshotChanges().pipe(
+		// 	map(actions => actions.map(a => {
+		// 		const data = a.payload.doc.data() as Clubs;
+		// 		const id = a.payload.doc.id;
+		// 		return { id, ...data };
+		// 		console.log(this.club$);
+		// 	}))
+		// 	);
+
+      //End
+      }
 		});
-
-		this.tournament$ = this.db.collection<Tournament>('tournaments', ref => ref.where('tournamentID', '==', this.parameterTournament))
-		.snapshotChanges().pipe(
-			map(actions => actions.map(a => {
-				const data = a.payload.doc.data() as Tournament;
-				const id = a.payload.doc.id;
-				return { id, ...data };
-
-			}))
-		);
-
-
-
-		this.tee$ = this.db.collection<Tees>('tees', ref => ref.where('teeId', '==', this.teeId))
-		.snapshotChanges().pipe(
-			map(actions => actions.map(a => {
-				const data = a.payload.doc.data() as Tees;
-				const id = a.payload.doc.id;
-				return { id, ...data };
-				console.log(this.tee$);
-			}))
-			);
-
-
-		this.course$ = this.db.collection<Courses>('courses', ref => ref.where('courseID', '==', this.courseId))
-		.snapshotChanges().pipe(
-			map(actions => actions.map(a => {
-				const data = a.payload.doc.data() as Courses;
-				const id = a.payload.doc.id;
-				return { id, ...data };
-				console.log(this.course$);
-			}))
-			);
-
-		this.club$ = this.db.collection<Clubs>('clubs', ref => ref.where('facilityID', '==', this.clubId))
-		.snapshotChanges().pipe(
-			map(actions => actions.map(a => {
-				const data = a.payload.doc.data() as Clubs;
-				const id = a.payload.doc.id;
-				return { id, ...data };
-				console.log(this.club$);
-			}))
-			);
 
 		this.afAuth.authState.subscribe(user => {
 			if (user) {

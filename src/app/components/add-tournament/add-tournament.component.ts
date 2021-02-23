@@ -86,26 +86,20 @@ continentsArray = [
 	}
 
 	ngOnInit(): void {
-    this.tournamentsForm = this.fb.group({
-      nameTournament: ['', [Validators.required]],
-      startDate: ['', [Validators.required]],
-      regStartDate: ['', [Validators.required]],
-      regEndDate: ['', [Validators.required]],
-      endDate: ['', [Validators.required]],
-      divisions: ['', [Validators.required]],
-      continent: ['', [Validators.required]],
-      club: ['', [Validators.required]],
-      course: ['', [Validators.required]],
-      tee: ['', [Validators.required]],
-    })
+    this.createForm();
     let subscribe_holder = new Subscription();
-    subscribe_holder = this.continent.index.valueChanges.subscribe((change) => {
-        this.club.patchValue('');
-        this.course.patchValue('');
-        this.tee.patchValue('');
-        this.selectedContinent();
-    })
-    this.allSubscriptions.push(subscribe_holder);
+    // subscribe_holder = this.continent.index.valueChanges.subscribe((change) => {
+    //     this.club.patchValue('');
+    //     this.course.patchValue('');
+    //     this.tee.patchValue('');
+    //     this.selectedContinent();
+    // })
+    const hold_array = [this.club, this.course, this.tee]
+    this.allSubscriptions
+    .push(this.getFormObservable(this.continent
+      .index
+      .valueChanges, this.selectedContinent, hold_array));
+    // this.allSubscriptions.push(subscribe_holder);
     subscribe_holder =this.club.valueChanges.subscribe((change) => {
       this.selectedClub();
     })
@@ -154,6 +148,20 @@ continentsArray = [
 
   get tee(){
     return this.tournamentsForm.get('tee')
+  }
+  createForm(){
+    this.tournamentsForm = this.fb.group({
+      nameTournament: ['', [Validators.required]],
+      startDate: ['', [Validators.required]],
+      regStartDate: ['', [Validators.required]],
+      regEndDate: ['', [Validators.required]],
+      endDate: ['', [Validators.required]],
+      divisions: ['', [Validators.required]],
+      continent: ['', [Validators.required]],
+      club: ['', [Validators.required]],
+      course: ['', [Validators.required]],
+      tee: ['', [Validators.required]],
+    })
   }
   selectedContinent(){
     this.clubsSubscription.unsubscribe();
@@ -221,6 +229,16 @@ continentsArray = [
 
 		this.showForm = false;
 	}
+  getFormObservable(formObservable$: Observable<any>, callback: () => void, zeros: any[] = []){
+    return formObservable$.subscribe((value) => {
+      if(zeros.length != 0){
+        zeros.forEach((zero) => {
+          zero.patchValue('');
+        })
+      }
+      callback();
+    })
+  }
   ngOnDestroy(){
     this.allSubscriptions.forEach((sub) => {
       sub.unsubscribe()
