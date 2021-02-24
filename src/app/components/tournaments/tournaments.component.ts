@@ -73,7 +73,7 @@ export class TournamentsComponent implements OnInit {
   }
 
   playTournament() {
-  	this.toastr.error('Invalid division. Apply it in settings and try again', 'Cant Join'); 
+  	this.toastr.success('Invalid division. Apply it in settings and try again', 'Cant Join'); 
   }
 
 }

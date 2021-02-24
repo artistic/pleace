@@ -44,7 +44,7 @@
 														</a>
 													</span>
 													<ng-template #elseName>
-														<a (click)="playTournament">
+														<a (click)="playTournament()">
 															<strong>{{ tournaments.name}}</strong>
 														</a>
 													</ng-template>
@@ -64,7 +64,7 @@
 														</a>
 													</span>
 													<ng-template #elseBlock>
-														<span (click)="playTournament">
+														<span (click)="playTournament()">
 															<i class="g-color--danger g-margin-r-10--xs ti-eye"></i>
 														</span>
 													</ng-template>

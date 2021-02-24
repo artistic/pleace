@@ -47,7 +47,7 @@ export class CalculateComponent implements OnInit {
       this.rating = this.registerForm.get('rating').value;
       this.slope = this.registerForm.get('slope').value;
       this.par = this.registerForm.get('par').value;
-
+      
       //calculate
       this.courseHandicap = this.handicapIndex * this.slope;
 
