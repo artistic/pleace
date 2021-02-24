@@ -1,4 +1,5 @@
-<div *ngFor="let trment of tournament$ | async; index as i">
+<!-- <div *ngFor="let trment of tournament$ | async; index as i"> -->
+  <div>
 	<div class="container g-margin-t-20--xs">
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
@@ -6,7 +7,7 @@
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item"><a routerLink="/dashboard"><i class="g-color--primary g-margin-r-10--xs ti-panel"></i> Dashboard</a></li>
 						<li class="breadcrumb-item"><a routerLink="/tournaments"><i class="g-color--primary g-margin-r-10--xs ti-cup"></i> Tournaments</a></li>
-						<li class="breadcrumb-item active" aria-current="page"><i class="g-color--primary g-margin-r-10--xs ti-user"></i>  {{trment.name}}</li>
+						<li class="breadcrumb-item active" aria-current="page"><i class="g-color--primary g-margin-r-10--xs ti-user"></i>  {{trment?.name}}</li>
 					</ol>
 				</nav>
 			</div>
@@ -23,7 +24,7 @@
 
 						<div class="row">
 							<div class="col-md-12 col-sm-12 col-xs-12">
-								<h2 class="g-font-size-22--xs g-font-size-24--md">{{trment.name}}<span class="pull-right"><i class="ti-Cup"></i></span></h2>
+								<h2 class="g-font-size-22--xs g-font-size-24--md">{{trment?.name}}<span class="pull-right"><i class="ti-Cup"></i></span></h2>
 
 								<div class="row">
 									<div class="col-md-6 col-sm-12 col-xs-12">
@@ -34,26 +35,26 @@
 												<ul class="list-group list-group-flush">
 													<li class="list-group-item">
 														<i class="g-color--primary g-margin-r-10--xs ti-cup"></i>
-														Name <span class="pull-right">{{trment.name}}</span>
+														Name <span class="pull-right">{{trment?.name}}</span>
 													</li>
 
 													<li class="list-group-item">
 														<i class="g-color--primary g-margin-r-10--xs ti-calendar"></i>
-														Start Date <span class="pull-right">{{trment.startDate}}</span>
+														Start Date <span class="pull-right">{{trment?.startDate}}</span>
 													</li>
 
 													<li class="list-group-item">
 														<i class="g-color--primary g-margin-r-10--xs ti-calendar"></i>
-														End Date <span class="pull-right">{{trment.endDate}}</span>
+														End Date <span class="pull-right">{{trment?.endDate}}</span>
 													</li>
 
 													<li class="list-group-item">
 														<i class="g-color--primary g-margin-r-10--xs ti-crown"></i>
-														Division 
-														<span class="pull-right" *ngIf="trment.divisions ==='1'"> Champs <i class="g-font-size-13--xs g-color--primary g-margin-l-10--xs ti-crown"></i> </span>
-														<span class="pull-right" *ngIf="trment.divisions ==='2'"> Celebrity <i class="g-font-size-13--xs g-color--primary g-margin-l-10--xs ti-star"></i> </span>
-														<span class="pull-right" *ngIf="trment.divisions ==='3'"> Tour Player <i class="g-font-size-13--xs g-color--primary g-margin-l-10--xs ti-cup"></i>  </span>
-														<span class="pull-right" *ngIf="trment.divisions ==='4'"> PGA Professional <i class="g-font-size-13--xs g-color--primary g-margin-l-10--xs ti-cup"></i> </span>
+														Division
+														<span class="pull-right" *ngIf="trment?.divisions ==='1'"> Champs <i class="g-font-size-13--xs g-color--primary g-margin-l-10--xs ti-crown"></i> </span>
+														<span class="pull-right" *ngIf="trment?.divisions ==='2'"> Celebrity <i class="g-font-size-13--xs g-color--primary g-margin-l-10--xs ti-star"></i> </span>
+														<span class="pull-right" *ngIf="trment?.divisions ==='3'"> Tour Player <i class="g-font-size-13--xs g-color--primary g-margin-l-10--xs ti-cup"></i>  </span>
+														<span class="pull-right" *ngIf="trment?.divisions ==='4'"> PGA Professional <i class="g-font-size-13--xs g-color--primary g-margin-l-10--xs ti-cup"></i> </span>
 													</li>
 
 													<li class="list-group-item">
@@ -64,45 +65,45 @@
 													<li class="list-group-item">
 														<i class="g-color--primary g-margin-r-10--xs ti-world"></i>
 														Continent <span class="pull-right">
-															<span *ngIf="trment.continent ==='1'">Africa</span>
-															<span *ngIf="trment.continent ==='2'">Antarctica</span>
-															<span *ngIf="trment.continent ==='3'">Asia</span>
-															<span *ngIf="trment.continent ==='4'">Europe</span>
-															<span *ngIf="trment.continent ==='5'">North America</span>
-															<span *ngIf="trment.continent ==='6'">Oceania</span>
-															<span *ngIf="trment.continent ==='7'">South America</span>
+															<span *ngIf="trment?.continent ==='1'">Africa</span>
+															<span *ngIf="trment?.continent ==='2'">Antarctica</span>
+															<span *ngIf="trment?.continent ==='3'">Asia</span>
+															<span *ngIf="trment?.continent ==='4'">Europe</span>
+															<span *ngIf="trment?.continent ==='5'">North America</span>
+															<span *ngIf="trment?.continent ==='6'">Oceania</span>
+															<span *ngIf="trment?.continent ==='7'">South America</span>
 														</span>
 													</li>
 													<li class="list-group-item">
 														<i class="g-color--primary g-margin-r-10--xs ti-world"></i>
 														Country <span class="pull-right">
-															<span *ngFor="let clb of club$ | async; index as i">
-																{{clb.country}}
+															<span >
+																{{clb?.country}}
 															</span>
 														</span>
 													</li>
 													<li class="list-group-item">
 														<i class="g-color--primary g-margin-r-10--xs ti-flag-alt-2"></i>
 														Club <span class="pull-right">
-															<span *ngFor="let clb of club$ | async; index as i">
-																{{clb.club_name}}
+															<span >
+																{{clb?.club_name}}
 															</span>
 														</span>
 													</li>
 													<li class="list-group-item">
 														<i class="g-color--primary g-margin-r-10--xs ti-flag-alt"></i>
 														Course <span class="pull-right">
-															<span *ngFor="let crse of course$ | async; index as i">
-																{{crse.course_name}}
+															<span >
+																{{crse?.course_name}}
 															</span>
 														</span>
 													</li>
 													<li class="list-group-item">
 														<i class="g-color--primary g-margin-r-10--xs ti-flag-alt"></i>
 														Tee <span class="pull-right">
-															<span *ngFor="let te of tee$ | async; index as i">
-																{{te.tee_name}}
-																{{te.tee_color}}
+															<span>
+																{{te?.tee_name}}
+																{{te?.tee_color}}
 															</span>
 														</span>
 													</li>
@@ -117,7 +118,9 @@
 											<div class="col-md-12 col-sm-12 col-xs-12">
 												<h2 class="g-font-size-14--xs g-font-size-16--md">Scoreboard<span class="pull-right"><i class="ti-clipboard"></i></span></h2>
 
-												<div class="row">
+												<div
+                        *ngIf="!leaderBoard;else leaderboard"
+                        class="row">
 													<div class="col-md-12 col-sm-12 col-xs-12">
 														<p>
 															This scoreboard is only available to players who have joined the tournament
@@ -126,20 +129,22 @@
 														<p>
 															This scoreboard is only available to players who have joined the tournament
 														</p>
-														<form (ngSubmit)="onSubmit()" #joinTournamentForm="ngForm" novalidate>
+														<form (ngSubmit)="onSubmit()"
+                            [formGroup]="joinTournamentForm"
+                             novalidate>
 															<div class="row">
 																<div class="col-md-4 col-sm-12 col-xs-12">
 																	<div class="input-group g-margin-b-10--xs">
 																		<span class="input-group-btn">
 																			<i class="s-form-v4__icon ti-medall"></i>
 																		</span>
-																		<input 
-																		type="text" 
-																		class="form-control s-form-v4__input" 
-																		[(ngModel)]="newPlayer.handicapIndex"
-																		placeholder="Enter Course Handicap"  
+																		<input
+																		type="text"
+																		class="form-control s-form-v4__input"
+                                    formControlName="handicapIndex"
+																		placeholder="Enter Course Handicap"
 																		name = "handicapIndex"
-																		id = "handicapIndex" 
+																		id = "handicapIndex"
 																		required
 																		/>
 																	</div>
@@ -152,18 +157,18 @@
 																</div>
 															</div>
 
-															<div class="row text-center g-padding-x-20--xs g-padding-y-30--xs" *ngFor="let te of tee$ | async; index as i">
+															<div class="row text-center g-padding-x-20--xs g-padding-y-30--xs" >
 																<div class="col-md-4 col-sm-4 col-xs-4">
 																	<strong>Rating</strong><br>
-																	{{te.rating}}
+																	{{te?.rating}}
 																</div>
 																<div class="col-md-4 col-sm-4 col-xs-4">
 																	<strong>Slope</strong><br>
-																	{{te.slope}}
+																	{{te?.slope}}
 																</div>
 																<div class="col-md-4 col-sm-4 col-xs-4">
 																	<strong>Par</strong><br>
-																	{{te.course_par_for_tee}}
+																	{{te?.course_par_for_tee}}
 																</div>
 															</div>
 
@@ -185,15 +190,59 @@
 
 															<div class="row g-padding-x-20--xs g-padding-y-30--xs">
 																<div class="col-md-12 col-sm-12 col-xs-12">
-																	<button type="submit" class="text-uppercase s-btn s-btn--xs s-btn--dark-bg g-radius--3 btn-block">Submit</button>
+																	<button type="submit"
+                                  [disabled]="handicapIndex.value == ''"
+                                  class="text-uppercase s-btn s-btn--xs s-btn--dark-bg g-radius--3 btn-block">Join</button>
 																</div>
 															</div>
 
 
-															
+
 														</form>
 													</div>
 												</div>
+                        <ng-template #leaderboard>
+                          <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                              <table>
+                                <thead>
+                                  <th>Name</th>
+                                  <th>Hole 1</th>
+                                  <th>Hole 2</th>
+                                  <th>Hole 3</th>
+                                  <th>Hole 4</th>
+                                  <th>Hole 5</th>
+                                  <th>Hole 6</th>
+                                  <th>Hole 7</th>
+                                  <th>Hole 8</th>
+                                  <th>Hole 9</th>
+                                  <th>Hole 10</th>
+                                  <th>Total</th>
+                                </thead>
+
+                                <tbody>
+                                  <tr *ngFor="let leaders of leaderBoard">
+                                    <td>{{leaders.displayName}}</td>
+                                    <td *ngFor="let score of leaders.score_in_hole">{{score}}</td>
+                                    <td>{{leaders.total}}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+
+                          <div class="row g-padding-x-20--xs g-padding-y-30--xs">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                              <button
+                              role="link"
+                              [routerLink]="['/score-card', parameterTournament]"
+                              class="text-uppercase s-btn s-btn--xs s-btn--dark-bg g-radius--3 btn-block">
+                              Play
+                            </button>
+                            </div>
+                          </div>
+                        </ng-template>
+
 
 											</div>
 										</div>

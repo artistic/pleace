@@ -47,6 +47,8 @@ import { HelpComponent } from './components/help/help.component';
 import { InviteComponent } from './components/invite/invite.component';
 import { UserComponent } from './components/user/user.component';
 import { AddTournamentComponent } from './components/add-tournament/add-tournament.component';
+import { ScoreCardComponent } from './components/score-card/score-card.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -76,6 +78,7 @@ import { AddTournamentComponent } from './components/add-tournament/add-tourname
     InviteComponent,
     UserComponent,
     AddTournamentComponent,
+    ScoreCardComponent,
 
   ],
   imports: [
@@ -84,8 +87,8 @@ import { AddTournamentComponent } from './components/add-tournament/add-tourname
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    FormsModule,
     ReactiveFormsModule,
+    FormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     NgxPaginationModule,
@@ -95,7 +98,8 @@ import { AddTournamentComponent } from './components/add-tournament/add-tourname
   ],
   providers: [
   Title,
-  NgAuthService
+  NgAuthService,
+  {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })
