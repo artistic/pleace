@@ -49,9 +49,6 @@ export class TournamentComponent implements OnInit, OnDestroy {
 	crrntUsr: any;
 	userEmail: any;
 	userID : any;
-	teeId : any = 'COL-AN-0004-02-01';
-	courseId : any = 'BFA-KA-0001-01';
-	clubId : any = 'AUS-NS-0200';
 	player : any;
 	tournamnentList : any;
 
@@ -195,7 +192,7 @@ async	onSubmit() {
     batch.set(playRef, {uid: this.userState.uid}, {merge: true})
     batch.set(subTornamentRef, {
       ...newPlayer,
-      score_in_hole: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      score_in_hole: [0, 0, 0, 0, 0, 0, 0, 0, 0],
        total: 0,
        displayName: this.userState.displayName ? this.userState.displayName : 'Placeholder'
     }, {merge: true});

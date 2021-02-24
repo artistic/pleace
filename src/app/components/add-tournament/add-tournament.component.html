@@ -76,7 +76,7 @@
 															type="date"
 															class="form-control s-form-v4__input"
 															placeholder="End Date"
-                              formControlName="endDate"
+															formControlName="endDate"
 															name = "endDate"
 															id = "endDate"
 
@@ -94,7 +94,7 @@
 															<select
 															class="form-control s-form-v4__input"
 															style="width: 100%;"
-                              formControlName="divisions"
+															formControlName="divisions"
 															name = "divisions"
 															id = "divisions"
 
@@ -102,7 +102,8 @@
 															<option value="">Account Type</option>
 															<option value="1">Champion</option>
 															<option value="2">Celebrity</option>
-															<option value="3">Pro Golfer</option>
+															<option value="3">Tour Player</option>
+															<option value="4">PGA Professional</option>
 														</select>
 													</div>
 												</div>
@@ -120,7 +121,7 @@
 														<input
 														type="date"
 														class="form-control s-form-v4__input"
-                            formControlName="regStartDate"
+														formControlName="regStartDate"
 														placeholder="Registration Start Date"
 														name = "regStartDate"
 														id = "regStartDate"
@@ -137,7 +138,7 @@
 														type="date"
 														class="form-control s-form-v4__input"
 														placeholder="Registration End Date"
-                            formControlName="regEndDate"
+														formControlName="regEndDate"
 														name = "regEndDate"
 														id = "regEndDate"
 
@@ -157,7 +158,7 @@
 														class="form-control s-form-v4__input"
 														style="width: 100%;"
 														name = "continent"
-                            formControlName = "continent"
+														formControlName = "continent"
 														id = "continent"
 
 														>
@@ -175,14 +176,14 @@
 													class="form-control s-form-v4__input"
 													style="width: 100%;"
 													name = "club"
-                          formControlName = "club"
+													formControlName = "club"
 													id = "club"
 													>
 													<option
-                          value="">{{continent.index.value == '' ? 'Select continent first' : 'Clubs'}}</option>
+													value="">{{continent.index.value == '' ? 'Select continent first' : 'Clubs'}}</option>
 													<option *ngFor="let club of clubsList" [value]="club.id">
-                            {{club.club_name}}
-                          </option>
+														{{club.club_name}}
+													</option>
 												</select>
 											</div>
 										</div>
@@ -195,14 +196,14 @@
 												class="form-control s-form-v4__input"
 												style="width: 100%;"
 												name = "course"
-                        formControlName = "course"
+												formControlName = "course"
 												id = "course"
 
 												>
 												<option value="">
-                          {{club.value == '' ? 'Select Club first' : 'Courses'}}
+													{{club.value == '' ? 'Select Club first' : 'Courses'}}
 
-                        </option>
+												</option>
 												<option *ngFor="let course of coursesList" [value]="course.id">{{course.course_name}}</option>
 											</select>
 										</div>
@@ -220,7 +221,7 @@
 
 											style="width: 100%;"
 											name = "tee"
-                      formControlName = "tee"
+											formControlName = "tee"
 											id = "tee"
 
 											>
@@ -266,7 +267,7 @@
 								<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-calendar"></i>End Date
 								<span class="pull-right">{{endDate.value}}</span>
 							</li>
-              <li *ngIf="divisions.index.value != ''">
+							<li *ngIf="divisions.index.value != ''">
 								<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-cup"></i>Division
 								<span class="pull-right">{{divisions.name}}</span>
 							</li>

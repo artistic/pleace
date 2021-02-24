@@ -31,18 +31,18 @@
 											<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-user"></i>
 											Users <span class="pull-right g-color--primary">12</span>
 										</li>
-										<li class="list-group-item" (click)="setClubs()">
+										<!-- <li class="list-group-item" (click)="setClubs()">
 											<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-flag-alt-2"></i>
 											Clubs <span class="pull-right g-color--primary">12</span>
-										</li>
-										<li class="list-group-item" (click)="setCourses()">
+										</li> -->
+										<!-- <li class="list-group-item" (click)="setCourses()">
 											<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-flag-alt"></i>
 											Courses <span class="pull-right g-color--primary">12</span>
-										</li>
-										<li class="list-group-item" (click)="setRankings()">
+										</li> -->
+										<!-- <li class="list-group-item" (click)="setRankings()">
 											<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-receipt"></i>
 											Rankings <span class="pull-right g-color--primary">12</span>
-										</li>
+										</li> -->
 										<li class="list-group-item" (click)="setTournaments()">
 											<i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-cup"></i>
 											Tournaments <span class="pull-right g-color--primary">12</span>
@@ -305,9 +305,10 @@
 										<thead class="thead-dark">
 											<tr>
 												<th style="width:5%;">#</th>
-												<th style="width:35%;">Tournament Name</th>
-												<th style="width:25%;">Tournament Category</th>
-												<th style="width:30%;">Course</th>
+												<th style="width:35%;">Name</th>
+												<th style="width:25%;">Category</th>
+												<th style="width:15%;">Start Date</th>
+												<th style="width:15%;">End Date</th>
 												<th style="width:5%;"></th>
 											</tr>
 										</thead>
@@ -315,19 +316,20 @@
 											<tr *ngFor="let trmnt of trmnt$ | async; index as i">
 												<td>#</td>
 												<td>
-													<a [routerLink]="['/trmnt', trmnt.id]">
-														{{trmnt.tournament_name}}
+													<a [routerLink]="['/tournament', trmnt.id]">
+														{{trmnt.name}}
 													</a>
 												</td>
 												<td>
-													<span *ngIf="trmnt.tournament_category ==='1'">Champs</span>
-													<span *ngIf="trmnt.tournament_category ==='2'">Celebrity</span>
-													<span *ngIf="trmnt.tournament_category ==='3'">Tour Player</span>
-													<span *ngIf="trmnt.tournament_category ==='4'">PGA Professional</span>
+													<span *ngIf="trmnt.divisions ==='1'">Champs</span>
+													<span *ngIf="trmnt.divisions ==='2'">Celebrity</span>
+													<span *ngIf="trmnt.divisions ==='3'">Tour Player</span>
+													<span *ngIf="trmnt.divisions ==='4'">PGA Professional</span>
 												</td>
-												<td>{{trmnt.courseID}}</td>
+												<td>{{trmnt.startDate}}</td>
+												<td>{{trmnt.endDate}}</td>
 												<td>
-													<a [routerLink]="['/trmnt', trmnt.id]">
+													<a [routerLink]="['/tournament', trmnt.id]">
 														<i class="ti-eye"></i>
 													</a>
 												</td>

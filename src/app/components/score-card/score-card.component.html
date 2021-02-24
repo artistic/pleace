@@ -57,73 +57,129 @@
           <!-- search -->
           <div *ngIf="formLoaded" class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
+
+              <h2 class="g-font-size-14--xs g-font-size-16--md">Lets Enter Your Scores<span class="pull-right"><i class="ti-clipboard"></i></span></h2>
+
               <form [formGroup]="scorecard">
 
-                <div class="row g-margin-b-10--xs g-margin-b-20--md">
-                  <div class="col-sm-1">
+                <div class="row">
+                  <div class="col-md-9 col-sm-9 col-xs-9">
                     <div class="input-group g-margin-b-10--xs">
-                      <label>H1</label>
                       <input type="text" class="form-control s-form-v4__input"
                       formControlName="hole1"
-                      required>
+                      required
+                      placeholder="Hole 1 Score Here"
+                      >
                     </div>
                   </div>
-                  <div class="col-sm-1">
-                    <div class="input-group g-margin-b-10--xs">
-                      <label>H2</label>
-                      <input type="text" class="form-control s-form-v4__input" formControlName="hole2">
-                    </div>
-                  </div>
-                  <div class="col-sm-1">
-                    <div class="input-group g-margin-b-10--xs">
-                      <label>H3</label>
-                      <input type="text" class="form-control s-form-v4__input" formControlName="hole3">
-                    </div>
-                  </div>
-                  <div class="col-sm-1">
-                    <div class="input-group g-margin-b-10--xs">
-                      <label>H4</label>
-                      <input type="text" class="form-control s-form-v4__input" #userName formControlName="hole4">
-                    </div>
-                  </div>
-                  <div class="col-sm-1">
-                    <div class="input-group g-margin-b-10--xs">
-                      <label>H5</label>
-                      <input type="text" class="form-control s-form-v4__input" formControlName="hole5">
-                    </div>
-                  </div>
-                  <div class="col-sm-1">
-                    <div class="input-group g-margin-b-10--xs">
-                      <label>H6</label>
-                      <input type="text" class="form-control s-form-v4__input" formControlName="hole6">
-                    </div>
-                  </div>
-                  <div class="col-sm-1">
-                    <div class="input-group g-margin-b-10--xs">
-                      <label>H7</label>
-                      <input type="text" class="form-control s-form-v4__input" formControlName="hole7">
-                    </div>
-                  </div>
-                  <div class="col-sm-1">
-                    <div class="input-group g-margin-b-10--xs">
-                      <label>H8</label>
-                      <input type="text" class="form-control s-form-v4__input" formControlName="hole8">
-                    </div>
-                  </div>
-                  <div class="col-sm-1">
-                    <div class="input-group g-margin-b-10--xs">
-                      <label>H9</label>
-                      <input type="text" class="form-control s-form-v4__input" formControlName="hole9">
-                    </div>
-                  </div>
-                  <div class="col-sm-1">
-                    <div class="input-group g-margin-b-10--xs">
-                      <label>H10</label>
-                      <input type="text" class="form-control s-form-v4__input"  formControlName="hole10">
-                    </div>
-                  </div>
-
+                  <div class="col-md-3 col-sm-3 col-xs-3">Boogie</div>
                 </div>
+
+                <div class="row">
+                  <div class="col-md-9 col-sm-9 col-xs-9">
+                    <div class="input-group g-margin-b-10--xs">
+                      <input type="text" class="form-control s-form-v4__input"
+                      formControlName="hole2"
+                      required
+                      placeholder="Hole 2 Score Here"
+                      >
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-sm-3 col-xs-3">Boogie</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-9 col-sm-9 col-xs-9">
+                    <div class="input-group g-margin-b-10--xs">
+                      <input type="text" class="form-control s-form-v4__input"
+                      formControlName="hole3"
+                      required
+                      placeholder="Hole 3 Score Here"
+                      >
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-sm-3 col-xs-3">Boogie</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-9 col-sm-9 col-xs-9">
+                    <div class="input-group g-margin-b-10--xs">
+                      <input type="text" class="form-control s-form-v4__input"
+                      formControlName="hole4"
+                      required
+                      placeholder="Hole 4 Score Here"
+                      >
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-sm-3 col-xs-3">Boogie</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-9 col-sm-9 col-xs-9">
+                    <div class="input-group g-margin-b-10--xs">
+                      <input type="text" class="form-control s-form-v4__input"
+                      formControlName="hole5"
+                      required
+                      placeholder="Hole 5 Score Here"
+                      >
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-sm-3 col-xs-3">Boogie</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-9 col-sm-9 col-xs-9">
+                    <div class="input-group g-margin-b-10--xs">
+                      <input type="text" class="form-control s-form-v4__input"
+                      formControlName="hole6"
+                      required
+                      placeholder="Hole 6 Score Here"
+                      >
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-sm-3 col-xs-3">Boogie</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-9 col-sm-9 col-xs-9">
+                    <div class="input-group g-margin-b-10--xs">
+                      <input type="text" class="form-control s-form-v4__input"
+                      formControlName="hole7"
+                      required
+                      placeholder="Hole 7 Score Here"
+                      >
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-sm-3 col-xs-3">Boogie</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-9 col-sm-9 col-xs-9">
+                    <div class="input-group g-margin-b-10--xs">
+                      <input type="text" class="form-control s-form-v4__input"
+                      formControlName="hole8"
+                      required
+                      placeholder="Hole 8 Score Here"
+                      >
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-sm-3 col-xs-3">Boogie</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-9 col-sm-9 col-xs-9">
+                    <div class="input-group g-margin-b-10--xs">
+                      <input type="text" class="form-control s-form-v4__input"
+                      formControlName="hole9"
+                      required
+                      placeholder="Hole 9 Score Here"
+                      >
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-sm-3 col-xs-3">Boogie</div>
+                </div>
+
+
                 <div class="row">
                   <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="formGroup">

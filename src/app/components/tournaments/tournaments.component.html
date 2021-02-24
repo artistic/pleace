@@ -28,8 +28,10 @@
 									<table class="table table-hover table-responsive">
 										<thead>
 											<tr>
-												<th style="width: 75%;">Tournament Name</th>
-												<th style="width: 20%;">Category</th>
+												<th style="width: 45%;">Tournament Name</th>
+												<th style="width: 20%;">Start Date</th>
+												<th style="width: 20%;">End Date</th>
+												<th style="width: 10%;">Division</th>
 												<th style="width: 5%;"></th>
 											</tr>
 										</thead>
@@ -40,7 +42,14 @@
 														<strong>{{ tournaments.name}}</strong>
 													</a>
 												</td>
-												<td>10</td>
+												<td>{{ tournaments.startDate}}</td>
+												<td>{{ tournaments.endDate}}</td>
+												<td>
+													<span *ngIf="tournaments.divisions ==='1'">Champs</span>
+													<span *ngIf="tournaments.divisions ==='2'">Celebrity</span>
+													<span *ngIf="tournaments.divisions ==='3'">Tour Player</span>
+													<span *ngIf="tournaments.divisions ==='4'">PGA Professional</span>
+												</td>
 												<td>
 													<a [routerLink]="['/tournament', tournaments.id]">
 														<i class="g-color--primary g-margin-r-10--xs ti-eye"></i>
