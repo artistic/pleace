@@ -60,8 +60,9 @@ export class TournamentComponent implements OnInit, OnDestroy {
 	userID : any;
 	player : any;
 	tournamnentList : any;
-
-  teeID:any;
+  courseParTop = []
+  courseParBottom = []
+  teeID:any = '';
 
 
 
@@ -182,6 +183,10 @@ export class TournamentComponent implements OnInit, OnDestroy {
           this.rating = this.te.rating;
           this.slope = this.te.slope;
           this.par = this.te.course_par_for_tee;
+          this.calculateScore(this.te);
+          console.log("the tee")
+          console.log(this.te)
+
         }
 		});
   }
@@ -291,6 +296,7 @@ async	onSubmit() {
         .valueChanges({ idField: 'id'})
         .subscribe((leaderBoard) => {
           this.leaderBoard = leaderBoard;
+
         })
         )
       })      //  this.db.collection<Play>('tournaments').valueChanges({ idField: 'id'});
@@ -300,6 +306,40 @@ async	onSubmit() {
       })
     }
 
+  }
+
+  calculateScore(tes: any){
+    this.courseParTop = this.retrieveParsAsInts(tes.hole1,
+      tes.hole2,
+      tes.hole3,
+      tes.hole4,
+      tes.hole5,
+      tes.hole6,
+      tes.hole7,
+      tes.hole8,
+      tes.hole9)
+      this.courseParBottom = this.retrieveParsAsInts(tes.hole10,
+        tes.hole11,
+        tes.hole12,
+        tes.hole13,
+        tes.hole14,
+        tes.hole15,
+        tes.hole16,
+        tes.hole17,
+        tes.hole18)
+  }
+  retrieveParsAsInts(h1, h2, h3, h4, h5, h6, h7, h8, h9){
+    const hold_array = [];
+    hold_array.push(parseInt(h1));
+    hold_array.push(parseInt(h2));
+    hold_array.push(parseInt(h3));
+    hold_array.push(parseInt(h4));
+    hold_array.push(parseInt(h5));
+    hold_array.push(parseInt(h6));
+    hold_array.push(parseInt(h7));
+    hold_array.push(parseInt(h8));
+    hold_array.push(parseInt(h9));
+    return [...hold_array]
   }
 
   /**

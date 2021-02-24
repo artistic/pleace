@@ -227,16 +227,7 @@
 															<tbody>
 																<tr>
 																	<td style="width: 20%;">Par</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
+                                  <td style="width: 10%;" *ngFor="let par of courseParTop">{{par}}</td>
 																</tr>
 																<tr *ngFor="let leaders of leaderBoard">
 																	<td style="width: 20%;">Strokes</td>
