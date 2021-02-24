@@ -90,18 +90,18 @@ export class AddTournamentComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.createForm();
     let subscribe_holder = new Subscription();
-    // subscribe_holder = this.continent.index.valueChanges.subscribe((change) => {
-      //     this.club.patchValue('');
-      //     this.course.patchValue('');
-      //     this.tee.patchValue('');
-      //     this.selectedContinent();
-      // })
+    subscribe_holder = this.continent.index.valueChanges.subscribe((change) => {
+          this.club.patchValue('');
+          this.course.patchValue('');
+          this.tee.patchValue('');
+          this.selectedContinent();
+      })
       const hold_array = [this.club, this.course, this.tee]
-      this.allSubscriptions
-      .push(this.getFormObservable(this.continent
-        .index
-        .valueChanges, this.selectedContinent, hold_array));
-      // this.allSubscriptions.push(subscribe_holder);
+      // this.allSubscriptions
+      // .push(this.getFormObservable(this.continent
+      //   .index
+      //   .valueChanges, this.selectedContinent, hold_array));
+      this.allSubscriptions.push(subscribe_holder);
       subscribe_holder =this.club.valueChanges.subscribe((change) => {
         this.selectedClub();
       })
@@ -224,9 +224,9 @@ export class AddTournamentComponent implements OnInit, OnDestroy {
           console.log(this.newTournament);
           try {
             await this.db.collection<Tournament>('tournaments').add(this.newTournament);
-            this.toastr.success('Tournament Has Been Successfully Added', 'Tournament Created'); 
+            this.toastr.success('Tournament Has Been Successfully Added', 'Tournament Created');
           } catch (error) {
-            this.toastr.error('Something Went Wrong', 'Tournament Error'); 
+            this.toastr.error('Something Went Wrong', 'Tournament Error');
           }
 
           this.showForm = false;
