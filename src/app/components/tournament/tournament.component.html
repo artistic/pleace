@@ -115,7 +115,7 @@
 
 										<div class="col-md-6 col-sm-12 col-xs-12">
 											<div class="row">
-												<div class="col-md-12 col-sm-12 col-xs-12">
+												<div class="col-md-12 col-sm-12 col-xs-12 g-margin-t-20--xs">
 													<h2 class="g-font-size-14--xs g-font-size-16--md">Scorecard<span class="pull-right"><i class="ti-clipboard"></i></span></h2>
 
 													<div
@@ -178,11 +178,11 @@
 																<div class="row">
 																	<div class="col-md-9 col-sm-9 col-xs-9 hndSmall text-center g-padding-t-20--xs">
 																		<p class="g-font-size-16--xs g-font-size-18--md">
-																			Your course handicap is : <span *ngIf="!!handicapIndex.value">{{rndtotalIndex}}</span>
+																			Your course handicap is :
 																		</p>
 																	</div>
 																	<div class="col-md-3 col-sm-3 col-xs-3 text-center hndBig">
-
+																		<span *ngIf="!!handicapIndex.value">{{rndtotalIndex}}</span>
 																	</div>
 																</div>
 															</div>
@@ -207,8 +207,8 @@
 												</div>
 											</div>
 											<ng-template #leaderboard>
-												<div class="row">
-													<div class="col-md-12 col-sm-12 col-xs-12 text-center">
+												<div class="row g-margin-b-30--xs">
+													<div class="col-md-12 col-sm-12 col-xs-12">
 														<table>
 															<thead>
 																<th style="width: 20%;">Hole</th>
@@ -227,7 +227,52 @@
 															<tbody>
 																<tr>
 																	<td style="width: 20%;">Par</td>
-                                  <td style="width: 10%;" *ngFor="let par of courseParTop">{{par}}</td>
+																	<td style="width: 10%;" *ngFor="let par of courseParTop">{{par}}</td>
+																</tr>
+																<tr *ngFor="let leaders of leaderBoard">
+																	<td style="width: 20%;">Strokes</td>
+																	<td style="width: 10%;" *ngFor="let score of leaders.score_in_hole">{{score}}</td>
+																	<td>{{leaders.total}}</td>
+																</tr>
+																<tr>
+																	<td style="width: 20%;">Score</td>
+																	<td style="width: 10%;">x</td>
+																	<td style="width: 10%;">x</td>
+																	<td style="width: 10%;">x</td>
+																	<td style="width: 10%;">x</td>
+																	<td style="width: 10%;">x</td>
+																	<td style="width: 10%;">x</td>
+																	<td style="width: 10%;">x</td>
+																	<td style="width: 10%;">x</td>
+																	<td style="width: 10%;">x</td>
+																	<td style="width: 10%;">x</td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="col-md-12 col-sm-12 col-xs-12">
+														<table>
+															<thead>
+																<th style="width: 20%;">Hole</th>
+																<th style="width: 10%;">10</th>
+																<th style="width: 10%;">11</th>
+																<th style="width: 10%;">12</th>
+																<th style="width: 10%;">13</th>
+																<th style="width: 10%;">14</th>
+																<th style="width: 10%;">15</th>
+																<th style="width: 10%;">16</th>
+																<th style="width: 10%;">17</th>
+																<th style="width: 10%;">18</th>
+																<th style="width: 10%;">Ttl</th>
+															</thead>
+
+															<tbody>
+																<tr>
+																	<td style="width: 20%;">Par</td>
+																	<td style="width: 10%;" *ngFor="let par of courseParBottom">{{par}}</td>
 																</tr>
 																<tr *ngFor="let leaders of leaderBoard">
 																	<td style="width: 20%;">Strokes</td>

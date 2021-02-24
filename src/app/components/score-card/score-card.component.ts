@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 import Play from 'src/app/models/play.model';
 import User from 'src/app/models/user.model';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -21,7 +22,10 @@ export class ScoreCardComponent implements OnInit {
   formLoaded = false;
   constructor(private fb: FormBuilder, private db: AngularFirestore,
     private afAuth: AngularFireAuth,
-    private activatedRoute: ActivatedRoute,) { }
+    private activatedRoute: ActivatedRoute,
+    private toastr: ToastrService
+
+    ) { }
 
   ngOnInit(): void {
     this.afAuth.authState.subscribe(async (user) => {
@@ -50,8 +54,7 @@ export class ScoreCardComponent implements OnInit {
       hole6: [this.RZIF(this.score_in_hole[5]), [Validators.required]],
       hole7: [this.RZIF(this.score_in_hole[6]), [Validators.required]],
       hole8: [this.RZIF(this.score_in_hole[7]), [Validators.required]],
-      hole9: [this.RZIF(this.score_in_hole[8]), [Validators.required]],
-      hole10: [this.RZIF(this.score_in_hole[9]), [Validators.required]]
+      hole9: [this.RZIF(this.score_in_hole[8]), [Validators.required]]
     })
   }
 
@@ -108,8 +111,7 @@ export class ScoreCardComponent implements OnInit {
       this.RZIF(this.hole6.value),
       this.RZIF(this.hole7.value),
       this.RZIF(this.hole8.value),
-      this.RZIF(this.hole9.value),
-      this.RZIF(this.hole10.value)]
+      this.RZIF(this.hole9.value)]
   }
   get total(){
     let total = 0;
@@ -127,8 +129,7 @@ export class ScoreCardComponent implements OnInit {
     .collection('players')
     .doc(this.user.uid)
     .set({score_in_hole: this.completeHoleArray, total: this.total}, {merge: true})
-
-    alert('Progress saved');
+     this.toastr.success('Your stroke score has been saved', 'Scorecard Updated'); 
   }
   onFinish(){
 

@@ -309,24 +309,26 @@ async	onSubmit() {
   }
 
   calculateScore(tes: any){
-    this.courseParTop = this.retrieveParsAsInts(tes.hole1,
-      tes.hole2,
-      tes.hole3,
-      tes.hole4,
-      tes.hole5,
-      tes.hole6,
-      tes.hole7,
-      tes.hole8,
-      tes.hole9)
-      this.courseParBottom = this.retrieveParsAsInts(tes.hole10,
-        tes.hole11,
-        tes.hole12,
-        tes.hole13,
-        tes.hole14,
-        tes.hole15,
-        tes.hole16,
-        tes.hole17,
-        tes.hole18)
+    this.courseParTop = this.retrieveParsAsInts(
+      tes.hole1_par,
+      tes.hole2_par,
+      tes.hole3_par,
+      tes.hole4_par,
+      tes.hole5_par,
+      tes.hole6_par,
+      tes.hole7_par,
+      tes.hole8_par,
+      tes.hole9_par)
+      this.courseParBottom = this.retrieveParsAsInts(
+        tes.hole10_par,
+        tes.hole11_par,
+        tes.hole12_par,
+        tes.hole13_par,
+        tes.hole14_par,
+        tes.hole15_par,
+        tes.hole16_par,
+        tes.hole17_par,
+        tes.hole18_par)
   }
   retrieveParsAsInts(h1, h2, h3, h4, h5, h6, h7, h8, h9){
     const hold_array = [];
