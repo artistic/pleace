@@ -135,7 +135,7 @@
 																		<i class="s-form-v4__icon ti-medall"></i>
 																	</span>
 																	<input
-																	type="text"
+																	type="number"
 																	class="form-control s-form-v4__input"
 																	formControlName="handicapIndex"
 																	placeholder="Enter Your Course Handicap"
@@ -153,7 +153,7 @@
 														<ng-template #elseName>
 															<div class="row">
 																<div class="col-md-12 col-sm-12 col-xs-12">
-																	
+
 																</div>
 															</div>
 														</ng-template>
@@ -178,18 +178,18 @@
 																<div class="row">
 																	<div class="col-md-9 col-sm-9 col-xs-9 hndSmall text-center g-padding-t-20--xs">
 																		<p class="g-font-size-16--xs g-font-size-18--md">
-																			Your course handicap is :
+																			Your course handicap is : <span *ngIf="!!handicapIndex.value">{{rndtotalIndex}}</span>
 																		</p>
 																	</div>
 																	<div class="col-md-3 col-sm-3 col-xs-3 text-center hndBig">
-																		
+
 																	</div>
 																</div>
 															</div>
 														</div>
 
 														<ng-template #elseCalculated>
-															
+
 														</ng-template>
 
 

@@ -42,8 +42,17 @@ export class TournamentComponent implements OnInit, OnDestroy {
 	course$: Observable<Courses[]>;
 	club$: Observable<Clubs[]>;
   joinTournamentForm: FormGroup = new FormGroup({});
+	courseHandicap : any;
+	handicapIndexGlobal : any;
+	 rating : any;
+	slope : any;
+	par : any;
 
+	standardSlope : any;
+	withCourse : any;
 
+	totalIndex : any;
+	rndtotalIndex : any = 0;
 	userState: any;
 	userRef: any;
 	crrntUsr: any;
@@ -77,7 +86,7 @@ export class TournamentComponent implements OnInit, OnDestroy {
     this.createForm()
     this.allSubscriptions.push(this.getParameterSubscription());
     this.allSubscriptions.push(this.getAuthState());
-
+    this.allSubscriptions.push(this.getHandicapChangesSubscription());
     this.crrntUsr = JSON.parse(window.localStorage.getItem("user"));
     const id = this.crrntUsr.uid;
     console.log(id);
@@ -97,6 +106,40 @@ export class TournamentComponent implements OnInit, OnDestroy {
     })
   }
 
+  getHandicapChangesSubscription(){
+    // console.log(this.registerForm);
+      //calculate handicap
+    return  this.handicapIndex.valueChanges.subscribe((value) => {
+        if(value != '' && value != 0){
+          console.log('Change');
+          this.handicapIndexGlobal = value;
+          let rating = this.rating
+          let par = this.par;
+          let slope = this.slope == 'N/D' ? 124 : parseFloat(this.te.slope)
+          console.log(value)
+          this.courseHandicap = value * slope;
+          this.standardSlope = this.courseHandicap / 113;
+
+          this.withCourse = rating - par;
+
+          this.totalIndex = this.standardSlope + this.withCourse;
+
+          this.rndtotalIndex = Math.round(this.totalIndex)
+
+        }
+
+      })
+
+
+      //calculate
+
+
+      // console.log(this.standardSlope);
+      // console.log(this.withCourse);
+
+      // console.log(this.rndtotalIndex);
+      alert("WOW!! You have been done with reactive form part 1.");
+  }
   /**
    * Retrieve user
    */
@@ -136,7 +179,10 @@ export class TournamentComponent implements OnInit, OnDestroy {
         this.clb = (await this.getClubs()).data();
         this.crse = (await this.getCourses()).data();
           this.te = (await this.getTees()).data()
-      }
+          this.rating = this.te.rating;
+          this.slope = this.te.slope;
+          this.par = this.te.course_par_for_tee;
+        }
 		});
   }
   /**
@@ -184,7 +230,7 @@ export class TournamentComponent implements OnInit, OnDestroy {
 async	onSubmit() {
     const newPlayer : Play = {
       uid : this.userState.uid,
-      handicapIndex : this.handicapIndex.value,
+      handicapIndex : this.rndtotalIndex,
       teeId : this.teeID,
       posted : new Date(Date.now()),
     }
