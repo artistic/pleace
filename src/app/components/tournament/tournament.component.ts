@@ -52,6 +52,8 @@ export class TournamentComponent implements OnInit, OnDestroy {
 	player : any;
 	tournamnentList : any;
 
+  teeID:any;
+
 
 
 
@@ -62,7 +64,8 @@ export class TournamentComponent implements OnInit, OnDestroy {
 		private fireService: FirestoreService,
 		private db: AngularFirestore,
 		public afAuth: AngularFireAuth,
-		private toastr: ToastrService
+		private toastr: ToastrService,
+    private usersService: UsersService,
 		) {
 
 	}
@@ -74,6 +77,14 @@ export class TournamentComponent implements OnInit, OnDestroy {
     this.createForm()
     this.allSubscriptions.push(this.getParameterSubscription());
     this.allSubscriptions.push(this.getAuthState());
+
+    this.crrntUsr = JSON.parse(window.localStorage.getItem("user"));
+    const id = this.crrntUsr.uid;
+    console.log(id);
+    
+    this.usersService.getUserDoc(id).subscribe(res => {
+      this.userRef = res;      
+    })
 
 
 	}
@@ -174,7 +185,7 @@ async	onSubmit() {
     const newPlayer : Play = {
       uid : this.userState.uid,
       handicapIndex : this.handicapIndex.value,
-      teeId : this.teeId,
+      teeId : this.teeID,
       posted : new Date(Date.now()),
     }
     // Create batch for multiple writes

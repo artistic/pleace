@@ -1,14 +1,14 @@
 <div class="container g-margin-t-20--xs">
-  <div class="row">
-    <div class="col-md-12 col-sm-12 col-xs-12">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a routerLink="/dashboard"><i class="g-color--primary g-margin-r-10--xs ti-panel"></i> Dashboard</a></li>
-          <li class="breadcrumb-item active" aria-current="page"><i class="g-color--primary g-margin-r-10--xs ti-cup"></i> Tournaments</li>
-        </ol>
-      </nav>
-    </div>
-  </div>
+	<div class="row">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a routerLink="/dashboard"><i class="g-color--primary g-margin-r-10--xs ti-panel"></i> Dashboard</a></li>
+					<li class="breadcrumb-item active" aria-current="page"><i class="g-color--primary g-margin-r-10--xs ti-cup"></i> Tournaments</li>
+				</ol>
+			</nav>
+		</div>
+	</div>
 </div>
 
 <div class="g-bg-color--sky-light">
@@ -21,14 +21,14 @@
 
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
-							<h2 class="g-font-size-22--xs g-font-size-24--md">Tournament <span class="pull-right"><i class="ti-help"></i></span></h2>
+							<h2 class="g-font-size-22--xs g-font-size-24--md">Tournaments <span class="pull-right"><i class="ti-cup"></i></span></h2>
 
 							<div class="row">
 								<div class="col-md-12 col-sm-12 col-xs-12">
 									<table class="table table-hover table-responsive">
 										<thead>
 											<tr>
-												<th style="width: 45%;">Tournament Name</th>
+												<th style="width: 45%;">Name</th>
 												<th style="width: 20%;">Start Date</th>
 												<th style="width: 20%;">End Date</th>
 												<th style="width: 10%;">Division</th>
@@ -38,9 +38,16 @@
 										<tbody>
 											<tr *ngFor="let tournaments of tournaments$ | async; index as i">
 												<td>
-													<a [routerLink]="['/tournament', tournaments.id]">
-														<strong>{{ tournaments.name}}</strong>
-													</a>
+													<span *ngIf="tournaments.divisions === userRef.accountType; else elseName">
+														<a [routerLink]="['/tournament', tournaments.id]">
+															<strong>{{ tournaments.name}}</strong>
+														</a>
+													</span>
+													<ng-template #elseName>
+														<a (click)="playTournament">
+															<strong>{{ tournaments.name}}</strong>
+														</a>
+													</ng-template>
 												</td>
 												<td>{{ tournaments.startDate}}</td>
 												<td>{{ tournaments.endDate}}</td>
@@ -51,9 +58,17 @@
 													<span *ngIf="tournaments.divisions ==='4'">PGA Professional</span>
 												</td>
 												<td>
-													<a [routerLink]="['/tournament', tournaments.id]">
-														<i class="g-color--primary g-margin-r-10--xs ti-eye"></i>
-													</a>
+													<span *ngIf="tournaments.divisions === userRef.accountType; else elseBlock">
+														<a [routerLink]="['/tournament', tournaments.id]">
+															<i class="g-color--primary g-margin-r-10--xs ti-eye"></i>
+														</a>
+													</span>
+													<ng-template #elseBlock>
+														<span (click)="playTournament">
+															<i class="g-color--danger g-margin-r-10--xs ti-eye"></i>
+														</span>
+													</ng-template>
+													
 												</td>
 											</tr>
 
