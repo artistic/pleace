@@ -174,7 +174,7 @@ async	onSubmit() {
     const newPlayer : Play = {
       uid : this.userState.uid,
       handicapIndex : this.handicapIndex.value,
-      teeId : this.teeId,
+      teeId : 'this.teeId',
       posted : new Date(Date.now()),
     }
     // Create batch for multiple writes
