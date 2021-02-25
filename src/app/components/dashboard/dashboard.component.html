@@ -265,7 +265,9 @@
                   </div>
                 </div>
 
-                <div class="col-sm-3">
+                <div
+                *ngIf="accountType.value != 3 && accountType.value != 4"
+                class="col-sm-3">
                   <div class="input-group g-margin-b-10--xs">
                     <span class="input-group-btn">
                       <i class="s-form-v4__icon ti-medall"></i>
@@ -281,6 +283,27 @@
                 </div>
               </div>
 
+
+              <!--  -->
+              <div
+              *ngIf="accountType.value == 2"
+              class="row ">
+                <div class="col-sm-12">
+                  <div class="input-group g-margin-b-10--xs">
+                    <span class="input-group-btn">
+                      <i class="s-form-v4__icon ti-cup"></i>
+                    </span>
+                    <input
+                    type="text"
+                    class="form-control s-form-v4__input"
+                    placeholder="celebrity code"
+                    required
+                    formControlName="code"
+                    />
+                </div>
+              </div>
+          </div>
+              <!--  -->
               <div class="row ">
                 <div class="col-sm-6">
                   <div class="input-group g-margin-b-10--xs">

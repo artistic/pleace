@@ -73,6 +73,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       surname: [''],
       gender: [''],
       nationality:[''],
+      code: [''],
       accountType: [''],
       homeClub: [''],
       handicap: [''],
@@ -124,6 +125,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
   get residence(){
     return this.editForm.get('residence')
+  }
+  get code(){
+    return this.editForm.get('code')
   }
   getCountries(){
     return this.afs.collection<Country>('countries')

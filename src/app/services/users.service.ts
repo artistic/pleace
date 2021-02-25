@@ -39,7 +39,15 @@ export class UsersService {
 	}
 
 	updateUser(user: User, id) {
-		return this.db
+		let handicap: string;
+    if(user.accountType == "3"){
+      handicap = "-3.5"
+    } else if(user.accountType == "4"){
+      handicap = "-1.5"
+    } else{
+      handicap = user.handicap;
+    }
+    return this.db
 		.collection("users")
 		.doc(id)
 		.update({
@@ -50,7 +58,8 @@ export class UsersService {
 			nationality: user.nationality,
 			accountType: user.accountType,
 			homeClub: user.homeClub,
-			handicap: user.handicap,
+			handicap,
+      code: user.code,
 			residence: user.residence,
 			firstrun : '1',
 		});
