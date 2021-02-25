@@ -1,0 +1,220 @@
+<div class="container g-margin-t-20--xs">
+	<div class="row">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a routerLink="/dashboard"><i class="g-color--primary g-margin-r-10--xs ti-panel"></i> Dashboard</a></li>
+					<li class="breadcrumb-item active" aria-current="page"><i class="g-color--primary g-margin-r-10--xs ti-flag-alt"></i> Clubs</li>
+				</ol>
+			</nav>
+		</div>
+	</div>
+</div>
+
+<div class="g-bg-color--sky-light">
+	<div class="container g-padding-y-80--xs g-padding-y-125--xsm">
+		<div class="row g-row-col--5">
+			<!-- Plan -->
+			<div class="col-md-12 col-sm-12 col-xs-12">
+
+				<div class="s-plan-v1 g-bg-color--white g-padding-x-20--xs g-padding-y-30--xs">
+
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<h2 class="g-font-size-22--xs g-font-size-24--md">Golf Clubs  <span class="pull-right"><i class="ti-flag"></i></span></h2>
+
+							<div class="row">
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<ul class="nav nav-tabs">
+										<li class="active"><a data-toggle="tab" href="#africa">Africa</a></li>
+										<li><a data-toggle="tab" href="#asia">Asia</a></li>
+										<li><a data-toggle="tab" href="#europe">Europe</a></li>
+										<li><a data-toggle="tab" href="#america">America</a></li>
+										<li><a data-toggle="tab" href="#greatBritain">Great Britain</a></li>
+										<li><a data-toggle="tab" href="#oceania">Oceania</a></li>
+									</ul>
+
+									<div class="tab-content g-padding-y-30--xs">
+										<div id="africa" class="tab-pane fade in active">
+
+											<div class="row" ng-if="i % 3 === 0">
+												<div class="col-md-12 col-sm-12 col-xs-12">
+													<table class="table table-responsive">
+														<thead>
+															<tr>
+																<th style="width : 90%">Club Name</th>
+																<th style="width : 5%">Country</th>
+																<th style="width : 5%"></th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr *ngFor="let africaClub of africaClubs$ | async; index as i">
+																<td>
+																	<a [routerLink]="['/club', africaClub.id]">
+																		{{ africaClub.club_name}}
+																	</a>
+																</td>
+																<td>
+																	<img src="assets/img/flags/{{africaClub.country}}.png" class="profile-flag-img-small" >
+																</td>
+																<td>
+																	<a [routerLink]="['/club', africaClub.id]">
+																		<i class="g-color--primary g-margin-r-10--xs ti-eye"></i>
+																	</a>
+																</td>
+															</tr>
+
+														</tbody>
+													</table>
+												</div>
+											</div>
+
+										</div>
+										<div id="asia" class="tab-pane fade">
+											<div class="row" ng-if="i % 3 === 0">
+												<div class="col-md-12 col-sm-12 col-xs-12">
+													<table class="table table-responsive">
+														<thead>
+															<tr>
+																<th style="width : 90%">Club Name</th>
+																<th style="width : 5%">Country</th>
+																<th style="width : 5%"></th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr *ngFor="let asiaClub of asiaClubs$ | async; index as i">
+																<td>
+																	<a [routerLink]="['/club', asiaClub.id]">
+																		{{ asiaClub.club_name}}
+																	</a>
+																</td>
+																<td>
+																	<img src="assets/img/flags/{{asiaClub.country}}.png" class="profile-flag-img-small" >
+																</td>
+																<td>
+																	<a [routerLink]="['/club', asiaClub.id]">
+																		<i class="g-color--primary g-margin-r-10--xs ti-eye"></i>
+																	</a>
+																</td>
+															</tr>
+
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+										<div id="europe" class="tab-pane fade">
+											<div class="row" ng-if="i % 3 === 0">
+												<div class="col-md-12 col-sm-12 col-xs-12">
+													<table class="table table-responsive">
+														<thead>
+															<tr>
+																<th style="width : 90%">Club Name</th>
+																<th style="width : 5%">Country</th>
+																<th style="width : 5%"></th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr *ngFor="let europeClub of europeClubs$ | async; index as i">
+																<td>
+																	<a [routerLink]="['/club', europeClub.id]">
+																		{{ europeClub.club_name}}
+																	</a>
+																</td>
+																<td>
+																	<img src="assets/img/flags/{{europeClub.country}}.png" class="profile-flag-img-small" >
+																</td>
+																<td>
+																	<a [routerLink]="['/club', europeClub.id]">
+																		<i class="g-color--primary g-margin-r-10--xs ti-eye"></i>
+																	</a>
+																</td>
+															</tr>
+
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+										<div id="america" class="tab-pane fade">
+											<div class="row" ng-if="i % 3 === 0">
+												<div class="col-md-12 col-sm-12 col-xs-12">
+													<table class="table table-responsive">
+														<thead>
+															<tr>
+																<th style="width : 90%">Club Name</th>
+																<th style="width : 5%">Country</th>
+																<th style="width : 5%"></th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr *ngFor="let americaClub of americaClubs$ | async; index as i">
+																<td>
+																	<a [routerLink]="['/club', americaClub.id]">
+																		{{ americaClub.club_name}}
+																	</a>
+																</td>
+																<td>
+																	<img src="assets/img/flags/{{americaClub.country}}.png" class="profile-flag-img-small" >
+																</td>
+																<td>
+																	<a [routerLink]="['/club', americaClub.id]">
+																		<i class="g-color--primary g-margin-r-10--xs ti-eye"></i>
+																	</a>
+																</td>
+															</tr>
+
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+										<div id="greatBritain" class="tab-pane fade">
+											<div class="row" ng-if="i % 3 === 0">
+												<div class="col-md-12 col-sm-12 col-xs-12">
+													<table class="table table-responsive">
+														<thead>
+															<tr>
+																<th style="width : 90%">Club Name</th>
+																<th style="width : 5%">Country</th>
+																<th style="width : 5%"></th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr *ngFor="let gbClub of greatBritainClubs$ | async; index as i">
+																<td>
+																	<a [routerLink]="['/club', gbClub.id]">
+																		{{ gbClub.club_name}}
+																	</a>
+																</td>
+																<td>
+																	<img src="assets/img/flags/{{gbClub.country}}.png" class="profile-flag-img-small" >
+																</td>
+																<td>
+																	<a [routerLink]="['/club', gbClub.id]">
+																		<i class="g-color--primary g-margin-r-10--xs ti-eye"></i>
+																	</a>
+																</td>
+															</tr>
+
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+										<div id="oceania" class="tab-pane fade">
+											<h3>Oceania</h3>
+											<p class="pull-right"><small>Courses</small></p>
+										</div>
+									</div>
+								</div>
+							</div>							
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- End Plan -->
+		</div>
+	</div>
+</div>

@@ -1,0 +1,210 @@
+.nav-link:hover {
+  border-bottom : 1px dashed #2E4612;
+  color : #2E4612;
+}
+.nav-link {
+  color : #2E4612;
+}
+
+.page-title {
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	color: #fff;
+}
+
+.page-title h2 {
+	color: #fff;
+}
+
+.profile-user-img {
+  border: 2px solid #22450A;
+  margin: 0 auto;
+  padding: 3px;
+  width: 150px;
+
+}
+
+.profile-flag-img-small {
+  margin: 0 auto;
+  padding: 2px;
+  width: 25px;
+}
+
+.profile-user-small-img {
+  border: 1px solid #fff;
+  margin: 0 auto;
+  padding: 2px;
+  width: 30px;
+}
+
+.tee-small-img {
+  border: 1px solid #2E4612;
+  margin: 0 auto;
+  padding: 4px;
+  width: 20px;
+}
+
+.propic {
+	margin-bottom: 20px;
+}
+
+.course-detailed-list li {
+  list-style-type: none;
+  padding: 0px;
+}
+
+.boxedin{
+  border : 1px solid #eee;
+  padding-top: 10px;
+}
+
+.danger {
+  color : #B20000;
+
+}
+
+.dashed {
+  border: 1px dashed #eee;
+  height: 200px;
+  padding: 20px;
+  margin: 20px;
+  width: 90%;
+  font-size: 22px;
+  color: #eee;
+}
+
+.success-created {
+  border: 1px solid #ccc; 
+  width: 90%;
+  margin : 20px;
+  padding: 30px;
+}
+
+.success-icon {
+  color: #2E4612;
+  font-size: 42px;
+}
+
+.quick-details {
+  border-bottom: 1px solid #ccc;
+}
+
+.calculator {
+  border: 1px solid #ccc; 
+}
+
+.calculator_input {
+  border-bottom: 1px solid #ccc;
+  height: 40px;
+  width: 100%
+}
+
+.calculator_error {
+  font-size: 8px;
+  color: #B20000;
+}
+
+.calculator_label {
+  font-weight: 600;
+  line-height: 40px;
+}
+
+.view {
+  height: 40px;
+  background-color: #ccc;
+}
+
+
+.clubs {
+  border: 1px solid #ccc;
+  padding: 15px;
+  height: 150px;
+}
+.club-top {
+  border-top: 1 solid #ccc;
+  height : 100px;
+}
+.club-bottom {
+  border-top: 1px solid #ccc;
+  height : 30px;
+  font-size: 14px;
+  line-height: 30px;
+}
+
+.tournaments {
+  border: 1px solid #ccc;
+  padding: 0px 15px 0px 15px;
+}
+.tournament-image {
+  height: 100px;
+}
+.tournament-top {
+  border-top: 1 solid #ccc;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #2E4612;
+  font-size: 20px;
+}
+.tournament-bottom {
+  border-top: 1px solid #ccc;
+  height : 30px;
+  font-size: 14px;
+  line-height: 30px;
+}
+
+.mapped {
+  border: 1px solid #ccc;
+  padding: 10px;
+  height: 200px;
+}
+
+.golf-course {
+  border: 1px solid #ccc;
+}
+
+.parLabel {
+  height: 60px;
+  background-color: #2E4612;
+  color: #fff;
+}
+
+.holesLabel {
+  color : #2E4612;
+  border: 1px solid #2E4612;
+}
+
+.tournament {
+  border: 1px solid #ccc;
+  height: 200px;
+}
+
+.scoreboard {
+  border: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+.tee_info {
+  background-color: #2E4612;
+  color: #fff; 
+}
+
+.calculated {
+  background-color: #2E4612;
+  height: 50px;
+}
+
+.hndSmall {
+  color: #fff;
+  line-height: 40px;
+}
+
+.hndBig {
+  font-size: 32px;
+  color: #fff;
+}
+
+ul.nav-tabs > li {
+  width: 33%;
+  text-align: center;
+}

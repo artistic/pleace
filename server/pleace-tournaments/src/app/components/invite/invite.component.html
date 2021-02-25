@@ -1,0 +1,120 @@
+<div class="container g-margin-t-20--xs">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/dashboard"><i class="g-color--primary g-margin-r-10--xs ti-panel"></i> Dashboard</a></li>
+          <li class="breadcrumb-item active" aria-current="page"><i class="g-color--primary g-margin-r-10--xs ti-user"></i> Invite</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<div class="g-bg-color--sky-light">
+	<div class="container g-padding-y-80--xs g-padding-y-125--xsm">
+		<div class="row g-row-col--5">
+			<!-- Plan -->
+        <div class="col-md-4  col-sm-12 col-xs-12 g-margin-b-10--xs g-margin-b-0--lg">
+
+          <div class="s-plan-v1 g-bg-color--white g-padding-x-20--xs g-padding-y-30--xs">
+            <div class="text-center propic">
+              <img class="profile-user-img img-fluid img-circle"
+              src="{{userRef.photoURL}}"
+              alt="User profile picture">
+            </div>
+            <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs g-text-center--xs">{{userRef.displayName}}</h3>
+            <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
+              <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-email"></i>{{userRef.email}}</li>
+              <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-home"></i> {{userRef.homeClub}}</li>
+
+              <li *ngIf="userRef.accountType ==='1'"><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-crown"></i> Champs </li>
+              <li *ngIf="userRef.accountType ==='2'"><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-star"></i> Celebrity </li>
+              <li *ngIf="userRef.accountType ==='3'"><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-cup"></i> Tour Player </li>
+              <li *ngIf="userRef.accountType ==='4'"><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-cup"></i> PGA Professional </li>
+
+              <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-medall"></i><strong>Handicap : </strong> {{userRef.handicap}}</li>
+
+              <li>
+                <i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-world"></i> 
+                {{userRef.nationality}}
+                <span class="pull-right">
+                  <img src="assets/img/flags/{{userRef.nationality}}.png" class="profile-flag-img-small" >
+                </span>
+              </li>
+
+              <li>
+                <span class="pull-right">
+                  <small>
+                    <a routerLink="/edit-user" routerLinkActive="active" class="nav-link">
+                      <i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-pencil-alt"></i> Edit Profile
+                    </a>
+                  </small>
+                </span>
+              </li>
+            </ul>
+
+
+            <div class="row g-hor-divider__dashed--sky-light g-text-center--xs g-padding-y-30--xs">
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <i class="g-font-size-18--xs g-color--primary g-margin-r-10--xs ti-bolt"></i><br>
+                <p class="g-font-size-12--xs g-color--primary text-uppercase">Regional Ranking</p>
+                <p class="g-font-size-18--xs g-color--primary text-uppercase">13</p>
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <i class="g-font-size-18--xs g-color--primary g-margin-r-10--xs ti-world"></i><br>
+                <p class="g-font-size-12--xs g-color--primary text-uppercase">Regional Ranking</p>
+                <p class="g-font-size-18--xs g-color--primary text-uppercase">13</p>
+              </div>
+            </div>
+
+            <div class="row g-hor-divider__dashed--sky-light g-text-center--xs g-padding-y-30--xs">
+              <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <button routerLink="/play" routerLinkActive="active" type="button" class="text-uppercase s-btn s-btn--sm btn-block s-btn--primary-bg g-radius--3 g-padding-x-50--xs">Play</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="g-hor-divider__dashed--sky-light g-padding-y-10--xs g-padding-y-20--xsm"></div>
+
+            <!-- Create An Invite Page-->
+            <div class="g-padding-y-30--xs" *ngIf="userRef.accountType ==='2'">
+              <h2 class="g-font-size-14--xs g-font-size-16--md">Invite A Celebrity<span class="pull-right"><i class="ti-share"></i></span></h2>
+              <p class="g-font-size-10--xs g-color--primary">
+                As a celebrity player you can invite other celebrity players to join please press the button below 
+              </p>
+
+              <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6"></div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                  <button class="text-uppercase s-btn s-btn--xs s-btn--green-brd g-radius--50">Invite</button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+        <!-- End Plan -->
+
+			<!-- Plan -->
+			<div class="col-md-8 col-sm-12 col-xs-12">
+
+				<div class="s-plan-v1 g-bg-color--white g-padding-x-20--xs g-padding-y-30--xs">
+
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<p class="text-uppercase g-font-size-10--xs g-color--primary">Do you know someone who wants to Join</p>
+							<h2 class="g-font-size-22--xs g-font-size-24--md">Invite A Friend <span class="pull-right"><i class="ti-help"></i></span></h2>
+
+							
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- End Plan -->
+		</div>
+	</div>
+</div>
