@@ -27,160 +27,181 @@
                 <form [formGroup]="editForm" (ngSubmit)="onSubmit()" novalidate>
 
                   <div class="row ">
-                      <div class="col-md-6 col-sm-12 col-xs-12">
-                        <label>First Name</label>
-                        <div class="input-group g-margin-b-10--xs">
-                          <span class="input-group-btn">
-                            <i class="s-form-v4__icon ti-user"></i>
-                          </span>
-                          <input 
-                          type="text" 
-                          class="form-control s-form-v4__input" 
-                          formControlName="firstname"
-                          placeholder="First Name"   
-                          required
-                          />
-                        </div>
-                      </div>
-
-                      <div class="col-md-6 col-sm-12 col-xs-12">
-                        <label>Last Name</label>
-                        <div class="input-group g-margin-b-10--xs">
-                          <span class="input-group-btn">
-                            <i class="s-form-v4__icon ti-user"></i>
-                          </span>
-                          <input 
-                          type="text" 
-                          class="form-control s-form-v4__input" 
-                          formControlName="surname"
-                          placeholder="Last Name"   
-                          required
-                          />
-                        </div>
+                    <div class="col-sm-6">
+                      <div class="input-group g-margin-b-10--xs">
+                        <span class="input-group-btn">
+                          <i class="s-form-v4__icon ti-user"></i>
+                        </span>
+                        <input
+                        type="text"
+                        class="form-control s-form-v4__input"
+                        formControlName="firstname"
+                        placeholder="First Name"
+                        required
+                        />
                       </div>
                     </div>
 
-                    <div class="row ">
-                      <div class="col-sm-6">
-                        <label>Division</label>
-                        <div class="input-group g-margin-b-10--xs">
-                              <span class="input-group-btn">
-                                <i class="s-form-v4__icon ti-cup"></i>
-                              </span>
-                              <select 
-                              class="form-control s-form-v4__input" 
-                              formControlName="accountType"
-                              style="width: 100%;" 
-                              required
-                              >
-                                <option value="">Account Type</option>
-                                <option value="1">Champion</option>
-                                <option value="2">Celebrity</option>
-                                <option value="3">Pro Golfer</option>
-                              </select>
-                            </div>
-
-                            
-                      </div>
-
-                      <div class="col-sm-3">
-                        <div class="input-group g-margin-b-10--xs">
-                              <span class="input-group-btn">
-                                <i class="s-form-v4__icon ti-world"></i>
-                              </span>
-                              <select 
-                              class="form-control s-form-v4__input" 
-                              formControlName="gender"
-                              style="width: 100%;" 
-                              required
-                              >
-                                <option value="">Gender</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                              </select>
-                            </div>
-                      </div>
-
-                      <div class="col-sm-3">
-                        <div class="input-group g-margin-b-10--xs">
-                          <span class="input-group-btn">
-                            <i class="s-form-v4__icon ti-user"></i>
-                          </span>
-                          <input 
-                          type="text" 
-                          class="form-control s-form-v4__input" 
-                          placeholder="Handicap" 
-                          required
-                          formControlName="handicap"
-                          />
-                        </div>
+                    <div class="col-sm-6">
+                      <div class="input-group g-margin-b-10--xs">
+                        <span class="input-group-btn">
+                          <i class="s-form-v4__icon ti-user"></i>
+                        </span>
+                        <input
+                        type="text"
+                        class="form-control s-form-v4__input"
+                        formControlName="surname"
+                        placeholder="Last Name"
+                        required
+                        />
                       </div>
                     </div>
+                  </div>
 
-                    <div class="row ">
-                      <div class="col-sm-6">
-                        <div class="input-group g-margin-b-10--xs">
-                          <span class="input-group-btn">
-                            <i class="s-form-v4__icon ti-world"></i>
-                          </span>
-                          <select 
-                          class="form-control s-form-v4__input" 
-                          formControlName="nationality"
-                          style="width: 100%;" 
-                          required
-                          >
-                            <option value="">Nationality</option>
-                            <option value="South Africa">South Africa</option>
-                            <option value="Rwanda">Rwanda</option>
-                          </select>
-                        </div>
-                      </div>
-
-                      <div class="col-sm-6">
-                        <div class="input-group g-margin-b-10--xs">
-                          <span class="input-group-btn">
-                            <i class="s-form-v4__icon ti-world"></i>
-                          </span>
-                          <select 
-                          class="form-control s-form-v4__input" 
-                          formControlName="residence" 
-                          style="width: 100%;" 
-                          required
-                          >
-                            <option value="">Country Of Residence</option>
-                            <option value="South Africa">South Africa</option>
-                            <option value="Rwabda">Rwanda</option>
-                          </select>
-                        </div>
-                      </div>
+                  <div class="row ">
+                    <div class="col-sm-6">
+                      <div class="input-group g-margin-b-10--xs">
+                        <span class="input-group-btn">
+                          <i class="s-form-v4__icon ti-cup"></i>
+                        </span>
+                        <select
+                        class="form-control s-form-v4__input"
+                        formControlName="accountType"
+                        style="width: 100%;"
+                        required
+                        >
+                        <option value="">Account Type</option>
+                        <option value="1">Champs</option>
+                        <option value="2">Celebrity</option>
+                        <option value="3">Tour Player</option>
+                        <option value="4">PGA Professional</option>
+                      </select>
                     </div>
+                  </div>
 
-                    <div class="row ">
-                      <div class="col-sm-12">
-                        <div class="input-group g-margin-b-10--xs">
-                          <span class="input-group-btn">
-                            <i class="s-form-v4__icon ti-home"></i>
-                          </span>
-                          <input 
-                          type="text" 
-                          class="form-control s-form-v4__input" 
-                          placeholder="Home Club" 
-                          required
-                          formControlName="homeClub"
-                          />
-                        </div>
-                      </div>
-                      
-                    </div>
+                  <div class="col-sm-3">
+                    <div class="input-group g-margin-b-10--xs">
+                      <span class="input-group-btn">
+                        <i class="s-form-v4__icon ti-face-smile"></i>
+                      </span>
+                      <select
+                      class="form-control s-form-v4__input"
+                      formControlName="gender"
+                      style="width: 100%;"
+                      required
+                      >
+                      <option value="">Gender</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </select>
+                  </div>
+                </div>
 
-                    <div class="row">
-                      <div class="col-md-12 col-sm-12 col-xs-12">
-                        <button type="submit" class="text-uppercase s-btn s-btn--sm btn-block s-btn--primary-bg g-radius--3 g-padding-x-50--xs">Update Profile</button>
-                      </div>
-                    </div>
+                <div
+                *ngIf="accountType.value != 3 && accountType.value != 4"
+                class="col-sm-3">
+                  <div class="input-group g-margin-b-10--xs">
+                    <span class="input-group-btn">
+                      <i class="s-form-v4__icon ti-medall"></i>
+                    </span>
+                    <input
+                    type="text"
+                    class="form-control s-form-v4__input"
+                    placeholder="Handicap"
+                    required
+                    formControlName="handicap"
+                    />
+                  </div>
+                </div>
+              </div>
 
-                </form>
-                
+
+              <!--  -->
+              <div
+              *ngIf="accountType.value == 2"
+              class="row ">
+                <div class="col-sm-12">
+                  <div class="input-group g-margin-b-10--xs">
+                    <span class="input-group-btn">
+                      <i class="s-form-v4__icon ti-cup"></i>
+                    </span>
+                    <input
+                    type="text"
+                    class="form-control s-form-v4__input"
+                    placeholder="celebrity code"
+                    required
+                    formControlName="code"
+                    />
+                </div>
+              </div>
+          </div>
+              <!--  -->
+              <div class="row ">
+                <div class="col-sm-6">
+                  <div class="input-group g-margin-b-10--xs">
+                    <span class="input-group-btn">
+                      <i class="s-form-v4__icon ti-world"></i>
+                    </span>
+                    <select
+                    class="form-control s-form-v4__input"
+                    formControlName="nationality"
+                    style="width: 100%;"
+                    required
+                    >
+                    <option value="">Nationality</option>
+                    <option *ngFor="let country of countriesList" [value]="country.name">{{country?.name}}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="input-group g-margin-b-10--xs">
+                  <span class="input-group-btn">
+                    <i class="s-form-v4__icon ti-world"></i>
+                  </span>
+                  <select
+                  class="form-control s-form-v4__input"
+                  formControlName="residence"
+                  style="width: 100%;"
+                  required
+                  >
+                  <option value="">Country Of Residence</option>
+                  <option *ngFor="let country of countriesList" [value]="country.name">{{country?.name}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row ">
+            <div class="col-sm-12">
+              <div class="input-group g-margin-b-10--xs">
+                <span class="input-group-btn">
+                  <i class="s-form-v4__icon ti-home"></i>
+                </span>
+                <select
+                class="form-control s-form-v4__input"
+                formControlName="homeClub"
+                style="width: 100%;"
+                required
+                >
+                <option
+                [disabled]="residence.value == ''"
+                value="">{{residence.value == '' ? 'Select a Country of Residence first' : (clubsList?.length == 0 ? 'No Clubs in your country' : 'Home club')}}</option>
+                <option *ngFor="let club of clubsList" [value]="club.id">{{club?.club_name}}</option>
+              </select>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <button type="submit" class="text-uppercase s-btn s-btn--sm btn-block s-btn--primary-bg g-radius--3 g-padding-x-50--xs">Update Profile</button>
+            </div>
+          </div>
+
+        </form>
+
               </div>
             </div>
 
