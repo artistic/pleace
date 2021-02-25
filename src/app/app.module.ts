@@ -1,6 +1,7 @@
 import { BrowserModule , Title} from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -89,6 +90,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     AngularFirestoreModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     NgxPaginationModule,

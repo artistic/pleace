@@ -20,11 +20,16 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class TournamentsComponent implements OnInit {
 
-	tournaments$: Observable<Tournament[]>;
+	tournamentsChamps$: Observable<Tournament[]>;
+	tournamentsCeleb$: Observable<Tournament[]>;
+	tournamentsTour$: Observable<Tournament[]>;
+	tournamentsPro$: Observable<Tournament[]>;
 	userState: any;
 	userRef: any;
 	crrntUsr: any;
 	accountType : any;
+
+	champions : any;
 
 
 	constructor(
@@ -52,7 +57,34 @@ export class TournamentsComponent implements OnInit {
 			}
 		});
 
-		this.tournaments$ = this.db.collection<Tournament>('tournaments')
+		this.tournamentsChamps$ = this.db.collection<Tournament>('tournaments', ref => ref.where('divisions', '==', '1'))
+		.snapshotChanges().pipe(
+			map(actions => actions.map(a => {
+				const data = a.payload.doc.data() as Tournament;
+				const id = a.payload.doc.id;
+				return { id, ...data };
+			}))
+			);
+
+		this.tournamentsCeleb$ = this.db.collection<Tournament>('tournaments', ref => ref.where('divisions', '==', '2'))
+		.snapshotChanges().pipe(
+			map(actions => actions.map(a => {
+				const data = a.payload.doc.data() as Tournament;
+				const id = a.payload.doc.id;
+				return { id, ...data };
+			}))
+			);
+
+		this.tournamentsTour$ = this.db.collection<Tournament>('tournaments', ref => ref.where('divisions', '==', '3'))
+		.snapshotChanges().pipe(
+			map(actions => actions.map(a => {
+				const data = a.payload.doc.data() as Tournament;
+				const id = a.payload.doc.id;
+				return { id, ...data };
+			}))
+			);
+
+		this.tournamentsPro$ = this.db.collection<Tournament>('tournaments', ref => ref.where('divisions', '==', '4'))
 		.snapshotChanges().pipe(
 			map(actions => actions.map(a => {
 				const data = a.payload.doc.data() as Tournament;

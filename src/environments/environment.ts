@@ -5,12 +5,6 @@
 export const environment = {
   production: false,
   firebase: {
-    // apiKey: "AIzaSyAthlI_rqLxmFhgg0bIJ_kRXqKomJEj_vA",
-    // authDomain: "pleace-c3173.firebaseapp.com",
-    // projectId: "pleace-c3173",
-    // storageBucket: "pleace-c3173.appspot.com",
-    // messagingSenderId: "594778291100",
-    // appId: "1:594778291100:web:64a742b2be29fcdca72659"
     apiKey: "AIzaSyAFrMZaOm9tr-h28PgOx9Pg4l8qZSglZAA",
     authDomain: "pleace-eb8b2.firebaseapp.com",
     projectId: "pleace-eb8b2",

@@ -12,7 +12,7 @@
 </div>
 
 <div class="g-bg-color--sky-light">
-	<div class="container g-padding-y-80--xs g-padding-y-125--xsm">
+	<div class="container g-padding-y-20--xs g-padding-y-30--xsm">
 		<div class="row g-row-col--5">
 			<!-- Plan -->
 			<div class="col-md-12 col-sm-12 col-xs-12">
@@ -28,14 +28,15 @@
 									<h2 class="g-font-size-14--xs g-font-size-16--md">Enter Tournament</h2>
 
 									<div class="row">
-										<div class="col-md-12 col-sm-12 col-xs-12">
+										<div class="col-md-12 col-sm-12 col-xs-12 g-margin-t-30--xs">
 											<form (ngSubmit)="onSubmit()" [formGroup]="tournamentsForm" novalidate>
 
 												<div class="row">
 													<div class="col-md-12 col-sm-12 col-xs-12">
+														<label>Tournament Title</label>
 														<div class="input-group g-margin-b-10--xs">
 															<span class="input-group-btn">
-																<i class="s-form-v4__icon ti-user"></i>
+																<i class="s-form-v4__icon ti-agenda"></i>
 															</span>
 															<input
 															type="text"
@@ -51,6 +52,7 @@
 
 												<div class="row">
 													<div class="col-md-6 col-sm-12 col-xs-12">
+														<label>Tournament Start Date</label>
 														<div class="input-group g-margin-b-10--xs">
 															<span class="input-group-btn">
 																<i class="s-form-v4__icon ti-calendar"></i>
@@ -68,6 +70,7 @@
 														</div>
 													</div>
 													<div class="col-md-6 col-sm-12 col-xs-12">
+														<label>Tournament End Date</label>
 														<div class="input-group g-margin-b-10--xs">
 															<span class="input-group-btn">
 																<i class="s-form-v4__icon ti-calendar"></i>
@@ -86,7 +89,8 @@
 												</div>
 
 												<div class="row">
-													<div class="col-md-6 col-sm-12 col-xs-12">
+													<div class="col-md-12 col-sm-12 col-xs-12">
+														<label>Tournament Division</label>
 														<div class="input-group g-margin-b-10--xs">
 															<span class="input-group-btn">
 																<i class="s-form-v4__icon ti-cup"></i>
@@ -107,13 +111,11 @@
 														</select>
 													</div>
 												</div>
-												<div class="col-md-6 col-sm-12 col-xs-12">
-
-												</div>
 											</div>
 
 											<div class="row">
 												<div class="col-md-6 col-sm-12 col-xs-12">
+													<label>Tournament Registration Start Date</label>
 													<div class="input-group g-margin-b-10--xs">
 														<span class="input-group-btn">
 															<i class="s-form-v4__icon ti-calendar"></i>
@@ -130,6 +132,7 @@
 													</div>
 												</div>
 												<div class="col-md-6 col-sm-12 col-xs-12">
+													<label>Tournament Registration End Date</label>
 													<div class="input-group g-margin-b-10--xs">
 														<span class="input-group-btn">
 															<i class="s-form-v4__icon ti-calendar"></i>
@@ -150,9 +153,10 @@
 
 											<div class="row">
 												<div class="col-md-4 col-sm-12 col-xs-12">
+													<label>Tournament Continent</label>
 													<div class="input-group g-margin-b-10--xs">
 														<span class="input-group-btn">
-															<i class="s-form-v4__icon ti-cup"></i>
+															<i class="s-form-v4__icon ti-world"></i>
 														</span>
 														<select
 														class="form-control s-form-v4__input"
@@ -168,9 +172,10 @@
 												</div>
 											</div>
 											<div class="col-md-4 col-sm-12 col-xs-12">
+												<label>Tournament Golf Club</label>
 												<div class="input-group g-margin-b-10--xs">
 													<span class="input-group-btn">
-														<i class="s-form-v4__icon ti-cup"></i>
+														<i class="s-form-v4__icon ti-map-alt"></i>
 													</span>
 													<select
 													class="form-control s-form-v4__input"
@@ -188,9 +193,10 @@
 											</div>
 										</div>
 										<div class="col-md-4 col-sm-12 col-xs-12">
+											<label>Tournament Golf Course</label>
 											<div class="input-group g-margin-b-10--xs">
 												<span class="input-group-btn">
-													<i class="s-form-v4__icon ti-cup"></i>
+													<i class="s-form-v4__icon ti-location-pin"></i>
 												</span>
 												<select
 												class="form-control s-form-v4__input"
@@ -212,9 +218,10 @@
 
 								<div class="row">
 									<div class="col-md-12 col-sm-12 col-xs-12">
+										<label>Tournament Tee</label>
 										<div class="input-group g-margin-b-10--xs">
 											<span class="input-group-btn">
-												<i class="s-form-v4__icon ti-cup"></i>
+												<i class="s-form-v4__icon ti-flag-alt"></i>
 											</span>
 											<select
 											class="form-control s-form-v4__input"

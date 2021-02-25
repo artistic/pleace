@@ -22,60 +22,217 @@
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<h2 class="g-font-size-22--xs g-font-size-24--md">Tournaments <span class="pull-right"><i class="ti-cup"></i></span></h2>
+							<ul class="nav nav-tabs">
+								<li class="active"><a data-toggle="tab" href="#champions">Champions</a></li>
+								<li><a data-toggle="tab" href="#celebrity">Celebrity</a></li>
+								<li><a data-toggle="tab" href="#tour">Tour</a></li>
+								<li><a data-toggle="tab" href="#pga">PGA Pros</a></li>
+							</ul>
 
-							<div class="row">
-								<div class="col-md-12 col-sm-12 col-xs-12">
-									<table class="table table-hover table-responsive">
-										<thead>
-											<tr>
-												<th style="width: 45%;">Name</th>
-												<th style="width: 20%;">Start Date</th>
-												<th style="width: 20%;">End Date</th>
-												<th style="width: 10%;">Division</th>
-												<th style="width: 5%;"></th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr *ngFor="let tournaments of tournaments$ | async; index as i">
-												<td>
-													<span *ngIf="tournaments.divisions === userRef.accountType; else elseName">
-														<a [routerLink]="['/tournament', tournaments.id]">
-															<strong>{{ tournaments.name}}</strong>
-														</a>
-													</span>
-													<ng-template #elseName>
-														<a (click)="playTournament">
-															<strong>{{ tournaments.name}}</strong>
-														</a>
-													</ng-template>
-												</td>
-												<td>{{ tournaments.startDate}}</td>
-												<td>{{ tournaments.endDate}}</td>
-												<td>
-													<span *ngIf="tournaments.divisions ==='1'">Champs</span>
-													<span *ngIf="tournaments.divisions ==='2'">Celebrity</span>
-													<span *ngIf="tournaments.divisions ==='3'">Tour Player</span>
-													<span *ngIf="tournaments.divisions ==='4'">PGA Professional</span>
-												</td>
-												<td>
-													<span *ngIf="tournaments.divisions === userRef.accountType; else elseBlock">
-														<a [routerLink]="['/tournament', tournaments.id]">
-															<i class="g-color--primary g-margin-r-10--xs ti-eye"></i>
-														</a>
-													</span>
-													<ng-template #elseBlock>
-														<span (click)="playTournament()">
-															<i class="g-color--danger g-margin-r-10--xs ti-eye"></i>
-														</span>
-													</ng-template>
+							<div class="tab-content g-padding-y-30--xs">
+								<div id="champions" class="tab-pane fade in active">
+									<h2 class="g-font-size-14--xs g-font-size-16--md">Champions  <span class="pull-right"><i class="ti-cup"></i></span></h2>
 
-												</td>
-											</tr>
+									<div class="row">
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<table class="table table-hover table-responsive">
+												<thead>
+													<tr>
+														<th style="width: 45%;">Name</th>
+														<th style="width: 25%;">Start Date</th>
+														<th style="width: 25%;">End Date</th>
+														<th style="width: 5%;"></th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr *ngFor="let tournamentsChamps of tournamentsChamps$ | async; index as i">
+														<td>
+															<span *ngIf="tournamentsChamps.divisions === userRef.accountType; else elseName">
+																<a [routerLink]="['/tournament', tournamentsChamps.id]">
+																	<strong>{{ tournamentsChamps.name}}</strong>
+																</a>
+															</span>
+															<ng-template #elseName>
+																<a (click)="playTournament()">
+																	<strong>{{ tournamentsChamps.name}}</strong>
+																</a>
+															</ng-template>
+														</td>
+														<td>{{ tournamentsChamps.startDate}}</td>
+														<td>{{ tournamentsChamps.endDate}}</td>
+														<td>
+															<span *ngIf="tournamentsChamps.divisions === userRef.accountType; else elseBlock">
+																<a [routerLink]="['/tournament', tournamentsChamps.id]">
+																	<i class="g-color--primary g-margin-r-10--xs ti-eye"></i>
+																</a>
+															</span>
+															<ng-template #elseBlock>
+																<span (click)="playTournament()">
+																	<i class="g-color--danger g-margin-r-10--xs ti-eye"></i>
+																</span>
+															</ng-template>
 
-										</tbody>
-									</table>
+														</td>
+													</tr>
+
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+
+								<div id="celebrity" class="tab-pane fade in">
+									<h2 class="g-font-size-14--xs g-font-size-16--md">Celebrity  <span class="pull-right"><i class="ti-cup"></i></span></h2>
+									<div class="row">
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<table class="table table-hover table-responsive">
+												<thead>
+													<tr>
+														<th style="width: 45%;">Name</th>
+														<th style="width: 25%;">Start Date</th>
+														<th style="width: 25%;">End Date</th>
+														<th style="width: 5%;"></th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr *ngFor="let tournamentsCeleb of tournamentsCeleb$ | async; index as i">
+														<td>
+															<span *ngIf="tournamentsCeleb.divisions === userRef.accountType; else elseName">
+																<a [routerLink]="['/tournament', tournamentsCeleb.id]">
+																	<strong>{{ tournamentsCeleb.name}}</strong>
+																</a>
+															</span>
+															<ng-template #elseName>
+																<a (click)="playTournament()">
+																	<strong>{{ tournamentsCeleb.name}}</strong>
+																</a>
+															</ng-template>
+														</td>
+														<td>{{ tournamentsCeleb.startDate}}</td>
+														<td>{{ tournamentsCeleb.endDate}}</td>
+														<td>
+															<span *ngIf="tournamentsCeleb.divisions === userRef.accountType; else elseBlock">
+																<a [routerLink]="['/tournament', tournamentsCeleb.id]">
+																	<i class="g-color--primary g-margin-r-10--xs ti-eye"></i>
+																</a>
+															</span>
+															<ng-template #elseBlock>
+																<span (click)="playTournament()">
+																	<i class="g-color--danger g-margin-r-10--xs ti-eye"></i>
+																</span>
+															</ng-template>
+
+														</td>
+													</tr>
+
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+
+								<div id="tour" class="tab-pane fade in">
+									<h2 class="g-font-size-14--xs g-font-size-16--md">Tour Players  <span class="pull-right"><i class="ti-cup"></i></span></h2>
+									<div class="row">
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<table class="table table-hover table-responsive">
+												<thead>
+													<tr>
+														<th style="width: 45%;">Name</th>
+														<th style="width: 25%;">Start Date</th>
+														<th style="width: 25%;">End Date</th>
+														<th style="width: 5%;"></th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr *ngFor="let tournamentsTour of tournamentsTour$ | async; index as i">
+														<td>
+															<span *ngIf="tournamentsTour.divisions === userRef.accountType; else elseName">
+																<a [routerLink]="['/tournament', tournamentsTour.id]">
+																	<strong>{{ tournamentsTour.name}}</strong>
+																</a>
+															</span>
+															<ng-template #elseName>
+																<a (click)="playTournament()">
+																	<strong>{{ tournamentsTour.name}}</strong>
+																</a>
+															</ng-template>
+														</td>
+														<td>{{ tournamentsTour.startDate}}</td>
+														<td>{{ tournamentsTour.endDate}}</td>
+														<td>
+															<span *ngIf="tournamentsTour.divisions === userRef.accountType; else elseBlock">
+																<a [routerLink]="['/tournament', tournamentsTour.id]">
+																	<i class="g-color--primary g-margin-r-10--xs ti-eye"></i>
+																</a>
+															</span>
+															<ng-template #elseBlock>
+																<span (click)="playTournament()">
+																	<i class="g-color--danger g-margin-r-10--xs ti-eye"></i>
+																</span>
+															</ng-template>
+
+														</td>
+													</tr>
+
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+
+								<div id="pga" class="tab-pane fade in">
+									<h2 class="g-font-size-14--xs g-font-size-16--md">PGA Professionals  <span class="pull-right"><i class="ti-cup"></i></span></h2>
+									<div class="row">
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<table class="table table-hover table-responsive">
+												<thead>
+													<tr>
+														<th style="width: 45%;">Name</th>
+														<th style="width: 25%;">Start Date</th>
+														<th style="width: 25%;">End Date</th>
+														<th style="width: 5%;"></th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr *ngFor="let tournamentsPro of tournamentsPro$ | async; index as i">
+														<td>
+															<span *ngIf="tournamentsPro.divisions === userRef.accountType; else elseName">
+																<a [routerLink]="['/tournament', tournamentsPro.id]">
+																	<strong>{{ tournamentsPro.name}}</strong>
+																</a>
+															</span>
+															<ng-template #elseName>
+																<a (click)="playTournament()">
+																	<strong>{{ tournamentsPro.name}}</strong>
+																</a>
+															</ng-template>
+														</td>
+														<td>{{ tournamentsPro.startDate}}</td>
+														<td>{{ tournamentsPro.endDate}}</td>
+														<td>
+															<span *ngIf="tournamentsPro.divisions === userRef.accountType; else elseBlock">
+																<a [routerLink]="['/tournament', tournamentsPro.id]">
+																	<i class="g-color--primary g-margin-r-10--xs ti-eye"></i>
+																</a>
+															</span>
+															<ng-template #elseBlock>
+																<span (click)="playTournament()">
+																	<i class="g-color--danger g-margin-r-10--xs ti-eye"></i>
+																</span>
+															</ng-template>
+
+														</td>
+													</tr>
+
+												</tbody>
+											</table>
+										</div>
+									</div>
 								</div>
 							</div>
+
+							
 						</div>
 					</div>
 

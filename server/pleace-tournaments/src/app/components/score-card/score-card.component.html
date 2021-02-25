@@ -1,0 +1,348 @@
+<!-- <form [formGroup]="scorecard">
+  <div class="row">
+    <div class="col">
+      <input formControlName="hole1">
+    </div>
+
+
+    <div class="col">
+      <input formControlName="hole2">
+    </div>
+
+
+    <div class="col">
+      <input formControlName="hole3">
+    </div>
+
+    <div class="col">
+      <input formControlName="hole4">
+    </div>
+
+    <div class="col">
+      <input formControlName="hole5">
+    </div>
+
+    <div class="col">
+      <input formControlName="hole6">
+    </div>
+
+    <div class="col">
+      <input formControlName="hole7">
+    </div>
+
+    <div class="col">
+      <input formControlName="hole8">
+    </div>
+    <div class="col">
+      <input formControlName="hole9">
+    </div>
+
+    <div class="col">
+      <input formControlName="hole10">
+    </div>
+    </div>
+  </form> -->
+  <div class="g-bg-color--sky-light">
+    <div class="container g-padding-y-80--xs g-padding-y-125--xsm">
+      <div class="row g-row-col--5">
+
+        <!-- Plan -->
+
+        <!-- End Plan -->
+
+        <!-- Plan -->
+        <div class="col-md-12  col-sm-12 col-xs-12 g-margin-b-10--xs g-margin-b-0--lg">
+          <div class="s-plan-v1 g-bg-color--white g-padding-x-20--xs g-padding-y-30--xs">
+
+            <!-- search -->
+            <div *ngIf="formLoaded" class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+
+                <h2 class="g-font-size-14--xs g-font-size-16--md">Lets Enter Your Scores<span class="pull-right"><i class="ti-clipboard"></i></span></h2>
+
+                <form [formGroup]="scorecard">
+
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#9holes">First 9 Holes</a></li>
+                        <li><a data-toggle="tab" href="#18holes">Last 9 Holes</a></li>
+                      </ul>
+
+                      <div class="tab-content g-padding-y-30--xs">
+                        <div id="9holes" class="tab-pane fade in active">
+                          <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                              <label>Strokes For Hole 10</label>
+                              <div class="input-group g-margin-b-10--xs">
+                                <input type="text" class="form-control s-form-v4__input" style="width: 100%;" 
+                                formControlName="hole10"
+                                required
+                                placeholder="Hole 10 Score Here"
+                                >
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                              <label>Strokes For Hole 11</label>
+                              <div class="input-group g-margin-b-10--xs">
+                                <input type="text" class="form-control s-form-v4__input"
+                                formControlName="hole11"
+                                required
+                                placeholder="Hole 11 Score Here"
+                                >
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                              <label>Strokes For Hole 12</label>
+                              <div class="input-group g-margin-b-10--xs">
+                                <input type="text" class="form-control s-form-v4__input"
+                                formControlName="hole12"
+                                required
+                                placeholder="Hole 12 Score Here"
+                                >
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                              <label>Strokes For Hole 13</label>
+                              <div class="input-group g-margin-b-10--xs">
+                                <input type="text" class="form-control s-form-v4__input"
+                                formControlName="hole13"
+                                required
+                                placeholder="Hole 13 Score Here"
+                                >
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                              <label>Strokes For Hole 14</label>
+                              <div class="input-group g-margin-b-10--xs">
+                                <input type="text" class="form-control s-form-v4__input"
+                                formControlName="hole14"
+                                required
+                                placeholder="Hole 14 Score Here"
+                                >
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                              <label>Strokes For Hole 15</label>
+                              <div class="input-group g-margin-b-10--xs">
+                                <input type="text" class="form-control s-form-v4__input"
+                                formControlName="hole15"
+                                required
+                                placeholder="Hole 15 Score Here"
+                                >
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                              <label>Strokes For Hole 16</label>
+                              <div class="input-group g-margin-b-10--xs">
+                                <input type="text" class="form-control s-form-v4__input"
+                                formControlName="hole16"
+                                required
+                                placeholder="Hole 16 Score Here"
+                                >
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                              <label>Strokes For Hole 17</label>
+                              <div class="input-group g-margin-b-10--xs">
+                                <input type="text" class="form-control s-form-v4__input"
+                                formControlName="hole17"
+                                required
+                                placeholder="Hole 17 Score Here"
+                                >
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                              <label>Strokes For Hole 18</label>
+                              <div class="input-group g-margin-b-10--xs">
+                                <input type="text" class="form-control s-form-v4__input"
+                                formControlName="hole18"
+                                required
+                                placeholder="Hole 18 Score Here"
+                                >
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="tab-content g-padding-y-30--xs">
+                        <div id="18holes" class="tab-pane fade in active">
+                          <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <label>Strokes For Hole 1</label>
+                      <div class="input-group g-margin-b-10--xs">
+                        <input type="text" class="form-control s-form-v4__input" style="width: 100%;" 
+                        formControlName="hole1"
+                        required
+                        placeholder="Hole 1 Score Here"
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <label>Strokes For Hole 2</label>
+                      <div class="input-group g-margin-b-10--xs">
+                        <input type="text" class="form-control s-form-v4__input"
+                        formControlName="hole2"
+                        required
+                        placeholder="Hole 2 Score Here"
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <label>Strokes For Hole 3</label>
+                      <div class="input-group g-margin-b-10--xs">
+                        <input type="text" class="form-control s-form-v4__input"
+                        formControlName="hole3"
+                        required
+                        placeholder="Hole 3 Score Here"
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <label>Strokes For Hole 4</label>
+                      <div class="input-group g-margin-b-10--xs">
+                        <input type="text" class="form-control s-form-v4__input"
+                        formControlName="hole4"
+                        required
+                        placeholder="Hole 4 Score Here"
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <label>Strokes For Hole 5</label>
+                      <div class="input-group g-margin-b-10--xs">
+                        <input type="text" class="form-control s-form-v4__input"
+                        formControlName="hole5"
+                        required
+                        placeholder="Hole 5 Score Here"
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <label>Strokes For Hole 6</label>
+                      <div class="input-group g-margin-b-10--xs">
+                        <input type="text" class="form-control s-form-v4__input"
+                        formControlName="hole6"
+                        required
+                        placeholder="Hole 6 Score Here"
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <label>Strokes For Hole 7</label>
+                      <div class="input-group g-margin-b-10--xs">
+                        <input type="text" class="form-control s-form-v4__input"
+                        formControlName="hole7"
+                        required
+                        placeholder="Hole 7 Score Here"
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <label>Strokes For Hole 8</label>
+                      <div class="input-group g-margin-b-10--xs">
+                        <input type="text" class="form-control s-form-v4__input"
+                        formControlName="hole8"
+                        required
+                        placeholder="Hole 8 Score Here"
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <label>Strokes For Hole 9</label>
+                      <div class="input-group g-margin-b-10--xs">
+                        <input type="text" class="form-control s-form-v4__input"
+                        formControlName="hole9"
+                        required
+                        placeholder="Hole 9 Score Here"
+                        >
+                      </div>
+                    </div>
+                  </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6 col-sm-12 col-xs-12 g-margin-b-20--xs">
+                      <div class="formGroup">
+                        <button type="button" class="text-uppercase s-btn s-btn--xs s-btn--dark-bg g-radius--50 btn-block"
+                        (click)="onSave()">
+                        <i class="ti-save"></i> Save
+                      </button>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="formGroup">
+                      <a [routerLink]="['/tournament', tournamentID]">
+                        <button type="button" class="text-uppercase s-btn s-btn--xs s-btn--dark-bg g-radius--50 btn-block">
+                          <i class="ti-face-smile"></i> Finish
+                        </button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- End Plan -->
+
+
+    </div>
+  </div>
+</div>
