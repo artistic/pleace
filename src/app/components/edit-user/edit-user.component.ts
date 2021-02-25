@@ -90,6 +90,15 @@ export class EditUserComponent implements OnInit {
 
     this.usersService.getUserDoc(id).subscribe(res => {
     this.userRef = res;
+    this.firstname.patchValue(res.displayName.split(' ')[0])
+    this.surname.patchValue(res.displayName.split(' ')[0])
+    this.gender.patchValue(res.gender);
+    this.nationality.patchValue(res.nationality);
+    this.accountType.patchValue(res.accountType)
+    this.code.patchValue(res.code);
+    this.homeClub.patchValue(res.homeClub);
+    this.handicap.patchValue(res.handicap);
+    this.residence.patchValue(res.residence);
 
       this.firstrun = this.userRef.firstrun;
       console.log(this.firstrun);

@@ -181,15 +181,24 @@ export class PlayComponent implements OnInit {
     }
     // Create batch for multiple writes
    let batch = this.db.firestore.batch();
-
-	const playRef =	this.db.collection<any>('play')
+    try {
+   const checkUser = await this.db
+      .collection('tournaments')
+      .doc(this.tournamentId)
+      .collection('players')
+      .doc(this.userState.uid)
+      .get()
+      .toPromise()
+      if(checkUser.exists){
+        this.toastr.success('Welcome back');
+        this.router.navigate(['/tournament', this.tournamentId])
+      } else{
+        const playRef =	this.db.collection<any>('play')
     .doc(this.userState.uid).ref
   const subTornamentRef = this.db.collection<any>('tournaments')
   .doc(this.tournamentId)
   .collection<Play>('players')
   .doc(this.userState.uid)
-
-
   .ref
     batch.set(playRef, {uid: this.userState.uid}, {merge: true})
     batch.set(subTornamentRef, {
@@ -198,13 +207,15 @@ export class PlayComponent implements OnInit {
        total: 0,
        displayName: this.userState.displayName ? this.userState.displayName : 'Placeholder'
     }, {merge: true});
-    try {
       await batch.commit();
       // this.allSubscriptions.push(await this.checkLeaderBoardAccess());
       this.toastr.success('You have success joined the tournament', 'Tournament Joined');
       this.router.navigate(['score-card', this.tournamentId]);
+
+
+      }
     } catch (error) {
-      this.toastr.error(error);
+
     }
 
   }

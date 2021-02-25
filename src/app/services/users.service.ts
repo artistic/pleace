@@ -33,7 +33,7 @@ export class UsersService {
 
 	getUserDoc(id) {
 		return this.db
-		.collection('users')
+		.collection<User>('users')
 		.doc(id)
 		.valueChanges()
 	}

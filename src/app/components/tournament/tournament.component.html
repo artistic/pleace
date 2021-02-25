@@ -115,10 +115,21 @@
 
 										<div class="col-md-6 col-sm-12 col-xs-12">
 											<div class="row">
-												<div class="col-md-12 col-sm-12 col-xs-12 g-margin-t-20--xs">
-													<h2 class="g-font-size-14--xs g-font-size-16--md">Scorecard<span class="pull-right"><i class="ti-clipboard"></i></span></h2>
 
-													<div
+												<div class="col-md-12 col-sm-12 col-xs-12 g-margin-t-20--xs">
+												<div class="row">
+                          <div class="col">
+                            <ul class="nav nav-tabs">
+                              <li class="active"><a data-toggle="tab" href="#score">Scorecard</a></li>
+
+                              <li ><a data-toggle="tab" href="#leader">Leaderboard</a></li>
+                            </ul>
+                          </div>
+                        </div>
+
+                        <div  >
+
+													<!-- <div
 													*ngIf="!leaderBoard;else leaderboard"
 													class="row">
 													<div class="col-md-12 col-sm-12 col-xs-12">
@@ -205,9 +216,13 @@
 
 													</form>
 												</div>
-											</div>
-											<ng-template #leaderboard>
-												<div class="row g-margin-b-30--xs">
+											</div> -->
+
+                        </div>
+
+											<div id="score" class="tab-pane fade in active">
+                        <h2 class="g-font-size-14--xs g-font-size-16--md">Scorecard<span class="pull-right"><i class="ti-clipboard"></i></span></h2>
+												<div class="row g-margin-b-30--xs" ng-if="i % 3 === 0">
 													<div class="col-md-12 col-sm-12 col-xs-12">
 														<table>
 															<thead>
@@ -297,7 +312,7 @@
 													</div>
 												</div>
 
-												<div class="row g-padding-x-20--xs g-padding-y-30--xs">
+												<!-- <div class="row g-padding-x-20--xs g-padding-y-30--xs">
 													<div class="col-md-12 col-sm-12 col-xs-12">
 														<button
 														role="link"
@@ -306,9 +321,45 @@
 														Play
 													</button>
 												</div>
-											</div>
-										</ng-template>
+											</div> -->
+										</div>
 
+                    <!--  -->
+                    <div id="leader" class="tab-pane fade">
+                      <h2 class="g-font-size-14--xs g-font-size-16--md">Leaderboard<span class="pull-right"><i class="ti-clipboard"></i></span></h2>
+                      <div class="row g-margin-b-30--xs" ng-if="i % 3 === 0">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                          <table>
+                            <thead>
+                              <th style="width: 5%;">#</th>
+                              <th style="width: 10%;">Name</th>
+                              <th style="width: 10%;">Score</th>
+                            </thead>
+
+                            <tbody>
+                              <tr *ngFor="let leader of leaderBoard; let i = index">
+                                <td style="width: 5%;">{{getNumber(i)}}</td>
+                                <td style="width: 10%;">{{leader?.displayName}}</td>
+                                <td style="width: 10%;">{{leader?.total}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+
+
+                      <!-- <div class="row g-padding-x-20--xs g-padding-y-30--xs">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                          <button
+                          role="link"
+                          [routerLink]="['/score-card', parameterTournament]"
+                          class="text-uppercase s-btn s-btn--xs s-btn--dark-bg g-radius--3 btn-block">
+                          Play
+                        </button>
+                      </div>
+                    </div> -->
+                  </div>
+                    <!--  -->
 
 									</div>
 								</div>

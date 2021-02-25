@@ -47,7 +47,7 @@ export class TournamentComponent implements OnInit, OnDestroy {
 	 rating : any;
 	slope : any;
 	par : any;
-
+  indexNumber = 1;
 	standardSlope : any;
 	withCourse : any;
 
@@ -292,10 +292,12 @@ async	onSubmit() {
         res(this.db
           .collection<any>('tournaments')
           .doc(this.parameterTournament)
-          .collection<Play>('players')
-        .valueChanges({ idField: 'id'})
+          .collection<Play>('players', ref => ref.orderBy('total', 'desc'))
+          .valueChanges({ idField: 'id'})
+
         .subscribe((leaderBoard) => {
           this.leaderBoard = leaderBoard;
+          console.log(leaderBoard);
 
         })
         )
@@ -329,6 +331,8 @@ async	onSubmit() {
         tes.hole16_par,
         tes.hole17_par,
         tes.hole18_par)
+
+        return this.courseParTop[0] - parseInt(this.te[0].hole1) // Parse Hole value as Int because it's stored as string in db
   }
   retrieveParsAsInts(h1, h2, h3, h4, h5, h6, h7, h8, h9){
     const hold_array = [];
@@ -344,6 +348,19 @@ async	onSubmit() {
     return [...hold_array]
   }
 
+  getNumber(i: number){
+    if(i != 0){
+      if(this.leaderBoard[i].total === this.leaderBoard[i-1].total){
+         ++this.indexNumber;
+         return '';
+      }else{
+        return ++this.indexNumber;
+      }
+    } else{
+      this.indexNumber = 1;
+      return this.indexNumber;
+    }
+  }
   /**
    * Unsubscribe from subscriptions when class is destroyed
    */
