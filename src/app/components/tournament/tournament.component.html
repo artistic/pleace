@@ -19,214 +19,39 @@
 				<div class="row g-row-col--5">
 					<!-- Plan -->
 					<div class="col-md-12 col-sm-12 col-xs-12">
-
 						<div class="s-plan-v1 g-bg-color--white g-padding-x-20--xs g-padding-y-30--xs">
 
 							<div class="row">
 								<div class="col-md-12 col-sm-12 col-xs-12">
 									<h2 class="g-font-size-22--xs g-font-size-24--md">{{trment?.name}}<span class="pull-right"><i class="ti-Cup"></i></span></h2>
+									<h2 class="g-font-size-14--xs g-font-size-16--md">{{te?.tee_name}} - {{te?.tee_color}}</h2>
+									<ul class="list-group list-group-flush">
+										<li class="list-group-item">
+											<i class="g-color--primary g-margin-r-10--xs ti-calendar"></i>
+											{{trment?.startDate}}
+											<span class="pull-right"><i class="g-color--primary g-margin-r-10--xs ti-calendar"></i> {{trment?.endDate}}</span>
+										</li>
+									</ul>
+								</div>
+							</div>
 
-									<div class="row">
-										<div class="col-md-6 col-sm-12 col-xs-12">
-											<h2 class="g-font-size-14--xs g-font-size-16--md">Tournament Details<span class="pull-right"><i class="ti-clipboard"></i></span></h2>
+							<div class="row g-padding-y-30--xs">
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<ul class="nav nav-tabs">
+										<li class="active"><a data-toggle="tab" href="#scoreboard">Scorecard</a></li>
+										<li><a data-toggle="tab" href="#leaderboard">Leaderboard</a></li>
+									</ul>
 
-											<div class="row">
+									<div class="tab-content g-padding-y-30--xs">
+										<div id="scoreboard" class="tab-pane fade in active">
+											<h2 class="g-font-size-14--xs g-font-size-16--md">Scorecard<span class="pull-right"><i class="ti-clipboard"></i></span></h2>
+
+											<div class="row g-margin-b-30--xs" ng-if="i % 3 === 0">
 												<div class="col-md-12 col-sm-12 col-xs-12">
-													<ul class="list-group list-group-flush">
-														<li class="list-group-item">
-															<i class="g-color--primary g-margin-r-10--xs ti-cup"></i>
-															Name <span class="pull-right">{{trment?.name}}</span>
-														</li>
-
-														<li class="list-group-item">
-															<i class="g-color--primary g-margin-r-10--xs ti-calendar"></i>
-															Start Date <span class="pull-right">{{trment?.startDate}}</span>
-														</li>
-
-														<li class="list-group-item">
-															<i class="g-color--primary g-margin-r-10--xs ti-calendar"></i>
-															End Date <span class="pull-right">{{trment?.endDate}}</span>
-														</li>
-
-														<li class="list-group-item">
-															<i class="g-color--primary g-margin-r-10--xs ti-crown"></i>
-															Division
-															<span class="pull-right" *ngIf="trment?.divisions ==='1'"> Champs <i class="g-font-size-13--xs g-color--primary g-margin-l-10--xs ti-crown"></i> </span>
-															<span class="pull-right" *ngIf="trment?.divisions ==='2'"> Celebrity <i class="g-font-size-13--xs g-color--primary g-margin-l-10--xs ti-star"></i> </span>
-															<span class="pull-right" *ngIf="trment?.divisions ==='3'"> Tour Player <i class="g-font-size-13--xs g-color--primary g-margin-l-10--xs ti-cup"></i>  </span>
-															<span class="pull-right" *ngIf="trment?.divisions ==='4'"> PGA Professional <i class="g-font-size-13--xs g-color--primary g-margin-l-10--xs ti-cup"></i> </span>
-														</li>
-
-														<li class="list-group-item">
-															<i class="g-color--primary g-margin-r-10--xs ti-user"></i>
-															Players <span class="pull-right">10</span>
-														</li>
-
-														<li class="list-group-item">
-															<i class="g-color--primary g-margin-r-10--xs ti-world"></i>
-															Continent <span class="pull-right">
-																<span *ngIf="trment?.continent ==='1'">Africa</span>
-																<span *ngIf="trment?.continent ==='2'">Antarctica</span>
-																<span *ngIf="trment?.continent ==='3'">Asia</span>
-																<span *ngIf="trment?.continent ==='4'">Europe</span>
-																<span *ngIf="trment?.continent ==='5'">North America</span>
-																<span *ngIf="trment?.continent ==='6'">Oceania</span>
-																<span *ngIf="trment?.continent ==='7'">South America</span>
-															</span>
-														</li>
-														<li class="list-group-item">
-															<i class="g-color--primary g-margin-r-10--xs ti-world"></i>
-															Country <span class="pull-right">
-																<span >
-																	{{clb?.country}}
-																</span>
-															</span>
-														</li>
-														<li class="list-group-item">
-															<i class="g-color--primary g-margin-r-10--xs ti-flag-alt-2"></i>
-															Club <span class="pull-right">
-																<span >
-																	{{clb?.club_name}}
-																</span>
-															</span>
-														</li>
-														<li class="list-group-item">
-															<i class="g-color--primary g-margin-r-10--xs ti-flag-alt"></i>
-															Course <span class="pull-right">
-																<span >
-																	{{crse?.course_name}}
-																</span>
-															</span>
-														</li>
-														<li class="list-group-item">
-															<i class="g-color--primary g-margin-r-10--xs ti-flag-alt"></i>
-															Tee <span class="pull-right">
-																<span>
-																	{{te?.tee_name}}
-																	{{te?.tee_color}}
-																</span>
-															</span>
-														</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-
-
-										<div class="col-md-6 col-sm-12 col-xs-12">
-											<div class="row">
-
-												<div class="col-md-12 col-sm-12 col-xs-12 g-margin-t-20--xs">
-												<div class="row">
-                          <div class="col">
-                            <ul class="nav nav-tabs">
-                              <li class="active"><a data-toggle="tab" href="#score">Scorecard</a></li>
-
-                              <li ><a data-toggle="tab" href="#leader">Leaderboard</a></li>
-                            </ul>
-                          </div>
-                        </div>
-
-                        <div  >
-
-													<!-- <div
-													*ngIf="!leaderBoard;else leaderboard"
-													class="row">
-													<div class="col-md-12 col-sm-12 col-xs-12">
-														<p>
-															This scorecard is only available to players who have joined the tournament
-														</p>
-														<form (ngSubmit)="onSubmit()"
-														[formGroup]="joinTournamentForm"
-														novalidate>
-														<div class="row" *ngIf="userRef.accountType < 3 ; else elseName">
-															<div class="col-md-12 col-sm-12 col-xs-12">
-																<div class="input-group g-margin-b-10--xs">
-																	<span class="input-group-btn">
-																		<i class="s-form-v4__icon ti-medall"></i>
-																	</span>
-																	<input
-																	type="number"
-																	class="form-control s-form-v4__input"
-																	formControlName="handicapIndex"
-																	placeholder="Enter Your Course Handicap"
-																	name = "handicapIndex"
-																	id = "handicapIndex"
-																	required
-																	/>
-																</div>
-															</div>
-
-															<div class="col-md-12 col-sm-12 col-xs-12 text-center">
-																<p class="g-font-size-10--xs g-font-size-12--md">Please enter your course handicap</p>
-															</div>
-														</div>
-														<ng-template #elseName>
-															<div class="row">
-																<div class="col-md-12 col-sm-12 col-xs-12">
-
-																</div>
-															</div>
-														</ng-template>
-
-														<div class="row text-center g-padding-x-20--xs g-padding-y-30--xs" >
-															<div class="col-md-4 col-sm-4 col-xs-4">
-																<strong>Rating</strong><br>
-																{{te?.rating}}
-															</div>
-															<div class="col-md-4 col-sm-4 col-xs-4">
-																<strong>Slope</strong><br>
-																{{te?.slope}}
-															</div>
-															<div class="col-md-4 col-sm-4 col-xs-4">
-																<strong>Par</strong><br>
-																{{te?.course_par_for_tee}}
-															</div>
-														</div>
-
-														<div class="row" *ngIf="userRef.accountType < 3 ; else elseCalculated">
-															<div class="col-md-12 col-sm-12 col-xs-12 calculated">
-																<div class="row">
-																	<div class="col-md-9 col-sm-9 col-xs-9 hndSmall text-center g-padding-t-20--xs">
-																		<p class="g-font-size-16--xs g-font-size-18--md">
-																			Your course handicap is :
-																		</p>
-																	</div>
-																	<div class="col-md-3 col-sm-3 col-xs-3 text-center hndBig">
-																		<span *ngIf="!!handicapIndex.value">{{rndtotalIndex}}</span>
-																	</div>
-																</div>
-															</div>
-														</div>
-
-														<ng-template #elseCalculated>
-
-														</ng-template>
-
-
-														<div class="row g-padding-x-20--xs g-padding-y-30--xs">
-															<div class="col-md-12 col-sm-12 col-xs-12">
-																<button type="submit"
-																[disabled]="handicapIndex.value == ''"
-																class="text-uppercase s-btn s-btn--xs s-btn--dark-bg g-radius--3 btn-block">Join</button>
-															</div>
-														</div>
-
-
-
-													</form>
-												</div>
-											</div> -->
-
-                        </div>
-
-											<div id="score" class="tab-pane fade in active">
-                        <h2 class="g-font-size-14--xs g-font-size-16--md">Scorecard<span class="pull-right"><i class="ti-clipboard"></i></span></h2>
-												<div class="row g-margin-b-30--xs" ng-if="i % 3 === 0">
-													<div class="col-md-12 col-sm-12 col-xs-12">
-														<table>
-															<thead>
-																<th style="width: 20%;">Hole</th>
+													<table class="table table-striped table-bordered tablefont">
+														<thead>
+															<tr>
+																<th style="width: 20%;">HOLE</th>
 																<th style="width: 10%;">1</th>
 																<th style="width: 10%;">2</th>
 																<th style="width: 10%;">3</th>
@@ -237,40 +62,42 @@
 																<th style="width: 10%;">8</th>
 																<th style="width: 10%;">9</th>
 																<th style="width: 10%;">Ttl</th>
-															</thead>
+															</tr>
+														</thead>
 
-															<tbody>
-																<tr>
-																	<td style="width: 20%;">Par</td>
-																	<td style="width: 10%;" *ngFor="let par of courseParTop">{{par}}</td>
-																</tr>
-																<tr *ngFor="let leaders of leaderBoard">
-																	<td style="width: 20%;">Strokes</td>
-																	<td style="width: 10%;" *ngFor="let score of leaders.score_in_hole">{{score}}</td>
-																	<td>{{leaders.total}}</td>
-																</tr>
-																<tr>
-																	<td style="width: 20%;">Score</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																</tr>
-															</tbody>
-														</table>
-													</div>
+														<tbody>
+															<tr>
+																<td style="width: 20%;">PAR</td>
+																<td style="width: 10%;" *ngFor="let par of courseParTop">{{par}}</td>
+															</tr>
+															<tr *ngFor="let leaders of leaderBoard">
+																<td style="width: 20%;">STROKES</td>
+																<td style="width: 10%;" *ngFor="let score of leaders.score_in_hole">{{score}}</td>
+																<td>{{leaders.total}}</td>
+															</tr>
+															<tr>
+																<td style="width: 20%;">SCORE</td>
+																<td style="width: 10%;">x</td>
+																<td style="width: 10%;">x</td>
+																<td style="width: 10%;">x</td>
+																<td style="width: 10%;">x</td>
+																<td style="width: 10%;">x</td>
+																<td style="width: 10%;">x</td>
+																<td style="width: 10%;">x</td>
+																<td style="width: 10%;">x</td>
+																<td style="width: 10%;">x</td>
+																<td style="width: 10%;">x</td>
+															</tr>
+														</tbody>
+													</table>
 												</div>
+											</div>
 
-												<div class="row">
-													<div class="col-md-12 col-sm-12 col-xs-12">
-														<table>
-															<thead>
+											<div class="row">
+												<div class="col-md-12 col-sm-12 col-xs-12">
+													<table class="table table-striped table-bordered tablefont">
+														<thead>
+															<tr>
 																<th style="width: 20%;">Hole</th>
 																<th style="width: 10%;">10</th>
 																<th style="width: 10%;">11</th>
@@ -282,99 +109,97 @@
 																<th style="width: 10%;">17</th>
 																<th style="width: 10%;">18</th>
 																<th style="width: 10%;">Ttl</th>
-															</thead>
+															</tr>
+														</thead>
 
-															<tbody>
-																<tr>
-																	<td style="width: 20%;">Par</td>
-																	<td style="width: 10%;" *ngFor="let par of courseParBottom">{{par}}</td>
-																</tr>
-																<tr *ngFor="let leaders of leaderBoard">
-																	<td style="width: 20%;">Strokes</td>
-																	<td style="width: 10%;" *ngFor="let score of leaders.score_in_hole">{{score}}</td>
-																	<td>{{leaders.total}}</td>
-																</tr>
-																<tr>
-																	<td style="width: 20%;">Score</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																</tr>
-															</tbody>
-														</table>
-													</div>
+														<tbody>
+															<tr>
+																<td style="width: 20%;">Par</td>
+																<td style="width: 10%;" *ngFor="let par of courseParBottom">{{par}}</td>
+															</tr>
+															<tr *ngFor="let leaders of leaderBoard">
+																<td style="width: 20%;">Strokes</td>
+																<td style="width: 10%;" *ngFor="let score of leaders.score_in_hole">{{score}}</td>
+																<td>{{leaders.total}}</td>
+															</tr>
+															<tr>
+																<td style="width: 20%;">Score</td>
+																<td style="width: 10%;">x</td>
+																<td style="width: 10%;">x</td>
+																<td style="width: 10%;">x</td>
+																<td style="width: 10%;">x</td>
+																<td style="width: 10%;">x</td>
+																<td style="width: 10%;">x</td>
+																<td style="width: 10%;">x</td>
+																<td style="width: 10%;">x</td>
+																<td style="width: 10%;">x</td>
+																<td style="width: 10%;">x</td>
+															</tr>
+														</tbody>
+													</table>
 												</div>
+											</div>
 
-												<!-- <div class="row g-padding-x-20--xs g-padding-y-30--xs">
-													<div class="col-md-12 col-sm-12 col-xs-12">
-														<button
-														role="link"
-														[routerLink]="['/score-card', parameterTournament]"
-														class="text-uppercase s-btn s-btn--xs s-btn--dark-bg g-radius--3 btn-block">
-														Play
-													</button>
+											<div class="row">
+												<div class="col-md-3 col-sm-3 col-xs-3">
+													<strong>Par </strong> : <i>{{te?.course_par_for_tee}}</i>
 												</div>
-											</div> -->
+												<div class="col-md-3 col-sm-3 col-xs-3">
+													<strong>Total</strong> :  <i>X</i>
+												</div>
+												<div class="col-md-3 col-sm-3 col-xs-3">
+													<strong>HCP</strong> :  <i>X</i>
+												</div>
+												<div class="col-md-3 col-sm-3 col-xs-3">
+													<strong>NET</strong> : <i>X</i>
+												</div>
+											</div>
+
 										</div>
 
-                    <!--  -->
-                    <div id="leader" class="tab-pane fade">
-                      <h2 class="g-font-size-14--xs g-font-size-16--md">Leaderboard<span class="pull-right"><i class="ti-clipboard"></i></span></h2>
-                      <div class="row g-margin-b-30--xs" ng-if="i % 3 === 0">
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                          <table>
-                            <thead>
-                              <th style="width: 5%;">#</th>
-                              <th style="width: 10%;">Name</th>
-                              <th style="width: 10%;">Score</th>
-                            </thead>
+										<div id="leaderboard" class="tab-pane fade in">
+											<h2 class="g-font-size-14--xs g-font-size-16--md">Leaderboard<span class="pull-right"><i class="ti-clipboard"></i></span></h2>
 
-                            <tbody>
-                              <tr *ngFor="let leader of leaderBoard; let i = index">
-                                <td style="width: 5%;">{{getNumber(i)}}</td>
-                                <td style="width: 10%;">{{leader?.displayName}}</td>
-                                <td style="width: 10%;">{{leader?.total}}</td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
+											<div class="row g-margin-b-30--xs" ng-if="i % 3 === 0">
+												<div class="col-md-12 col-sm-12 col-xs-12">
+													<table class="table table-striped tablefont">
+														<thead>
+															<tr>
+																<th style="width: 5%;">#</th>
+																<th style="width: 5%;">Ctry</th>
+																<th style="width: 60%;">Name</th>
+																<th style="width: 10%;">Total</th>
+																<th style="width: 10%;">Hole</th>
+																<th style="width: 10%;">R1</th>
+															</tr>
+														</thead>
 
+														<tbody>
+															<tr *ngFor="let leader of leaderBoard; let i = index">
+																<td>{{getNumber(i)}}</td>
+																<td>
+																	<img src="assets/img/flags/{{leader?.nationality}}.png" class="profile-flag-img-small" >
+																</td>
+																<td>{{leader?.displayName}}</td>
+																<td>{{leader?.total}}</td>
+																<td>x</td>
+																<td>x</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
 
-                      <!-- <div class="row g-padding-x-20--xs g-padding-y-30--xs">
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                          <button
-                          role="link"
-                          [routerLink]="['/score-card', parameterTournament]"
-                          class="text-uppercase s-btn s-btn--xs s-btn--dark-bg g-radius--3 btn-block">
-                          Play
-                        </button>
-                      </div>
-                    </div> -->
-                  </div>
-                    <!--  -->
-
+										</div>
 									</div>
 								</div>
 							</div>
-
-
+							
 						</div>
 					</div>
+					<!-- End Plan -->
 				</div>
-
 			</div>
 		</div>
-		<!-- End Plan -->
 	</div>
-</div>
-</div>
-</div>
 

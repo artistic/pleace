@@ -210,7 +210,7 @@ export class PlayComponent implements OnInit {
       await batch.commit();
       // this.allSubscriptions.push(await this.checkLeaderBoardAccess());
       this.toastr.success('You have success joined the tournament', 'Tournament Joined');
-      this.router.navigate(['score-card', this.tournamentId]);
+      this.router.navigate(['tournament', this.tournamentId]);
 
 
       }

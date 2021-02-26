@@ -32,32 +32,20 @@
                 <table class="table table-hover table-responsive">
                   <thead>
                     <tr>
-                      <th style="width: 45%;">Name</th>
-                      <th style="width: 25%;">Start Date</th>
-                      <th style="width: 25%;">End Date</th>
-                      <th style="width: 5%;"></th>
+                      <th style="width: 70%;">Name</th>
+                      <th style="width: 30%;">Start Date</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr *ngFor="let tournamentsChamps of tournamentsChamps$ | async; index as i">
                       <td>
                         <span>
-                          <a (click)="onTournamentSelect(tournamentsChamps.id)">
+                          <a (click)="onTournamentSelect(tournamentsChamps.id, tournamentsChamps.name)">
                             <strong>{{ tournamentsChamps.name}}</strong>
                           </a>
                         </span>
                       </td>
                       <td>{{ tournamentsChamps.startDate}}</td>
-                      <td>{{ tournamentsChamps.endDate}}</td>
-                      <td>
-                        <span >
-                          <a (click)="onTournamentSelect(tournamentsChamps.id, tournamentsChamps.name)">
-                            <i class="g-color--primary g-margin-r-10--xs ti-eye"></i>
-                          </a>
-                        </span>
-
-
-                      </td>
                     </tr>
 
                   </tbody>
@@ -93,45 +81,23 @@
                 </div>
 
               </div>
-                <div class="row">
-                  <div class="col-md-12 col-sm-12 col-xs-12">
-                    <label>Golf Course</label>
-                    <div class="input-group g-margin-b-10--xs">
-                      <span class="input-group-btn">
-                        <i class="s-form-v4__icon ti-flag-alt-2"></i>
-                      </span>
-                      <select
-                      class="form-control s-form-v4__input"
-                      style="width: 100%;"
-                      formControlName="course"
-                      name = "course"
-                      id = "course"
-                      placeholder="course"
-                      >
-                      <option value="">{{clubs.value == '' ? 'Select a club first' : 'Courses'}}</option>
-                      <option *ngFor="let course of golfCourses" [value]="course.id">{{course.course_name}}</option>
-                    </select>
-                  </div>
-                </div>
-
-              </div>
-
               <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                  <label>Tee</label>
+                  <label>Golf Course</label>
                   <div class="input-group g-margin-b-10--xs">
                     <span class="input-group-btn">
-                      <i class="s-form-v4__icon ti-flag-alt"></i>
+                      <i class="s-form-v4__icon ti-flag-alt-2"></i>
                     </span>
                     <select
                     class="form-control s-form-v4__input"
                     style="width: 100%;"
-                    formControlName="tee"
-                    name = "tee"
-                    id = "tee"
+                    formControlName="course"
+                    name = "course"
+                    id = "course"
+                    placeholder="course"
                     >
-                    <option value="">{{course.value == '' ? 'Select a course first' : 'Tees'}}</option>
-                    <option *ngFor="let tee of courseTees" [value]="tee.id">{{tee.tee_name}}</option>
+                    <option value="">{{clubs.value == '' ? 'Select a club first' : 'Courses'}}</option>
+                    <option *ngFor="let course of golfCourses" [value]="course.id">{{course.course_name}}</option>
                   </select>
                 </div>
               </div>
@@ -140,42 +106,54 @@
 
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
-                <label>Handicap / Index</label>
+                <label>Tee</label>
                 <div class="input-group g-margin-b-10--xs">
                   <span class="input-group-btn">
-                    <i class="s-form-v4__icon ti-medall"></i>
+                    <i class="s-form-v4__icon ti-flag-alt"></i>
                   </span>
-                  <input
-                  type="text"
+                  <select
                   class="form-control s-form-v4__input"
-                  formControlName="handiCapIndex"
-                  placeholder="Handicap / Index"
-                  name = "handiCapIndex"
-                  id = "handiCapIndex"
-                  />
-                </div>
+                  style="width: 100%;"
+                  formControlName="tee"
+                  name = "tee"
+                  id = "tee"
+                  >
+                  <option value="">{{course.value == '' ? 'Select a course first' : 'Tees'}}</option>
+                  <option *ngFor="let tee of courseTees" [value]="tee.id">{{tee.tee_name}}</option>
+                </select>
               </div>
             </div>
 
+          </div>
 
-            <!-- <div class="row g-margin-t-30--xs">
-              <div class="col-md-6 col-sm-6 col-xs-6">
-                <button type="submit" class="text-uppercase s-btn s-btn--xs s-btn--dark-bg g-radius--50 btn-block">Submit</button>
-              </div>
-              <div class="col-md-6 col-sm-6 col-xs-6">
-                <button type="button" (click)="showForm = false" class="text-uppercase s-btn s-btn--xs s-btn--green-brd g-radius--50 btn-block">Cancel</button>
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <label>Handicap / Index</label>
+              <div class="input-group g-margin-b-10--xs">
+                <span class="input-group-btn">
+                  <i class="s-form-v4__icon ti-medall"></i>
+                </span>
+                <input
+                type="text"
+                class="form-control s-form-v4__input"
+                formControlName="handiCapIndex"
+                placeholder="Handicap / Index"
+                name = "handiCapIndex"
+                id = "handiCapIndex"
+                />
               </div>
             </div>
-     -->
-     <button (click)="joinTournament()" routerLinkActive="active" type="button" class="text-uppercase s-btn s-btn--sm btn-block s-btn--primary-bg g-radius--3 g-padding-x-50--xs">Play</button>
-          </form>
-            </section>
+          </div>
 
-          </ng-template>
+          <button (click)="joinTournament()" routerLinkActive="active" type="button" class="text-uppercase s-btn s-btn--xs s-btn--dark-bg g-radius--50 btn-block">Play</button>
+        </form>
+      </section>
+
+    </ng-template>
 
 
-    </div>
   </div>
+</div>
 
 </div>
 
