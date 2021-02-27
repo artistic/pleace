@@ -220,7 +220,7 @@
 																	<td style="width: 10%;">Par</td>
 																	<td style="width: 10%;" *ngFor="let par of courseParBottom">{{par}}</td>
 																</tr>
-																<tr *ngFor="let leaders of leaderBoard">
+																<tr *ngFor="let leaders of oneLeader">
 																	<td style="width: 10%;">Strokes</td>
 																	<td style="width: 10%;">
 																		<div class="input-group g-margin-b-10--xs">
@@ -383,8 +383,8 @@
 															</td>
 															<td>{{leader?.displayName}}</td>
 															<td>{{leader?.total}}</td>
-															<td>x</td>
-															<td>x</td>
+															<td>{{lastHole}}</td>
+															<td>{{'R'+lastRound}}</td>
 														</tr>
 													</tbody>
 												</table>

@@ -55,6 +55,8 @@ export class TournamentComponent implements OnInit, OnDestroy {
 	tournament$: Observable<Tournament[]>;
 	tee$: Observable<Tees[]>;
 	course$: Observable<Courses[]>;
+  lastHole: number;
+  lastRound: number;
 	club$: Observable<Clubs[]>;
   joinTournamentForm: FormGroup = new FormGroup({});
 	courseHandicap : any;
@@ -64,6 +66,7 @@ export class TournamentComponent implements OnInit, OnDestroy {
 	par : any;
   indexNumber = 1;
 	standardSlope : any;
+  oneLeader: any[] = [];
 	withCourse : any;
   totalScore: number;
 	totalIndex : any;
@@ -101,9 +104,38 @@ export class TournamentComponent implements OnInit, OnDestroy {
 	ngOnInit() {
     this.createForm();
     this.onSaveSubject.subscribe((value) => {
+      let holeFound = false;
+      let roundFound = false
       this.score_in_hole = value.score1;
       this.score_in_hole2 = value.score2;
       this.totalScore = this.getTotalScore();
+      this.score_in_hole.forEach((hole, i) => {
+        if(holeFound){
+          return;
+        }
+          if(hole == 0){
+          holeFound = true;
+          roundFound = true;
+          this.lastHole = i + 1;
+          this.lastRound = 1;
+        }
+
+        })
+        this.score_in_hole2.forEach((hole, i) => {
+          if(holeFound){
+            return;
+          }
+            if(hole == 0){
+            holeFound = true;
+            roundFound = true;
+            this.lastHole = i + 11;
+            this.lastRound = 2;
+          }
+        })
+        if(!holeFound){
+          this.lastHole = 18;
+          this.lastRound = 2;
+        }
     })
     this.allSubscriptions.push(this.getParameterSubscription());
     this.allSubscriptions.push(this.getAuthState());
@@ -557,6 +589,36 @@ async	onSubmit() {
       this.currentPlayer = playerData.data();
       this.score_in_hole = [...this.currentPlayer.score_in_hole];
       this.score_in_hole2 = [...this.currentPlayer.score_in_hole2];
+      let holeFound = false;
+      let roundFound = false
+
+      this.score_in_hole.forEach((hole, i) => {
+      if(holeFound){
+        return;
+      }
+        if(hole == 0){
+        holeFound = true;
+        roundFound = true;
+        this.lastHole = i + 1;
+        this.lastRound = 1;
+      }
+
+      })
+      this.score_in_hole2.forEach((hole, i) => {
+        if(holeFound){
+          return;
+        }
+          if(hole == 0){
+          holeFound = true;
+          roundFound = true;
+          this.lastHole = i + 11;
+          this.lastRound = 2;
+        }
+      })
+      if(!holeFound){
+        this.lastHole = 18;
+        this.lastRound = 2;
+      }
       console.log("score 2")
       console.log(this.currentPlayer.score_in_hole2);
       this.createScoreCard();
@@ -577,6 +639,7 @@ async	onSubmit() {
 
         .subscribe((leaderBoard) => {
           this.leaderBoard = leaderBoard;
+          this.oneLeader = [leaderBoard[0]];
           console.log(leaderBoard);
 
         })
