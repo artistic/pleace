@@ -68,12 +68,13 @@ export class PlayComponent implements OnInit {
     private toastr: ToastrService
     ) {
 
-    this.afAuth.authState.subscribe(user => {
+    this.afAuth.authState.subscribe(async (user) => {
       if (user) {
         this.userState = user;
         localStorage.setItem('user', JSON.stringify(this.userState));
         JSON.parse(localStorage.getItem('user'));
         this.crrntUsr = JSON.parse(window.localStorage.getItem("user"));
+        this.crrntUsr = (await this.db.collection('users').doc(user.uid).get().toPromise()).data()
       } else {
         localStorage.setItem('user', null);
         JSON.parse(localStorage.getItem('user'));
@@ -205,9 +206,17 @@ async onTournamentSelect(tournamentId: string, tournamentName: string){
     this.toastr.success('Your profile has been updated', 'Profile Updated');
   };
   async joinTournament(){
+    let index: string;
+    if(this.crrntUsr.accountType != '3'){
+      index = '-3.5'
+    } else if(this.crrntUsr.accountType != '4'){
+      index = '-1.5'
+    } else{
+      index = this.handiCapIndex.value;
+    }
     const newPlayer : Play = {
       uid : this.userState.uid,
-      handicapIndex : this.handiCapIndex.value,
+      handicapIndex :  index,
       teeId : this.tee.value,
       posted : new Date(Date.now()),
     }

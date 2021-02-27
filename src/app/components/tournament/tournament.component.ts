@@ -128,7 +128,7 @@ export class TournamentComponent implements OnInit, OnDestroy {
             if(hole == 0){
             holeFound = true;
             roundFound = true;
-            this.lastHole = i + 11;
+            this.lastHole = i + 10;
             this.lastRound = 2;
           }
         })
@@ -611,7 +611,7 @@ async	onSubmit() {
           if(hole == 0){
           holeFound = true;
           roundFound = true;
-          this.lastHole = i + 11;
+          this.lastHole = i + 10;
           this.lastRound = 2;
         }
       })

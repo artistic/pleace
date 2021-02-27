@@ -126,7 +126,7 @@
 
           </div>
 
-          <div class="row">
+          <div *ngIf="crrntUsr.accountType != '3' && crrntUsr.accountType != '4'" class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
               <label>Handicap / Index</label>
               <div class="input-group g-margin-b-10--xs">
