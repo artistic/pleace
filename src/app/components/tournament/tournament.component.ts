@@ -65,7 +65,7 @@ export class TournamentComponent implements OnInit, OnDestroy {
   indexNumber = 1;
 	standardSlope : any;
 	withCourse : any;
-
+  totalScore: number;
 	totalIndex : any;
 	rndtotalIndex : any = 0;
 	userState: any;
@@ -103,6 +103,7 @@ export class TournamentComponent implements OnInit, OnDestroy {
     this.onSaveSubject.subscribe((value) => {
       this.score_in_hole = value.score1;
       this.score_in_hole2 = value.score2;
+      this.totalScore = this.getTotalScore();
     })
     this.allSubscriptions.push(this.getParameterSubscription());
     this.allSubscriptions.push(this.getAuthState());
@@ -120,9 +121,11 @@ export class TournamentComponent implements OnInit, OnDestroy {
 
       this.user = user;
 
+
       await this.getScorecard();
       console.log(this.score_in_hole[0]);
-
+      const mainUser = (await this.db.collection<User>('users').doc(user.uid).get().toPromise()).data();
+      this.handicapIndexGlobal = mainUser.handicap;
     })
      this.activatedRoute.params.subscribe((value) => {
       this.tournamentID2 = value.tournamentID2
@@ -148,15 +151,15 @@ export class TournamentComponent implements OnInit, OnDestroy {
 
   createScoreCard2(){
     this.scorecard2 = this.fb.group({
-      hole10: [this.RZIF(this.score_in_hole2[9]), [Validators.required]],
-      hole11: [this.RZIF(this.score_in_hole2[10]), [Validators.required]],
-      hole12: [this.RZIF(this.score_in_hole2[11]), [Validators.required]],
-      hole13: [this.RZIF(this.score_in_hole2[12]), [Validators.required]],
-      hole14: [this.RZIF(this.score_in_hole2[13]), [Validators.required]],
-      hole15: [this.RZIF(this.score_in_hole2[14]), [Validators.required]],
-      hole16: [this.RZIF(this.score_in_hole2[15]), [Validators.required]],
-      hole17: [this.RZIF(this.score_in_hole2[16]), [Validators.required]],
-      hole18: [this.RZIF(this.score_in_hole2[17]), [Validators.required]]
+      hole10: [this.RZIF(this.score_in_hole2[0]), [Validators.required]],
+      hole11: [this.RZIF(this.score_in_hole2[1]), [Validators.required]],
+      hole12: [this.RZIF(this.score_in_hole2[2]), [Validators.required]],
+      hole13: [this.RZIF(this.score_in_hole2[3]), [Validators.required]],
+      hole14: [this.RZIF(this.score_in_hole2[4]), [Validators.required]],
+      hole15: [this.RZIF(this.score_in_hole2[5]), [Validators.required]],
+      hole16: [this.RZIF(this.score_in_hole2[6]), [Validators.required]],
+      hole17: [this.RZIF(this.score_in_hole2[7]), [Validators.required]],
+      hole18: [this.RZIF(this.score_in_hole2[8]), [Validators.required]]
     })
   }
 
@@ -258,6 +261,79 @@ export class TournamentComponent implements OnInit, OnDestroy {
     })
     return total;
   }
+  /*
+PAR 3, 4, 5
+
+Birdie -> +1 -> 1 Under par -> 2pts
+Eagle -> +2 -> 2 Under par -> +5pts
+
+Hole in one par 3 -> 7 pts;
+
+Hole in one -> 7pts
+
+albertros -> anything 3 under par -> +9pts
+
+Boogie -> -1 -> 1 over par -> -1pts
+
+Double boogie -> -2 or more over par -> -3pts
+  */
+  getScore(par: number, stroke: number, index: number){
+    if(index < 17){
+      if(stroke == 0){
+        return 0;
+      }
+      if(par - stroke == 0){
+        return 0
+      }
+      if((par - stroke) >= 3 ){
+        return 9
+      }
+     else if(stroke == 1){
+        return 7;
+      }
+     else if(par - stroke == 1){
+        return 2
+      } else if(par - stroke == 2){
+        return 5
+      }
+      else if(par - stroke == -1){
+        return -1
+      } else if(par - stroke <= -2){
+        return -3
+      }
+    } else{
+      if(stroke == 0){
+        return 0;
+      }
+      if(par - stroke == 0){
+        return 0
+      }
+      if((par - stroke) >= 3 ){
+        return 9*2
+      }
+     else if(stroke == 1){
+        return 7*2;
+      }
+     else if(par - stroke == 1){
+        return 2*2;
+      } else if(par - stroke == 2){
+        return 5*2;
+      }
+      else if(par - stroke == -1){
+        return -1*2;
+      } else if(par - stroke <= -2){
+        return -3*2;
+      }
+    }
+  }
+  getTotalScore(){
+    let total = 0;
+    this.courseParTop.forEach((par, i) => {
+     total +=  this.getScore(par, this.score_in_hole[i], i+1)
+     + this.getScore(this.courseParBottom[i], this.score_in_hole2[i], i+11);
+    })
+    return total;
+  }
   RZIF(value: any){
 
     return value == '' || !value ? 0 : parseInt(value)
@@ -272,10 +348,12 @@ export class TournamentComponent implements OnInit, OnDestroy {
       {
         score_in_hole: this.completeHoleArray,
         score_in_hole2: this.completeHoleArray2,
-        total: this.total
+        total: this.totalScore
       },
       {merge: true}
       )
+      console.log(this.hole1.value)
+      console.log(this.hole10.value);
       this.onSaveSubject.next({score1: this.completeHoleArray, score2: this.completeHoleArray2});
       this.toastr.success('Your stroke score has been saved', 'Scorecard Updated');
     } catch (error) {
@@ -371,6 +449,8 @@ export class TournamentComponent implements OnInit, OnDestroy {
           this.slope = this.te.slope;
           this.par = this.te.course_par_for_tee;
           this.calculateScore(this.te);
+
+
           console.log("the tee")
           console.log(this.te)
 
@@ -475,10 +555,17 @@ async	onSubmit() {
 
     if(playerData.exists){
       this.currentPlayer = playerData.data();
-      this.score_in_hole = this.currentPlayer.score_in_hole;
-      this.score_in_hole2 = this.currentPlayer.score_in_hole2;
+      this.score_in_hole = [...this.currentPlayer.score_in_hole];
+      this.score_in_hole2 = [...this.currentPlayer.score_in_hole2];
+      console.log("score 2")
+      console.log(this.currentPlayer.score_in_hole2);
       this.createScoreCard();
       this.createScoreCard2();
+      setTimeout((val) => {
+        this.totalScore = this.getTotalScore()
+        this.getHandicap()
+      }, 2000)
+      // this.totalScore = this.getTotalScore()
       this.formLoaded = true;
       console.log("In the form area")
       return new Promise<Subscription>((res, rej) => {
@@ -553,6 +640,26 @@ async	onSubmit() {
       this.indexNumber = 1;
       return this.indexNumber;
     }
+  }
+  getHandicap(){
+    console.log('Change');
+
+          let rating = this.rating
+          let par = this.par;
+          let slope = this.slope == 'N/D' ? 124 : parseFloat(this.te.slope)
+          console.log(this.handicapIndexGlobal)
+          this.courseHandicap = this.handicapIndexGlobal * slope;
+          this.standardSlope = this.courseHandicap / 113;
+          this.withCourse = rating - par;
+          this.totalIndex = this.standardSlope + this.withCourse;
+          this.rndtotalIndex = Math.round(this.totalIndex)
+  }
+  getStrokeScore(strokes: number[]){
+    let total = 0;
+    strokes.forEach((num) => {
+      total += num;
+    })
+    return total;
   }
   /**
    * Unsubscribe from subscriptions when class is destroyed

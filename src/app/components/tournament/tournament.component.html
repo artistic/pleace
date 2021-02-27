@@ -174,7 +174,10 @@
 																</tr>
 																<tr>
 																	<td style="width: 10%;">SCORE</td>
-																	<td style="width: 10%;"></td>
+                                  <td *ngFor="let par of courseParTop; let i = index">
+                                    {{score_in_hole[i] == 0 ? '-' : getScore(par, score_in_hole[i], i+1)}}
+                                  </td>
+																	<!-- <td style="width: 10%;"></td>
 																	<td style="width: 10%;">
 																	</td>
 																	<td style="width: 10%;">x</td>
@@ -184,7 +187,7 @@
 																	<td style="width: 10%;">x</td>
 																	<td style="width: 10%;">x</td>
 																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
+																	<td style="width: 10%;">x</td> -->
 																</tr>
 															</tbody>
 														</table>
@@ -315,16 +318,9 @@
 																</tr>
 																<tr>
 																	<td style="width: 10%;">Score</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
-																	<td style="width: 10%;">x</td>
+																	<td *ngFor="let par of courseParBottom; let i = index">
+                                    {{score_in_hole2[i] == 0 ? '-' :getScore(par, score_in_hole2[i], i+11)}}
+                                  </td>
 																</tr>
 															</tbody>
 														</table>
@@ -339,13 +335,13 @@
 																<p class="g-font-size-12--md g-font-size-12--sm"><strong>Par </strong> : <i>{{te?.course_par_for_tee}}</i></p>
 															</div>
 															<div class="col-md-3 col-sm-3 col-xs-3">
-																<p class="g-font-size-12--md g-font-size-12--sm"><strong>Total</strong> :  <i>X</i></p>
+																<p class="g-font-size-12--md g-font-size-12--sm"><strong>Total</strong> :  <i>{{totalScore}}</i></p>
 															</div>
 															<div class="col-md-3 col-sm-3 col-xs-3">
-																<p class="g-font-size-12--md g-font-size-12--sm"><strong>HCP</strong> :  <i>X</i></p>
+																<p class="g-font-size-12--md g-font-size-12--sm"><strong>HCP</strong> :  <i>{{rndtotalIndex}}</i></p>
 															</div>
 															<div class="col-md-3 col-sm-3 col-xs-3">
-																<p class="g-font-size-12--md g-font-size-12--sm"><strong>NET</strong> : <i>X</i></p>
+																<p class="g-font-size-12--md g-font-size-12--sm"><strong>NET</strong> : <i>{{rndtotalIndex + totalScore}}</i></p>
 															</div>
 														</div>
 													</div>
