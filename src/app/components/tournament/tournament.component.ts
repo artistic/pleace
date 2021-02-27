@@ -16,6 +16,7 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { ToastrService } from 'ngx-toastr';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subject } from 'rxjs';
 
 @Component({
 	selector: 'app-tournament',
@@ -27,13 +28,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 export class TournamentComponent implements OnInit, OnDestroy {
 
-  scorecard: FormGroup = new FormGroup({});
+  scorecard1: FormGroup = new FormGroup({});
+  scorecard2: FormGroup = new FormGroup({});
   user: User;
+  currentPlayer: any;
   tournamentID2: string;
   userPlay: Play;
   score_in_hole: number[] = [];
   score_in_hole2: number[] = [];
   formLoaded = false;
+  onSaveSubject: Subject<{score1: number[], score2: number[]}> = new Subject()
 
   tournamentID: string;
 	faciltyID: string;
@@ -44,6 +48,8 @@ export class TournamentComponent implements OnInit, OnDestroy {
   leaderBoard: Play[];
   allSubscriptions: Subscription[] = [];
   te: Tees;
+  topScoreHolder: number[] = [];
+  bottomScoreHolder: number[] = [];
   crse: Courses;
   clb: Clubs;
 	tournament$: Observable<Tournament[]>;
@@ -93,7 +99,11 @@ export class TournamentComponent implements OnInit, OnDestroy {
    * Fire on init when class initializes
    */
 	ngOnInit() {
-    this.createForm()
+    this.createForm();
+    this.onSaveSubject.subscribe((value) => {
+      this.score_in_hole = value.score1;
+      this.score_in_hole2 = value.score2;
+    })
     this.allSubscriptions.push(this.getParameterSubscription());
     this.allSubscriptions.push(this.getAuthState());
     this.allSubscriptions.push(this.getHandicapChangesSubscription());
@@ -103,6 +113,7 @@ export class TournamentComponent implements OnInit, OnDestroy {
 
     this.usersService.getUserDoc(id).subscribe(res => {
       this.userRef = res;
+
     });
 
     this.afAuth.authState.subscribe(async (user) => {
@@ -111,9 +122,7 @@ export class TournamentComponent implements OnInit, OnDestroy {
 
       await this.getScorecard();
       console.log(this.score_in_hole[0]);
-      this.createScoreCard();
-      this.createScoreCard2();
-      this.formLoaded = true;
+
     })
      this.activatedRoute.params.subscribe((value) => {
       this.tournamentID2 = value.tournamentID2
@@ -124,7 +133,7 @@ export class TournamentComponent implements OnInit, OnDestroy {
 	}
 
   createScoreCard(){
-    this.scorecard = this.fb.group({
+    this.scorecard1 = this.fb.group({
       hole1: [this.RZIF(this.score_in_hole[0]), [Validators.required]],
       hole2: [this.RZIF(this.score_in_hole[1]), [Validators.required]],
       hole3: [this.RZIF(this.score_in_hole[2]), [Validators.required]],
@@ -133,12 +142,12 @@ export class TournamentComponent implements OnInit, OnDestroy {
       hole6: [this.RZIF(this.score_in_hole[5]), [Validators.required]],
       hole7: [this.RZIF(this.score_in_hole[6]), [Validators.required]],
       hole8: [this.RZIF(this.score_in_hole[7]), [Validators.required]],
-      hole9: [this.RZIF(this.score_in_hole[8]), [Validators.required]]
+      hole9: [this.RZIF(this.score_in_hole[8]), [Validators.required]],
     })
   }
 
   createScoreCard2(){
-    this.scorecard = this.fb.group({
+    this.scorecard2 = this.fb.group({
       hole10: [this.RZIF(this.score_in_hole2[9]), [Validators.required]],
       hole11: [this.RZIF(this.score_in_hole2[10]), [Validators.required]],
       hole12: [this.RZIF(this.score_in_hole2[11]), [Validators.required]],
@@ -160,63 +169,62 @@ export class TournamentComponent implements OnInit, OnDestroy {
     .get()
     .toPromise())
     .data()
-    this.score_in_hole = this.userPlay.score_in_hole;
-    this.score_in_hole2 = this.userPlay.score_in_hole2;
+
   }
 
   get hole1(){
-    return this.scorecard.get('hole1')
+    return this.scorecard1.get('hole1')
   }
   get hole2(){
-    return this.scorecard.get('hole2')
+    return this.scorecard1.get('hole2')
   }
   get hole3(){
-    return this.scorecard.get('hole3')
+    return this.scorecard1.get('hole3')
   }
   get hole4(){
-    return this.scorecard.get('hole4')
+    return this.scorecard1.get('hole4')
   }
   get hole5(){
-    return this.scorecard.get('hole5')
+    return this.scorecard1.get('hole5')
   }
   get hole6(){
-    return this.scorecard.get('hole6')
+    return this.scorecard1.get('hole6')
   }
   get hole7(){
-    return this.scorecard.get('hole7')
+    return this.scorecard1.get('hole7')
   }
   get hole8(){
-    return this.scorecard.get('hole8')
+    return this.scorecard1.get('hole8')
   }
   get hole9(){
-    return this.scorecard.get('hole9')
+    return this.scorecard1.get('hole9')
   }
   get hole10(){
-    return this.scorecard.get('hole10')
+    return this.scorecard2.get('hole10')
   }
   get hole11(){
-    return this.scorecard.get('hole11')
+    return this.scorecard2.get('hole11')
   }
   get hole12(){
-    return this.scorecard.get('hole12')
+    return this.scorecard2.get('hole12')
   }
   get hole13(){
-    return this.scorecard.get('hole13')
+    return this.scorecard2.get('hole13')
   }
   get hole14(){
-    return this.scorecard.get('hole14')
+    return this.scorecard2.get('hole14')
   }
   get hole15(){
-    return this.scorecard.get('hole15')
+    return this.scorecard2.get('hole15')
   }
   get hole16(){
-    return this.scorecard.get('hole16')
+    return this.scorecard2.get('hole16')
   }
   get hole17(){
-    return this.scorecard.get('hole17')
+    return this.scorecard2.get('hole17')
   }
   get hole18(){
-    return this.scorecard.get('hole18')
+    return this.scorecard2.get('hole18')
   }
 
   get completeHoleArray(){
@@ -255,7 +263,9 @@ export class TournamentComponent implements OnInit, OnDestroy {
     return value == '' || !value ? 0 : parseInt(value)
   }
  async onSave(){
-   await this.db.collection('tournaments').doc(this.tournamentID2)
+   try {
+     console.log(this.parameterTournament);
+    await this.db.collection('tournaments').doc(this.parameterTournament)
     .collection('players')
     .doc(this.user.uid)
     .set(
@@ -263,10 +273,16 @@ export class TournamentComponent implements OnInit, OnDestroy {
         score_in_hole: this.completeHoleArray,
         score_in_hole2: this.completeHoleArray2,
         total: this.total
-      }, 
+      },
       {merge: true}
       )
-     this.toastr.success('Your stroke score has been saved', 'Scorecard Updated'); 
+      this.onSaveSubject.next({score1: this.completeHoleArray, score2: this.completeHoleArray2});
+      this.toastr.success('Your stroke score has been saved', 'Scorecard Updated');
+    } catch (error) {
+      this.toastr.error(error);
+   }
+
+
   }
   onFinish(){
 
@@ -458,6 +474,13 @@ async	onSubmit() {
     .toPromise())
 
     if(playerData.exists){
+      this.currentPlayer = playerData.data();
+      this.score_in_hole = this.currentPlayer.score_in_hole;
+      this.score_in_hole2 = this.currentPlayer.score_in_hole2;
+      this.createScoreCard();
+      this.createScoreCard2();
+      this.formLoaded = true;
+      console.log("In the form area")
       return new Promise<Subscription>((res, rej) => {
         res(this.db
           .collection<any>('tournaments')

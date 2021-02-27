@@ -87,7 +87,7 @@ export class PlayComponent implements OnInit {
     this.crrntUsr = JSON.parse(window.localStorage.getItem("user"));
 
     const id = this.crrntUsr.uid;
-  
+
     this.usersService.getUserDoc(id).subscribe(res => {
       this.userRef = res;
 
@@ -95,7 +95,7 @@ export class PlayComponent implements OnInit {
       .collection<Tournament>('tournaments',
         ref => ref.where('divisions', '==', this.userRef.accountType))
       .valueChanges({ idField: 'id'})
-      
+
       this.firstrun = this.userRef.firstrun;
 
 
@@ -105,30 +105,52 @@ export class PlayComponent implements OnInit {
 
   }
 
-  onTournamentSelect(tournamentId: string, tournamentName: string){
-    this.courseForm = this.formBuilder.group({
-      club: [''],
-      course: [''],
-      tee: [''],
-      handiCapIndex:[''],
-    })
-    this.allSubscriptions.push(this.getClubs$());
-    this.allSubscriptions.push(this.clubs.valueChanges.subscribe((value) => {
-      this.selectedClub();
-    }));
-    this.allSubscriptions.push(this.course.valueChanges.subscribe((value) => {
-      this.selectedCourse();
-    }));
-    this.allSubscriptions.push(this.course.valueChanges.subscribe((value) => {
-      this.selectedTee();
-    }))
-    // this.golfCourses = this.afs
-    // .collection('clubs', ref => ref
-    // .where('country', '==', this.userRef.country))
-    // .valueChanges({ idField: 'id'})
+async onTournamentSelect(tournamentId: string, tournamentName: string){
 
-    this.tournamentId = tournamentId;
-    this.tournamentName = tournamentName;
+  try {
+    const playerSnapshot = await this.db
+    .collection('tournaments')
+    .doc(tournamentId)
+    .collection('players')
+    .doc(this.userState.uid)
+    .get()
+    .toPromise();
+    if(playerSnapshot.exists){
+      this.toastr.success('Welcome back');
+      this.router.navigate(['/tournament', tournamentId]);
+    } else{
+
+      this.courseForm = this.formBuilder.group({
+        club: [''],
+        course: [''],
+        tee: [''],
+        handiCapIndex:[''],
+      })
+      this.allSubscriptions.push(this.getClubs$());
+      this.allSubscriptions.push(this.clubs.valueChanges.subscribe((value) => {
+        this.selectedClub();
+      }));
+      this.allSubscriptions.push(this.course.valueChanges.subscribe((value) => {
+        this.selectedCourse();
+      }));
+      this.allSubscriptions.push(this.course.valueChanges.subscribe((value) => {
+        this.selectedTee();
+      }))
+      // this.golfCourses = this.afs
+      // .collection('clubs', ref => ref
+      // .where('country', '==', this.userRef.country))
+      // .valueChanges({ idField: 'id'})
+
+      this.tournamentId = tournamentId;
+      this.tournamentName = tournamentName;
+
+
+    }
+  } catch (error) {
+
+  }
+
+
   }
   get clubs(){
     return this.courseForm.get('club')
@@ -192,17 +214,7 @@ export class PlayComponent implements OnInit {
     // Create batch for multiple writes
     let batch = this.db.firestore.batch();
     try {
-      const checkUser = await this.db
-      .collection('tournaments')
-      .doc(this.tournamentId)
-      .collection('players')
-      .doc(this.userState.uid)
-      .get()
-      .toPromise()
-      if(checkUser.exists){
-        this.toastr.success('Welcome back');
-        this.router.navigate(['/tournament', this.tournamentId])
-      } else{
+
         const playRef =	this.db.collection<any>('play')
         .doc(this.userState.uid).ref
         const subTornamentRef = this.db.collection<any>('tournaments')
@@ -226,7 +238,7 @@ export class PlayComponent implements OnInit {
         // this.allSubscriptions.push(await this.checkLeaderBoardAccess());
         this.toastr.success('You have success joined the tournament', 'Tournament Joined');
         this.router.navigate(['tournament', this.tournamentId]);
-      }
+
     } catch (error) {
 
     }

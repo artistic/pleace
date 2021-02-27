@@ -46,7 +46,7 @@
 										<div id="scoreboard" class="tab-pane fade in active">
 											<h2 class="g-font-size-14--xs g-font-size-16--md">Scorecard<span class="pull-right"><i class="ti-clipboard"></i></span></h2>
 
-											<form [formGroup]="scorecard">
+											<form [formGroup]="scorecard1" *ngIf="formLoaded">
 
 												<div class="row g-margin-b-30--xs" ng-if="i % 3 === 0">
 													<div class="col-md-12 col-sm-12 col-xs-12">
@@ -72,81 +72,105 @@
 																	<td style="width: 10%;">PAR</td>
 																	<td style="width: 10%;" *ngFor="let par of courseParTop">{{par}}</td>
 																</tr>
-																<tr *ngFor="let leaders of leaderBoard">
+																<tr >
 																	<td style="width: 10%;">STRKES</td>
 																	<td>
 																		<div class="input-group g-margin-b-10--xs">
-																			<input type="text" class="form-control scoreInput"
+																			<input type="number" class="form-control scoreInput"
 																			formControlName="hole1"
-																			required
+                                      *ngIf="score_in_hole[0] == 0"
+
 																			>
+                                      <p *ngIf="score_in_hole[0] != 0">{{score_in_hole[0]}}</p>
 																		</div>
 																	</td>
 																	<td style="width: 10%;">
 																		<div class="input-group g-margin-b-10--xs">
-																			<input type="text" class="form-control scoreInput"
+																			<input type="number" class="form-control scoreInput"
 																			formControlName="hole2"
-																			required
+                                      *ngIf="score_in_hole[1] == 0"
 																			>
+                                      <p *ngIf="score_in_hole[1] != 0">{{score_in_hole[1]}}</p>
 																		</div>
 																	</td>
 																	<td style="width: 10%;">
 																		<div class="input-group g-margin-b-10--xs">
-																			<input type="text" class="form-control scoreInput"
+																			<input type="number" class="form-control scoreInput"
 																			formControlName="hole3"
 																			required
+                                      *ngIf="score_in_hole[2] == 0"
+																			required
 																			>
+                                      <p *ngIf="score_in_hole[2] != 0">{{score_in_hole[2]}}</p>
 																		</div>
 																	</td>
 																	<td style="width: 10%;">
 																		<div class="input-group g-margin-b-10--xs">
-																			<input type="text" class="form-control scoreInput"
+																			<input type="number" class="form-control scoreInput"
 																			formControlName="hole4"
 																			required
+                                      *ngIf="score_in_hole[3] == 0"
+																			required
 																			>
+                                      <p *ngIf="score_in_hole[3] != 0">{{score_in_hole[3]}}</p>
 																		</div>
 																	</td>
 																	<td style="width: 10%;">
 																		<div class="input-group g-margin-b-10--xs">
-																			<input type="text" class="form-control scoreInput"
+																			<input type="number" class="form-control scoreInput"
 																			formControlName="hole5"
 																			required
+                                      *ngIf="score_in_hole[4] == 0"
+																			required
 																			>
+                                      <p *ngIf="score_in_hole[4] != 0">{{score_in_hole[4]}}</p>
 																		</div>
 																	</td>
 																	<td style="width: 10%;">
 																		<div class="input-group g-margin-b-10--xs">
-																			<input type="text" class="form-control scoreInput"
+																			<input type="number" class="form-control scoreInput"
 																			formControlName="hole6"
 																			required
+                                      *ngIf="score_in_hole[5] == 0"
+																			required
 																			>
+                                      <p *ngIf="score_in_hole[5] != 0">{{score_in_hole[5]}}</p>
 																		</div>
 																	</td>
 																	<td style="width: 10%;">
 																		<div class="input-group g-margin-b-10--xs">
-																			<input type="text" class="form-control scoreInput"
+																			<input type="number" class="form-control scoreInput"
 																			formControlName="hole7"
 																			required
+                                      *ngIf="score_in_hole[6] == 0"
+																			required
 																			>
+                                      <p *ngIf="score_in_hole[6] != 0">{{score_in_hole[6]}}</p>
 																		</div>
 																	</td>
 																	<td style="width: 10%;">
 																		<div class="input-group g-margin-b-10--xs">
-																			<input type="text" class="form-control scoreInput"
+																			<input type="number" class="form-control scoreInput"
 																			formControlName="hole8"
 																			required
+                                      *ngIf="score_in_hole[7] == 0"
+																			required
 																			>
+                                      <p *ngIf="score_in_hole[7] != 0">{{score_in_hole[7]}}</p>
 																		</div>
 																	</td>
 																	<td style="width: 10%;">
 																		<div class="input-group g-margin-b-10--xs">
-																			<input type="text" class="form-control scoreInput"
+																			<input type="number" class="form-control scoreInput"
 																			formControlName="hole9"
 																			required
+                                      *ngIf="score_in_hole[8] == 0"
+																			required
 																			>
+                                      <p *ngIf="score_in_hole[8] != 0">{{score_in_hole[8]}}</p>
 																		</div>
 																	</td>
-																	<td>{{leaders.total}}</td>
+																	<td>{{currentPlayer.total}}</td>
 																</tr>
 																<tr>
 																	<td style="width: 10%;">SCORE</td>
@@ -165,8 +189,10 @@
 															</tbody>
 														</table>
 													</div>
-												</div>
 
+												</div>
+                  </form>
+                  <form [formGroup]="scorecard2" *ngIf="formLoaded">
 												<div class="row">
 													<div class="col-md-12 col-sm-12 col-xs-12">
 														<table class="table table-striped table-bordered tablefont">
@@ -195,74 +221,93 @@
 																	<td style="width: 10%;">Strokes</td>
 																	<td style="width: 10%;">
 																		<div class="input-group g-margin-b-10--xs">
-																			<input type="text" class="form-control scoreInput"
+																			<input type="number" class="form-control scoreInput"
 																			formControlName="hole10"
 																			required
+                                      *ngIf="score_in_hole2[0] == 0"
+																			required
 																			>
+                                      <p *ngIf="score_in_hole2[0] != 0">{{score_in_hole2[0]}}</p>
 																		</div>
 																	</td>
 																	<td style="width: 10%;">
 																		<div class="input-group g-margin-b-10--xs">
-																			<input type="text" class="form-control scoreInput"
+																			<input type="number" class="form-control scoreInput"
 																			formControlName="hole11"
 																			required
-																			>
+                                      *ngIf="score_in_hole2[1] == 0"
+                                      >
+                                      <p *ngIf="score_in_hole2[1] != 0">{{score_in_hole2[1]}}</p>
 																		</div>
 																	</td>
 																	<td style="width: 10%;">
 																		<div class="input-group g-margin-b-10--xs">
-																			<input type="text" class="form-control scoreInput"
+																			<input type="number" class="form-control scoreInput"
 																			formControlName="hole12"
 																			required
-																			>
+                                      *ngIf="score_in_hole2[2] == 0"
+                                      >
+                                      <p *ngIf="score_in_hole2[2] != 0">{{score_in_hole2[2]}}</p>
 																		</div>
 																	</td>
 																	<td style="width: 10%;">
 																		<div class="input-group g-margin-b-10--xs">
-																			<input type="text" class="form-control scoreInput"
+																			<input type="number" class="form-control scoreInput"
 																			formControlName="hole13"
 																			required
-																			>
+                                      *ngIf="score_in_hole2[3] == 0"
+                                      >
+                                      <p *ngIf="score_in_hole2[3] != 0">{{score_in_hole2[3]}}</p>
 																		</div>
 																	</td>
 																	<td style="width: 10%;">
 																		<div class="input-group g-margin-b-10--xs">
-																			<input type="text" class="form-control scoreInput"
+																			<input type="number" class="form-control scoreInput"
 																			formControlName="hole14"
 																			required
-																			>
+                                      *ngIf="score_in_hole2[4] == 0"
+                                      >
+                                      <p *ngIf="score_in_hole2[4] != 0">{{score_in_hole2[4]}}</p>
 																		</div>
 																	</td>
 																	<td style="width: 10%;">
 																		<div class="input-group g-margin-b-10--xs">
-																			<input type="text" class="form-control scoreInput"
+																			<input type="number" class="form-control scoreInput"
 																			formControlName="hole15"
 																			required
-																			>
+                                      *ngIf="score_in_hole2[5] == 0"
+                                      >
+                                      <p *ngIf="score_in_hole2[5] != 0">{{score_in_hole2[5]}}</p>
 																		</div>
 																	</td>
 																	<td style="width: 10%;">
 																		<div class="input-group g-margin-b-10--xs">
-																			<input type="text" class="form-control scoreInput"
+																			<input type="number" class="form-control scoreInput"
 																			formControlName="hole16"
 																			required
-																			>
+                                      *ngIf="score_in_hole2[6] == 0"
+                                      >
+                                      <p *ngIf="score_in_hole2[6] != 0">{{score_in_hole2[6]}}</p>
 																		</div>
 																	</td>
 																	<td style="width: 10%;">
 																		<div class="input-group g-margin-b-10--xs">
-																			<input type="text" class="form-control scoreInput"
+																			<input type="number" class="form-control scoreInput"
 																			formControlName="hole17"
 																			required
-																			>
+                                      *ngIf="score_in_hole2[7] == 0"
+                                      >
+                                      <p *ngIf="score_in_hole2[7] != 0">{{score_in_hole2[7]}}</p>
 																		</div>
 																	</td>
 																	<td style="width: 10%;">
 																		<div class="input-group g-margin-b-10--xs">
-																			<input type="text" class="form-control scoreInput"
+																			<input type="number" class="form-control scoreInput"
 																			formControlName="hole18"
 																			required
-																			>
+                                      *ngIf="score_in_hole2[8] == 0"
+                                      >
+                                      <p *ngIf="score_in_hole2[8] != 0">{{score_in_hole2[8]}}</p>
 																		</div>
 																	</td>
 
