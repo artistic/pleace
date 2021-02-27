@@ -145,6 +145,24 @@
             </div>
           </div>
 
+
+          <div class="row" *ngFor="let teed of teeTees">
+            <div class="col-md-3 col-sm-3 col-xs-3">
+              <p><strong>Par</strong>{{teed.course_par_for_tee}}</p>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-3">
+              <p><strong>Slope</strong>{{teed.slope}}</p>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-3">
+              <strong></strong>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-3">
+              <strong></strong>
+            </div>
+          </div>
+
+
+
           <button (click)="joinTournament()" routerLinkActive="active" type="button" class="text-uppercase s-btn s-btn--xs s-btn--dark-bg g-radius--50 btn-block">Play</button>
         </form>
       </section>

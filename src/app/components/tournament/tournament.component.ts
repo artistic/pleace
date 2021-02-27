@@ -1,11 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FirestoreService } from 'src/app/services/firestore.service';
-import { Router, ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 import Tournament from 'src/app/models/tournament.model';
 import Tees from 'src/app/models/tees.model';
 import Courses from 'src/app/models/courses.model';
 import Clubs from 'src/app/models/clubs.model';
 import Play from 'src/app/models/play.model';
+import User from 'src/app/models/user.model';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { UsersService } from 'src/app/services/users.service';
@@ -26,7 +27,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 export class TournamentComponent implements OnInit, OnDestroy {
 
-	tournamentID: string;
+  scorecard: FormGroup = new FormGroup({});
+  user: User;
+  tournamentID2: string;
+  userPlay: Play;
+  score_in_hole: number[] = [];
+  score_in_hole2: number[] = [];
+  formLoaded = false;
+
+  tournamentID: string;
 	faciltyID: string;
 	public parameterTournament: string;
 	public t: string;
@@ -94,10 +103,175 @@ export class TournamentComponent implements OnInit, OnDestroy {
 
     this.usersService.getUserDoc(id).subscribe(res => {
       this.userRef = res;
+    });
+
+    this.afAuth.authState.subscribe(async (user) => {
+
+      this.user = user;
+
+      await this.getScorecard();
+      console.log(this.score_in_hole[0]);
+      this.createScoreCard();
+      this.createScoreCard2();
+      this.formLoaded = true;
     })
+     this.activatedRoute.params.subscribe((value) => {
+      this.tournamentID2 = value.tournamentID2
+      console.log(this.tournamentID2);
+    });
 
 
 	}
+
+  createScoreCard(){
+    this.scorecard = this.fb.group({
+      hole1: [this.RZIF(this.score_in_hole[0]), [Validators.required]],
+      hole2: [this.RZIF(this.score_in_hole[1]), [Validators.required]],
+      hole3: [this.RZIF(this.score_in_hole[2]), [Validators.required]],
+      hole4: [this.RZIF(this.score_in_hole[3]), [Validators.required]],
+      hole5: [this.RZIF(this.score_in_hole[4]), [Validators.required]],
+      hole6: [this.RZIF(this.score_in_hole[5]), [Validators.required]],
+      hole7: [this.RZIF(this.score_in_hole[6]), [Validators.required]],
+      hole8: [this.RZIF(this.score_in_hole[7]), [Validators.required]],
+      hole9: [this.RZIF(this.score_in_hole[8]), [Validators.required]]
+    })
+  }
+
+  createScoreCard2(){
+    this.scorecard = this.fb.group({
+      hole10: [this.RZIF(this.score_in_hole2[9]), [Validators.required]],
+      hole11: [this.RZIF(this.score_in_hole2[10]), [Validators.required]],
+      hole12: [this.RZIF(this.score_in_hole2[11]), [Validators.required]],
+      hole13: [this.RZIF(this.score_in_hole2[12]), [Validators.required]],
+      hole14: [this.RZIF(this.score_in_hole2[13]), [Validators.required]],
+      hole15: [this.RZIF(this.score_in_hole2[14]), [Validators.required]],
+      hole16: [this.RZIF(this.score_in_hole2[15]), [Validators.required]],
+      hole17: [this.RZIF(this.score_in_hole2[16]), [Validators.required]],
+      hole18: [this.RZIF(this.score_in_hole2[17]), [Validators.required]]
+    })
+  }
+
+ async getScorecard(){
+    this.userPlay = (await this.db
+    .collection('tournaments')
+    .doc(this.tournamentID)
+    .collection('players')
+    .doc(this.user.uid)
+    .get()
+    .toPromise())
+    .data()
+    this.score_in_hole = this.userPlay.score_in_hole;
+    this.score_in_hole2 = this.userPlay.score_in_hole2;
+  }
+
+  get hole1(){
+    return this.scorecard.get('hole1')
+  }
+  get hole2(){
+    return this.scorecard.get('hole2')
+  }
+  get hole3(){
+    return this.scorecard.get('hole3')
+  }
+  get hole4(){
+    return this.scorecard.get('hole4')
+  }
+  get hole5(){
+    return this.scorecard.get('hole5')
+  }
+  get hole6(){
+    return this.scorecard.get('hole6')
+  }
+  get hole7(){
+    return this.scorecard.get('hole7')
+  }
+  get hole8(){
+    return this.scorecard.get('hole8')
+  }
+  get hole9(){
+    return this.scorecard.get('hole9')
+  }
+  get hole10(){
+    return this.scorecard.get('hole10')
+  }
+  get hole11(){
+    return this.scorecard.get('hole11')
+  }
+  get hole12(){
+    return this.scorecard.get('hole12')
+  }
+  get hole13(){
+    return this.scorecard.get('hole13')
+  }
+  get hole14(){
+    return this.scorecard.get('hole14')
+  }
+  get hole15(){
+    return this.scorecard.get('hole15')
+  }
+  get hole16(){
+    return this.scorecard.get('hole16')
+  }
+  get hole17(){
+    return this.scorecard.get('hole17')
+  }
+  get hole18(){
+    return this.scorecard.get('hole18')
+  }
+
+  get completeHoleArray(){
+    return [
+      this.RZIF(this.hole1.value),
+      this.RZIF(this.hole2.value),
+      this.RZIF(this.hole3.value),
+      this.RZIF(this.hole4.value),
+      this.RZIF(this.hole5.value),
+      this.RZIF(this.hole6.value),
+      this.RZIF(this.hole7.value),
+      this.RZIF(this.hole8.value),
+      this.RZIF(this.hole9.value)]
+  }
+   get completeHoleArray2(){
+    return [
+      this.RZIF(this.hole10.value),
+      this.RZIF(this.hole11.value),
+      this.RZIF(this.hole12.value),
+      this.RZIF(this.hole13.value),
+      this.RZIF(this.hole14.value),
+      this.RZIF(this.hole15.value),
+      this.RZIF(this.hole16.value),
+      this.RZIF(this.hole17.value),
+      this.RZIF(this.hole18.value)]
+  }
+  get total(){
+    let total = 0;
+     this.score_in_hole.forEach((value) => {
+      total += value
+    })
+    return total;
+  }
+  RZIF(value: any){
+
+    return value == '' || !value ? 0 : parseInt(value)
+  }
+ async onSave(){
+   await this.db.collection('tournaments').doc(this.tournamentID2)
+    .collection('players')
+    .doc(this.user.uid)
+    .set(
+      {
+        score_in_hole: this.completeHoleArray,
+        score_in_hole2: this.completeHoleArray2,
+        total: this.total
+      }, 
+      {merge: true}
+      )
+     this.toastr.success('Your stroke score has been saved', 'Scorecard Updated'); 
+  }
+  onFinish(){
+
+  }
+
   /**
    * Create join tournament form
    */
@@ -120,11 +294,8 @@ export class TournamentComponent implements OnInit, OnDestroy {
           console.log(value)
           this.courseHandicap = value * slope;
           this.standardSlope = this.courseHandicap / 113;
-
           this.withCourse = rating - par;
-
           this.totalIndex = this.standardSlope + this.withCourse;
-
           this.rndtotalIndex = Math.round(this.totalIndex)
 
         }
@@ -241,7 +412,6 @@ async	onSubmit() {
     }
     // Create batch for multiple writes
    let batch = this.db.firestore.batch();
-
 	const playRef =	this.db.collection<any>('play')
     .doc(this.userState.uid).ref
   const subTornamentRef = this.db.collection<any>('tournaments')

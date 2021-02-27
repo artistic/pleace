@@ -39,15 +39,18 @@ export class PlayComponent implements OnInit {
 
   golfCourses: Courses[] = [];
   courseTees: Tees[] = [];
+  teeTees: Tees[] = [];
   public courseForm: FormGroup;
   userState: any;
   userRef: any;
   crrntUsr: any;
   userEmail: any;
+  userName: any;
   tournamentsChamps$;
   tournamentName: string = '';
   allSubscriptions: Subscription[] = [];
   teeSubscription: Subscription = new Subscription();
+  teeSub: Subscription = new Subscription();
   coursesSubscription: Subscription = new Subscription();
   firstrun : any;
   golfClubs: Clubs[] = [];
@@ -71,10 +74,6 @@ export class PlayComponent implements OnInit {
         localStorage.setItem('user', JSON.stringify(this.userState));
         JSON.parse(localStorage.getItem('user'));
         this.crrntUsr = JSON.parse(window.localStorage.getItem("user"));
-
-
-
-
       } else {
         localStorage.setItem('user', null);
         JSON.parse(localStorage.getItem('user'));
@@ -88,18 +87,17 @@ export class PlayComponent implements OnInit {
     this.crrntUsr = JSON.parse(window.localStorage.getItem("user"));
 
     const id = this.crrntUsr.uid;
-    this.userEmail = this.crrntUsr.email;
-
-
+  
     this.usersService.getUserDoc(id).subscribe(res => {
-    this.userRef = res;
+      this.userRef = res;
 
-    this.tournamentsChamps$ = this.db
-    .collection<Tournament>('tournaments',
-    ref => ref.where('divisions', '==', this.userRef.accountType))
-    .valueChanges({ idField: 'id'})
+      this.tournamentsChamps$ = this.db
+      .collection<Tournament>('tournaments',
+        ref => ref.where('divisions', '==', this.userRef.accountType))
+      .valueChanges({ idField: 'id'})
+      
       this.firstrun = this.userRef.firstrun;
-      console.log(this.firstrun);
+
 
     })
 
@@ -107,7 +105,7 @@ export class PlayComponent implements OnInit {
 
   }
 
-   onTournamentSelect(tournamentId: string, tournamentName: string){
+  onTournamentSelect(tournamentId: string, tournamentName: string){
     this.courseForm = this.formBuilder.group({
       club: [''],
       course: [''],
@@ -120,6 +118,9 @@ export class PlayComponent implements OnInit {
     }));
     this.allSubscriptions.push(this.course.valueChanges.subscribe((value) => {
       this.selectedCourse();
+    }));
+    this.allSubscriptions.push(this.course.valueChanges.subscribe((value) => {
+      this.selectedTee();
     }))
     // this.golfCourses = this.afs
     // .collection('clubs', ref => ref
@@ -164,15 +165,24 @@ export class PlayComponent implements OnInit {
       this.courseTees = tees;
     })
   }
+
+  selectedTee(){
+    this.teeSub.unsubscribe();
+    this.teeSub = this.afs.collection<Tees>('tees', ref => ref.where('teeId', '==', this.tee.value))
+    .valueChanges({ idField: 'id'}).subscribe((tees) => {
+      this.teeTees = tees;
+    })
+  }
+
   onSubmit() {
     this.crrntUsr = JSON.parse(window.localStorage.getItem("user"));
     const id = this.crrntUsr.uid;
     console.log(id);
     // this.usersService.updateUser(this.courseForm.value, id);
 
-   this.toastr.success('Your profile has been updated', 'Profile Updated');
+    this.toastr.success('Your profile has been updated', 'Profile Updated');
   };
- async joinTournament(){
+  async joinTournament(){
     const newPlayer : Play = {
       uid : this.userState.uid,
       handicapIndex : this.handiCapIndex.value,
@@ -180,9 +190,9 @@ export class PlayComponent implements OnInit {
       posted : new Date(Date.now()),
     }
     // Create batch for multiple writes
-   let batch = this.db.firestore.batch();
+    let batch = this.db.firestore.batch();
     try {
-   const checkUser = await this.db
+      const checkUser = await this.db
       .collection('tournaments')
       .doc(this.tournamentId)
       .collection('players')
@@ -194,23 +204,28 @@ export class PlayComponent implements OnInit {
         this.router.navigate(['/tournament', this.tournamentId])
       } else{
         const playRef =	this.db.collection<any>('play')
-    .doc(this.userState.uid).ref
-  const subTornamentRef = this.db.collection<any>('tournaments')
-  .doc(this.tournamentId)
-  .collection<Play>('players')
-  .doc(this.userState.uid)
-  .ref
-    batch.set(playRef, {uid: this.userState.uid}, {merge: true})
-    batch.set(subTornamentRef, {
-      ...newPlayer,
-      score_in_hole: [0, 0, 0, 0, 0, 0, 0, 0, 0],
-       total: 0,
-       displayName: this.userState.displayName ? this.userState.displayName : 'Placeholder'
-    }, {merge: true});
-      await batch.commit();
-      // this.allSubscriptions.push(await this.checkLeaderBoardAccess());
-      this.toastr.success('You have success joined the tournament', 'Tournament Joined');
-      this.router.navigate(['tournament', this.tournamentId]);
+        .doc(this.userState.uid).ref
+        const subTornamentRef = this.db.collection<any>('tournaments')
+        .doc(this.tournamentId)
+        .collection<Play>('players')
+        .doc(this.userState.uid)
+        .ref
+        batch.set(playRef, {
+          uid: this.userState.uid,
+          total : '0',
+        }, {merge: true})
+        batch.set(subTornamentRef, {
+          ...newPlayer,
+          score_in_hole: [0, 0, 0, 0, 0, 0, 0, 0, 0],
+          score_in_hole2: [0, 0, 0, 0, 0, 0, 0, 0, 0],
+          total: 0,
+          displayName: this.userRef.displayName ? this.userRef.displayName : 'Placeholder',
+          nationality: this.userRef.nationality ? this.userRef.nationality : 'Placeholder'
+        }, {merge: true});
+        await batch.commit();
+        // this.allSubscriptions.push(await this.checkLeaderBoardAccess());
+        this.toastr.success('You have success joined the tournament', 'Tournament Joined');
+        this.router.navigate(['tournament', this.tournamentId]);
 
 
       }

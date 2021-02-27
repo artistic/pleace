@@ -24,7 +24,7 @@
 							<div class="row">
 								<div class="col-md-12 col-sm-12 col-xs-12">
 									<h2 class="g-font-size-22--xs g-font-size-24--md">{{trment?.name}}<span class="pull-right"><i class="ti-Cup"></i></span></h2>
-									<h2 class="g-font-size-14--xs g-font-size-16--md">{{te?.tee_name}} - {{te?.tee_color}}</h2>
+									<h2 class="g-font-size-14--xs g-font-size-16--md">{{clb?.club_name}} -  [{{te?.tee_name}} {{te?.tee_color}} {{te?.rating}} / {{te?.slope}} SP]</h2>
 									<ul class="list-group list-group-flush">
 										<li class="list-group-item">
 											<i class="g-color--primary g-margin-r-10--xs ti-calendar"></i>
@@ -46,160 +46,320 @@
 										<div id="scoreboard" class="tab-pane fade in active">
 											<h2 class="g-font-size-14--xs g-font-size-16--md">Scorecard<span class="pull-right"><i class="ti-clipboard"></i></span></h2>
 
-											<div class="row g-margin-b-30--xs" ng-if="i % 3 === 0">
-												<div class="col-md-12 col-sm-12 col-xs-12">
-													<table class="table table-striped table-bordered tablefont">
-														<thead>
-															<tr>
-																<th style="width: 20%;">HOLE</th>
-																<th style="width: 10%;">1</th>
-																<th style="width: 10%;">2</th>
-																<th style="width: 10%;">3</th>
-																<th style="width: 10%;">4</th>
-																<th style="width: 10%;">5</th>
-																<th style="width: 10%;">6</th>
-																<th style="width: 10%;">7</th>
-																<th style="width: 10%;">8</th>
-																<th style="width: 10%;">9</th>
-																<th style="width: 10%;">Ttl</th>
-															</tr>
-														</thead>
+											<form [formGroup]="scorecard">
 
-														<tbody>
-															<tr>
-																<td style="width: 20%;">PAR</td>
-																<td style="width: 10%;" *ngFor="let par of courseParTop">{{par}}</td>
-															</tr>
-															<tr *ngFor="let leaders of leaderBoard">
-																<td style="width: 20%;">STROKES</td>
-																<td style="width: 10%;" *ngFor="let score of leaders.score_in_hole">{{score}}</td>
-																<td>{{leaders.total}}</td>
-															</tr>
-															<tr>
-																<td style="width: 20%;">SCORE</td>
-																<td style="width: 10%;">x</td>
-																<td style="width: 10%;">x</td>
-																<td style="width: 10%;">x</td>
-																<td style="width: 10%;">x</td>
-																<td style="width: 10%;">x</td>
-																<td style="width: 10%;">x</td>
-																<td style="width: 10%;">x</td>
-																<td style="width: 10%;">x</td>
-																<td style="width: 10%;">x</td>
-																<td style="width: 10%;">x</td>
-															</tr>
-														</tbody>
-													</table>
+												<div class="row g-margin-b-30--xs" ng-if="i % 3 === 0">
+													<div class="col-md-12 col-sm-12 col-xs-12">
+														<table class="table table-striped table-bordered tablefont">
+															<thead>
+																<tr>
+																	<th style="width: 10%;">HOLE</th>
+																	<th style="width: 10%;">1</th>
+																	<th style="width: 10%;">2</th>
+																	<th style="width: 10%;">3</th>
+																	<th style="width: 10%;">4</th>
+																	<th style="width: 10%;">5</th>
+																	<th style="width: 10%;">6</th>
+																	<th style="width: 10%;">7</th>
+																	<th style="width: 10%;">8</th>
+																	<th style="width: 10%;">9</th>
+																	<th style="width: 10%;">Ttl</th>
+																</tr>
+															</thead>
+
+															<tbody>
+																<tr>
+																	<td style="width: 10%;">PAR</td>
+																	<td style="width: 10%;" *ngFor="let par of courseParTop">{{par}}</td>
+																</tr>
+																<tr *ngFor="let leaders of leaderBoard">
+																	<td style="width: 10%;">STRKES</td>
+																	<td>
+																		<div class="input-group g-margin-b-10--xs">
+																			<input type="text" class="form-control scoreInput"
+																			formControlName="hole1"
+																			required
+																			>
+																		</div>
+																	</td>
+																	<td style="width: 10%;">
+																		<div class="input-group g-margin-b-10--xs">
+																			<input type="text" class="form-control scoreInput"
+																			formControlName="hole2"
+																			required
+																			>
+																		</div>
+																	</td>
+																	<td style="width: 10%;">
+																		<div class="input-group g-margin-b-10--xs">
+																			<input type="text" class="form-control scoreInput"
+																			formControlName="hole3"
+																			required
+																			>
+																		</div>
+																	</td>
+																	<td style="width: 10%;">
+																		<div class="input-group g-margin-b-10--xs">
+																			<input type="text" class="form-control scoreInput"
+																			formControlName="hole4"
+																			required
+																			>
+																		</div>
+																	</td>
+																	<td style="width: 10%;">
+																		<div class="input-group g-margin-b-10--xs">
+																			<input type="text" class="form-control scoreInput"
+																			formControlName="hole5"
+																			required
+																			>
+																		</div>
+																	</td>
+																	<td style="width: 10%;">
+																		<div class="input-group g-margin-b-10--xs">
+																			<input type="text" class="form-control scoreInput"
+																			formControlName="hole6"
+																			required
+																			>
+																		</div>
+																	</td>
+																	<td style="width: 10%;">
+																		<div class="input-group g-margin-b-10--xs">
+																			<input type="text" class="form-control scoreInput"
+																			formControlName="hole7"
+																			required
+																			>
+																		</div>
+																	</td>
+																	<td style="width: 10%;">
+																		<div class="input-group g-margin-b-10--xs">
+																			<input type="text" class="form-control scoreInput"
+																			formControlName="hole8"
+																			required
+																			>
+																		</div>
+																	</td>
+																	<td style="width: 10%;">
+																		<div class="input-group g-margin-b-10--xs">
+																			<input type="text" class="form-control scoreInput"
+																			formControlName="hole9"
+																			required
+																			>
+																		</div>
+																	</td>
+																	<td>{{leaders.total}}</td>
+																</tr>
+																<tr>
+																	<td style="width: 10%;">SCORE</td>
+																	<td style="width: 10%;"></td>
+																	<td style="width: 10%;">
+																	</td>
+																	<td style="width: 10%;">x</td>
+																	<td style="width: 10%;">x</td>
+																	<td style="width: 10%;">x</td>
+																	<td style="width: 10%;">x</td>
+																	<td style="width: 10%;">x</td>
+																	<td style="width: 10%;">x</td>
+																	<td style="width: 10%;">x</td>
+																	<td style="width: 10%;">x</td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="col-md-12 col-sm-12 col-xs-12">
+														<table class="table table-striped table-bordered tablefont">
+															<thead>
+																<tr>
+																	<th style="width: 10%;">Hole</th>
+																	<th style="width: 10%;">10</th>
+																	<th style="width: 10%;">11</th>
+																	<th style="width: 10%;">12</th>
+																	<th style="width: 10%;">13</th>
+																	<th style="width: 10%;">14</th>
+																	<th style="width: 10%;">15</th>
+																	<th style="width: 10%;">16</th>
+																	<th style="width: 10%;">17</th>
+																	<th style="width: 10%;">18</th>
+																	<th style="width: 10%;">Ttl</th>
+																</tr>
+															</thead>
+
+															<tbody>
+																<tr>
+																	<td style="width: 10%;">Par</td>
+																	<td style="width: 10%;" *ngFor="let par of courseParBottom">{{par}}</td>
+																</tr>
+																<tr *ngFor="let leaders of leaderBoard">
+																	<td style="width: 10%;">Strokes</td>
+																	<td style="width: 10%;">
+																		<div class="input-group g-margin-b-10--xs">
+																			<input type="text" class="form-control scoreInput"
+																			formControlName="hole10"
+																			required
+																			>
+																		</div>
+																	</td>
+																	<td style="width: 10%;">
+																		<div class="input-group g-margin-b-10--xs">
+																			<input type="text" class="form-control scoreInput"
+																			formControlName="hole11"
+																			required
+																			>
+																		</div>
+																	</td>
+																	<td style="width: 10%;">
+																		<div class="input-group g-margin-b-10--xs">
+																			<input type="text" class="form-control scoreInput"
+																			formControlName="hole12"
+																			required
+																			>
+																		</div>
+																	</td>
+																	<td style="width: 10%;">
+																		<div class="input-group g-margin-b-10--xs">
+																			<input type="text" class="form-control scoreInput"
+																			formControlName="hole13"
+																			required
+																			>
+																		</div>
+																	</td>
+																	<td style="width: 10%;">
+																		<div class="input-group g-margin-b-10--xs">
+																			<input type="text" class="form-control scoreInput"
+																			formControlName="hole14"
+																			required
+																			>
+																		</div>
+																	</td>
+																	<td style="width: 10%;">
+																		<div class="input-group g-margin-b-10--xs">
+																			<input type="text" class="form-control scoreInput"
+																			formControlName="hole15"
+																			required
+																			>
+																		</div>
+																	</td>
+																	<td style="width: 10%;">
+																		<div class="input-group g-margin-b-10--xs">
+																			<input type="text" class="form-control scoreInput"
+																			formControlName="hole16"
+																			required
+																			>
+																		</div>
+																	</td>
+																	<td style="width: 10%;">
+																		<div class="input-group g-margin-b-10--xs">
+																			<input type="text" class="form-control scoreInput"
+																			formControlName="hole17"
+																			required
+																			>
+																		</div>
+																	</td>
+																	<td style="width: 10%;">
+																		<div class="input-group g-margin-b-10--xs">
+																			<input type="text" class="form-control scoreInput"
+																			formControlName="hole18"
+																			required
+																			>
+																		</div>
+																	</td>
+
+																	<td>{{leaders.total}}</td>
+																</tr>
+																<tr>
+																	<td style="width: 10%;">Score</td>
+																	<td style="width: 10%;">x</td>
+																	<td style="width: 10%;">x</td>
+																	<td style="width: 10%;">x</td>
+																	<td style="width: 10%;">x</td>
+																	<td style="width: 10%;">x</td>
+																	<td style="width: 10%;">x</td>
+																	<td style="width: 10%;">x</td>
+																	<td style="width: 10%;">x</td>
+																	<td style="width: 10%;">x</td>
+																	<td style="width: 10%;">x</td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+												</div>
+
+
+												<div class="row g-margin-t-30--xs">
+													<div class="col-md-8 col-sm-8 col-xs-8">
+														<div class="row g-margin-b-30--xs">
+															<div class="col-md-3 col-sm-3 col-xs-3">
+																<p class="g-font-size-12--md g-font-size-12--sm"><strong>Par </strong> : <i>{{te?.course_par_for_tee}}</i></p>
+															</div>
+															<div class="col-md-3 col-sm-3 col-xs-3">
+																<p class="g-font-size-12--md g-font-size-12--sm"><strong>Total</strong> :  <i>X</i></p>
+															</div>
+															<div class="col-md-3 col-sm-3 col-xs-3">
+																<p class="g-font-size-12--md g-font-size-12--sm"><strong>HCP</strong> :  <i>X</i></p>
+															</div>
+															<div class="col-md-3 col-sm-3 col-xs-3">
+																<p class="g-font-size-12--md g-font-size-12--sm"><strong>NET</strong> : <i>X</i></p>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-4 col-sm-4 col-xs-4">
+														<button type="button" class="text-uppercase s-btn s-btn--xs s-btn--dark-bg g-radius--50 btn-block"
+														(click)="onSave()">
+														<i class="ti-save"></i> Save
+													</button>
 												</div>
 											</div>
 
-											<div class="row">
-												<div class="col-md-12 col-sm-12 col-xs-12">
-													<table class="table table-striped table-bordered tablefont">
-														<thead>
-															<tr>
-																<th style="width: 20%;">Hole</th>
-																<th style="width: 10%;">10</th>
-																<th style="width: 10%;">11</th>
-																<th style="width: 10%;">12</th>
-																<th style="width: 10%;">13</th>
-																<th style="width: 10%;">14</th>
-																<th style="width: 10%;">15</th>
-																<th style="width: 10%;">16</th>
-																<th style="width: 10%;">17</th>
-																<th style="width: 10%;">18</th>
-																<th style="width: 10%;">Ttl</th>
-															</tr>
-														</thead>
 
-														<tbody>
-															<tr>
-																<td style="width: 20%;">Par</td>
-																<td style="width: 10%;" *ngFor="let par of courseParBottom">{{par}}</td>
-															</tr>
-															<tr *ngFor="let leaders of leaderBoard">
-																<td style="width: 20%;">Strokes</td>
-																<td style="width: 10%;" *ngFor="let score of leaders.score_in_hole">{{score}}</td>
-																<td>{{leaders.total}}</td>
-															</tr>
-															<tr>
-																<td style="width: 20%;">Score</td>
-																<td style="width: 10%;">x</td>
-																<td style="width: 10%;">x</td>
-																<td style="width: 10%;">x</td>
-																<td style="width: 10%;">x</td>
-																<td style="width: 10%;">x</td>
-																<td style="width: 10%;">x</td>
-																<td style="width: 10%;">x</td>
-																<td style="width: 10%;">x</td>
-																<td style="width: 10%;">x</td>
-																<td style="width: 10%;">x</td>
-															</tr>
-														</tbody>
-													</table>
-												</div>
+										</form>
+
+									</div>
+
+									<div id="leaderboard" class="tab-pane fade in">
+										<h2 class="g-font-size-14--xs g-font-size-16--md">Leaderboard<span class="pull-right"><i class="ti-clipboard"></i></span></h2>
+
+										<div class="row g-margin-b-30--xs" ng-if="i % 3 === 0">
+											<div class="col-md-12 col-sm-12 col-xs-12">
+												<table class="table table-striped tablefont">
+													<thead>
+														<tr>
+															<th style="width: 5%;">#</th>
+															<th style="width: 5%;">Ctry</th>
+															<th style="width: 60%;">Name</th>
+															<th style="width: 10%;">Total</th>
+															<th style="width: 10%;">Hole</th>
+															<th style="width: 10%;">R1</th>
+														</tr>
+													</thead>
+
+													<tbody>
+														<tr *ngFor="let leader of leaderBoard; let i = index">
+															<td>{{getNumber(i)}}</td>
+															<td>
+																<img src="assets/img/flags/{{leader?.nationality}}.png" class="profile-flag-img-small" >
+															</td>
+															<td>{{leader?.displayName}}</td>
+															<td>{{leader?.total}}</td>
+															<td>x</td>
+															<td>x</td>
+														</tr>
+													</tbody>
+												</table>
 											</div>
-
-											<div class="row">
-												<div class="col-md-3 col-sm-3 col-xs-3">
-													<strong>Par </strong> : <i>{{te?.course_par_for_tee}}</i>
-												</div>
-												<div class="col-md-3 col-sm-3 col-xs-3">
-													<strong>Total</strong> :  <i>X</i>
-												</div>
-												<div class="col-md-3 col-sm-3 col-xs-3">
-													<strong>HCP</strong> :  <i>X</i>
-												</div>
-												<div class="col-md-3 col-sm-3 col-xs-3">
-													<strong>NET</strong> : <i>X</i>
-												</div>
-											</div>
-
 										</div>
 
-										<div id="leaderboard" class="tab-pane fade in">
-											<h2 class="g-font-size-14--xs g-font-size-16--md">Leaderboard<span class="pull-right"><i class="ti-clipboard"></i></span></h2>
-
-											<div class="row g-margin-b-30--xs" ng-if="i % 3 === 0">
-												<div class="col-md-12 col-sm-12 col-xs-12">
-													<table class="table table-striped tablefont">
-														<thead>
-															<tr>
-																<th style="width: 5%;">#</th>
-																<th style="width: 5%;">Ctry</th>
-																<th style="width: 60%;">Name</th>
-																<th style="width: 10%;">Total</th>
-																<th style="width: 10%;">Hole</th>
-																<th style="width: 10%;">R1</th>
-															</tr>
-														</thead>
-
-														<tbody>
-															<tr *ngFor="let leader of leaderBoard; let i = index">
-																<td>{{getNumber(i)}}</td>
-																<td>
-																	<img src="assets/img/flags/{{leader?.nationality}}.png" class="profile-flag-img-small" >
-																</td>
-																<td>{{leader?.displayName}}</td>
-																<td>{{leader?.total}}</td>
-																<td>x</td>
-																<td>x</td>
-															</tr>
-														</tbody>
-													</table>
-												</div>
-											</div>
-
-										</div>
 									</div>
 								</div>
 							</div>
-							
 						</div>
+
 					</div>
-					<!-- End Plan -->
 				</div>
+				<!-- End Plan -->
 			</div>
 		</div>
 	</div>
+</div>
 

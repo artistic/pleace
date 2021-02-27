@@ -1,6 +1,6 @@
-
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { Router } from "@angular/router";
 import Tournament from 'src/app/models/tournament.model';
 import Continents from 'src/app/models/continents.model';
 import Clubs from 'src/app/models/clubs.model';
@@ -61,17 +61,16 @@ export class AddTournamentComponent implements OnInit, OnDestroy {
   divisionsArray = ['Champion', 'Celebrity', 'Tour Player', 'PGA Professional']
   continentsArray = [
   {id: '1', name: 'Africa'},
-  {id: '2', name: 'Antarctica'},
+  {id: '2', name: 'America'},
   {id: '3', name: 'Asia'},
   {id: '4', name: 'Europe'},
-  {id: '5', name: 'North America'},
-  {id: '6', name: 'Oceania'},
-  {id: '7', name: 'South America'}]
+  {id: '5', name: 'Oceania'}]
 
   constructor(
     private db: AngularFirestore,
     private fb: FormBuilder,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    public router: Router,
     ) {
     // The code below will query all the articles
     // and return id + data (e.g. title, description, img)
@@ -225,6 +224,7 @@ export class AddTournamentComponent implements OnInit, OnDestroy {
           try {
             await this.db.collection<Tournament>('tournaments').add(this.newTournament);
             this.toastr.success('Tournament Has Been Successfully Added', 'Tournament Created');
+            this.router.navigate(['tournaments']);
           } catch (error) {
             this.toastr.error('Something Went Wrong', 'Tournament Error');
           }
