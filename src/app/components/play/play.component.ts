@@ -226,8 +226,6 @@ export class PlayComponent implements OnInit {
         // this.allSubscriptions.push(await this.checkLeaderBoardAccess());
         this.toastr.success('You have success joined the tournament', 'Tournament Joined');
         this.router.navigate(['tournament', this.tournamentId]);
-
-
       }
     } catch (error) {
 
