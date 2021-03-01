@@ -5,9 +5,10 @@ import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { filter } from 'rxjs/operators'; 
 import User from 'src/app/models/user.model';
 import { UsersService } from 'src/app/services/users.service';
-import { auth } from 'firebase/app';
+import auth  from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+
 
 
 
@@ -40,8 +41,7 @@ export class AppComponent {
     private usersService: UsersService,
     public afs: AngularFirestore,
     public afAuth: AngularFireAuth,
-
-
+    
     ) { 
 
     this.afAuth.authState.subscribe(user => {
@@ -67,7 +67,7 @@ export class AppComponent {
     this.usersService.getUserDoc(id).subscribe(res => {
       this.userRef = res;
       this.firstrun = this.userRef.firstrun;
-      console.log(this.firstrun);     
+      console.log(this.firstrun);   
     });
 
     this.router.events.pipe(  

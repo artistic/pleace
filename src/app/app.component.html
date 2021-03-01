@@ -20,10 +20,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Results & Rankings <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a routerLink="courses" class="nav-link"><i class="g-color--primary g-margin-r-10--xs ti-flag-alt-2"></i> Golf Courses</a></li>
-            <li><a routerLink="tournaments" class="nav-link"><i class="g-color--primary g-margin-r-10--xs ti-cup"></i> Tournaments</a></li>
             <li><a routerLink="rankings" class="nav-link"><i class="g-color--primary g-margin-r-10--xs ti-receipt"></i> Rankings</a></li>
-            <li><a routerLink="calculate" class="nav-link"><i class="g-color--primary g-margin-r-10--xs ti-menu-alt"></i> Handicap Calculator</a></li>
           </ul>
         </li>
       </ul>
@@ -31,19 +28,15 @@
       <ul class="nav navbar-nav navbar-right" *ngIf="ngAuthService.userState as user">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              <img class="profile-user-small-img img-fluid img-circle" src="{{(userRef.photoURL) ? userRef.photoURL : './assets/img/user_red.png'}}"
+              <img class="profile-user-small-img img-fluid img-circle" src="{{userRef.photoURL}}"
                 alt="{{userRef.displayName}}">
             {{(userRef.displayName) ? userRef.displayName : 'User'}}
             <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a routerLink="play"><i class="g-color--primary g-margin-r-10--xs ti-panel"></i> Play</a></li>
-            <li><a routerLink="clubs"><i class="g-color--primary g-margin-r-10--xs ti-flag-alt"></i> Golf Clubs</a></li>
-            <li><a routerLink="courses"><i class="g-color--primary g-margin-r-10--xs ti-flag-alt"></i> Golf Courses</a></li>
-            <li><a routerLink="invite"><i class="g-color--primary g-margin-r-10--xs ti-share"></i> Invite Friend</a></li>
-            <li><a routerLink="help"><i class="g-color--primary g-margin-r-10--xs ti-help-alt"></i> Help</a></li>
             <li role="separator" class="divider"></li>
             <li><a routerLink="dashboard"><i class="g-color--primary g-margin-r-10--xs ti-panel"></i> Dashboard</a></li>
-            <li *ngIf="userRef.accountType ==='4'"><a routerLink="settings"><i class="g-color--primary g-margin-r-10--xs ti-panel"></i> Settings</a></li>
+            <li *ngIf="userRef.accountType ==='2'"><a routerLink="settings"><i class="g-color--primary g-margin-r-10--xs ti-dashboard"></i> Settings</a></li>
             <li><a (click)="ngAuthService.SignOut()"><i class="g-color--primary g-margin-r-10--xs ti-close"></i> Logout</a></li>
           </ul>
         </li>
@@ -56,7 +49,7 @@
 
 <!--========== PROMO BLOCK ==========-->
 <div class="js__parallax-window" style="background: url(assets/img/slide.png) 50% 0 no-repeat fixed;">
-  <div class="g-container--md g-text-center--xs g-padding-y-100--xs">
+  <div class="g-container--md g-text-center--xs g-padding-y-30--xs">
     <div class="">
       <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--white-opacity g-letter-spacing--2">{{ title }}</p>
       <h1 class="g-font-size-20--xs g-font-size-30--sm g-font-size-30--md g-color--white g-letter-spacing--1 g-margin-b-30--xs">Welcome</h1>
@@ -78,16 +71,18 @@
 <!--========== FOOTER ==========-->
 <footer class="g-bg-color--dark">
   <!-- Copyright -->
-  <div class="container g-padding-y-50--xs">
+  <div class="container g-padding-y-20--xs">
     <div class="row">
-      <div class="col-xs-6">
+      <div class="col-xs-12">
         <a href="index.html">
-          <img class="g-width-100--xs g-height-auto--xs" src="assets/img/pleace-golf-logo.png" alt="Pleace Golf Logo">
+          <img class="g-width-100--xs g-height-auto--xs center" src="assets/img/pleace-golf-logo.png" alt="Pleace Golf Logo">
         </a>
       </div>
-      <div class="col-xs-6 g-text-right--xs">
-        <p class="g-font-size-14--xs g-margin-b-0--xs g-color--white-opacity-light"><a href="https://pleacegolf.world/">Pleace Golf</a> A <a href="http://www.themilkagency.co.za/">Milk Agency </a>Joint</p>
-        <p class="g-font-size-14--xs g-margin-b-0--xs g-color--white-opacity-light">
+    </div>
+
+    <div class="row text-center">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <p class="g-font-size-12--xs">
           <a routerLink="terms" class="nav-link">Terms And Conditions</a> | 
           <a routerLink="privacy" class="nav-link">Privacy Policy</a>
         </p>
@@ -97,7 +92,5 @@
   <!-- End Copyright -->
 </footer>
 <!--========== END FOOTER ==========-->
-<!-- Back To Top -->
-<a href="javascript:void(0);" class="s-back-to-top js__back-to-top"></a>
 
 

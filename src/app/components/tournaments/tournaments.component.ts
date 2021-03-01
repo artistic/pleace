@@ -1,47 +1,111 @@
 import { Component, OnInit } from '@angular/core';
-import { TournamentsService } from 'src/app/services/tournaments.service';
-import { map } from 'rxjs/operators';
+import { FirestoreService } from 'src/app/services/firestore.service';
+import { NgAuthService } from "../../ng-auth.service";
+import User from 'src/app/models/user.model';
+import { UsersService } from 'src/app/services/users.service';
+import auth  from 'firebase/app';
+import { AngularFireAuth } from "@angular/fire/auth";
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import Tournament from 'src/app/models/tournament.model';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
+
+
 
 @Component({
-  selector: 'app-tournaments',
-  templateUrl: './tournaments.component.html',
-  styleUrls: ['./tournaments.component.css']
+	selector: 'app-tournaments',
+	templateUrl: './tournaments.component.html',
+	styleUrls: ['./tournaments.component.css']
 })
 export class TournamentsComponent implements OnInit {
 
-	tournaments?: Tournament[];
-  currentTournament?: Tournament;
-  currentIndex = -1;
-  title = '';
+	tournamentsChamps$: Observable<Tournament[]>;
+	tournamentsCeleb$: Observable<Tournament[]>;
+	tournamentsTour$: Observable<Tournament[]>;
+	tournamentsPro$: Observable<Tournament[]>;
+	userState: any;
+	userRef: any;
+	crrntUsr: any;
+	accountType : any;
 
-  constructor(private tournamentsService: TournamentsService) { }
+	champions : any;
 
-  ngOnInit(): void {
-    this.retrieveTournaments();
+
+	constructor(
+		private fireService: FirestoreService,
+		private db: AngularFirestore,
+		public ngAuthService: NgAuthService,
+		private usersService: UsersService,
+
+		public afs: AngularFirestore,
+		public afAuth: AngularFireAuth,
+
+		private toastr: ToastrService
+		) {
+		this.afAuth.authState.subscribe(user => {
+			if (user) {
+				this.userState = user;
+				localStorage.setItem('user', JSON.stringify(this.userState));
+				JSON.parse(localStorage.getItem('user'));
+				this.crrntUsr = JSON.parse(window.localStorage.getItem("user"));
+				this.accountType = this.crrntUsr.accountType;
+
+			} else {
+				localStorage.setItem('user', null);
+				JSON.parse(localStorage.getItem('user'));
+			}
+		});
+
+		this.tournamentsChamps$ = this.db.collection<Tournament>('tournaments', ref => ref.where('divisions', '==', '1'))
+		.snapshotChanges().pipe(
+			map(actions => actions.map(a => {
+				const data = a.payload.doc.data() as Tournament;
+				const id = a.payload.doc.id;
+				return { id, ...data };
+			}))
+			);
+
+		this.tournamentsCeleb$ = this.db.collection<Tournament>('tournaments', ref => ref.where('divisions', '==', '2'))
+		.snapshotChanges().pipe(
+			map(actions => actions.map(a => {
+				const data = a.payload.doc.data() as Tournament;
+				const id = a.payload.doc.id;
+				return { id, ...data };
+			}))
+			);
+
+		this.tournamentsTour$ = this.db.collection<Tournament>('tournaments', ref => ref.where('divisions', '==', '3'))
+		.snapshotChanges().pipe(
+			map(actions => actions.map(a => {
+				const data = a.payload.doc.data() as Tournament;
+				const id = a.payload.doc.id;
+				return { id, ...data };
+			}))
+			);
+
+		this.tournamentsPro$ = this.db.collection<Tournament>('tournaments', ref => ref.where('divisions', '==', '4'))
+		.snapshotChanges().pipe(
+			map(actions => actions.map(a => {
+				const data = a.payload.doc.data() as Tournament;
+				const id = a.payload.doc.id;
+				return { id, ...data };
+			}))
+			);
+	}
+
+	ngOnInit(): void {
+    this.crrntUsr = JSON.parse(window.localStorage.getItem("user"));
+    const id = this.crrntUsr.uid;
+    console.log(id);
+    
+    this.usersService.getUserDoc(id).subscribe(res => {
+      this.userRef = res;      
+    })
   }
 
-  refreshList(): void {
-    this.currentTournament = undefined;
-    this.currentIndex = -1;
-    this.retrieveTournaments();
-  }
-
-  retrieveTournaments(): void {
-    this.tournamentsService.getAll().snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c =>
-          ({ id: c.payload.doc.id, ...c.payload.doc.data() })
-        )
-      )
-    ).subscribe(data => {
-      this.tournaments = data;
-    });
-  }
-
-  setActiveTutorial(tournament: Tournament, index: number): void {
-    this.currentTournament = tournament;
-    this.currentIndex = index;
+  playTournament() {
+  	this.toastr.error('Invalid division. Apply it in settings and try again', 'Cant Join'); 
   }
 
 }

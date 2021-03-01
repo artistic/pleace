@@ -1,47 +1,92 @@
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from 'src/app/services/firestore.service';
-import Clubs from 'src/app/models/clubs.model';
+import Clubs from 'src/app/models/firestore.model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators'
 
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 
-
 @Component({
-  selector: 'app-clubs',
-  templateUrl: './clubs.component.html',
-  styleUrls: ['./clubs.component.css']
+	selector: 'app-clubs',
+	templateUrl: './clubs.component.html',
+	styleUrls: ['./clubs.component.css']
 })
 export class ClubsComponent implements OnInit {
 
-	 articles$: Observable<Clubs[]>;
-	 africa$ : any;
+	clubscollection: AngularFirestoreCollection<Clubs>;  
+	clubs: Observable<Clubs[]>;  
+	clubsDoc: AngularFirestoreDocument<Clubs>;
 
-  constructor(
-  	private firestoreService: FirestoreService,
-    private db: AngularFirestore
-  	) {
+	//continents
+	africaClubs$: Observable<{}[]>;
+	asiaClubs$: Observable<{}[]>;
+	europeClubs$: Observable<{}[]>;
+	americaClubs$: Observable<{}[]>;
+	greatBritainClubs$: Observable<{}[]>;
 
-  	// The code below will query all the articles
-     // and return id + data (e.g. title, description, img)
-       this.africa$ = this.db.collection('clubs', ref => ref.where('continent', '==', 'Africa'))
-        .snapshotChanges().pipe(
-           map(actions => actions.map(a => {
-             const data = a.payload.doc.data() as Clubs;
-             const id = a.payload.doc.id;
-             return { id, ...data };
-           }))
-         );
+	search = true;
 
-  	 }
+	constructor(
+		private fireService: FirestoreService,
+		private db: AngularFirestore
+		) { }
 
-  ngOnInit(): void {
+	ngOnInit(): void {
 
-  	// this.db.collection('clubs').valueChanges()
-   //   .subscribe(val => console.log(val));
+		this.clubscollection = this.db.collection<{}>('clubs', ref => ref.where('continent', '==', 'Africa'));
+		this.africaClubs$ = this.clubscollection.snapshotChanges().pipe(
+			map(actions => actions.map(a => {
+				const data = a.payload.doc.data(); // DB Questions
+				const id = a.payload.doc.id;
+				return { id, ...data };
 
-     this.africa$.subscribe(data => console.log(data));
+				console.log(this.africaClubs$);
+			}))
+			);
 
-  }
+		this.clubscollection = this.db.collection<{}>('clubs', ref => ref.where('continent', '==', 'Asia'));
+		this.asiaClubs$ = this.clubscollection.snapshotChanges().pipe(
+			map(actions => actions.map(a => {
+				const data = a.payload.doc.data(); // DB Questions
+				const id = a.payload.doc.id;
+				return { id, ...data };
+
+				console.log(this.asiaClubs$);
+			}))
+			);
+
+		this.clubscollection = this.db.collection<{}>('clubs', ref => ref.where('continent', '==', 'America'));
+		this.americaClubs$ = this.clubscollection.snapshotChanges().pipe(
+			map(actions => actions.map(a => {
+				const data = a.payload.doc.data(); // DB Questions
+				const id = a.payload.doc.id;
+				return { id, ...data };
+
+				console.log(this.europeClubs$);
+			}))
+			);
+
+		this.clubscollection = this.db.collection<{}>('clubs', ref => ref.where('continent', '==', 'Europe'));
+		this.europeClubs$ = this.clubscollection.snapshotChanges().pipe(
+			map(actions => actions.map(a => {
+				const data = a.payload.doc.data(); // DB Questions
+				const id = a.payload.doc.id;
+				return { id, ...data };
+
+				console.log(this.europeClubs$);
+			}))
+			);
+
+		this.clubscollection = this.db.collection<{}>('clubs', ref => ref.where('continent', '==', 'Great Britain'));
+		this.greatBritainClubs$ = this.clubscollection.snapshotChanges().pipe(
+			map(actions => actions.map(a => {
+				const data = a.payload.doc.data(); // DB Questions
+				const id = a.payload.doc.id;
+				return { id, ...data };
+
+				console.log(this.greatBritainClubs$);
+			}))
+			);
+	}
 
 }

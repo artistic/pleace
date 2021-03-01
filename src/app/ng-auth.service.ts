@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { auth } from 'firebase/app';
+import auth  from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
@@ -71,7 +71,6 @@ export class NgAuthService {
       this.ngZone.run(() => {
         this.router.navigate(['dashboard']);
       });
-      this.SetUserData(result.user);
     }).catch((error) => {
       window.alert(error.message)
     })
@@ -108,9 +107,7 @@ export class NgAuthService {
     return (user !== null && user.emailVerified !== false) ? true : false;
   }
   
-  GoogleAuth() {
-    return this.AuthLogin(new auth.GoogleAuthProvider());
-  }
+
   
   AuthLogin(provider) {
     return this.afAuth.signInWithPopup(provider)

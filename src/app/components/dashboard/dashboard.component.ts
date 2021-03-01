@@ -1,12 +1,16 @@
-import { Component, OnInit, NgZone, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, NgZone, Input, OnChanges, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { NgAuthService } from "../../ng-auth.service";
 import User from 'src/app/models/user.model';
 import { UsersService } from 'src/app/services/users.service';
-import { auth } from 'firebase/app';
+import auth  from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
 import { FormBuilder, FormGroup } from '@angular/forms';
+
+import { ToastrService } from 'ngx-toastr';
+import Clubs, { Country } from 'src/app/models/firestore.model';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -15,13 +19,13 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./dashboard.component.css']
 })
 
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 
 
 
   @Input() user?: User;
   @Output() refreshUser: EventEmitter<any> = new EventEmitter();
-  
+
 
   uid: any;
   message = '';
@@ -32,9 +36,11 @@ export class DashboardComponent implements OnInit {
   userRef: any;
   crrntUsr: any;
   userEmail: any;
-
+  clubsList: Clubs[] = [];
   firstrun : any;
-
+  allSubscriptions: Subscription[] = [];
+  residenceSubscription: Subscription = new Subscription();
+  countriesList: Country[] = [];
 
 
   constructor(
@@ -44,9 +50,12 @@ export class DashboardComponent implements OnInit {
     public afs: AngularFirestore,
     public afAuth: AngularFireAuth,
     public router: Router,
-    public ngZone: NgZone
-    ) { 
+    public ngZone: NgZone,
+    private toastr: ToastrService
+    ) {
+
     this.afAuth.authState.subscribe(user => {
+
       if (user) {
         this.userState = user;
         localStorage.setItem('user', JSON.stringify(this.userState));
@@ -64,6 +73,7 @@ export class DashboardComponent implements OnInit {
       surname: [''],
       gender: [''],
       nationality:[''],
+      code: [''],
       accountType: [''],
       homeClub: [''],
       handicap: [''],
@@ -72,36 +82,92 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.allSubscriptions.push(this.getCountries());
+    this.allSubscriptions.push(this.getResidenceChange());
     this.crrntUsr = JSON.parse(window.localStorage.getItem("user"));
+
     const id = this.crrntUsr.uid;
     this.userEmail = this.crrntUsr.email;
-    console.log(id);
+
+
     this.usersService.getUserDoc(id).subscribe(res => {
-      this.userRef = res;
+    this.userRef = res;
 
       this.firstrun = this.userRef.firstrun;
       console.log(this.firstrun);
-      this.editForm = this.formBuilder.group({
-        firstname: [this.userRef.firstname],
-        surname: [this.userRef.surname],
-        gender: [this.userRef.gender],
-        nationality: [this.userRef.nationality],
-        accountType: [this.userRef.accountType],
-        homeClub: [this.userRef.homeClub],
-        handicap: [this.userRef.handicap],
-        residence: [this.userRef.residence],
-      })      
+
+    })
+
+
+
+  }
+   // Form Getters
+   get firstname(){
+    return this.editForm.get('firstname')
+  }
+  get surname(){
+    return this.editForm.get('surname')
+  }
+  get gender(){
+    return this.editForm.get('gender')
+  }
+  get nationality(){
+    return this.editForm.get('nationality')
+  }
+  get accountType(){
+    return this.editForm.get('accountType')
+  }
+  get homeClub(){
+    return this.editForm.get('homeClub')
+  }
+  get handicap(){
+    return this.editForm.get('handicap')
+  }
+  get residence(){
+    return this.editForm.get('residence')
+  }
+  get code(){
+    return this.editForm.get('code')
+  }
+  getCountries(){
+    return this.afs.collection<Country>('countries')
+    .valueChanges({ idField: 'id'})
+    .subscribe((countries) => {
+      this.countriesList = countries
     })
   }
+  getClubs(value: string){
+    return this.afs
+    .collection<Clubs>('clubs', ref => ref
+    .where('country', '==', value))
+    .valueChanges({ idField: 'id'})
+    .subscribe((clubs) => {
+      console.log(value);
+      console.log(clubs);
+      this.clubsList = clubs;
+    })
+  }
+  getResidenceChange(){
 
+    return this.residence.valueChanges.subscribe((value) => {
+      this.residenceSubscription.unsubscribe();
+      this.residenceSubscription = this.getClubs(value);
+    })
+  }
 
   onSubmit() {
     this.crrntUsr = JSON.parse(window.localStorage.getItem("user"));
     const id = this.crrntUsr.uid;
     console.log(id);
     this.usersService.updateUser(this.editForm.value, id);
-    this.router.navigate(['settings']);
-  };
 
+   this.toastr.success('Your profile has been updated', 'Profile Updated');
+  };
+  ngOnDestroy(){
+    this.residenceSubscription.unsubscribe();
+    this.allSubscriptions.forEach((sub) => {
+      sub.unsubscribe();
+    })
+  }
 
 }

@@ -5,6 +5,7 @@ export default class User {
   displayName?: string;
   email?: string;
   gender?: string;
+  code?: string;
   nationality?: string;
   emailVerified?: boolean;
   photoURL?: string;

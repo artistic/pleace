@@ -1,78 +1,183 @@
+
+<div class="container g-margin-t-20--xs">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/dashboard"><i class="g-color--primary g-margin-r-10--xs ti-panel"></i> Dashboard</a></li>
+          <li class="breadcrumb-item active" aria-current="page"><i class="g-color--primary g-margin-r-10--xs ti-user"></i> Play</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</div>
+
 <div class="g-bg-color--sky-light">
-	<div class="container g-padding-y-80--xs g-padding-y-125--xsm">
+	<div class="container g-padding-y-20--xs g-padding-y-30--xsm">
 		<div class="row g-row-col--5">
-			<!-- Plan -->
-			<div class="col-md-4  col-sm-12 col-xs-12 g-margin-b-10--xs g-margin-b-0--lg">
 
-					<div class="s-plan-v1 g-bg-color--white g-padding-x-20--xs g-padding-y-30--xs">
-
-						<!-- search -->
-						<div class="row">
-							<div class="col-md-12 col-sm-12 col-xs-12">
-								<p class="text-uppercase g-font-size-10--xs g-color--primary">Are You Ready For A Challenge</p>
-								<h2 class="g-font-size-22--xs g-font-size-24--md">Lets Play <span class="pull-right"><i class="ti-flag-alt"></i></span></h2>
-
-							</div>
-						</div>
-
-					</div>
-
-			</div>
-			<!-- End Plan -->
 
 			<!-- Plan -->
-			<div class="col-md-8 col-sm-12 col-xs-12">
+			<div class="col-md-12 col-sm-12 col-xs-12">
 
-					<div class="s-plan-v1 g-bg-color--white g-padding-x-20--xs g-padding-y-30--xs">
+       <div class="s-plan-v1 g-bg-color--white g-padding-x-20--xs g-padding-y-30--xs">
 
-						<div class="row">
-							<div class="col-md-12 col-sm-12 col-xs-12">
-								<p class="text-uppercase g-font-size-10--xs g-color--primary">What are people are asking</p>
-								<h2 class="g-font-size-22--xs g-font-size-24--md">Choose Where To Play <span class="pull-right"><i class="ti-layers"></i></span></h2>
+        <div class="row">
+         <div class="col-md-12 col-sm-12 col-xs-12">
 
-								<form >
 
-									<div class="row">
-										<!-- form inputs -->
-										<div class="col-md-8 col-sm-12 col-xs-12">
+          <section *ngIf="tournamentId == '';else tournamentSelected">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <table class="table table-hover table-responsive">
+                  <thead>
+                    <tr>
+                      <th style="width: 70%;">Name</th>
+                      <th style="width: 30%;">Start Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let tournamentsChamps of tournamentsChamps$ | async; index as i">
+                      <td>
+                        <span>
+                          <a (click)="onTournamentSelect(tournamentsChamps.id, tournamentsChamps.name)">
+                            <strong>{{ tournamentsChamps.name}}</strong>
+                          </a>
+                        </span>
+                      </td>
+                      <td>{{ tournamentsChamps.startDate}}</td>
+                    </tr>
 
-											<div class="row ">
-												<div class="col-md-12">
-													<div class="input-group g-margin-b-10--xs">
-														<span class="input-group-btn">
-															<i class="s-form-v4__icon ti-cup"></i>
-														</span>
-														<select 
-														class="form-control s-form-v4__input" 
-														formControlName="gameType"
-														style="width: 100%;" 
-														required
-														>
-														<option value="">Account Type</option>
-														<option value="1">Champion</option>
-														<option value="2">Celebrity</option>
-														<option value="3">Pro Golfer</option>
-													</select>
-												</div>
-											</div>
-										</div>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+          <ng-template #tournamentSelected>
 
-									</div>
+            <section >
+              <h2 class="g-font-size-22--xs g-font-size-24--md">Quick Play {{tournamentName}}<span class="pull-right"><i class="ti-layers"></i></span></h2>
 
-									<!-- display form selection -->
-									<div class="col-md-4 col-sm-12 col-xs-12">
+              <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
 
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
+                <div class="row">
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <label>Golf Club</label>
+                    <div class="input-group g-margin-b-10--xs">
+                      <span class="input-group-btn">
+                        <i class="s-form-v4__icon ti-flag-alt-2"></i>
+                      </span>
+                      <select
+                      class="form-control s-form-v4__input"
+                      style="width: 100%;"
+                      formControlName="club"
+                      name = "club"
+                      id = "club"
+                      >
+                      <option value="">select club</option>
+                      <option *ngFor="let club1 of golfClubs" [value]="club1.id">{{club1.club_name}}</option>
+                    </select>
+                  </div>
+                </div>
 
-				</div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <label>Golf Course</label>
+                  <div class="input-group g-margin-b-10--xs">
+                    <span class="input-group-btn">
+                      <i class="s-form-v4__icon ti-flag-alt-2"></i>
+                    </span>
+                    <select
+                    class="form-control s-form-v4__input"
+                    style="width: 100%;"
+                    formControlName="course"
+                    name = "course"
+                    id = "course"
+                    placeholder="course"
+                    >
+                    <option value="">{{clubs.value == '' ? 'Select a club first' : 'Courses'}}</option>
+                    <option *ngFor="let course of golfCourses" [value]="course.id">{{course.course_name}}</option>
+                  </select>
+                </div>
+              </div>
 
-		</div>
-		<!-- End Plan -->
-	</div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <label>Tee</label>
+                <div class="input-group g-margin-b-10--xs">
+                  <span class="input-group-btn">
+                    <i class="s-form-v4__icon ti-flag-alt"></i>
+                  </span>
+                  <select
+                  class="form-control s-form-v4__input"
+                  style="width: 100%;"
+                  formControlName="tee"
+                  name = "tee"
+                  id = "tee"
+                  >
+                  <option value="">{{course.value == '' ? 'Select a course first' : 'Tees'}}</option>
+                  <option *ngFor="let tee of courseTees" [value]="tee.id">{{tee.tee_name}}</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+
+          <div *ngIf="crrntUsr.accountType != '3' && crrntUsr.accountType != '4'" class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <label>Handicap / Index</label>
+              <div class="input-group g-margin-b-10--xs">
+                <span class="input-group-btn">
+                  <i class="s-form-v4__icon ti-medall"></i>
+                </span>
+                <input
+                type="text"
+                class="form-control s-form-v4__input"
+                formControlName="handiCapIndex"
+                placeholder="Handicap / Index"
+                name = "handiCapIndex"
+                id = "handiCapIndex"
+                />
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row" *ngFor="let teed of teeTees">
+            <div class="col-md-3 col-sm-3 col-xs-3">
+              <p><strong>Par</strong>{{teed.course_par_for_tee}}</p>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-3">
+              <p><strong>Slope</strong>{{teed.slope}}</p>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-3">
+              <strong></strong>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-3">
+              <strong></strong>
+            </div>
+          </div>
+
+
+
+          <button (click)="joinTournament()" routerLinkActive="active" type="button" class="text-uppercase s-btn s-btn--xs s-btn--dark-bg g-radius--50 btn-block">Play</button>
+        </form>
+      </section>
+
+    </ng-template>
+
+
+  </div>
+</div>
+
+</div>
+
+</div>
+<!-- End Plan -->
+</div>
 </div>
 </div>
 

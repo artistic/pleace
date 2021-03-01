@@ -1,10 +1,16 @@
 import { BrowserModule , Title} from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { AgmCoreModule } from '@agm/core';
 
 
 import { AngularFireModule } from "@angular/fire";
@@ -18,24 +24,32 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 
 import { NgAuthService } from "./ng-auth.service";
-import { TournamentsComponent } from './components/tournaments/tournaments.component';
-import { AddTournamentComponent } from './components/add-tournament/add-tournament.component';
-import { TournamentComponent } from './components/tournament/tournament.component';
+
 import { NoPageFoundComponent } from './components/no-page-found/no-page-found.component';
-import { CourseComponent } from './components/course/course.component';
-import { CoursesComponent } from './components/courses/courses.component';
-import { AddCourseComponent } from './components/add-course/add-course.component';
+
+
+
 import { RankingsComponent } from './components/rankings/rankings.component';
 import { SettingsComponent } from './components/settings/settings.component';
-import { UserDetailsComponent } from './components/user-details/user-details.component';
+
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { TermsComponent } from './components/terms/terms.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { PlayComponent } from './components/play/play.component';
 import { CalculateComponent } from './components/calculate/calculate.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClubsComponent } from './components/clubs/clubs.component';
-
+import { ClubComponent } from './components/club/club.component';
+import { CoursesComponent } from './components/courses/courses.component';
+import { CourseComponent } from './components/course/course.component';
+import { TournamentsComponent } from './components/tournaments/tournaments.component';
+import { TournamentComponent } from './components/tournament/tournament.component';
+import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
+import { HelpComponent } from './components/help/help.component';
+import { InviteComponent } from './components/invite/invite.component';
+import { UserComponent } from './components/user/user.component';
+import { AddTournamentComponent } from './components/add-tournament/add-tournament.component';
+import { ScoreCardComponent } from './components/score-card/score-card.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -46,22 +60,27 @@ import { ClubsComponent } from './components/clubs/clubs.component';
     SignUpComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
-    TournamentsComponent,
-    AddTournamentComponent,
-    TournamentComponent,
     NoPageFoundComponent,
-    CourseComponent,
-    CoursesComponent,
-    AddCourseComponent,
     RankingsComponent,
     SettingsComponent,
-    UserDetailsComponent,
     EditUserComponent,
     TermsComponent,
     PrivacyComponent,
     PlayComponent,
     CalculateComponent,
-    ClubsComponent
+    ClubsComponent,
+    ClubComponent,
+    CoursesComponent,
+    CourseComponent,
+    TournamentsComponent,
+    TournamentComponent,
+    ScoreboardComponent,
+    HelpComponent,
+    InviteComponent,
+    UserComponent,
+    AddTournamentComponent,
+    ScoreCardComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -69,14 +88,20 @@ import { ClubsComponent } from './components/clubs/clubs.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    FormsModule,
     ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
     BrowserAnimationsModule,
-  
+    ToastrModule.forRoot(),
+    NgxPaginationModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAthlI_rqLxmFhgg0bIJ_kRXqKomJEj_vA'
+    })
   ],
   providers: [
   Title,
-  NgAuthService
+  NgAuthService,
+  {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })

@@ -1,43 +1,53 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import Tournament from '../models/tournament.model';
+import Tournaments from '../models/firestore.model';  // Tournaments data type interface class
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';  // Firebase modules for Database, Data list and Single object
 
 @Injectable({
   providedIn: 'root'
 })
 export class TournamentsService {
 
-  private dbPath = '/tournaments';
-
-
-
-  tournamentsRef: AngularFirestoreCollection<Tournament>;
-
-  constructor(private db: AngularFirestore) {
-    this.tournamentsRef = db.collection(this.dbPath);
-  }
-
-  getAll(): AngularFirestoreCollection<Tournament> {
-    return this.tournamentsRef;
-  }
-
-  create(tournaments: Tournament): any {
-    return this.tournamentsRef.add({ ...tournaments });
-  }
-
-  update(id: string, data: any): Promise<void> {
-    return this.tournamentsRef.doc(id).update(data);
-  }
-
-  delete(id: string): Promise<void> {
-    return this.tournamentsRef.doc(id).delete();
-  }
-
-  getCourseDoc(courseid) {
-    return this.db
-    .collection('courses')
-    .doc(courseid)
-    .valueChanges()
-  }
+  tournamentsRef: AngularFireList<any>;    // Reference to Tournaments data list, its an Observable
+  tournamentRef: AngularFireObject<any>;   // Reference to Tournaments object, its an Observable too
   
+  // Inject AngularFireDatabase Dependency in Constructor
+  constructor(private db: AngularFireDatabase) { }
+
+  // Create Tournaments
+  AddStudent(student: Tournaments) {
+    this.tournamentsRef.push({
+      firstName: student.firstName,
+      lastName: student.lastName,
+      email: student.email,
+      mobileNumber: student.mobileNumber
+    })
+  }
+
+  // Fetch Single Tournaments Object
+  GetTournaments(id: string) {
+    this.tournamentRef = this.db.object('tournaments/' + id);
+    return this.tournamentRef;
+  }
+
+  // Fetch Tournamentss List
+  GetTournamentsList() {
+    this.tournamentsRef = this.db.list('tournaments');
+    return this.tournamentsRef;
+  }  
+
+  // Update Tournaments Object
+  UpdateTournament(student: Tournaments) {
+    this.tournamentRef.update({
+      firstName: student.firstName,
+      lastName: student.lastName,
+      email: student.email,
+      mobileNumber: student.mobileNumber
+    })
+  }  
+
+  // Delete Tournaments Object
+  DeleteTournament(id: string) { 
+    this.tournamentRef = this.db.object('tournaments/'+id);
+    this.tournamentRef.remove();
+  }
 }

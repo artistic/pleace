@@ -1,0 +1,164 @@
+<div class="g-bg-color--sky-light">
+	<div class="container g-padding-y-20--xs g-padding-y-30--xsm">
+		<div class="row">
+			<!-- Plan -->
+			<div class="col-md-12 col-sm-12 col-xs-12">
+
+				<div class="s-plan-v1 g-bg-color--white g-padding-x-20--xs g-padding-y-30--xs">
+
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<p class="text-uppercase g-font-size-10--xs g-color--primary">Lets Look At Course In Detail</p>
+							<h2 class="g-font-size-22--xs g-font-size-24--md"> Full Scoreboard<span class="pull-right"><i class="ti-notepad"></i></span></h2>
+
+							<div class="row scoreboard g-margin-b-20--xs" *ngFor="let tee of tees$ | async; index as i">
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<h2 class="g-font-size-14--xs g-font-size-16--md"> 
+										{{tee.tee_name}}
+										<span class="pull-right">
+											<img src="assets/img/tees/{{tee.tee_color}}.jpg" class="tee-small-img img-circle">
+										</span>
+									</h2>
+
+									<div class="row">
+										<div class="col-md-4"></div>
+										<div class="col-md-8 col-sm-12 col-xs-12 tee_info">
+											<div class="row text-center">
+												<div class="col-md-2 col-sm-2 col-xs-2">
+													<p class="g-font-size-12--xs g-font-size-14--md"><strong>Tee Name</strong><br>
+													{{tee.tee_name}}</p>
+												</div>
+												<div class="col-md-2 col-sm-2 col-xs-2">
+													<p class="g-font-size-12--xs g-font-size-14--md"><strong>Tee Color</strong><br>
+													{{tee.tee_color}}</p>
+												</div>
+												<div class="col-md-2 col-sm-2 col-xs-2">
+													<p class="g-font-size-12--xs g-font-size-14--md"><strong>Tee Name</strong><br>
+													{{tee.tee_name}}</p>
+												</div>
+												<div class="col-md-2 col-sm-2 col-xs-2">
+													<p class="g-font-size-12--xs g-font-size-14--md"><strong>Course Par</strong><br>
+													{{tee.course_par_for_tee}}</p>
+												</div>
+												<div class="col-md-2 col-sm-2 col-xs-2">
+													<p class="g-font-size-12--xs g-font-size-14--md"><strong>Rating</strong><br>
+													{{tee.rating}}</p>
+												</div>
+												<div class="col-md-2 col-sm-2 col-xs-2">
+													<p class="g-font-size-12--xs g-font-size-14--md"><strong>Slope</strong><br>
+													{{tee.slope}}</p>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<table class="table g-font-size-10--xs g-font-size-12--md table-striped table-hover table-responsive">
+												<thead>
+													<tr class="text-center">
+														<th>Hole</th>
+														<th>1</th>
+														<th>2</th>
+														<th>3</th>
+														<th>4</th>
+														<th>5</th>
+														<th>6</th>
+														<th>7</th>
+														<th>8</th>
+														<th>9</th>
+														<th>10</th>
+														<th>11</th>
+														<th>12</th>
+														<th>13</th>
+														<th>14</th>
+														<th>15</th>
+														<th>16</th>
+														<th>17</th>
+														<th>18</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr class="text-center">
+														<th></th>
+														<td>{{tee.hole1}}</td>
+														<td>{{tee.hole2}}</td>
+														<td>{{tee.hole3}}</td>
+														<td>{{tee.hole4}}</td>
+														<td>{{tee.hole5}}</td>
+														<td>{{tee.hole6}}</td>
+														<td>{{tee.hole7}}</td>
+														<td>{{tee.hole8}}</td>
+														<td>{{tee.hole9}}</td>
+														<td>{{tee.hole10}}</td>
+														<td>{{tee.hole11}}</td>
+														<td>{{tee.hole12}}</td>
+														<td>{{tee.hole13}}</td>
+														<td>{{tee.hole14}}</td>
+														<td>{{tee.hole15}}</td>
+														<td>{{tee.hole16}}</td>
+														<td>{{tee.hole17}}</td>
+														<td>{{tee.hole18}}</td>
+													</tr>
+													<tr class="text-center">
+														<th>Par</th>
+														<td>{{tee.hole1_par}}</td>
+														<td>{{tee.hole2_par}}</td>
+														<td>{{tee.hole3_par}}</td>
+														<td>{{tee.hole4_par}}</td>
+														<td>{{tee.hole5_par}}</td>
+														<td>{{tee.hole6_par}}</td>
+														<td>{{tee.hole7_par}}</td>
+														<td>{{tee.hole8_par}}</td>
+														<td>{{tee.hole9_par}}</td>
+														<td>{{tee.hole10_par}}</td>
+														<td>{{tee.hole11_par}}</td>
+														<td>{{tee.hole12_par}}</td>
+														<td>{{tee.hole13_par}}</td>
+														<td>{{tee.hole14_par}}</td>
+														<td>{{tee.hole15_par}}</td>
+														<td>{{tee.hole16_par}}</td>
+														<td>{{tee.hole17_par}}</td>
+														<td>{{tee.hole18_par}}</td>
+													</tr>
+
+													<tr class="text-center">
+														<th>Handicap</th>
+														<td>{{tee.hole1_handicap}}</td>
+														<td>{{tee.hole2_handicap}}</td>
+														<td>{{tee.hole3_handicap}}</td>
+														<td>{{tee.hole4_handicap}}</td>
+														<td>{{tee.hole5_handicap}}</td>
+														<td>{{tee.hole6_handicap}}</td>
+														<td>{{tee.hole7_handicap}}</td>
+														<td>{{tee.hole8_handicap}}</td>
+														<td>{{tee.hole9_handicap}}</td>
+														<td>{{tee.hole10_handicap}}</td>
+														<td>{{tee.hole11_handicap}}</td>
+														<td>{{tee.hole12_handicap}}</td>
+														<td>{{tee.hole13_handicap}}</td>
+														<td>{{tee.hole14_handicap}}</td>
+														<td>{{tee.hole15_handicap}}</td>
+														<td>{{tee.hole16_handicap}}</td>
+														<td>{{tee.hole17_handicap}}</td>
+														<td>{{tee.hole18_handicap}}</td>
+													</tr>
+
+												</tbody>
+											</table>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+							
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- End Plan -->
+		</div>
+	</div>
+</div>
