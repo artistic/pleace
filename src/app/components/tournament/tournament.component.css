@@ -6,3 +6,21 @@ ul.nav-tabs > li {
 .tablefont {
 	font-size: 12px;
 }
+
+.scoreInput {
+  position: relative;
+  font-size: 12px;
+  height:20px;
+  color: rgba(34, 35, 36, 0.5);
+  border: none;
+  border-bottom: .0625rem solid;
+  background: rgba(34, 35, 36, 0.3);
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  letter-spacing: .1rem;
+  padding: 0 0px 0px 0px;
+  transition-duration: 300ms;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
+}

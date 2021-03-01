@@ -139,6 +139,7 @@
 
                   <div class="row ">
                     <div class="col-sm-6">
+                      <label>First Name</label>
                       <div class="input-group g-margin-b-10--xs">
                         <span class="input-group-btn">
                           <i class="s-form-v4__icon ti-user"></i>
@@ -154,6 +155,7 @@
                     </div>
 
                     <div class="col-sm-6">
+                      <label>Last Name</label>
                       <div class="input-group g-margin-b-10--xs">
                         <span class="input-group-btn">
                           <i class="s-form-v4__icon ti-user"></i>
@@ -170,7 +172,8 @@
                   </div>
 
                   <div class="row ">
-                    <div class="col-sm-6">
+                    <div class="col-md-6 col-sm-12">
+                      <label>Division</label>
                       <div class="input-group g-margin-b-10--xs">
                         <span class="input-group-btn">
                           <i class="s-form-v4__icon ti-cup"></i>
@@ -190,7 +193,27 @@
                     </div>
                   </div>
 
-                  <div class="col-sm-3">
+                  <div *ngIf="accountType.value == 2" class="col-md-6 col-sm-12">
+                    <label>Celebrity Code</label>
+                    <div class="input-group g-margin-b-10--xs">
+                      <span class="input-group-btn">
+                        <i class="s-form-v4__icon ti-bookmark-alt"></i>
+                      </span>
+                      <input
+                      type="text"
+                      class="form-control s-form-v4__input"
+                      placeholder="celebrity code"
+                      required
+                      formControlName="code"
+                      />
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 col-sm-6 col-xs-6">
+                    <label>Gender</label>
                     <div class="input-group g-margin-b-10--xs">
                       <span class="input-group-btn">
                         <i class="s-form-v4__icon ti-face-smile"></i>
@@ -202,15 +225,13 @@
                       required
                       >
                       <option value="">Gender</option>
-                      <option value="male">Male</option>
-                      <option value="female">Female</option>
+                      <option value="male">Men</option>
+                      <option value="female">Ladies</option>
                     </select>
                   </div>
                 </div>
-
-                <div
-                *ngIf="accountType.value != 3 && accountType.value != 4"
-                class="col-sm-3">
+                <div *ngIf="accountType.value != 3 && accountType.value != 4" class="col-md-6 col-sm-6 col-xs-6">
+                  <label>Handicap / Index</label>
                   <div class="input-group g-margin-b-10--xs">
                     <span class="input-group-btn">
                       <i class="s-form-v4__icon ti-medall"></i>
@@ -228,27 +249,11 @@
 
 
               <!--  -->
-              <div
-              *ngIf="accountType.value == 2"
-              class="row ">
-                <div class="col-sm-12">
-                  <div class="input-group g-margin-b-10--xs">
-                    <span class="input-group-btn">
-                      <i class="s-form-v4__icon ti-cup"></i>
-                    </span>
-                    <input
-                    type="text"
-                    class="form-control s-form-v4__input"
-                    placeholder="celebrity code"
-                    required
-                    formControlName="code"
-                    />
-                </div>
-              </div>
-          </div>
+
               <!--  -->
               <div class="row ">
                 <div class="col-sm-6">
+                  <label>Nationality</label>
                   <div class="input-group g-margin-b-10--xs">
                     <span class="input-group-btn">
                       <i class="s-form-v4__icon ti-world"></i>
@@ -266,6 +271,7 @@
               </div>
 
               <div class="col-sm-6">
+                <label>Residence</label>
                 <div class="input-group g-margin-b-10--xs">
                   <span class="input-group-btn">
                     <i class="s-form-v4__icon ti-world"></i>
@@ -285,6 +291,7 @@
 
           <div class="row ">
             <div class="col-sm-12">
+              <label>Residence Club</label>
               <div class="input-group g-margin-b-10--xs">
                 <span class="input-group-btn">
                   <i class="s-form-v4__icon ti-home"></i>
@@ -300,23 +307,23 @@
                 value="">{{residence.value == '' ? 'Select a Country of Residence first' : (clubsList?.length == 0 ? 'No Clubs in your country' : 'Home club')}}</option>
                 <option *ngFor="let club of clubsList" [value]="club.id">{{club?.club_name}}</option>
               </select>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <button type="submit" class="text-uppercase s-btn s-btn--sm btn-block s-btn--primary-bg g-radius--3 g-padding-x-50--xs">Update Profile</button>
             </div>
           </div>
 
-        </form>
+        </div>
 
-      </div>
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <button type="submit" class="text-uppercase s-btn s-btn--sm btn-block s-btn--primary-bg g-radius--3 g-padding-x-50--xs">Update Profile</button>
+          </div>
+        </div>
+
+      </form>
+
     </div>
-
   </div>
+
+</div>
 </div>
 <!-- End Plan -->
 </div>

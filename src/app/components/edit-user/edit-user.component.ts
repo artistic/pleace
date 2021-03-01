@@ -169,6 +169,7 @@ export class EditUserComponent implements OnInit {
     this.usersService.updateUser(this.editForm.value, id);
 
    this.toastr.success('Your profile has been updated', 'Profile Updated');
+   this.router.navigate(['dashboard']);
   };
   ngOnDestroy(){
     this.residenceSubscription.unsubscribe();

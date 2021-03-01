@@ -1,0 +1,217 @@
+{
+  "__collections__": {
+    "courses": {
+      "AD-001-01":{
+         "courseID": "AD-001-01",
+         "facilityID": "AD-001",
+         "course_name": "Adios Golf ",
+         "holes": 18,
+         "par": 72
+      },
+      "DD-001-01":{
+         "courseID": "DD-001-01",
+         "facilityID": "DD-001",
+         "course_name": "Desert Dunes Golf ",
+         "holes": 18,
+         "par": 72
+      },
+      "SC-001-01":{
+         "courseID": "SC-001-01",
+         "facilityID": "SC-001",
+         "course_name": "Sherwood Country",
+         "holes": 18,
+         "par": 72
+      },
+      "SG-001-01":{
+         "courseID": "SG-001-01",
+         "facilityID": "SG-001",
+         "course_name": "Services Golf ",
+         "holes": 18,
+         "par": 72
+      },
+      "OL-001-01":{
+         "courseID": "OL-001-01",
+         "facilityID": "OL-001",
+         "course_name": "Olivas Links Golf",
+         "holes": 18,
+         "par": 72
+      },
+      "CS-001-01":{
+         "courseID": "CS-001-01",
+         "facilityID": "CS-001",
+         "course_name": "The Club at Steyn City",
+         "holes": 18,
+         "par": 72
+      },
+      "WC-001-01":{
+         "courseID": "WC-001-01",
+         "facilityID": "WC-001",
+         "course_name": "Wilshire Country ",
+         "holes": 18,
+         "par": 72
+      },
+      "DC-001-01":{
+         "courseID": "DC-001-01",
+         "facilityID": "DC-001",
+         "course_name": "Diamond Country ",
+         "holes": 18,
+         "par": 72
+      },
+      "SP-001-01":{
+         "courseID": "SP-001-01",
+         "facilityID": "SP-001",
+         "course_name": "Schoeman Park Golf ",
+         "holes": 18,
+         "par": 72
+      },
+      "PG-001-01":{
+         "courseID": "PG-001-01",
+         "facilityID": "PG-001",
+         "course_name": "Parkview Golf ",
+         "holes": 18,
+         "par": 72
+      },
+      "EG-001-01":{
+         "courseID": "EG-001-01",
+         "facilityID": "EG-001",
+         "course_name": "Erinvale Golf ",
+         "holes": 18,
+         "par": 72
+      },
+      "EC-001-01":{
+         "courseID": "EC-001-01",
+         "facilityID": "EC-001",
+         "course_name": "Eagle Canyon Golf ",
+         "holes": 18,
+         "par": 72
+      },
+      "SGW-001-01":{
+         "courseID": "SGW-001-01",
+         "facilityID": "SGW-001",
+         "course_name": "Serengeti Golf & Wildlife Estate",
+         "holes": 18,
+         "par": 72
+      },
+      "PGC-001-01":{
+         "courseID": "PGC-001-01",
+         "facilityID": "PGC-001",
+         "course_name": "Pecanwood Golf & Country ",
+         "holes": 18,
+         "par": 72
+      },
+      "ZC-001-01":{
+         "courseID": "ZC-001-01",
+         "facilityID": "ZC-001",
+         "course_name": "Zwartkop Country ",
+         "holes": 18,
+         "par": 72
+      },
+      "SL-001-01":{
+         "courseID": "SL-001-01",
+         "facilityID": "SL-001",
+         "course_name": "Silver Lakes Country",
+         "holes": 18,
+         "par": 72
+      },
+      "MGC-001-01":{
+         "courseID": "MGC-001-01",
+         "facilityID": "MGC-001",
+         "course_name": "Modderfontein Golf ",
+         "holes": 18,
+         "par": 72
+      },
+      "OGC-001-01":{
+         "courseID": "OGC-001-01",
+         "facilityID": "OGC-001",
+         "course_name": "Omeya Golf ",
+         "holes": 18,
+         "par": 72
+      },
+      "GCC-001-01":{
+         "courseID": "GCC-001-01",
+         "facilityID": "GCC-001",
+         "course_name": "Golf Club Crans-sur-Sierre",
+         "holes": 18,
+         "par": 72
+      },
+      "CCJ-001-01":{
+         "courseID": "CCJ-001-01",
+         "facilityID": "CCJ-001",
+         "course_name": "Country Club Course 1",
+         "holes": 18,
+         "par": 72
+      },
+      "CCJ-001-02":{
+         "courseID": "CCJ-001-02",
+         "facilityID": "CCJ-001",
+         "course_name": "Country Club Course 2",
+         "holes": 18,
+         "par": 72
+      },
+      "SCC-001-01":{
+         "courseID": "SCC-001-01",
+         "facilityID": "SCC-001",
+         "course_name": "Soweto Country",
+         "holes": 18,
+         "par": 72
+      },
+      "GG-001-01":{
+         "courseID": "GG-001-01",
+         "facilityID": "GG-001",
+         "course_name": "George Golf",
+         "holes": 18,
+         "par": 72
+      },
+      "ET-001-01":{
+         "courseID": "ET-001-01",
+         "facilityID": "ET-001",
+         "course_name": "Edgewood Tahoe Golf Course",
+         "holes": 18,
+         "par": 72
+      },
+      "SR-001-01":{
+         "courseID": "SR-001-01",
+         "facilityID": "SR-001",
+         "course_name": "Shark River Golf Course",
+         "holes": 18,
+         "par": 72
+      },
+      "SGC-001-01":{
+         "courseID": "SGC-001-01",
+         "facilityID": "SGC-001",
+         "course_name": "Stellenbosch Golf Course",
+         "holes": 18,
+         "par": 72
+      },
+      "HR-001-01":{
+         "courseID": "HR-001-01",
+         "facilityID": "HR-001",
+         "course_name": "High Ridge Country ",
+         "holes": 18,
+         "par": 72
+      },
+      "JW-001-01":{
+         "courseID": "JW-001-01",
+         "facilityID": "JW-001",
+         "course_name": "JW Marriott Desert Springs Palm Course",
+         "holes": 18,
+         "par": 72
+      },
+      "JW-001-02":{
+         "courseID": "JW-001-01",
+         "facilityID": "JW-001",
+         "course_name": "JW Marriott Desert Springs Valley Course",
+         "holes": 18,
+         "par": 72
+      },
+      "MV-001-01":{
+         "courseID": "MV-001-01",
+         "facilityID": "MV-001",
+         "course_name": "Muirfield Village Golf",
+         "holes": 18,
+         "par": 72
+      }
+
+   }
+}
+}
